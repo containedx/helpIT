@@ -9,7 +9,7 @@ Czas: 8
 - lista wolontariuszy przynależących do fundacji (jeśli wolontariusz tego chce)
 - możliwość tworzenia grup
 - wolontariusz może aplikować o dołączenie do danej fundacji
-- fundacja może dodawać wybranych wolontariuszy ( po nicku )
+- fundacja może dodawać wybranych wolontariuszy ( po nicku )Fun
 
 
 
