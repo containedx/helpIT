@@ -1,0 +1,13 @@
+CREATE DATABASE helpIT;
+
+CREATE TABLE IF NOT EXISTS users (user_id BIGINT PRIMARY KEY auto_increment, username varchar(256) NOT NULL UNIQUE, email varchar(256) NOT NULL UNIQUE, password varchar(256) NOT NULL, active int NOT NULL);
+CREATE TABLE IF NOT EXISTS roles (role_id INT PRIMARY KEY auto_increment, role varchar(256) NOT NULL UNIQUE);
+CREATE TABLE IF NOT EXISTS user_role(user_id BIGINT REFERENCES users(user_id), role_id INT REFERENCES roles(role_id), CONSTRAINT PRIMARY KEY(user_id,role_id));
+
+CREATE TABLE IF NOT EXISTS types(type_id INT AUTO_INCREMENT PRIMARY KEY , type_name VARCHAR(255) NOT NULL);
+CREATE TABLE IF NOT EXISTS foundation_user(foundation_id
+CREATE TABLE IF NOT EXISTS foundation_types(foundation_id BIGINT REFERENCES users(user_id), type_id INT REFERENCES types(type_id), CONSTRAINT PRIMARY KEY(foundation_id,type_id));
+
+
+
+INSERT INTO roles(role) VALUES("ROLE_VOLUNTEER"),("ROLE_FOUNDATION"), ("ROLE_ADMIN");

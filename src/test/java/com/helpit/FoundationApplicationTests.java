@@ -1,4 +1,4 @@
-package com.helpit.foundation;
+package com.helpit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
