@@ -2,19 +2,11 @@ package com.helpit.foundation.Events;
 
 public class Event {
 
-    private Long id;
     private String name;
     private String date;
     private String foundation;
     private String description;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDate() {
         return date;

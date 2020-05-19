@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" >
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +9,10 @@
 
 <h1> You Added New Event! </h1>
 
+<p th:text="${event.name}"/>
+<p th:text="${event.date}"/>
+<p th:text="${event.foundation}"/>
+<p th:text="${event.description}"/>
 
 </body>
 </html>
