@@ -101,12 +101,12 @@ html, body {
         margin: 5px 10px;
         cursor: pointer; }
         #nav #navbar-registers #dropdown-signup .dropdown-signup-option:hover {
-          background-color: #f7f7f7; }
+          background-color: #f9f9f9; }
         #nav #navbar-registers #dropdown-signup .dropdown-signup-option i {
           line-height: 50px;
           text-align: center;
           font-size: 15px;
-          color: #f3645e; }
+          color: #c8cecf; }
         #nav #navbar-registers #dropdown-signup .dropdown-signup-option span {
           padding: 0 0 0 10px;
           font-size: 14px;
@@ -244,7 +244,7 @@ html, body {
 #session-new {
   min-height: 550px;
   width: 100%;
-  margin: 129px 0 0 0; }
+  margin: 119px 0 0 0; }
   #session-new #session-new-form {
     width: 100%;
     max-width: 330px;
@@ -255,14 +255,16 @@ html, body {
     border: 1px solid #d6cdca;
     border-top: none;
     border-radius: 3px;
-    padding: 0 0 10px 0; }
+    padding: 0 0 10px 0;
+    -webkit-box-shadow: 0px 7px 12px -11px #d0d0d0;
+    -moz-box-shadow: 0px 7px 12px -11px #d0d0d0;
+    box-shadow: 0px 7px 12px -11px #d0d0d0; }
     #session-new #session-new-form .form-title {
       display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
       padding: 0 20px;
-      background: linear-gradient(to bottom right, #84a6f0, #6994e6);
-      background: linear-gradient(to bottom right, #f06560, #e64339);
+      background: linear-gradient(to bottom right, #f06560, #e65047);
       border-bottom: 2px solid #d6d6d6;
       border-top-left-radius: 3px;
       border-top-right-radius: 3px; }
@@ -277,8 +279,7 @@ html, body {
       padding: 0 20px; }
       #session-new #session-new-form .form-group label {
         font-size: 12px;
-        line-height: 15px;
-        padding: 0 0 0 10px; }
+        line-height: 15px; }
       #session-new #session-new-form .form-group input {
         background-color: #fff;
         border: 1px solid #999;
@@ -305,9 +306,129 @@ html, body {
       #session-new #session-new-form .form-or a {
         line-height: 45px;
         text-align: center;
-        font-size: 15px;
-        color: #d64238;
+        font-size: 13px;
+        color: #333334;
         text-decoration: none;
         cursor: pointer; }
         #session-new #session-new-form .form-or a:hover {
           text-decoration: underline; }
+
+#registration {
+  min-height: 550px;
+  width: 100%;
+  margin: 119px 0 0 0; }
+  #registration #registration-form {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 80px 60px 60px 60px 60px 60px;
+    row-gap: 20px;
+    border: 1px solid #d6cdca;
+    border-top: none;
+    border-radius: 3px;
+    padding: 0 0 10px 0;
+    -webkit-box-shadow: 0px 7px 12px -11px #d0d0d0;
+    -moz-box-shadow: 0px 7px 12px -11px #d0d0d0;
+    box-shadow: 0px 7px 12px -11px #d0d0d0; }
+    #registration #registration-form .form-title {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      padding: 0 20px;
+      background: linear-gradient(to bottom right, #f06560, #e65047);
+      border-bottom: 2px solid #d6d6d6;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px; }
+      #registration #registration-form .form-title span {
+        text-align: center;
+        font-size: 22px;
+        line-height: 80px;
+        color: #fff; }
+    #registration #registration-form .form-group {
+      display: grid;
+      grid-template-rows: 20px 40px;
+      padding: 0 20px; }
+      #registration #registration-form .form-group label {
+        font-size: 12px;
+        line-height: 15px; }
+      #registration #registration-form .form-group input {
+        background-color: #fff;
+        border: 1px solid #999;
+        padding: 0 0 0 10px; }
+    #registration #registration-form .form-btn {
+      padding: 0 20px; }
+      #registration #registration-form .form-btn input {
+        background-color: #fff;
+        border: 1px solid #999;
+        width: 100%;
+        margin: 0px auto 0 auto;
+        height: 45px;
+        cursor: pointer; }
+        #registration #registration-form .form-btn input:hover {
+          border: 1px solid #707070; }
+
+#charity {
+  min-height: 550px;
+  width: 100%;
+  margin: 90px 0 0 0;
+  background-color: #84a6f0; }
+  #charity #charity-content {
+    display: grid;
+    grid-template-rows: 45px 160px 55px auto; }
+    #charity #charity-content .charity-content-nav {
+      background-color: #46f098; }
+    #charity #charity-content .charity-content-user {
+      background-color: #b08cf0; }
+    #charity #charity-content .charity-content-links {
+      background-color: #f09eab; }
+    #charity #charity-content .charity-content-feed {
+      background-color: #d8f0aa; }
+
+/*
+
+<section id="charity">
+
+<div id="charity-content">
+
+<div class="charity-content-nav">
+<a href="/">back to charities</a>
+
+<a href="" role="button">edit</a>
+</div>
+
+<div class="charity-content-user">
+<img src="" alt="">
+<div>CHARITY NAME</div>
+</div>
+
+<div class="charity-content-links">
+
+
+</div>
+
+<div class="charity-content-feed">
+
+<form id="add-article" action="">
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<div class="add-article-controllers">
+<input type="file">
+<input type="submit">
+</div>
+</form>
+
+<div class="article">
+
+<img src="" alt="">
+
+<div class="article-details">
+<div class="article-title">Title</div>
+<div class="article-content">Quokka says quokk quokk quokk XD</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+*/

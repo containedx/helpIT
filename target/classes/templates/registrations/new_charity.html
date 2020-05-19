@@ -1,42 +1,47 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
-        <link rel="stylesheet" href="/css/root.css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+    <link rel="stylesheet" href="/css/root.css">
+</head>
 
     <body>
         <div th:replace="partials/nav::nav"></div>
 
-        <section id="session-new">
+        <section id="registration">
 
-            <form th:action="@{/login}" method="post" id="session-new-form">
+            <form th:action="@{/login}" method="post" id="registration-form">
 
                 <div class="form-title">
-                    <span>Sign in as Charity</span>
+                    <span>Create Charity Account</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Charity name</label>
                     <input type="text" id="username" name="username" class="form-control" autofocus="autofocus" placeholder="Username">
                 </div>
 
                 <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="password" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" id="password" name="username" class="form-control" autofocus="autofocus" placeholder="Username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation">Password confirmation</label>
+                    <input type="password" id="password_confirmation" name="password" class="form-control" placeholder="Password">
                 </div>
 
                 <div class="form-btn">
-                    <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-info" value="Log In">
-                </div>
-
-                <div class="form-or">
-                    <span>or</span>
-                    <a href="">create a new charity account</a>
+                    <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-info" value="Create Account">
                 </div>
             </form>
 
@@ -107,5 +112,3 @@
     </body>
 
 </html>
-
-

@@ -1,20 +1,21 @@
 
-#session-new{
+#registration{
   min-height: 550px;
   width: 100%;
   margin: 119px 0 0 0;
 
-  #session-new-form{
+  #registration-form{
     width: 100%;
     max-width: 330px;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 80px 60px 60px 60px 60px;
+    grid-template-rows: 80px 60px 60px 60px 60px 60px;
     row-gap: 20px;
     border: 1px solid #d6cdca;
     border-top: none;
     border-radius: 3px;
     padding: 0 0 10px 0;
+
     -webkit-box-shadow: 0px 7px 12px -11px rgb(208, 208, 208);
     -moz-box-shadow: 0px 7px 12px -11px rgb(208, 208, 208);
     box-shadow: 0px 7px 12px -11px rgb(208, 208, 208);
@@ -25,7 +26,6 @@
       grid-template-columns: 1fr;
       padding: 0 20px;
       background: linear-gradient(to bottom right, #f06560, #e65047);
-
       border-bottom: 2px solid #d6d6d6;
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
@@ -73,29 +73,5 @@
       }
     }
 
-    .form-or{
-      display: grid;
-      grid-template-rows:15px 45px;
-      padding: 0 20px;
-
-      span{
-        line-height: 15px;
-        text-align: center;
-        font-size: 13px;
-      }
-
-      a{
-        line-height: 45px;
-        text-align: center;
-        font-size: 13px;
-        color: #333334;
-        text-decoration: none;
-        cursor: pointer;
-
-        &:hover{
-          text-decoration: underline;
-        }
-      }
-    }
   }
 }

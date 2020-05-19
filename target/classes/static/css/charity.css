@@ -1,0 +1,64 @@
+#charity {
+  min-height: 550px;
+  width: 100%;
+  margin: 90px 0 0 0;
+  background-color: #84a6f0; }
+  #charity #charity-content {
+    display: grid;
+    grid-template-rows: 45px 160px 55px auto; }
+    #charity #charity-content .charity-content-nav {
+      background-color: #46f098; }
+    #charity #charity-content .charity-content-user {
+      background-color: #b08cf0; }
+    #charity #charity-content .charity-content-links {
+      background-color: #f09eab; }
+    #charity #charity-content .charity-content-feed {
+      background-color: #d8f0aa; }
+
+/*
+
+<section id="charity">
+
+<div id="charity-content">
+
+<div class="charity-content-nav">
+<a href="/">back to charities</a>
+
+<a href="" role="button">edit</a>
+</div>
+
+<div class="charity-content-user">
+<img src="" alt="">
+<div>CHARITY NAME</div>
+</div>
+
+<div class="charity-content-links">
+
+
+</div>
+
+<div class="charity-content-feed">
+
+<form id="add-article" action="">
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<div class="add-article-controllers">
+<input type="file">
+<input type="submit">
+</div>
+</form>
+
+<div class="article">
+
+<img src="" alt="">
+
+<div class="article-details">
+<div class="article-title">Title</div>
+<div class="article-content">Quokka says quokk quokk quokk XD</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+*/

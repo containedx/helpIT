@@ -10,34 +10,38 @@
     </head>
 
     <body>
-
         <div th:replace="partials/nav::nav"></div>
 
-        <section id="session-new">
+        <section id="registration">
 
-            <form th:action="@{/login}" method="post" id="session-new-form">
+            <form th:action="@{/login}" method="post" id="registration-form">
 
                 <div class="form-title">
-                    <span>Sign in as Volunteer</span>
+                    <span>Create Volunteer Account</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Name</label>
                     <input type="text" id="username" name="username" class="form-control" autofocus="autofocus" placeholder="Username">
                 </div>
 
                 <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="password" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" id="password" name="username" class="form-control" autofocus="autofocus" placeholder="Username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation">Password confirmation</label>
+                    <input type="password" id="password_confirmation" name="password" class="form-control" placeholder="Password">
                 </div>
 
                 <div class="form-btn">
-                    <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-info" value="Log In">
-                </div>
-
-                <div class="form-or">
-                    <span>or</span>
-                    <a href="">create a new volunteer account</a>
+                    <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-info" value="Create Account">
                 </div>
             </form>
 
@@ -108,4 +112,3 @@
     </body>
 
 </html>
-
