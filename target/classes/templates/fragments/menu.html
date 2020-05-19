@@ -6,9 +6,12 @@
 </head>
 <body>
 <div th:fragment="menu">
-    <div class="nav" sec:authorize="hasRole('ANONYMOUS')">
+    <div class="nav" sec:authorize="isAnonymous()">
         <a href="/login" th:text="#{menu.login}"></a>
         <a href="/signup" th:text="#{menu.signup}"></a>
+    </div>
+    <div class="nav" sec:authorize="isAuthenticated()">
+        <a href="/logout" th:text="#{menu.logout}"></a>
     </div>
 </div>
 </body>

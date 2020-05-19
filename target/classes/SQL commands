@@ -1,12 +1,17 @@
 CREATE DATABASE helpIT;
 
-CREATE TABLE IF NOT EXISTS users (user_id BIGINT PRIMARY KEY auto_increment, username varchar(256) NOT NULL UNIQUE, email varchar(256) NOT NULL UNIQUE, password varchar(256) NOT NULL, active int NOT NULL);
+CREATE TABLE IF NOT EXISTS users (user_id BIGINT PRIMARY KEY auto_increment, username varchar(256) NOT NULL UNIQUE, email varchar(256) NOT NULL UNIQUE, password varchar(256) NOT NULL, active int NOT NULL,created_at timestamp NOT NULL DEFAULT current_timestamp );
 CREATE TABLE IF NOT EXISTS roles (role_id INT PRIMARY KEY auto_increment, role varchar(256) NOT NULL UNIQUE);
-CREATE TABLE IF NOT EXISTS user_role(user_id BIGINT REFERENCES users(user_id), role_id INT REFERENCES roles(role_id), CONSTRAINT PRIMARY KEY(user_id,role_id));
-
+CREATE TABLE IF NOT EXISTS foundations(foundation_id BIGINT AUTO_INCREMENT PRIMARY KEY, foundation_name VARCHAR(255), foundation_owner_name VARCHAR(255), foundation_owner_surname VARCHAR(255));
+CREATE TABLE IF NOT EXISTS volunteers(volunteer_id BIGINT AUTO_INCREMENT PRIMARY KEY, volunteer_name VARCHAR(255), volunteer_surname VARCHAR(255));
 CREATE TABLE IF NOT EXISTS types(type_id INT AUTO_INCREMENT PRIMARY KEY , type_name VARCHAR(255) NOT NULL);
-CREATE TABLE IF NOT EXISTS foundation_user(foundation_id
 CREATE TABLE IF NOT EXISTS foundation_types(foundation_id BIGINT REFERENCES users(user_id), type_id INT REFERENCES types(type_id), CONSTRAINT PRIMARY KEY(foundation_id,type_id));
+CREATE TABLE IF NOT EXISTS addresses(address_id BIGINT AUTO_INCREMENT PRIMARY KEY, address_city VARCHAR(255), address_street VARCHAR(255), address_postcode VARCHAR(255), address_number_of_home VARCHAR(16), address_number_of_flat INT));
+
+CREATE TABLE IF NOT EXISTS user_address(user_id BIGINT REFERENCES users(user_id), address_id BIGINT REFERENCES addresses(address_id), CONSTRAINT PRIMARY KEY(user_id,address_id));
+CREATE TABLE IF NOT EXISTS user_volunteer( user_id BIGINT REFERENCES users(user_id),volunteer_id BIGINT REFERENCES volunteers(volunteer_id), CONSTRAINT PRIMARY KEY (volunteer_id, user_id));
+CREATE TABLE IF NOT EXISTS user_foundation( user_id BIGINT REFERENCES users(user_id),foundation_id BIGINT REFERENCES foundations(foundation_id), CONSTRAINT PRIMARY KEY(foundation_id,user_id));
+CREATE TABLE IF NOT EXISTS user_role(user_id BIGINT REFERENCES users(user_id), role_id INT REFERENCES roles(role_id), CONSTRAINT PRIMARY KEY(user_id,role_id));
 
 
 

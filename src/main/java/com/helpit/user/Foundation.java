@@ -3,15 +3,18 @@ package com.helpit.user;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-@Data
 @Entity
+@Data
 @Table(name = "foundations")
 public class Foundation {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "foundation_id")
+    private int id;
 
     @Column(name = "foundation_name")
     @NotNull
@@ -26,11 +29,8 @@ public class Foundation {
     private String foundation_owner_surname;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="foundations_types", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="type_id"))
+    @JoinTable(name="foundation_types", joinColumns = @JoinColumn(name="foundation_id"), inverseJoinColumns = @JoinColumn(name="type_id"))
     private Set<Type> types;
 
-    @OneToOne()
-
-    User user;
 
 }

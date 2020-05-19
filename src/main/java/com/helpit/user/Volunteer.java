@@ -11,6 +11,11 @@ import javax.validation.constraints.NotNull;
 @Table(name ="volunteers")
 public class Volunteer{
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "volunteer_id")
+  private int id;
+
   @Column(name="volunteer_name")
   @NotNull
   private String name;
@@ -20,7 +25,6 @@ public class Volunteer{
   private String surname;
 
 
-  @OneToOne()
-  User user;
+
 
 }

@@ -1,10 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"><head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div th:replace="fragments/menu::menu"></div>
+<form id="foundationForm" th:action="add_foundation" th:object="${user}" th:method="POST">
+    <div>
+        <label th:text="#{label.registration.username}">first</label>
+        <input th:field="*{username}"/>
+        <p th:each="error: ${#fields.errors('username')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.email}">email</label>
+        <input type="email" th:field="*{email}"/>
+        <p th:each="error : ${#fields.errors('email')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.password}">password</label>
+        <input type="password" th:field="*{password}"/>
+        <p th:each="error : ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.confirm.password}">password</label>
+        <input type="password" th:field="*{confirm_password}"/>
+        <p th:each="error : ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+    </div>
 
+    <div>
+        <label th:text="#{label.registration.foundation.name}"></label>
+        <input th:field="*{foundation.foundation_name}"/>
+        <p th:each="error : ${#fields.errors('foundation_name')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.foundation.owner.name}"></label>
+        <input th:field="*{foundation.foundation_owner_name}"/>
+        <p th:each="error : ${#fields.errors('foundation_owner_name')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.foundation.owner.surname}"></label>
+        <input th:field="*{foundation.foundation_owner_surname}"/>
+        <p th:each="error : ${#fields.errors('foundation_owner_surname')}"
+           th:text="${error}">Validation error</p>
+    </div>
+
+
+    <div>
+        <label th:text="#{label.registration.address.city}"></label>
+        <input th:field="*{address.city}"/>
+        <p th:each="error : ${#fields.errors('address.city')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.address.postcode}"></label>
+        <input th:field="*{address.postcode}"/>
+        <p th:each="error : ${#fields.errors('address.postcode')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.address.street}"></label>
+        <input th:field="*{address.street}"/>
+        <p th:each="error : ${#fields.errors('address.street')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.address.number.home}"></label>
+        <input th:field="*{address.number_of_home}"/>
+        <p th:each="error : ${#fields.errors('address.number_of_home')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.address.number.flat}"></label>
+        <input th:field="*{address.number_of_flat}"/>
+        <p th:each="error : ${#fields.errors('address.number_of_flat')}"
+           th:text="${error}">Validation error</p>
+    </div>
+
+
+    <button type="submit" th:text="#{label.registration.submit}">submit</button>
 </body>
 </html>
