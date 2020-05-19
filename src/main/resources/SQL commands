@@ -1,7 +1,7 @@
 CREATE DATABASE helpIT;
 
-CREATE TABLE IF NOT EXISTS users (user_id BIGINT PRIMARY KEY auto_increment, username varchar(256) NOT NULL UNIQUE, email varchar(256) NOT NULL UNIQUE, password varchar(256) NOT NULL, active int NOT NULL,created_at timestamp NOT NULL DEFAULT current_timestamp );
-CREATE TABLE IF NOT EXISTS roles (role_id INT PRIMARY KEY auto_increment, role varchar(256) NOT NULL UNIQUE);
+CREATE TABLE IF NOT EXISTS users (user_id BIGINT PRIMARY KEY auto_increment, username varchar(255) NOT NULL UNIQUE, email varchar(255) NOT NULL UNIQUE, password varchar(255) NOT NULL, active int NOT NULL,created_at timestamp NOT NULL DEFAULT current_timestamp );
+CREATE TABLE IF NOT EXISTS roles (role_id INT PRIMARY KEY auto_increment, role varchar(255) NOT NULL UNIQUE);
 CREATE TABLE IF NOT EXISTS foundations(foundation_id BIGINT AUTO_INCREMENT PRIMARY KEY, foundation_name VARCHAR(255), foundation_owner_name VARCHAR(255), foundation_owner_surname VARCHAR(255));
 CREATE TABLE IF NOT EXISTS volunteers(volunteer_id BIGINT AUTO_INCREMENT PRIMARY KEY, volunteer_name VARCHAR(255), volunteer_surname VARCHAR(255));
 CREATE TABLE IF NOT EXISTS types(type_id INT AUTO_INCREMENT PRIMARY KEY , type_name VARCHAR(255) NOT NULL);

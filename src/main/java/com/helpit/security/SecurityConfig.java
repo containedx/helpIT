@@ -47,9 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasAnyRole("ROLE_FOUNDATION", "ROLE_VOLUNTEER", "ROLE_ADMIN")
                 .antMatchers("/", "/**")
                 .access("permitAll")
-                .and().formLogin().loginPage("/login")
+                .and().formLogin().loginPage("/login").failureUrl("/login").permitAll()
 
                 .and().logout().logoutSuccessUrl("/")
+
 
                 .and().csrf().ignoringAntMatchers("/h2-console/**")
 

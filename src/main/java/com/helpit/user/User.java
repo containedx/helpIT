@@ -16,23 +16,23 @@ public class User {
     @Column( name = "user_id")
     private int id;
 
-    @Column(name="user_username")
+    @Column(name="username")
     @NotNull
     private String username;
 
-    @Column(name="user_email")
+    @Column(name="email")
     @NotNull
     @Email
     private String email;
 
-    @Column(name="user_password")
+    @Column(name="password")
     @NotNull
     private String password;
 
     @Transient
     private String confirm_password;
 
-    @Column(name="user_active")
+    @Column(name="active")
     @NotNull
     private int active;
 
