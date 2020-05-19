@@ -18,11 +18,11 @@ public class Volunteer{
 
   @Column(name="volunteer_name")
   @NotNull
-  private String name;
+  private String volunteer_name;
 
   @Column(name="volunteer_surname")
   @NotNull
-  private String surname;
+  private String volunteer_surname;
 
 
 

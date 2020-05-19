@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:replace="fragments/menu::menu"></div>
-<form id="foundationForm" th:action="add_foundation" th:object="${user}" th:method="POST">
+<form id="volunteerForm" th:action="add_volunteer" th:object="${user}" th:method="POST">
     <div>
         <label th:text="#{label.registration.username}">first</label>
         <input th:field="*{username}"/>
@@ -33,24 +33,17 @@
     </div>
 
     <div>
-        <label th:text="#{label.registration.foundation.name}"></label>
-        <input th:field="*{foundation.foundation_name}"/>
-        <p th:each="error : ${#fields.errors('foundation_name')}"
+        <label th:text="#{label.registration.volunteer.name}"></label>
+        <input th:field="*{volunteer.volunteer_name}"/>
+        <p th:each="error : ${#fields.errors('volunteer_name')}"
            th:text="${error}">Validation error</p>
     </div>
     <div>
-        <label th:text="#{label.registration.foundation.owner.name}"></label>
-        <input th:field="*{foundation.foundation_owner_name}"/>
-        <p th:each="error : ${#fields.errors('foundation_owner_name')}"
+        <label th:text="#{label.registration.volunteer.surname}"></label>
+        <input th:field="*{volunteer.volunteer_surname}"/>
+        <p th:each="error : ${#fields.errors('volunteer_surname')}"
            th:text="${error}">Validation error</p>
     </div>
-    <div>
-        <label th:text="#{label.registration.foundation.owner.surname}"></label>
-        <input th:field="*{foundation.foundation_owner_surname}"/>
-        <p th:each="error : ${#fields.errors('foundation_owner_surname')}"
-           th:text="${error}">Validation error</p>
-    </div>
-
 
     <div>
         <label th:text="#{label.registration.address.city}"></label>

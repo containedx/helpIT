@@ -23,7 +23,7 @@ public class RegisterController {
     MessageSource messageSource;
 
     @PostMapping(value = "/signup/add_foundation")
-    public String registerForm(User user, BindingResult result, Model model, Locale locale){
+    public String registerFormFoundation(User user, BindingResult result, Model model, Locale locale){
         String returnPage=null;
         User userExist = userService.findUserByEmail(user.getEmail());
         if(userExist!=null){
@@ -39,5 +39,20 @@ public class RegisterController {
         }
         return returnPage;
     }
-
+    @PostMapping(value = "/signup/add_volunteer")
+    public String registerFormVolunteer(User user, BindingResult result, Model model, Locale locale){
+        String returnPage=null;
+        User userExist = userService.findUserByEmail(user.getEmail());
+        if(userExist!=null){
+            result.rejectValue("email",messageSource.getMessage("error.user.email.exists",null,locale));
+        }
+        if(result.hasErrors()) {
+            returnPage = "registration/volunteer";
+        }else{
+            userService.saveVolunteer(user);
+            model.addAttribute("message",messageSource.getMessage("user.register.success",null,locale));
+            returnPage="login";
+        }
+        return returnPage;
+    }
 }

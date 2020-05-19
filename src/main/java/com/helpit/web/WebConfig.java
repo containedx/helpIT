@@ -25,8 +25,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry){
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/signup").setViewName("registration/signup");
-        registry.addViewController("/signup/volunteer").setViewName("registration/volunteer");
-        //registry.addViewController("/signup/foundation").setViewName("registration/foundation");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/logout").setViewName("index");
         //registry.addViewController("/signup/add_foundation").setViewName("index");
@@ -43,7 +41,7 @@ public class WebConfig implements WebMvcConfigurer {
     public String showRegistrationFormForVolunteer(WebRequest request, Model model){
         User user = new User();
         model.addAttribute("user",user);
-        return "registration/foundation";
+        return "registration/volunteer";
     }
 
 

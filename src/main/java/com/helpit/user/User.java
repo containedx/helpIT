@@ -85,6 +85,12 @@ public class User {
         return address.getNumber_of_flat();
     }
 
+    public String getVolunteer_name(){
+        return volunteer.getVolunteer_name();
+    }
+    public String getVolunteer_surname(){
+        return volunteer.getVolunteer_surname();
+    }
 
     public void setFoundation_name(String foundation_name){
          foundation.setFoundation_name(foundation_name);
