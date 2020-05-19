@@ -1,8 +1,10 @@
-package com.helpit.Events;
+package com.helpit.foundation.Events;
+
+import lombok.Data;
 
 import javax.persistence.*;
 
-
+@Data
 @Entity
 public class Event {
 
