@@ -1,0 +1,53 @@
+
+
+<nav th:fragment="nav" id="nav">
+
+    <a id="navbar-logo" href="/">
+        <img alt="helpIT" th:src="@{/images/logo.png}" >
+        <h1>HelpIT</h1>
+    </a>
+
+
+    <div id="navbar-links">
+        <div><!-- styler --></div>
+
+        <a class="navbar-link" href="/">
+            <span>Find Charities</span>
+        </a>
+
+    </div>
+
+    <div id="navbar-registers">
+        <a class="navbar-signup" id="signup-btn" role="button" onclick="hideShowSignIn()">
+            <span>Sign in / Register</span>
+        </a>
+
+        <div id='dropdown-signup'>
+            <a class="dropdown-signup-option" href="/login/volunteer">
+                <i class="im im-user-female"></i>
+                <span> as a Volunteer</span>
+            </a>
+            <a class="dropdown-signup-option" href="/login/charity">
+                <i class="im im-apartment"></i>
+                <span> as a Charity</span>
+            </a>
+        </div>
+    </div>
+
+    <a id="navbar-user" role="button" onclick="hideEl()">
+
+        <img alt="user_img" th:src="@{/images/user.png}" >
+
+        <div id="navbar-dropdown">
+            <i class="im im-angle-down"></i>
+        </div>
+
+        <ul class='dropdown-menu' id="drop_view">
+            <li class='option' id='option1'>Option 1</li>
+            <li class='option' id='option2'>Option 2</li>
+            <li class='option' id='option3'>Option 3</li>
+            <li class='option' id='option4'>Option 4</li>
+        </ul>
+    </a>
+
+</nav>

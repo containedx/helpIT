@@ -1,0 +1,23 @@
+{
+  "name": "helpit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    ":scss": "node-sass --watch src/main/resources/static/scss/ -o src/main/resources/static/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcin-wrotecki/helpIT.git"
+  },
+  "author": "Jan Piotrzkowski, Marcin Wrotecki, Adria Jakiela, Kinga Zawarty, Kamil Skorupa, Mikołaj Głodziak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcin-wrotecki/helpIT/issues"
+  },
+  "homepage": "https://github.com/marcin-wrotecki/helpIT#readme",
+  "dependencies": {
+    "node-sass": "^4.13.1"
+  }
+}
