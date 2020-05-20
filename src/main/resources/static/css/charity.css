@@ -1,19 +1,101 @@
 #charity {
   min-height: 550px;
-  width: 100%;
-  margin: 90px 0 0 0;
-  background-color: #84a6f0; }
+  width: calc(100% - 20px);
+  margin: 90px 10px 20px 10px; }
   #charity #charity-content {
     display: grid;
-    grid-template-rows: 45px 160px 55px auto; }
+    grid-template-rows: 40px 160px 45px auto;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    border: 1px solid #999; }
     #charity #charity-content .charity-content-nav {
-      background-color: #46f098; }
+      border-bottom: 1px solid #999; }
+      #charity #charity-content .charity-content-nav a:first-of-type {
+        height: 40px;
+        width: auto;
+        padding: 0 10px;
+        float: left; }
+      #charity #charity-content .charity-content-nav a:last-of-type {
+        height: 40px;
+        width: auto;
+        padding: 0 10px;
+        float: right; }
     #charity #charity-content .charity-content-user {
-      background-color: #b08cf0; }
+      display: grid;
+      grid-template-columns: 160px auto;
+      border-bottom: 1px solid #999; }
+      #charity #charity-content .charity-content-user img {
+        width: 140px;
+        padding: 5px;
+        height: 140px;
+        object-fit: cover;
+        border-right: 1px solid #999;
+        margin: 5px; }
+      #charity #charity-content .charity-content-user h5 {
+        line-height: 140px;
+        font-size: 22px;
+        margin: 0;
+        padding: 0 0 0 15px;
+        font-weight: 300; }
     #charity #charity-content .charity-content-links {
-      background-color: #f09eab; }
+      border-bottom: 1px solid #999;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr; }
+      #charity #charity-content .charity-content-links a {
+        border-right: 1px solid #999;
+        color: #111;
+        text-align: center;
+        text-decoration: none;
+        line-height: 45px;
+        font-size: 13px; }
+        #charity #charity-content .charity-content-links a:last-of-type {
+          border-right: none; }
     #charity #charity-content .charity-content-feed {
-      background-color: #d8f0aa; }
+      display: grid;
+      grid-template-rows: auto 1fr; }
+      #charity #charity-content .charity-content-feed #add-article {
+        display: grid;
+        grid-template-columns: auto 120px; }
+        #charity #charity-content .charity-content-feed #add-article .add-article-content {
+          margin: 10px;
+          display: grid;
+          grid-template-rows: 30px 1fr;
+          row-gap: 10px; }
+        #charity #charity-content .charity-content-feed #add-article .add-article-controllers {
+          display: grid;
+          grid-template-rows: 1fr 40px;
+          grid-template-columns: 110px;
+          padding: 10px 0 10px 0;
+          row-gap: 10px; }
+          #charity #charity-content .charity-content-feed #add-article .add-article-controllers .upload {
+            height: 120px;
+            overflow: hidden;
+            border: 1px dashed #aaaaaa;
+            cursor: pointer;
+            position: relative; }
+            #charity #charity-content .charity-content-feed #add-article .add-article-controllers .upload:hover {
+              border: 1px dashed #888888; }
+            #charity #charity-content .charity-content-feed #add-article .add-article-controllers .upload i {
+              color: #d8d8d8;
+              font-size: 20px;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%); }
+            #charity #charity-content .charity-content-feed #add-article .add-article-controllers .upload input {
+              display: block !important;
+              width: 157px !important;
+              height: 57px !important;
+              opacity: 0 !important;
+              overflow: hidden !important;
+              cursor: pointer; }
+      #charity #charity-content .charity-content-feed #articles {
+        display: grid;
+        grid-auto-rows: 100px;
+        row-gap: 10px; }
+        #charity #charity-content .charity-content-feed #articles .article {
+          background-color: #b6f0bf; }
 
 /*
 
