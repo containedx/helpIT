@@ -21,7 +21,11 @@ public class EventsTest {
         Event test_event = new Event();
         test_event.setName("Test Event");
         test_event.setDate("01.01.2000 00:00");
-        test_event.setFoundation("Example Foundation");
+        Foundation example_foundation = new Foundation();
+        example_foundation.setFoundation_name("example foundation");
+        example_foundation.setFoundation_owner_name("Robert");
+        example_foundation.setFoundation_owner_surname("Defekt");
+        test_event.setFoundation(example_foundation);
         test_event.setDescription("typed description in here");
 
         controller.save(test_event);
@@ -35,7 +39,11 @@ public class EventsTest {
         Event test_event2 = new Event();
         test_event2.setName("Test Event");
         test_event2.setDate("01.01.2000 00:00");
-        test_event2.setFoundation("Example Foundation");
+        Foundation example_foundation = new Foundation();
+        example_foundation.setFoundation_name("example foundation");
+        example_foundation.setFoundation_owner_name("Robert");
+        example_foundation.setFoundation_owner_surname("Defekt");
+        test_event2.setFoundation(example_foundation);
         test_event2.setDescription("typed description in here");
 
         controller.save(test_event2);
