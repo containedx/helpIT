@@ -1,14 +1,18 @@
 package com.helpit.foundation.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
+@Table(name = "foundations")
 public class Foundation
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -26,45 +30,6 @@ public class Foundation
         this.name = name;
     }
 
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public Set<Comment> getComment()
-    {
-        return comment;
-    }
-
-    public void setComment(Set<Comment> comment_set)
-    {
-        this.comment = comment_set;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Foundation{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", comment_set=" + comment +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o)

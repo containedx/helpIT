@@ -26,6 +26,8 @@ public class BootStrapData implements CommandLineRunner
     @Override
     public void run(String... args) throws Exception
     {
+
+
         User u1 = new User();
         User u2 = new User();
         u1.setLogin("adrian");
@@ -58,9 +60,9 @@ public class BootStrapData implements CommandLineRunner
         f1.getComment().add(c3);
         f2.getComment().add(c2);
 
-        c1.setAuthor(u1);
-        c2.setAuthor(u1);
-        c3.setAuthor(u2);
+        c1.setUser(u1);
+        c2.setUser(u1);
+        c3.setUser(u2);
 
         c1.setFoundation(f1);
         c2.setFoundation(f2);

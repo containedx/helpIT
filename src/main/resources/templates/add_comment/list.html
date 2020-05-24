@@ -12,17 +12,18 @@
                 <th>ID</th>
                 <th>User</th>
                 <th>Foundation</th>
-                <th>Foundation</th>
+                <th>Comment</th>
             </tr>
 
             <tr th:each="comment : ${comments}">
-                <td th:text="${comment.id}"></td>
-                <td th:text="${comment.author.login}"></td>
-                <td th:text="${comment.foundation.name}"></td>
-                <td th:text="${comment.content}"></td>
+                <td th:text="${comment.id}">Bla</td>
+                <td th:text="${comment.user.login}">Bla</td>
+                <td th:text="${comment.foundation.name}">Bla</td>
+                <td th:text="${comment.content}">Bla</td>
             </tr>
 
         </table>
         <button> <a href="/">Add next comment</a></button>
+
 </body>
 </html>

@@ -1,15 +1,19 @@
 package com.helpit.foundation.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.HashSet;
 
 import java.util.Set;
 
+@Data
 @Entity
+@Table(name = "users")
 public class User
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String login;
@@ -25,46 +29,6 @@ public class User
     public User(String login)
     {
         this.login = login;
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
-
-    public String getLogin()
-    {
-        return login;
-    }
-
-    public void setLogin(String login)
-    {
-        this.login = login;
-    }
-
-    public Set<Comment> getComments()
-    {
-        return comments;
-    }
-
-    public void setComments(Set<Comment> comment_set)
-    {
-        this.comments = comment_set;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", comment_set=" + comments +
-                '}';
     }
 
     @Override

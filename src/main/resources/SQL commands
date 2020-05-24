@@ -1,0 +1,7 @@
+CREATE DATABASE helpIT;
+
+CREATE TABLE IF NOT EXISTS users (id INT auto_increment PRIMARY KEY, login text);
+CREATE TABLE IF NOT EXISTS foundations (id INT auto_increment PRIMARY KEY, name text);
+CREATE TABLE IF NOT EXISTS comments (id INT PRIMARY KEY auto_increment, content text, user_id INT references users(id), foundation_id INT references foundations(id));
+
+drop database helpIT;

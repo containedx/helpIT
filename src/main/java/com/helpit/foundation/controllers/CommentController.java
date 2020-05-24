@@ -13,7 +13,7 @@ public class CommentController
     {
     }
 
-    @RequestMapping("/")
+    @RequestMapping({"/",""})
     public String getAddComment(Model model)
     {
         return "/add_comment/add";

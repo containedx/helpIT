@@ -31,16 +31,19 @@ public class SubmitCommentController
                               @RequestParam  String foundation,
                               @RequestParam  String content)
     {
-        Comment c = new Comment(content);
+        Comment c = new Comment();
+        c.setContent(content);
         comment_repository.save(c);
 
-        Foundation f = new Foundation(foundation);
+        Foundation f = new Foundation();
+        f.setName(foundation);
         foundation_repository.save(f);
 
-        User u = new User(login);
+        User u = new User();
+        u.setLogin(login);
         user_repository.save(u);
 
-        c.setAuthor(u);
+        c.setUser(u);
         c.setFoundation(f);
 
         u.getComments().add(c);

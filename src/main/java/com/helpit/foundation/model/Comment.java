@@ -1,16 +1,20 @@
 package com.helpit.foundation.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
+@Table(name = "comments")
 public class Comment
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private User author;
+    private User user;
 
     @ManyToOne
     private Foundation foundation;
@@ -24,57 +28,6 @@ public class Comment
     public Comment(String content)
     {
         this.content = content;
-    }
-
-    public User getAuthor()
-    {
-        return author;
-    }
-
-    public void setAuthor(User author)
-    {
-        this.author = author;
-    }
-
-    public Foundation getFoundation()
-    {
-        return foundation;
-    }
-
-    public void setFoundation(Foundation foundation)
-    {
-        this.foundation = foundation;
-    }
-
-    public String getContent()
-    {
-        return content;
-    }
-
-    public void setContent(String content)
-    {
-        this.content = content;
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Comment{" +
-                "id=" + id +
-                ", author=" + author +
-                ", foundation=" + foundation +
-                ", content='" + content + '\'' +
-                '}';
     }
 
     @Override
