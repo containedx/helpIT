@@ -22,6 +22,10 @@ public class User
     @JoinColumn(name = "user_id")
     private Set<Comment> comments = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private Set<Post> posts = new HashSet<>();
+
     public User()
     {
     }

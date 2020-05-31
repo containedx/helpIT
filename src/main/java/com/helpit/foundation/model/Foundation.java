@@ -21,6 +21,10 @@ public class Foundation
     @JoinColumn(name = "foundation_id")
     private Set<Comment> comment = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "foundation_id")
+    private Set<Post> post = new HashSet<>();
+
     public Foundation()
     {
     }
