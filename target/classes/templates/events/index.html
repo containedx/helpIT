@@ -17,7 +17,9 @@
             <p th:text="${event.date}"/>
             <p th:text="${event.foundation}"/>
             <p th:text="${event.description}"/>
+            <a th:href="@{'/delete/' + ${event.id}}"><button>DELETE</button></a>
             <br><br>
+
         </div>
     </div>
 
