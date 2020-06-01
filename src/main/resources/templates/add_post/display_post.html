@@ -2,30 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List posts</title>
+    <title>Your post</title>
 </head>
 <body>
 <!--/*@thymesVar id="post" type="com.helpit.foundation.model.Post"*/-->
-<h1>Already submitted posts</h1>
-
 <table>
     <tr>
         <th>ID</th>
         <th>User</th>
         <th>Foundation</th>
-        <th>Post</th>
+        <th>Comment</th>
     </tr>
 
-    <tr th:each="post : ${posts}">
+    <tr>
         <td th:text="${post.id}">Bla</td>
         <td th:text="${post.user.login}">Bla</td>
         <td th:text="${post.foundation.name}">Bla</td>
         <td th:text="${post.content}">Bla</td>
-        <td><a href="#" th:href="@{'/add_post/' + ${post.id} + '/addImage'}">Add Image</a></td>
-        <td><a href="#" th:href="@{'/add_post/' + ${post.id} + '/display_post'}">View Post</a></td>
+
+        <div>
+            <img src = ""
+                 th:src="@{'/post/' + ${post.id} + '/renderimage'}"
+                 width="200" height="200" />
+        </div>
     </tr>
 
 </table>
-<button> <a href="/add_post/add">Add next post</a></button>
+<button> <a href="/add_post/list">List posts</a></button>
+
 </body>
 </html>
