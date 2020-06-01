@@ -15,8 +15,7 @@ public class Event {
 
     private String date;
 
-    @ManyToOne
-    private Foundation foundation;
+    private int foundation;
 
     private String description;
 
