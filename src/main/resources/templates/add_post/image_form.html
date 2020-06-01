@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Image to the post</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
 <!--/*@thymesVar id="post" type="com.helpit.foundation.model.Post"*/-->
 
-        <div>
-            <div>
-                <h1>Upload an image to the post</h1>
-            </div>
-            <div>
-                <div>
-                    <div >
+<div class="container">
+<div class="row">
+                    <div class="col-md-8 mt-5">
+                        <h1 style="background: #007bff; border-style: solid; border-radius: 5px; border-width: thin; text-align: center">
+                            Upload an image to the post
+                        </h1>
+                        <hr>
                         <form  action="http:\\localhost" method="post" enctype="multipart/form-data"
                                th:action="@{'/post/' + ${post.getId()} + '/image'}">
-                            <label class="control-label">Select File</label>
-                            <input id="imagefile" name="imagefile" type="file" class="file">
+                            <div class="form-group">
+<!--                                <label for="imagefile">Select File</label>-->
+                                <br>
+                                <input id="imagefile" name="imagefile" type="file" class="file">
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>
+</div>
+
 
 </body>
 </html>
