@@ -1,9 +1,13 @@
 package com.helpit.foundation.controllers;
 
+import com.helpit.foundation.model.Post;
 import com.helpit.foundation.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -24,5 +28,22 @@ public class PostController {
     {
         model.addAttribute("posts", post_repository.findAll());
         return "/add_post/list";
+    }
+
+    @RequestMapping({"/add_post/{id}/display_post"})
+    public String getListComment(@PathVariable String id, Model model)
+    {
+
+        Optional<Post> post = post_repository.findById(Long.valueOf(id));
+        if (post.isPresent()) {
+            model.addAttribute("post", post.get());
+        }
+        else {
+            throw new RuntimeException("Sth went wrong");
+        }
+
+
+
+        return "/add_post/display_post";
     }
 }
