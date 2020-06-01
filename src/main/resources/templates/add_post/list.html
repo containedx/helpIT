@@ -20,7 +20,7 @@
         <td th:text="${post.id}">Bla</td>
         <td th:text="${post.user.login}">Bla</td>
         <td th:text="${post.foundation.name}">Bla</td>
-        <td th:text="${post.content}">Bla</td>
+        <td th:utext="${post.content}">Bla</td>
         <td><a href="#" th:href="@{'/add_post/' + ${post.id} + '/addImage'}">Add Image</a></td>
         <td><a href="#" th:href="@{'/add_post/' + ${post.id} + '/display_post'}">View Post</a></td>
     </tr>

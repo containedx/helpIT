@@ -19,6 +19,7 @@ public class Post{
     @ManyToOne
     private Foundation foundation;
 
+    @Lob
     private String content;
 
     @Lob
