@@ -3,31 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>List posts</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
 <!--/*@thymesVar id="post" type="com.helpit.foundation.model.Post"*/-->
-<h1>Already submitted posts</h1>
 
-<div>
-<table>
+
+<div class="container">
+    <h1>Already submitted posts</h1>
+    <hr>
+<table class="table table-hover table-bordered">
+    <thead class="bg-danger">
     <tr>
-        <th>ID</th>
-        <th>User</th>
-        <th>Foundation</th>
-        <th>Post</th>
+        <th scope="col">ID</th>
+        <th scope="col">User</th>
+        <th scope="col">Foundation</th>
+        <th scope="col">Post</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
     </tr>
+    </thead>
 
+    <tbody>
     <tr th:each="post : ${posts}">
-        <td th:text="${post.id}">Bla</td>
+        <td  scope="row" th:text="${post.id}">Bla</td>
         <td th:text="${post.user.login}">Bla</td>
         <td th:text="${post.foundation.name}">Bla</td>
         <td th:utext="${post.content}">Bla</td>
         <td><a href="#" th:href="@{'/add_post/' + ${post.id} + '/addImage'}">Add Image</a></td>
         <td><a href="#" th:href="@{'/add_post/' + ${post.id} + '/display_post'}">View Post</a></td>
     </tr>
+    </tbody>
 
 </table>
-<button> <a href="/add_post/add">Add next post</a></button>
+<button class="btn btn-warning" onclick= "location.href='/add_post/add'"> Add next post </button>
 </div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
