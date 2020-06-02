@@ -12,6 +12,9 @@
   @media (max-width: 550px) {
     #nav {
       grid-template-columns: 160px 1fr auto 90px; } }
+  @media (max-width: 450px) {
+    #nav {
+      grid-template-columns: 160px 1fr 90px; } }
   #nav #navbar-logo {
     display: grid;
     grid-template-rows: 1fr;
@@ -53,6 +56,9 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr; }
+    @media (max-width: 450px) {
+      #nav #navbar-registers {
+        display: none; } }
     #nav #navbar-registers #signup-btn {
       height: 38px;
       width: auto;
@@ -186,6 +192,7 @@
   #search-result .charity-card {
     border-radius: 3px;
     cursor: pointer;
+    text-decoration: none;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 160px 45px 35px;
@@ -207,7 +214,8 @@
       line-height: 45px;
       padding: 0 0 0 16px;
       color: #383838;
-      font-size: 15px; }
+      font-size: 15px;
+      text-decoration: none; }
     #search-result .charity-card .charity-card-category {
       background-color: #fff;
       border: 1px solid #dadada;
@@ -225,7 +233,8 @@
         line-height: 33px;
         color: #ababab;
         font-size: 12px;
-        margin: 0 0 0 5px; }
+        margin: 0 0 0 5px;
+        text-decoration: none; }
     #search-result .charity-card:hover {
       -webkit-box-shadow: 0px 15px 22px -18px #c6bdcb;
       -moz-box-shadow: 0px 15px 22px -18px #c6bdcb;

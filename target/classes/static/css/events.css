@@ -95,88 +95,75 @@
           border-right: none; }
     #charity #charity-content .charity-content-feed {
       display: grid;
-      grid-template-rows: auto 1fr; }
-      #charity #charity-content .charity-content-feed #add-article {
+      grid-template-rows: auto 1fr;
+      margin: 10px 0 0 0; }
+      #charity #charity-content .charity-content-feed #add-event {
         display: grid;
-        grid-template-columns: auto 120px;
-        margin: 0 0 20px 0;
-        column-gap: 10px; }
-        #charity #charity-content .charity-content-feed #add-article .add-article-content {
-          margin: 10px 0 0 0;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr;
+        margin: 0 0 20px 0; }
+        #charity #charity-content .charity-content-feed #add-event .event-inputs-left {
           display: grid;
-          grid-template-rows: 80px 1fr;
+          grid-template-rows: 65px 65px;
+          grid-template-columns: 1fr;
           row-gap: 10px;
-          height: 200px; }
-          #charity #charity-content .charity-content-feed #add-article .add-article-content .input-article {
+          padding: 10px 0 20px 0; }
+          #charity #charity-content .charity-content-feed #add-event .event-inputs-left .input-event {
             position: relative;
             display: block; }
-            #charity #charity-content .charity-content-feed #add-article .add-article-content .input-article span {
+            #charity #charity-content .charity-content-feed #add-event .event-inputs-left .input-event span {
               position: absolute;
               top: -11px;
               left: 0;
               font-size: 13px;
               padding: 8px 0 0 0; }
-            #charity #charity-content .charity-content-feed #add-article .add-article-content .input-article input {
+            #charity #charity-content .charity-content-feed #add-event .event-inputs-left .input-event input {
               display: block;
               border: 1px solid #b2b2b2;
               padding: 0 0 0 5px;
               width: calc( 100% - 20px);
               height: 40px;
               margin: 20px 20px 0 0; }
-          #charity #charity-content .charity-content-feed #add-article .add-article-content .textarea-article {
+        #charity #charity-content .charity-content-feed #add-event .event-inputs-right {
+          display: grid;
+          grid-template-rows: 1fr 45px;
+          grid-template-columns: 1fr;
+          padding: 25px 0 0 0;
+          height: 172px;
+          position: relative; }
+          #charity #charity-content .charity-content-feed #add-event .event-inputs-right #add-event-btn {
+            display: block;
+            border: 1px solid #b2b2b2;
+            padding: 0 0 0 5px;
+            margin: 10px 0 0 0;
+            width: 120px;
+            height: 35px;
+            position: absolute;
+            bottom: 5px;
+            right: 0; }
+          #charity #charity-content .charity-content-feed #add-event .event-inputs-right .textarea-event {
             position: relative; }
-            #charity #charity-content .charity-content-feed #add-article .add-article-content .textarea-article span {
+            #charity #charity-content .charity-content-feed #add-event .event-inputs-right .textarea-event span {
               position: absolute;
               top: -24px;
               left: 0px;
               font-size: 13px;
-              padding: 8px 0 0 0; }
-            #charity #charity-content .charity-content-feed #add-article .add-article-content .textarea-article textarea {
-              width: calc(100% - 25px);
+              padding: 8px 0 0 5px; }
+            #charity #charity-content .charity-content-feed #add-event .event-inputs-right .textarea-event textarea {
+              width: calc(100% - 17px);
               height: calc(100% - 20px);
               border: 1px solid #b2b2b2;
               padding: 5px;
               resize: none;
-              margin: 5px 0 5px 0; }
-        #charity #charity-content .charity-content-feed #add-article .add-article-controllers {
-          display: grid;
-          grid-template-rows: 1fr 40px;
-          grid-template-columns: 120px;
-          padding: 10px 0 0px 0;
-          row-gap: 10px; }
-          #charity #charity-content .charity-content-feed #add-article .add-article-controllers .upload {
-            width: 118px;
-            height: 128px;
-            overflow: hidden;
-            margin: 20px 0 0 0;
-            border: 1px dashed #b2b2b2;
-            cursor: pointer;
-            position: relative; }
-            #charity #charity-content .charity-content-feed #add-article .add-article-controllers .upload:hover {
-              border: 1px dashed #999; }
-            #charity #charity-content .charity-content-feed #add-article .add-article-controllers .upload i {
-              color: #d8d8d8;
-              font-size: 20px;
-              position: absolute;
-              left: 50%;
-              top: 50%;
-              transform: translate(-50%, -50%); }
-            #charity #charity-content .charity-content-feed #add-article .add-article-controllers .upload input[type="file"] {
-              display: block !important;
-              width: 120px !important;
-              height: 120px !important;
-              opacity: 0 !important;
-              overflow: hidden !important;
-              cursor: pointer !important;
-              border: 1px dashed #b2b2b2; }
-      #charity #charity-content .charity-content-feed #articles {
+              margin: 5px 0 5px 5px; }
+      #charity #charity-content .charity-content-feed #events {
         display: grid;
-        grid-auto-rows: 100px;
+        grid-auto-rows: 120px;
         row-gap: 20px; }
-        #charity #charity-content .charity-content-feed #articles .article {
+        #charity #charity-content .charity-content-feed #events .event {
           display: grid;
           grid-template-columns: 100px 1fr; }
-          #charity #charity-content .charity-content-feed #articles .article img {
+          #charity #charity-content .charity-content-feed #events .event img {
             border: 1px solid #999;
             border-left: 3px solid #f91319;
             border-radius: 2px;
@@ -185,27 +172,31 @@
             padding: 20px;
             opacity: 0.5;
             background-color: #eeeeee; }
-          #charity #charity-content .charity-content-feed #articles .article .article-details {
+          #charity #charity-content .charity-content-feed #events .event .event-details {
             display: grid;
-            grid-template-rows: 25px 50px 25px;
+            grid-template-rows: 25px 35px 25px 20px;
             padding: 0 0 0 20px; }
-            #charity #charity-content .charity-content-feed #articles .article .article-details .article-title {
+            #charity #charity-content .charity-content-feed #events .event .event-details .event-title {
               height: 25px;
               line-height: 25px; }
-            #charity #charity-content .charity-content-feed #articles .article .article-details .article-content {
-              height: 50px;
-              line-height: 50px;
+            #charity #charity-content .charity-content-feed #events .event .event-details .event-date {
+              height: 35px;
+              font-size: 12px;
+              line-height: 35px; }
+            #charity #charity-content .charity-content-feed #events .event .event-details .event-content {
+              height: 25px;
+              line-height: 25px;
               font-size: 13px;
               max-width: 80%;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap; }
-            #charity #charity-content .charity-content-feed #articles .article .article-details a {
-              height: 25px;
+            #charity #charity-content .charity-content-feed #events .event .event-details a {
+              height: 20px;
               font-size: 14px;
               line-height: 20px;
               text-decoration: none;
               text-align: right;
               padding: 0 20px 0 0; }
-              #charity #charity-content .charity-content-feed #articles .article .article-details a:hover {
+              #charity #charity-content .charity-content-feed #events .event .event-details a:hover {
                 text-decoration: underline; }

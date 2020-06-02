@@ -21,9 +21,11 @@
         <div id="charity-content">
 
             <div class="charity-content-nav">
-                <a href="/">back to charities</a>
+                <a href="/">
+                    <i class="im im-arrow-left"></i>
+                </a>
 
-                <a href="/charity/edit" role="button">edit</a>
+                <a href="/charity/edit" role="button">Edit</a>
             </div>
 
             <div class="charity-content-user">
@@ -33,18 +35,26 @@
             </div>
 
             <div class="charity-content-links">
-                <a href="/charity/show">Feed</a>
+                <a href="/charity/show">Feed
+                    <i class="im im-care-up"></i>
+                </a>
                 <a href="/charity/events">Events</a>
                 <a href="/charity/sponsors">Sponsors</a>
-                <a href="/charity/volunteers">Volunteers</a>
             </div>
 
             <div class="charity-content-feed">
 
                 <form id="add-article" action="">
                     <div class="add-article-content">
-                        <input type="text"  name="title"  autofocus="autofocus" placeholder="Title">
-                        <textarea name="" id="" cols="30" rows="8"></textarea>
+                        <div class="input-article">
+                            <span>Article title</span>
+                            <input type="text"/>
+                        </div>
+
+                        <div class="textarea-article">
+                            <span>Article content</span>
+                            <textarea></textarea>
+                        </div>
                     </div>
 
                     <div class="add-article-controllers">
@@ -52,37 +62,37 @@
                             <input type="file" name="upload"/>
                             <i class="im im-export"></i>
                         </div>
-                        <input type="submit">
+                        <input type="submit" value="Create Article"/>
                     </div>
                 </form>
 
                 <div id="articles">
                     <div class="article">
-                        <img src="" alt="">
+                        <img src="/images/article.png" alt="">
 
                         <div class="article-details">
                             <div class="article-title">Title</div>
-                            <div class="article-content">Quokka says quokk quokk quokk XD</div>
+                            <div class="article-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
                             <a href="/article/show">read more</a>
                         </div>
                     </div>
 
                     <div class="article">
-                        <img src="" alt="">
+                        <img src="/images/article.png" alt="">
 
                         <div class="article-details">
                             <div class="article-title">Title</div>
-                            <div class="article-content">Quokka says quokk quokk quokk XD</div>
+                            <div class="article-content">Quokka says quokk quokk quokk quokk XD</div>
                             <a href="/article/show">read more</a>
                         </div>
                     </div>
 
                     <div class="article">
-                        <img src="" alt="">
+                        <img src="/images/article.png" alt="">
 
                         <div class="article-details">
                             <div class="article-title">Title</div>
-                            <div class="article-content">Quokka says quokk quokk quokk XD</div>
+                            <div class="article-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
                             <a href="/article/show">read more</a>
                         </div>
                     </div>
