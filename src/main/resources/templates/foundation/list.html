@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of foundations</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<!--/*@thymesVar id="post" type="com.helpit.foundation.model.Post"*/-->
+
+
+<div class="container">
+    <h1>List of foundations</h1>
+    <hr>
+    <table class="table table-hover table-bordered">
+        <thead class="bg-danger">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Foundation</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="foundation : ${foundations}">
+            <td  scope="row" th:text="${foundation.id}">Bla</td>
+            <td th:text="${foundation.name}">Bla</td>
+            <td><a href="#" th:href="@{'/foundation/' + ${foundation.id} + '/show'}">View Foundation</a></td>
+        </tr>
+        </tbody>
+
+    </table>
+    <button class="btn btn-warning" onclick= "location.href='/'"> Return home </button>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

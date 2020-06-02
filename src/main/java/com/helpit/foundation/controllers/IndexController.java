@@ -11,4 +11,15 @@ public class IndexController {
     public String getIndex(){
         return "index";
     }
+
+    @RequestMapping({"/s"})
+    public String getIndsex(){
+        return "index";
+    }
+    @RequestMapping({"/sss"})
+    public String getIndsssex(){
+        return "index";
+    }
 }
+
+

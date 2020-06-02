@@ -14,7 +14,7 @@
 
     <div class="row">
         <div class="col-md-8 mt-5">
-            <h2 style="background: #007bff; border-style: solid; border-radius: 5px; border-width: thin; text-align: center">Add new post</h2>
+            <h2 style="background: red; border-style: solid; border-radius: 5px; border-width: thin; text-align: center">Add new post</h2>
             <hr>
             <form method="post" th:action="@{/add_post/submit}">
 
@@ -36,7 +36,9 @@
                                autocomplete="off"></textarea>
                 </div>
 
-                <button class="btn btn-primary" type="submit">Submit form</button>
+                <button class="btn btn-warning" type="submit">Submit form</button>
+
+                <br><br>
             </form>
         </div>
     </div>
