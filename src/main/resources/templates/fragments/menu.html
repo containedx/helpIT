@@ -11,7 +11,9 @@
         <a href="/signup" th:text="#{menu.signup}"></a>
     </div>
     <div class="nav" sec:authorize="isAuthenticated()">
-        <a href="/logout" th:text="#{menu.logout}"></a>
+       <form th:action="logout" method='POST'>
+           <button type="submit" th:text="#{menu.logout}"></button>
+       </form>
     </div>
 </div>
 </body>

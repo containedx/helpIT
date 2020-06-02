@@ -29,7 +29,7 @@ public class Foundation {
     private String foundation_owner_surname;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="foundation_types", joinColumns = @JoinColumn(name="foundation_id"), inverseJoinColumns = @JoinColumn(name="type_id"))
+    @JoinTable(name = "foundation_types", joinColumns = @JoinColumn(name = "foundation_id"), inverseJoinColumns = @JoinColumn(name = "type_id"))
     private Set<Type> types;
 
 
