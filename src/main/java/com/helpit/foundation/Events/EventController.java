@@ -16,7 +16,7 @@ public class EventController {
     private EventRepository repo;
 
     @Autowired
-    private VolunteersRepository volunteers_repo;
+    private VolunteersRepository volunteersRepo;
 
     @GetMapping("/events")
     public String view(Model model) {
@@ -33,19 +33,19 @@ public class EventController {
     }
 
     @RequestMapping(value="/create_event", method = RequestMethod.POST)
-    public String create_event_submit(@Valid @ModelAttribute("event") Event event) {
+    public String createEventSubmit(@Valid @ModelAttribute("event") Event event) {
         save(event);
         return "events/show";
     }
 
     @RequestMapping("/delete/{id}")
-    public String delete_event(@Valid @ModelAttribute("event") Event event) {
+    public String deleteEvent(@Valid @ModelAttribute("event") Event event) {
         delete(event.getId());
         return "events/del";
     }
 
     @RequestMapping("/sign/{id}")
-    public String sign_for_event(Model model, @Valid @ModelAttribute("event") Event event){
+    public String signForEvent(Model model, @Valid @ModelAttribute("event") Event event){
         Volunteers volunteers = new Volunteers();
         model.addAttribute("volunteers", volunteers);
         return "events/sign";
@@ -53,7 +53,7 @@ public class EventController {
 
     @RequestMapping(value="/sign")
     public String sign(@Valid @ModelAttribute("volunteers") Volunteers volunteers){
-        save_volunteers(volunteers);
+        saveVolunteers(volunteers);
         return "/events/sign";
     }
 
@@ -73,8 +73,8 @@ public class EventController {
         repo.deleteById(id);
     }
 
-    public void save_volunteers(Volunteers volunteers){
-        volunteers_repo.save(volunteers);
+    public void saveVolunteers(Volunteers volunteers){
+        volunteersRepo.save(volunteers);
     }
 
 }
