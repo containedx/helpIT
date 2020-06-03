@@ -83,7 +83,32 @@
         <p th:each="error : ${#fields.errors('address.number_of_flat')}"
            th:text="${error}">Validation error</p>
     </div>
+    <div>
+        <input type="radio" th:value="TYPE_FAMILY" th:field="*{foundation.type.type}">
+        <label th:text="#{label.registration.types.family}"></label>
 
+        <input type="radio" th:value="TYPE_PEACE" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.peace}"></label>
+
+        <input type="radio" th:value="TYPE_ENVIRONMENT" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.environment}"></label>
+
+        <input type="radio" th:value="TYPE_DISEASE" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.disease}"></label>
+
+        <input type="radio" th:value="TYPE_EDUCATION" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.education}"></label>
+
+        <input type="radio" th:value="TYPE_CULTURE" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.culture}"></label>
+
+        <input type="radio" th:value="TYPE_ANIMALS" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.animals}"></label>
+
+        <input type="radio" th:value="TYPE_ADDICTION" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.addiction}"></label>
+
+    </div>
 
     <button type="submit" th:text="#{label.registration.submit}">submit</button>
 </form>

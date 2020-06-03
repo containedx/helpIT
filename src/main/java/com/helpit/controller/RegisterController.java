@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.POST;
 import java.util.Locale;
+import java.util.Optional;
 
 @RestController
 public class RegisterController {
@@ -32,6 +33,7 @@ public class RegisterController {
         if(result.hasErrors()) {
             returnPage = "registration/foundation";
         }else{
+            model.getAttribute("");
             userService.saveFoundation(user);
             model.addAttribute("message",messageSource.getMessage("user.register.success",null,locale));
            // model.addAttribute("user",new User());
@@ -42,10 +44,18 @@ public class RegisterController {
     @PostMapping(value = "/signup/add_volunteer")
     public String registerFormVolunteer(User user, BindingResult result, Model model, Locale locale){
         String returnPage=null;
-        User userExist = userService.findUserByEmail(user.getEmail());
-        if(userExist!=null){
+        Optional<User> userExist = Optional.of(userService.findUserByEmail(user.getEmail()));
+
+        if(userExist.isEmpty()){
             result.rejectValue("email",messageSource.getMessage("error.user.email.exists",null,locale));
         }
+        else {
+            userExist = Optional.of(userService.findUserByUsername(user.getUsername()));
+            if(userExist.isEmpty()){
+                result.rejectValue("email",messageSource.getMessage("error.user.email.exists",null,locale));
+            }
+        }
+
         if(result.hasErrors()) {
             returnPage = "registration/volunteer";
         }else{

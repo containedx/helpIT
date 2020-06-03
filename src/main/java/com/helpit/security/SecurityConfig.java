@@ -22,24 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private DataSource dataSource;
 
-    @Value("${spring.queries.users-query}")
-    private String usersQuery;
-
-    @Value("${spring.queries.roles-query}")
-    private String rolesQuery;
-
     @Autowired
     public SecurityConfig (BCryptPasswordEncoder bCryptPasswordEncoder, DataSource dataSource) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.dataSource = dataSource;
     }
-
-    @Override
-    protected void configure (AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().usersByUsernameQuery(usersQuery).authoritiesByUsernameQuery(rolesQuery).dataSource(dataSource).passwordEncoder(bCryptPasswordEncoder);
-
-    }
-
 
     @Override
     protected void configure (HttpSecurity http) throws Exception {

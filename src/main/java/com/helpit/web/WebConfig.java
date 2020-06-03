@@ -27,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/signup").setViewName("registration/signup");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/logout").setViewName("index");
-        //registry.addViewController("/signup/add_foundation").setViewName("index");
+        registry.addViewController("/signup/add_foundation").setViewName("index");
     }
 
     @GetMapping("signup/foundation")
