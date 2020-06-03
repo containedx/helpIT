@@ -15,6 +15,9 @@ public class EventController {
     @Autowired
     private EventRepository repo;
 
+    @Autowired
+    private VolunteersRepository volunteers_repo;
+
     @GetMapping("/events")
     public String view(Model model) {
         List<Event> listEvents = listAll();
@@ -41,6 +44,17 @@ public class EventController {
         return "events/del";
     }
 
+    @RequestMapping("/sign/{id}")
+    public String sign_for_event(Model model){
+        return "events/sign";
+    }
+
+    @RequestMapping(value="/sign")
+    public String sign(@Valid @ModelAttribute("volunteers") Volunteers volunteers){
+        save_volunteers(volunteers);
+        return "events/index";
+    }
+
     public List<Event> listAll() {
         return repo.findAll();
     }
@@ -55,6 +69,10 @@ public class EventController {
 
     public void delete(Long id){
         repo.deleteById(id);
+    }
+
+    public void save_volunteers(Volunteers volunteers){
+        volunteers_repo.save(volunteers);
     }
 
 }
