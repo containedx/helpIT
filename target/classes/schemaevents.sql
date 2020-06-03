@@ -21,3 +21,14 @@ ALTER TABLE `helpit`.`event`
             REFERENCES `helpit`.`foundation` (`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION;
+
+
+CREATE TABLE `helpit`.`volunteers` (
+                                       `event_id` INT NOT NULL,
+                                       `user_id` INT NULL,
+                                       PRIMARY KEY (`event_id`),
+                                       CONSTRAINT `event_id`
+                                            FOREIGN KEY (`event_id`)
+                                               REFERENCES `helpit`.`event` (`id`)
+                                               ON DELETE NO ACTION
+                                               ON UPDATE NO ACTION);

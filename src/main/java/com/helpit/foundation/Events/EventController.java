@@ -45,14 +45,16 @@ public class EventController {
     }
 
     @RequestMapping("/sign/{id}")
-    public String sign_for_event(Model model){
+    public String sign_for_event(Model model, @Valid @ModelAttribute("event") Event event){
+        Volunteers volunteers = new Volunteers();
+        model.addAttribute("volunteers", volunteers);
         return "events/sign";
     }
 
     @RequestMapping(value="/sign")
     public String sign(@Valid @ModelAttribute("volunteers") Volunteers volunteers){
         save_volunteers(volunteers);
-        return "events/index";
+        return "/events/sign";
     }
 
     public List<Event> listAll() {
