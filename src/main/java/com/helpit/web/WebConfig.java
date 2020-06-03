@@ -27,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/signup").setViewName("registration/signup");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/logout").setViewName("index");
-        registry.addViewController("/signup/add_foundation").setViewName("index");
+        //registry.addViewController("/signup/add_foundation").setViewName("index");
     }
 
     @GetMapping("signup/foundation")
@@ -42,6 +42,16 @@ public class WebConfig implements WebMvcConfigurer {
         User user = new User();
         model.addAttribute("user",user);
         return "registration/volunteer";
+    }
+
+    @GetMapping("signup/add_foundation")
+    public String redirectAddFoundationPage(WebRequest request){
+        return "redirect:/signup/foundation";
+    }
+
+    @GetMapping("signup/add_volunteer")
+    public String redirectAddVolunteerPage(WebRequest request){
+        return "redirect:/signup/volunteer";
     }
 
 

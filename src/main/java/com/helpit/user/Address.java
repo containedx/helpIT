@@ -26,9 +26,9 @@ public class Address {
    private String postcode;
 
    @Column(name = "address_number_of_home")
-   private String number_of_home;
+   private String numberOfHome;
 
    @Column(name = "address_number_of_flat")
-   private int number_of_flat;
+   private int numberOfFlat;
 
 }

@@ -18,15 +18,15 @@ public class Foundation {
 
     @Column(name = "foundation_name")
     @NotNull
-    private String foundation_name;
+    private String name;
 
     @Column(name = "foundation_owner_name")
     @NotNull
-    private String foundation_owner_name;
+    private String ownerName;
 
     @Column(name = "foundation_owner_surname")
     @NotNull
-    private String foundation_owner_surname;
+    private String ownerSurname;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "foundation_types", joinColumns = @JoinColumn(name = "foundation_id"), inverseJoinColumns = @JoinColumn(name = "type_id"))

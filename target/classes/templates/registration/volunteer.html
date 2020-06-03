@@ -28,21 +28,21 @@
     </div>
     <div>
         <label th:text="#{label.registration.confirm.password}">password</label>
-        <input type="password" th:field="*{confirm_password}"/>
+        <input type="password" th:field="*{confirmPassword}"/>
         <p th:each="error : ${#fields.errors('password')}"
            th:text="${error}">Validation error</p>
     </div>
 
     <div>
         <label th:text="#{label.registration.volunteer.name}"></label>
-        <input th:field="*{volunteer.volunteer_name}"/>
-        <p th:each="error : ${#fields.errors('volunteer_name')}"
+        <input th:field="*{volunteer.name}"/>
+        <p th:each="error : ${#fields.errors('volunteer.name')}"
            th:text="${error}">Validation error</p>
     </div>
     <div>
         <label th:text="#{label.registration.volunteer.surname}"></label>
-        <input th:field="*{volunteer.volunteer_surname}"/>
-        <p th:each="error : ${#fields.errors('volunteer_surname')}"
+        <input th:field="*{volunteer.surname}"/>
+        <p th:each="error : ${#fields.errors('volunteer.surname')}"
            th:text="${error}">Validation error</p>
     </div>
 
@@ -66,14 +66,14 @@
     </div>
     <div>
         <label th:text="#{label.registration.address.number.home}"></label>
-        <input th:field="*{address.number_of_home}"/>
-        <p th:each="error : ${#fields.errors('address.number_of_home')}"
+        <input th:field="*{address.numberOfHome}"/>
+        <p th:each="error : ${#fields.errors('address.numberOfHome')}"
            th:text="${error}">Validation error</p>
     </div>
     <div>
         <label th:text="#{label.registration.address.number.flat}"></label>
-        <input th:field="*{address.number_of_flat}"/>
-        <p th:each="error : ${#fields.errors('address.number_of_flat')}"
+        <input th:field="*{address.numberOfFlat}"/>
+        <p th:each="error : ${#fields.errors('address.numberOfFlat')}"
            th:text="${error}">Validation error</p>
     </div>
 

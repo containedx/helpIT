@@ -60,7 +60,7 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public void saveFoundation (User user) {
-        if(!user.getPassword().equals(user.getConfirm_password()))
+        if(!user.getPassword().equals(user.getConfirmPassword()))
             return;
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

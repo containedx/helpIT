@@ -5,7 +5,9 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -18,19 +20,24 @@ public class User {
 
     @Column(name="username")
     @NotNull
+    @NotBlank
+
     private String username;
 
     @Column(name="email")
     @NotNull
     @Email
+    @NotBlank
     private String email;
 
     @Column(name="password")
+    @Size(min=8,max=32,  message = "The author email '${validatedValue}' must be between {min} and {max} characters long")
     @NotNull
+    @NotBlank
     private String password;
 
     @Transient
-    private String confirm_password;
+    private String confirmPassword;
 
     @Column(name="active")
     @NotNull
@@ -53,16 +60,16 @@ public class User {
     private Volunteer volunteer;
 
     
-    public String getFoundation_name(){
-        return foundation.getFoundation_name();
+    public String getFoundationName(){
+        return foundation.getName();
     }
     
-    public String getFoundation_owner_name(){
-        return foundation.getFoundation_owner_name();
+    public String getFoundationOwnerName(){
+        return foundation.getOwnerName();
     }
     
-    public String getFoundation_owner_surname(){
-        return foundation.getFoundation_owner_surname();
+    public String getFoundationOwnerSurname(){
+        return foundation.getOwnerSurname();
     }
 
     public String getCity(){
@@ -77,31 +84,31 @@ public class User {
         return address.getStreet();
     }
 
-    public String getNumber_of_home(){
-        return address.getNumber_of_home();
+    public String getNumberOfHome(){
+        return address.getNumberOfHome();
     }
 
-    public int getNumber_of_flat(){
-        return address.getNumber_of_flat();
+    public int getNumberOfFlat(){
+        return address.getNumberOfFlat();
     }
 
-    public String getVolunteer_name(){
-        return volunteer.getVolunteer_name();
+    public String getVolunteerName(){
+        return volunteer.getName();
     }
-    public String getVolunteer_surname(){
-        return volunteer.getVolunteer_surname();
-    }
-
-    public void setFoundation_name(String foundation_name){
-         foundation.setFoundation_name(foundation_name);
+    public String getVolunteerSurname(){
+        return volunteer.getSurname();
     }
 
-    public void setFoundation_owner_name(String foundation_owner_name){
-         foundation.setFoundation_owner_name(foundation_owner_name );
+    public void setFoundationName(String foundationName){
+         foundation.setName(foundationName);
     }
 
-    public void setFoundation_owner_surname(String foundation_owner_surname){
-         foundation.setFoundation_owner_surname(foundation_owner_surname );
+    public void setFoundationOwnerName(String foundationOwnerName){
+         foundation.setOwnerName(foundationOwnerName );
+    }
+
+    public void setFoundationOwnerSurname(String foundationOwnerSurname){
+         foundation.setOwnerSurname(foundationOwnerSurname );
     }
 
     public void setCity(String city){
@@ -116,11 +123,11 @@ public class User {
          address.setStreet(street );
     }
 
-    public void setNumber_of_home(String number_of_home ){
-         address.setNumber_of_home(number_of_home );
+    public void setNumberOfHome(String numberOfHome ){
+         address.setNumberOfHome(numberOfHome );
     }
 
-    public void setNumber_of_flat(int number_of_flat){
-         address.setNumber_of_flat(number_of_flat );
+    public void setNumberOfFlat(int numberOfFlat){
+         address.setNumberOfFlat(numberOfFlat );
     }
 }

@@ -7,10 +7,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.ws.rs.POST;
 import java.util.Locale;
 import java.util.Optional;
@@ -24,40 +23,49 @@ public class RegisterController {
     MessageSource messageSource;
 
     @PostMapping(value = "/signup/add_foundation")
-    public String registerFormFoundation(User user, BindingResult result, Model model, Locale locale){
-        String returnPage=null;
+    public String registerFormFoundation(@ModelAttribute("user") @Valid User user, BindingResult result, Model model, Locale locale){
+        String returnPage="";
         User userExist = userService.findUserByEmail(user.getEmail());
+
         if(userExist!=null){
             result.rejectValue("email",messageSource.getMessage("error.user.email.exists",null,locale));
         }
+        else {
+            userExist = userService.findUserByUsername(user.getUsername());
+            if(userExist!=null){
+                result.rejectValue("email",messageSource.getMessage("error.user.username.exists",null,locale));
+            }
+        }
         if(result.hasErrors()) {
-            returnPage = "registration/foundation";
+            returnPage="signup/foundation";
         }else{
             model.getAttribute("");
             userService.saveFoundation(user);
             model.addAttribute("message",messageSource.getMessage("user.register.success",null,locale));
            // model.addAttribute("user",new User());
-            returnPage="login";
+            returnPage="redirect:/login";
         }
         return returnPage;
     }
-    @PostMapping(value = "/signup/add_volunteer")
-    public String registerFormVolunteer(User user, BindingResult result, Model model, Locale locale){
-        String returnPage=null;
-        Optional<User> userExist = Optional.of(userService.findUserByEmail(user.getEmail()));
 
-        if(userExist.isEmpty()){
+
+    @PostMapping(value = "/signup/add_volunteer")
+    public String registerFormVolunteer(@ModelAttribute("user") @Valid User user, BindingResult result, Model model, Locale locale){
+        String returnPage=null;
+        User userExist = userService.findUserByEmail(user.getEmail());
+
+        if(userExist!=null){
             result.rejectValue("email",messageSource.getMessage("error.user.email.exists",null,locale));
         }
         else {
-            userExist = Optional.of(userService.findUserByUsername(user.getUsername()));
-            if(userExist.isEmpty()){
-                result.rejectValue("email",messageSource.getMessage("error.user.email.exists",null,locale));
+            userExist = userService.findUserByUsername(user.getUsername());
+            if(userExist!=null){
+                result.rejectValue("email",messageSource.getMessage("error.user.username.exists",null,locale));
             }
         }
 
         if(result.hasErrors()) {
-            returnPage = "registration/volunteer";
+            returnPage = "redirect:/registration/volunteer";
         }else{
             userService.saveVolunteer(user);
             model.addAttribute("message",messageSource.getMessage("user.register.success",null,locale));
@@ -65,4 +73,19 @@ public class RegisterController {
         }
         return returnPage;
     }
+    /*
+    @GetMapping("signup/add_volunteer")
+    public String returnRegisterFormVolunteer(Model model){
+        User u = new User();
+        model.addAttribute("user",u);
+        return "registration/volunteer";
+    }
+
+    @GetMapping("signup/add_foundation")
+    public String returnRegisterFormFoundation(Model model){
+        User u = new User();
+        model.addAttribute("user",u);
+        return "registration/foundation";
+    }*/
+
 }
