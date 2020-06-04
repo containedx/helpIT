@@ -216,6 +216,22 @@ html, body {
   row-gap: 25px;
   column-gap: 15px;
   padding: 30px 20px 40px 20px; }
+  @media (max-width: 1315px) {
+    #search-result {
+      grid-template-columns: repeat(4, 240px);
+      max-width: 1005px; } }
+  @media (max-width: 1060px) {
+    #search-result {
+      grid-template-columns: repeat(3, 240px);
+      max-width: 750px; } }
+  @media (max-width: 805px) {
+    #search-result {
+      grid-template-columns: repeat(2, 240px);
+      max-width: 495px; } }
+  @media (max-width: 550px) {
+    #search-result {
+      grid-template-columns: repeat(1, 240px);
+      max-width: 245px; } }
   #search-result .charity-card {
     border-radius: 3px;
     cursor: pointer;
