@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+
+
+        <h2>All Events:</h2>
+    </div>
+
+    <div>
+        <div th:each="event : ${listEvents}">
+            <h3><p th:text="${event.name}"/></h3>
+            <p th:text="${event.date}"/>
+            <p th:text="${event.foundation}"/>
+            <p th:text="${event.description}"/>
+            <a th:href="@{'/delete/' + ${event.id}}"><button>DELETE</button></a> <br>
+            <a th:href="@{'/sign/' + ${event.id}}"><button>SIGN FOR EVENT</button></a>
+            <br><br>
+
+        </div>
+    </div>
+
+        <a href="/add"><button>ADD NEW EVENT</button></a>
+
+
+</body>
+</html>
