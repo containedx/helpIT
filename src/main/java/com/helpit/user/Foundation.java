@@ -14,7 +14,7 @@ public class Foundation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "foundation_id")
-    private int id;
+    private int foundation_id;
 
     @Column(name = "foundation_name")
     @NotNull

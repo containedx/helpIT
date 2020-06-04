@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}">
+
 </head>
 <body>
 
 <div th:replace="fragments/menu::menu"></div>
 <div class = "green"></div>
+<div class="nav" sec:authorize="isAuthenticated()">
+    <a th:href="@{'/check'}"><button>Get my Vol</button></a>
+    <a href="/templates/add.html">ADD</a>
+    <div th:each="vol : ${ListVol}">
+
+
+        <p th:text="${vol.vol_name}"></p>
+        <p th:text="${vol.vol_surname}"></p>
+        <p th:text="${vol.vol_email}"/>
+        <br><br>
+
+    </div>
+
+
+
+</div>
+
 </body>
 </html>

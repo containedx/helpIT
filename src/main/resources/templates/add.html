@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddVolunteer</title>
+</head>
+<body>
+
+<div>
+
+    <form action="#" th:action="@{/crate_vol}" th:object="${vol}" method="post" >
+
+        <p>
+            Name:
+            <input type="text" th:field="*{name}"/>
+        </p>
+        <p>
+            Surname:
+            <input type="text" th:field="*{surname}"/>
+
+        </p>
+        <p>
+            Email:
+            <input type="text" th:field="*{email}"/>
+
+        </p>
+        <p>
+            <input type="submit" value="Add new volonteer" />
+        </p>
+    </form>
+</div>
+
+</body>
+</html>
