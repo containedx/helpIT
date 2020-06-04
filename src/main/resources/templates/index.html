@@ -13,7 +13,7 @@
 <div class = "green"></div>
 <div class="nav" sec:authorize="isAuthenticated()">
     <a th:href="@{'/check'}"><button>Get my Vol</button></a>
-    <a href="/templates/add.html">ADD</a>
+    <a href="/templates/add.html"> ADD</a>
     <div th:each="vol : ${ListVol}">
 
 
