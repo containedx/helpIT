@@ -47,7 +47,7 @@
       text-decoration: none;
       color: #111;
       position: relative;
-      font-size: 14px;
+      font-size: 13px;
       padding: 0 5px 0 2px; }
       @media (max-width: 790px) {
         #nav #navbar-links .navbar-link {
@@ -113,37 +113,58 @@
           font-size: 13px;
           line-height: 49px; }
   #nav #navbar-user {
-    display: grid;
-    grid-template-columns: 1fr 40px;
     margin: 0 10px 0 0;
     position: relative; }
-    #nav #navbar-user img {
-      margin: 10px 0 0 0;
-      width: 36px;
-      height: 36px;
-      border-radius: 60px;
-      border: 1px solid #eeeeee;
-      cursor: pointer; }
-      #nav #navbar-user img:hover {
-        filter: brightness(0.95); }
-    #nav #navbar-user #navbar-dropdown {
-      padding: 19px 0 0 10px;
-      cursor: pointer;
-      z-index: 99999; }
-      #nav #navbar-user #navbar-dropdown i {
-        color: #555;
-        font-size: 7px; }
+    #nav #navbar-user a {
+      display: grid;
+      grid-template-columns: 1fr 40px;
+      z-index: 99999;
+      float: left; }
+      #nav #navbar-user a #navbar-dropdown {
+        padding: 19px 0 0 10px;
+        cursor: pointer;
+        z-index: 99999; }
+        #nav #navbar-user a #navbar-dropdown i {
+          color: #555;
+          font-size: 7px; }
+      #nav #navbar-user a img {
+        margin: 10px 0 0 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 60px;
+        border: 1px solid #eeeeee;
+        cursor: pointer; }
+        #nav #navbar-user a img:hover {
+          filter: brightness(0.95); }
     #nav #navbar-user .dropdown-menu {
       position: absolute;
-      width: 200px;
-      height: 150px;
+      width: 150px;
+      height: auto;
       top: 55px;
       right: 10px;
       border: 1px solid #D1D1D1;
       background-color: #fff;
-      display: none; }
-      #nav #navbar-user .dropdown-menu.is_active {
-        display: block; }
+      display: none;
+      list-style-position: outside;
+      padding: 0 0 15px 38px; }
+      #nav #navbar-user .dropdown-menu .option {
+        list-style: none;
+        margin: 10px 0 0 -25px; }
+        #nav #navbar-user .dropdown-menu .option a {
+          display: block;
+          width: 92%;
+          height: 30px;
+          margin: 5px 0 0 0;
+          border: 1px solid #cccccc;
+          line-height: 30px;
+          font-size: 12px;
+          color: #222;
+          cursor: pointer;
+          border-radius: 2px;
+          text-align: center;
+          text-decoration: none; }
+          #nav #navbar-user .dropdown-menu .option a:hover {
+            background-color: #f9f9f9; }
 
 #search-bar {
   height: 55px;
@@ -206,7 +227,8 @@
       background-color: #ededed;
       border-bottom: 0;
       width: 240px;
-      height: 160px; }
+      height: 160px;
+      object-fit: cover; }
     #search-result .charity-card .charity-card-title {
       background-color: #fff;
       border: 1px solid #dadada;

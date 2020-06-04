@@ -7,12 +7,12 @@
     max-width: 330px;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 80px 60px 60px 60px 60px 60px;
-    row-gap: 20px;
+    grid-template-rows: 80px 1fr;
     border: 1px solid #d6cdca;
     border-top: none;
     border-radius: 3px;
     padding: 0 0 10px 0;
+    height: 480px;
     -webkit-box-shadow: 0px 7px 12px -11px #d0d0d0;
     -moz-box-shadow: 0px 7px 12px -11px #d0d0d0;
     box-shadow: 0px 7px 12px -11px #d0d0d0; }
@@ -30,25 +30,33 @@
         font-size: 22px;
         line-height: 80px;
         color: #fff; }
-    #registration #registration-form .form-group {
-      display: grid;
-      grid-template-rows: 20px 40px;
-      padding: 0 20px; }
-      #registration #registration-form .form-group label {
-        font-size: 12px;
-        line-height: 15px; }
-      #registration #registration-form .form-group input {
-        background-color: #fff;
-        border: 1px solid #999;
-        padding: 0 0 0 10px; }
-    #registration #registration-form .form-btn {
-      padding: 0 20px; }
-      #registration #registration-form .form-btn input {
-        background-color: #fff;
-        border: 1px solid #999;
-        width: 100%;
-        margin: 0px auto 0 auto;
-        height: 45px;
-        cursor: pointer; }
-        #registration #registration-form .form-btn input:hover {
-          border: 1px solid #707070; }
+    #registration #registration-form #registration-form-content {
+      overflow-y: scroll;
+      max-height: 410px;
+      height: 410px; }
+      #registration #registration-form #registration-form-content #registration-form-content-scroll {
+        display: grid;
+        grid-auto-rows: 80px;
+        padding: 15px 0 0 0; }
+        #registration #registration-form #registration-form-content #registration-form-content-scroll .form-group {
+          display: grid;
+          grid-template-rows: 20px 40px;
+          padding: 0 20px; }
+          #registration #registration-form #registration-form-content #registration-form-content-scroll .form-group label {
+            font-size: 12px;
+            line-height: 15px; }
+          #registration #registration-form #registration-form-content #registration-form-content-scroll .form-group input {
+            background-color: #fff;
+            border: 1px solid #999;
+            padding: 0 0 0 10px; }
+        #registration #registration-form #registration-form-content #registration-form-content-scroll .form-btn {
+          padding: 0 20px; }
+          #registration #registration-form #registration-form-content #registration-form-content-scroll .form-btn input {
+            background-color: #fff;
+            border: 1px solid #999;
+            width: 100%;
+            margin: 0px auto 0 auto;
+            height: 45px;
+            cursor: pointer; }
+            #registration #registration-form #registration-form-content #registration-form-content-scroll .form-btn input:hover {
+              border: 1px solid #707070; }

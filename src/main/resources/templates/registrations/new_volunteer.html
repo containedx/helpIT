@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -21,28 +23,34 @@
                     <span>Create Volunteer Account</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="username">Name</label>
-                    <input type="text" id="username" name="username" class="form-control" autofocus="autofocus" placeholder="Username">
-                </div>
+                <div id="registration-form-content">
 
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" name="password" class="form-control" placeholder="Email">
-                </div>
+                    <div id="registration-form-content-scroll">
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="username" class="form-control" autofocus="autofocus" placeholder="Password">
-                </div>
+                        <div class="form-group">
+                            <label for="username">Name</label>
+                            <input type="text" id="username" name="username" class="form-control" autofocus="autofocus" placeholder="Username">
+                        </div>
 
-                <div class="form-group">
-                    <label for="password_confirmation">Password confirmation</label>
-                    <input type="password" id="password_confirmation" name="password" class="form-control" placeholder="Password">
-                </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" name="password" class="form-control" placeholder="Email">
+                        </div>
 
-                <div class="form-btn">
-                    <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-info" value="Create Account">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="username" class="form-control" autofocus="autofocus" placeholder="Password">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password_confirmation">Password confirmation</label>
+                            <input type="password" id="password_confirmation" name="password" class="form-control" placeholder="Password">
+                        </div>
+
+                        <div class="form-btn">
+                            <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-info" value="Create Account">
+                        </div>
+                    </div>
                 </div>
             </form>
 
@@ -72,41 +80,22 @@
                 }
             }
 
-            function hideEl(){
-                var y  = document.querySelector('#dropdown-signup');
+            function hideShowOption() {
 
-                if(y.style.display === 'block') {
-                    y.style.display = "none";
+                var x  = document.querySelector('#drop_view');
+                var y = document.getElementById("dropdown-signup");
+
+                if(x.style.display === 'none' || x.style.display === '') {
+
+                    if(y.style.display === 'block') {
+                        y.style.display = "none";
+                    }
+
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
                 }
             }
-
-            function manageDrop(){
-                var btn = document.querySelector('#navbar-user'),
-                    view = document.querySelector('#drop_view'),
-                    viewItems = view.querySelectorAll('li'),
-                    body = document.body;
-
-                btn.addEventListener('click', function(e){
-                    e.stopPropagation();
-                    view.classList.toggle('is_active');
-                }); // open menu
-
-                for(var i = 0; i < viewItems.length; i++){
-                    viewItems[i].addEventListener('click', function(e){
-                        e.stopPropagation();
-                        view.classList.remove('is_active');
-                    });
-                } // carry item content to output,
-                  // close after click
-
-                body.addEventListener('click', function(){
-                    if(view.classList.contains('is_active')){
-                        view.classList.remove('is_active');
-                    }
-                }); // close after click outside
-            }
-
-            manageDrop();
 
         </script>
 

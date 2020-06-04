@@ -1,3 +1,5 @@
+@import "vars";
+
 #nav{
   height: 60px;
   width: 100vw;
@@ -63,7 +65,7 @@
       text-decoration: none;
       color: #111;
       position:relative;
-      font-size: 14px;
+      font-size: 13px;
       padding: 0 5px 0 2px;
 
       @media (max-width: 790px) {
@@ -155,49 +157,81 @@
   }
 
   #navbar-user{
-    display: grid;
-    grid-template-columns: 1fr 40px;
     margin: 0 10px 0 0;
     position: relative;
 
-    img{
-      margin: 10px 0 0 0;
-      width: 36px;
-      height: 36px;
-      border-radius: 60px;
-      border:1px solid #eeeeee;
-      cursor: pointer;
-
-      &:hover{
-        filter: brightness(0.95);
-      }
-    }
-
-
-    #navbar-dropdown{
-      padding: 19px 0 0 10px;
-      cursor: pointer;
+    a{
+      display: grid;
+      grid-template-columns: 1fr 40px;
       z-index: 99999;
+      float: left;
+      //background-color: #d64238;
 
-      i{
-        color: #555;
-        font-size: 7px;
+      #navbar-dropdown{
+        padding: 19px 0 0 10px;
+        cursor: pointer;
+        z-index: 99999;
+        //background-color: #512;
+
+        i{
+          color: #555;
+          font-size: 7px;
+        }
+      }
+
+      img{
+        margin: 10px 0 0 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 60px;
+        border:1px solid #eeeeee;
+        cursor: pointer;
+        //background-color: #a883d6;
+
+        &:hover{
+          filter: brightness(0.95);
+        }
       }
     }
+
 
     .dropdown-menu{
       position: absolute;
-      width:200px;
-      height: 150px;
+      width:150px;
+      height: auto;
       top: 55px;
       right: 10px;
       border: 1px solid #D1D1D1;
       background-color: #fff;
       display: none;
+      list-style-position: outside;
+      padding: 0 0 15px 38px;
 
-      &.is_active{
-        display: block;
+      .option{
+        list-style: none;
+        margin: 10px 0 0 -25px;
+
+        a{
+          display: block;
+          width: 92%;
+          height:30px;
+          margin: 5px 0 0 0;
+          border: 1px solid #cccccc;
+          line-height: 30px;
+          font-size: 12px;
+          color: #222;
+          cursor: pointer;
+          border-radius: 2px;
+          text-align: center;
+          text-decoration: none;
+
+          &:hover{
+            background-color: #f9f9f9;
+
+          }
+        }
       }
+
     }
   }
 
@@ -289,6 +323,7 @@
       border-bottom: 0;
       width: 240px;
       height: 160px;
+      object-fit: cover;
     }
 
     .charity-card-title{
