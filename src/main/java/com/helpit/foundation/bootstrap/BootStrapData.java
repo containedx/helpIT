@@ -3,27 +3,26 @@ package com.helpit.foundation.bootstrap;
 import com.helpit.foundation.model.Comment;
 import com.helpit.foundation.model.Foundation;
 import com.helpit.foundation.model.Post;
-import com.helpit.foundation.model.User;
+import com.helpit.foundation.model.Volunteer;
 import com.helpit.foundation.repositories.CommentRepository;
 import com.helpit.foundation.repositories.FoundationRepository;
 import com.helpit.foundation.repositories.PostRepository;
-import com.helpit.foundation.repositories.UserRepository;
+import com.helpit.foundation.repositories.VolunteerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BootStrapData implements CommandLineRunner
 {
-    private final CommentRepository comment_repository;
-    private final UserRepository user_repository;
-    private final FoundationRepository foundation_repository;
+    private final CommentRepository commentRepository;
+    private final VolunteerRepository volunteerRepository;
+    private final FoundationRepository foundationRepository;
     private final PostRepository postRepository;
 
-    public BootStrapData(CommentRepository comment_repository, UserRepository user_repository, FoundationRepository foundation_repository, PostRepository postRepository)
-    {
-        this.comment_repository = comment_repository;
-        this.user_repository = user_repository;
-        this.foundation_repository = foundation_repository;
+    public BootStrapData(CommentRepository commentRepository, VolunteerRepository volunteerRepository, FoundationRepository foundationRepository, PostRepository postRepository) {
+        this.commentRepository = commentRepository;
+        this.volunteerRepository = volunteerRepository;
+        this.foundationRepository = foundationRepository;
         this.postRepository = postRepository;
     }
 
@@ -34,12 +33,12 @@ public class BootStrapData implements CommandLineRunner
     }
 
     private void LoadData() {
-        User u1 = new User();
-        User u2 = new User();
+        Volunteer u1 = new Volunteer();
+        Volunteer u2 = new Volunteer();
         u1.setLogin("adrian");
         u2.setLogin("szymon");
-        user_repository.save(u1);
-        user_repository.save(u2);
+        volunteerRepository.save(u1);
+        volunteerRepository.save(u2);
 
         Comment c1 = new Comment();
         Comment c2 = new Comment();
@@ -47,9 +46,9 @@ public class BootStrapData implements CommandLineRunner
         c1.setContent("Jestem pierwszy");
         c2.setContent("Jestem drugi");
         c3.setContent("Jestem trzeci");
-        comment_repository.save(c1);
-        comment_repository.save(c2);
-        comment_repository.save(c3);
+        commentRepository.save(c1);
+        commentRepository.save(c2);
+        commentRepository.save(c3);
 
         Post p1 = new Post();
         Post p2 = new Post();
@@ -68,8 +67,8 @@ public class BootStrapData implements CommandLineRunner
         Foundation f2 = new Foundation();
         f1.setName("helpIT");
         f2.setName("killIT");
-        foundation_repository.save(f1);
-        foundation_repository.save(f2);
+        foundationRepository.save(f1);
+        foundationRepository.save(f2);
 
         u1.getComments().add(c1);
         u1.getComments().add(c2);
@@ -89,18 +88,18 @@ public class BootStrapData implements CommandLineRunner
         f2.getPost().add(p3);
         f2.getPost().add(p4);
 
-        c1.setUser(u1);
-        c2.setUser(u1);
-        c3.setUser(u2);
+        c1.setVolunteer(u1);
+        c2.setVolunteer(u1);
+        c3.setVolunteer(u2);
 
         c1.setFoundation(f1);
         c2.setFoundation(f2);
         c3.setFoundation(f1);
 
-        p1.setUser(u1);
-        p2.setUser(u1);
-        p3.setUser(u1);
-        p4.setUser(u2);
+        p1.setVolunteer(u1);
+        p2.setVolunteer(u1);
+        p3.setVolunteer(u1);
+        p4.setVolunteer(u2);
 
         p1.setFoundation(f1);
         p2.setFoundation(f2);
@@ -108,15 +107,15 @@ public class BootStrapData implements CommandLineRunner
         p4.setFoundation(f2);
 
 
-        comment_repository.save(c1);
-        comment_repository.save(c2);
-        comment_repository.save(c3);
+        commentRepository.save(c1);
+        commentRepository.save(c2);
+        commentRepository.save(c3);
 
-        user_repository.save(u1);
-        user_repository.save(u2);
+        volunteerRepository.save(u1);
+        volunteerRepository.save(u2);
 
-        foundation_repository.save(f1);
-        foundation_repository.save(f2);
+        foundationRepository.save(f1);
+        foundationRepository.save(f2);
 
 
         System.out.println("Bootstrap data loaded");

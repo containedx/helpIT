@@ -2,10 +2,10 @@ package com.helpit.foundation.controllers;
 
 import com.helpit.foundation.model.Comment;
 import com.helpit.foundation.model.Foundation;
-import com.helpit.foundation.model.User;
+import com.helpit.foundation.model.Volunteer;
 import com.helpit.foundation.repositories.CommentRepository;
 import com.helpit.foundation.repositories.FoundationRepository;
-import com.helpit.foundation.repositories.UserRepository;
+import com.helpit.foundation.repositories.VolunteerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SubmitCommentController
 {
-    private CommentRepository comment_repository;
-    private UserRepository user_repository;
-    private FoundationRepository foundation_repository;
+    private CommentRepository commentRepository;
+    private VolunteerRepository volunteerRepository;
+    private FoundationRepository foundationRepository;
 
-    public SubmitCommentController(CommentRepository comment_repository, UserRepository user_repository, FoundationRepository foundation_repository)
-    {
-        this.comment_repository = comment_repository;
-        this.user_repository = user_repository;
-        this.foundation_repository = foundation_repository;
+    public SubmitCommentController(CommentRepository commentRepository, VolunteerRepository volunteerRepository, FoundationRepository foundationRepository) {
+        this.commentRepository = commentRepository;
+        this.volunteerRepository = volunteerRepository;
+        this.foundationRepository = foundationRepository;
     }
 
     @RequestMapping("/add_comment/submit")
@@ -33,27 +32,27 @@ public class SubmitCommentController
     {
         Comment c = new Comment();
         c.setContent(content);
-        comment_repository.save(c);
+        commentRepository.save(c);
 
         Foundation f = new Foundation();
         f.setName(foundation);
-        foundation_repository.save(f);
+        foundationRepository.save(f);
 
-        User u = new User();
+        Volunteer u = new Volunteer();
         u.setLogin(login);
-        user_repository.save(u);
+        volunteerRepository.save(u);
 
-        c.setUser(u);
+        c.setVolunteer(u);
         c.setFoundation(f);
 
         u.getComments().add(c);
         f.getComment().add(c);
 
-        foundation_repository.save(f);
-        user_repository.save(u);
-        comment_repository.save(c);
+        foundationRepository.save(f);
+        volunteerRepository.save(u);
+        commentRepository.save(c);
 
-        model.addAttribute("comments", comment_repository.findAll());
+        model.addAttribute("comments", commentRepository.findAll());
         return "redirect:/add_comment/list";
     }
 }

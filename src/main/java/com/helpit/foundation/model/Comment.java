@@ -14,7 +14,7 @@ public class Comment
     private Long id;
 
     @ManyToOne
-    private User user;
+    private Volunteer volunteer;
 
     @ManyToOne
     private Foundation foundation;

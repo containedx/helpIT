@@ -28,7 +28,7 @@
     <tbody>
     <tr th:each="post : ${posts}">
         <td  scope="row" th:text="${post.id}">Bla</td>
-        <td th:text="${post.user.login}">Bla</td>
+        <td th:text="${post.volunteer.login}">Bla</td>
         <td th:text="${post.foundation.name}">Bla</td>
         <td th:utext="${post.content}">Bla</td>
         <td><a href="#" th:href="@{'/add_post/' + ${post.id} + '/addImage'}">Add Image</a></td>

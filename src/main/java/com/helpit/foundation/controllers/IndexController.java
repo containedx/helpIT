@@ -9,17 +9,9 @@ public class IndexController {
 
     @RequestMapping({"/",""})
     public String getIndex(){
-        return "index";
+        return "foundation/index";
     }
 
-    @RequestMapping({"/s"})
-    public String getIndsex(){
-        return "index";
-    }
-    @RequestMapping({"/sss"})
-    public String getIndsssex(){
-        return "index";
-    }
 }
 
 

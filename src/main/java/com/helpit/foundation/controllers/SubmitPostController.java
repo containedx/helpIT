@@ -3,10 +3,10 @@ package com.helpit.foundation.controllers;
 
 import com.helpit.foundation.model.Foundation;
 import com.helpit.foundation.model.Post;
-import com.helpit.foundation.model.User;
+import com.helpit.foundation.model.Volunteer;
 import com.helpit.foundation.repositories.FoundationRepository;
 import com.helpit.foundation.repositories.PostRepository;
-import com.helpit.foundation.repositories.UserRepository;
+import com.helpit.foundation.repositories.VolunteerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,14 +17,14 @@ import java.util.Optional;
 
 @Controller
 public class SubmitPostController {
-    private PostRepository post_repository;
-    private UserRepository user_repository;
-    private FoundationRepository foundation_repository;
+    private PostRepository postRepository;
+    private VolunteerRepository volunteerRepository;
+    private FoundationRepository foundationRepository;
 
-    public SubmitPostController(PostRepository post_repository, UserRepository user_repository, FoundationRepository foundation_repository) {
-        this.post_repository = post_repository;
-        this.user_repository = user_repository;
-        this.foundation_repository = foundation_repository;
+    public SubmitPostController(PostRepository postRepository, VolunteerRepository volunteerRepository, FoundationRepository foundationRepository) {
+        this.postRepository = postRepository;
+        this.volunteerRepository = volunteerRepository;
+        this.foundationRepository = foundationRepository;
     }
 
     @RequestMapping("/add_post/submit")
@@ -35,27 +35,27 @@ public class SubmitPostController {
     {
         Post c = new Post();
         c.setContent(content);
-        post_repository.save(c);
+        postRepository.save(c);
 
         Foundation f = new Foundation();
         f.setName(foundation);
-        foundation_repository.save(f);
+        foundationRepository.save(f);
 
-        User u = new User();
+        Volunteer u = new Volunteer();
         u.setLogin(login);
-        user_repository.save(u);
+        volunteerRepository.save(u);
 
-        c.setUser(u);
+        c.setVolunteer(u);
         c.setFoundation(f);
 
         u.getPosts().add(c);
         f.getPost().add(c);
 
-        foundation_repository.save(f);
-        user_repository.save(u);
-        post_repository.save(c);
+        foundationRepository.save(f);
+        volunteerRepository.save(u);
+        postRepository.save(c);
 
-        model.addAttribute("comments", post_repository.findAll());
+        model.addAttribute("comments", postRepository.findAll());
         return "redirect:/add_post/list";
     }
 
@@ -68,29 +68,29 @@ public class SubmitPostController {
     {
         Post c = new Post();
         c.setContent(content);
-        post_repository.save(c);
+        postRepository.save(c);
 
 
-        User u = new User();
+        Volunteer u = new Volunteer();
         u.setLogin(login);
-        user_repository.save(u);
+        volunteerRepository.save(u);
 
-        Optional<Foundation> f = foundation_repository.findById(Long.valueOf(id));
+        Optional<Foundation> f = foundationRepository.findById(Long.valueOf(id));
         if (f.isPresent()) {
 
-            c.setUser(u);
+            c.setVolunteer(u);
             c.setFoundation(f.get());
             u.getPosts().add(c);
             f.get().getPost().add(c);
-            foundation_repository.save(f.get());
+            foundationRepository.save(f.get());
         }
 
 
 
-        user_repository.save(u);
-        post_repository.save(c);
+        volunteerRepository.save(u);
+        postRepository.save(c);
 
-        model.addAttribute("comments", post_repository.findAll());
+        model.addAttribute("comments", postRepository.findAll());
         return "redirect:/foundation/" + id + "/show";
     }
 }

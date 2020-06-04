@@ -1,11 +1,8 @@
 package com.helpit.foundation;
 
-import com.helpit.foundation.model.Comment;
-import com.helpit.foundation.model.Foundation;
-import com.helpit.foundation.model.User;
 import com.helpit.foundation.repositories.CommentRepository;
 import com.helpit.foundation.repositories.FoundationRepository;
-import com.helpit.foundation.repositories.UserRepository;
+import com.helpit.foundation.repositories.VolunteerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,13 +16,13 @@ class FoundationApplicationTests
 {
 
     @Autowired
-    private UserRepository user_repository;
+    private VolunteerRepository volunteerRepository;
 
     @Autowired
-    private CommentRepository comment_repository;
+    private CommentRepository commentRepository;
 
     @Autowired
-    private FoundationRepository foundation_repository;
+    private FoundationRepository foundationRepository;
 
     @Test
     void contextLoads()
