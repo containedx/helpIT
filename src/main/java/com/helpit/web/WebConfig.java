@@ -24,16 +24,9 @@ import java.util.Locale;
 
 @Configuration
 @Controller
-public class WebConfig /*implements WebMvcConfigurer*/ {
+public class WebConfig {
 
-/*    @Override
-    public void addViewControllers(ViewControllerRegistry registry){
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/signup").setViewName("registration/signup");
-        registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/logout").setViewName("index");
-        //registry.addViewController("/signup/add_foundation").setViewName("index");
-    }*/
+
     @GetMapping("/")
     public String showHomePage(){
         return "index";

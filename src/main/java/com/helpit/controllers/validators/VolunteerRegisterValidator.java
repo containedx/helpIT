@@ -1,4 +1,4 @@
-package com.helpit.controller.validators;
+package com.helpit.controllers.validators;
 
 import com.helpit.user.User;
 import org.springframework.stereotype.Component;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" >
+<html xmlns:th="http://thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,20 +10,15 @@
 <div>
     <h2>New Event!:</h2>
 
-    <form action="#" th:action="@{/create_event}" th:object="${event}" method="post" >
+    <form action="#" th:action="@{create_event}" th:object="${event}" th:method="POST">
 
         <p>
             NAME:
             <input type="text" th:field="*{name}"/>
         </p>
         <p>
-            DATE&TIME: <label>
-            <input type="datetime-local" th:field="*{date}"/>
-        </label>
-        </p>
-        <p>
-            FOUNDATION: <label>
-            <input type="text" th:field="*{foundation}"/>
+            DATE&TIME:<label>
+            <input type="date" th:field="*{date}"/>
         </label>
         </p>
         <p>
@@ -32,7 +27,7 @@
         </label>
         </p>
         <p>
-            <input type="submit" value="Create Event" />
+            <input type="submit" value="Create Event"/>
         </p>
     </form>
 </div>

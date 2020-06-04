@@ -1,12 +1,11 @@
-package com.helpit.controller;
+package com.helpit.controllers;
 
-import com.helpit.controller.validators.FoundationRegisterValidator;
-import com.helpit.controller.validators.VolunteerRegisterValidator;
+import com.helpit.controllers.validators.FoundationRegisterValidator;
+import com.helpit.controllers.validators.VolunteerRegisterValidator;
 import com.helpit.services.UserService;
 import com.helpit.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,11 +17,16 @@ import java.util.Locale;
 
 @Controller
 public class RegisterController {
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
+
+    final MessageSource messageSource;
 
     @Autowired
-    MessageSource messageSource;
+    public RegisterController (UserService userService, MessageSource messageSource) {
+        this.userService = userService;
+        this.messageSource = messageSource;
+    }
 
     @PostMapping(value = "/signup/add_foundation")
     public String registerFormFoundation (@Valid User user, BindingResult result, Model model, Locale locale) {

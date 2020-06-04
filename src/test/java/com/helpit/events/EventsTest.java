@@ -1,6 +1,6 @@
-package com.helpit.foundation;
+package com.helpit.events;
 
-import com.helpit.foundation.Events.*;
+import com.helpit.user.Foundation;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,12 +21,12 @@ public class EventsTest {
         Event test_event = new Event();
         test_event.setName("Test Event");
         test_event.setDate("01.01.2000 00:00");
-        test_event.setFoundation(1);
+        test_event.setFoundation(new Foundation());
         test_event.setDescription("typed description in here");
 
-        controller.save(test_event);
+        controller.saveEvent(test_event);
 
-        assertEquals(test_event, controller.get(test_event.getId()));
+        assertEquals(test_event, controller.getEvent(test_event.getId()));
     }
 
     @Test
@@ -36,12 +36,12 @@ public class EventsTest {
         test_event2.setName("Test Event");
         test_event2.setDate("01.01.2000 00:00");
         Foundation example_foundation = new Foundation();
-        test_event2.setFoundation(2);
+        test_event2.setFoundation(example_foundation);
         test_event2.setDescription("typed description in here");
 
-        controller.save(test_event2);
+        controller.saveEvent(test_event2);
 
-        assertEquals(test_event2, controller.get(test_event2.getId()));
+        assertEquals(test_event2, controller.getEvent(test_event2.getId()));
 
 
 

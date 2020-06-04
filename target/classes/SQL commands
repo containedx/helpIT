@@ -12,8 +12,15 @@ CREATE TABLE IF NOT EXISTS user_address(user_id BIGINT REFERENCES users(user_id)
 CREATE TABLE IF NOT EXISTS user_volunteer( user_id BIGINT REFERENCES users(user_id),volunteer_id BIGINT REFERENCES volunteers(volunteer_id), CONSTRAINT PRIMARY KEY (volunteer_id, user_id));
 CREATE TABLE IF NOT EXISTS user_foundation( user_id BIGINT REFERENCES users(user_id),foundation_id BIGINT REFERENCES foundations(foundation_id), CONSTRAINT PRIMARY KEY(foundation_id,user_id));
 CREATE TABLE IF NOT EXISTS user_role(user_id BIGINT REFERENCES users(user_id), role_id INT REFERENCES roles(role_id), CONSTRAINT PRIMARY KEY(user_id,role_id));
+CREATE TABLE IF NOT EXISTS events (event_id BIGINT AUTO_INCREMENT PRIMARY KEY, event_name varchar(100), event_date varchar(30), event_description varchar(200));
+CREATE TABLE IF NOT EXISTS users_events(user_id BIGINT REFERENCES users(user_id), event_id INT REFERENCES events(event_id), CONSTRAINT PRIMARY KEY(user_id,event_id));
+CREATE TABLE IF NOT EXISTS foundation_event( foundation_id BIGINT REFERENCES
+ foundations(foundation_id), event_id BIGINT REFERENCES events(event_id),
+ CONSTRAINT PRIMARY KEY(foundation_id,event_id));
 
 
+INSERT INTO roles(role) VALUES("VOLUNTEER"),("FOUNDATION"), ("ADMIN");
+INSERT INTO types(type_name) values ("TYPE_FAMILY"), ("TYPE_PEACE"), ("TYPE_ENVIRONMENT"), ("TYPE_DISEASE"), ("TYPE_EDUCATION"), ("TYPE_CULTURE"), ("TYPE_ANIMALS"), ("TYPE_ADDICTION");
 
-INSERT INTO roles(role) VALUES("ROLE_VOLUNTEER"),("ROLE_FOUNDATION"), ("ROLE_ADMIN");
-Insert INTO types(type_name) values ("TYPE_FAMILY"), ("TYPE_PEACE"), ("TYPE_ENVIRONMENT"), ("TYPE_DISEASE"), ("TYPE_EDUCATION"), ("TYPE_CULTURE"), ("TYPE_ANIMALS"), ("TYPE_ADDICTION");
+
+call util.trunctables('helpit');
