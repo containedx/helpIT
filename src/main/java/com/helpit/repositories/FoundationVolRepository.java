@@ -1,12 +1,14 @@
 package com.helpit.repositories;
 
-import com.helpit.user.User;
+import com.helpit.user.FoundationVol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
-    public User findByEmail(String email);
+public interface FoundationVolRepository  extends JpaRepository<FoundationVol,Integer> {
+
 
 
 }

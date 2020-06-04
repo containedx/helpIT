@@ -5,7 +5,6 @@ import com.helpit.repositories.UserRepository;
 import com.helpit.user.Role;
 import com.helpit.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +51,8 @@ public class UserServiceImplementation implements UserService {
         user.setRole(role);
         userRepository.save(user);
     }
+
+
 
 
 }

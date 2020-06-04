@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -14,7 +16,7 @@ public class Volunteer{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "volunteer_id")
-  private int id;
+  private int volunteer_id;
 
   @Column(name="volunteer_name")
   @NotNull
