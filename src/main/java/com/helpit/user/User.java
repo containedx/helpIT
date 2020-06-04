@@ -21,17 +21,14 @@ public class User {
     @Column(name="username")
     @NotNull
     @NotBlank
-
     private String username;
 
     @Column(name="email")
     @NotNull
-    @Email
     @NotBlank
     private String email;
 
     @Column(name="password")
-    @Size(min=8,max=32,  message = "The author email '${validatedValue}' must be between {min} and {max} characters long")
     @NotNull
     @NotBlank
     private String password;

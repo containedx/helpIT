@@ -3,6 +3,7 @@ package com.helpit.user;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
@@ -18,10 +19,12 @@ public class Volunteer{
 
   @Column(name="volunteer_name")
   @NotNull
+  @NotBlank
   private String name;
 
   @Column(name="volunteer_surname")
   @NotNull
+  @NotBlank
   private String surname;
 
 

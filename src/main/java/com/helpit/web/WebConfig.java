@@ -11,23 +11,47 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.validation.Valid;
+import java.util.Locale;
+
 @Configuration
 @Controller
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig /*implements WebMvcConfigurer*/ {
 
-    @Override
+/*    @Override
     public void addViewControllers(ViewControllerRegistry registry){
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/signup").setViewName("registration/signup");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/logout").setViewName("index");
         //registry.addViewController("/signup/add_foundation").setViewName("index");
+    }*/
+    @GetMapping("/")
+    public String showHomePage(){
+        return "index";
+    }
+
+    @GetMapping("/signup")
+    public String showRegistrationPage(){
+        return "registration/signup";
+    }
+
+    @GetMapping("/login")
+    public String showLoginPage(){
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String showLogOutPage(){
+        return "index";
     }
 
     @GetMapping("signup/foundation")
@@ -44,15 +68,7 @@ public class WebConfig implements WebMvcConfigurer {
         return "registration/volunteer";
     }
 
-    @GetMapping("signup/add_foundation")
-    public String redirectAddFoundationPage(WebRequest request){
-        return "redirect:/signup/foundation";
-    }
 
-    @GetMapping("signup/add_volunteer")
-    public String redirectAddVolunteerPage(WebRequest request){
-        return "redirect:/signup/volunteer";
-    }
 
 
     @Bean
@@ -60,6 +76,8 @@ public class WebConfig implements WebMvcConfigurer {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
+
+
 
 
 }

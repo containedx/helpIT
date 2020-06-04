@@ -8,11 +8,13 @@
 <body>
 <div th:replace="fragments/menu::menu"></div>
 <form id="volunteerForm" th:action="add_volunteer" th:object="${user}" th:method="POST">
+    <input type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
     <div>
         <label th:text="#{label.registration.username}">first</label>
-        <input th:field="*{username}"/>
-        <p th:each="error: ${#fields.errors('username')}"
-           th:text="${error}">Validation error</p>
+        <input  th:field="*{username}"/>
+        <p th:each="error: ${#fields.errors('username')}" th:text="${error}">Validation error</p>
     </div>
     <div>
         <label th:text="#{label.registration.email}">email</label>

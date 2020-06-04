@@ -3,6 +3,7 @@ package com.helpit.user;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
@@ -18,14 +19,17 @@ public class Foundation {
 
     @Column(name = "foundation_name")
     @NotNull
+    @NotBlank
     private String name;
 
     @Column(name = "foundation_owner_name")
     @NotNull
+    @NotBlank
     private String ownerName;
 
     @Column(name = "foundation_owner_surname")
     @NotNull
+    @NotBlank
     private String ownerSurname;
 
     @OneToOne(cascade = CascadeType.ALL)

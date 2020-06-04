@@ -8,11 +8,16 @@
 <body>
 <div th:replace="fragments/menu::menu"></div>
 <form id="foundationForm" th:action="add_foundation" th:object="${user}" th:method="POST">
+    <input type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
     <div>
         <label th:text="#{label.registration.username}">first</label>
         <input th:field="*{username}"/>
-        <p th:each="error: ${#fields.errors('username')}"
-           th:text="${error}">Validation error</p>
+        <div th:if="${#fields.hasErrors('username')}">
+            <p th:each="error: ${#fields.errors('username')}" th:errors="${error}">Validation error</p>
+        </div>
+
     </div>
     <div>
         <label th:text="#{label.registration.email}">email</label>
@@ -84,7 +89,7 @@
            th:text="${error}">Validation error</p>
     </div>
     <div>
-        <input type="radio" th:value="TYPE_FAMILY" th:field="*{foundation.type.type}">
+        <input type="radio" th:value="TYPE_FAMILY" th:field="*{foundation.type.type}" checked>
         <label th:text="#{label.registration.types.family}"></label>
 
         <input type="radio" th:value="TYPE_PEACE" th:field="*{foundation.type.type}"/>

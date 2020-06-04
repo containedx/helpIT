@@ -3,6 +3,7 @@ package com.helpit.user;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,5 +17,6 @@ public class Type {
 
     @Column(name="type_name")
     @NotNull
+    @NotBlank
     private String type;
 }
