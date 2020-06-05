@@ -3,6 +3,8 @@ package com.helpit.foundation.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -24,6 +26,10 @@ public class Post{
 
     @Lob
     private Byte[] image;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
+    private Set<CommentUnderPost> commentUnderPost = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

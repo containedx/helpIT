@@ -1,13 +1,7 @@
 package com.helpit.foundation.bootstrap;
 
-import com.helpit.foundation.model.Comment;
-import com.helpit.foundation.model.Foundation;
-import com.helpit.foundation.model.Post;
-import com.helpit.foundation.model.Volunteer;
-import com.helpit.foundation.repositories.CommentRepository;
-import com.helpit.foundation.repositories.FoundationRepository;
-import com.helpit.foundation.repositories.PostRepository;
-import com.helpit.foundation.repositories.VolunteerRepository;
+import com.helpit.foundation.model.*;
+import com.helpit.foundation.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +12,14 @@ public class BootStrapData implements CommandLineRunner
     private final VolunteerRepository volunteerRepository;
     private final FoundationRepository foundationRepository;
     private final PostRepository postRepository;
+    private final CommentUnderPostRepository commentUnderPostRepository;
 
-    public BootStrapData(CommentRepository commentRepository, VolunteerRepository volunteerRepository, FoundationRepository foundationRepository, PostRepository postRepository) {
+    public BootStrapData(CommentRepository commentRepository, VolunteerRepository volunteerRepository, FoundationRepository foundationRepository, PostRepository postRepository, CommentUnderPostRepository commentUnderPostRepository) {
         this.commentRepository = commentRepository;
         this.volunteerRepository = volunteerRepository;
         this.foundationRepository = foundationRepository;
         this.postRepository = postRepository;
+        this.commentUnderPostRepository = commentUnderPostRepository;
     }
 
     @Override
@@ -62,6 +58,20 @@ public class BootStrapData implements CommandLineRunner
         postRepository.save(p2);
         postRepository.save(p3);
         postRepository.save(p4);
+
+        CommentUnderPost cp1 = new CommentUnderPost();
+        CommentUnderPost cp2 = new CommentUnderPost();
+        cp1.setContent("Jestem pierwszym komentarzem pod postem");
+        cp1.setPost(p1);
+        cp1.setVolunteer(u1);
+        cp2.setContent("Jestem drugim komentarzem pod postem");
+        cp2.setPost(p2);
+        cp2.setVolunteer(u2);
+        commentUnderPostRepository.save(cp1);
+        commentUnderPostRepository.save(cp2);
+
+
+
 
         Foundation f1 = new Foundation();
         Foundation f2 = new Foundation();
@@ -105,6 +115,13 @@ public class BootStrapData implements CommandLineRunner
         p2.setFoundation(f2);
         p3.setFoundation(f2);
         p4.setFoundation(f2);
+
+        postRepository.save(p1);
+        postRepository.save(p2);
+        postRepository.save(p3);
+        postRepository.save(p4);
+
+
 
 
         commentRepository.save(c1);

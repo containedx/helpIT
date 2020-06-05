@@ -22,6 +22,9 @@
     <div class="border bg-success" th:each="post : ${foundation.post}">
         <p class="lead" th:text="${post.volunteer.login}">Bla</p>
         <p  th:utext="${post.content}">Bla</p>
+
+        <button class="btn btn-warning" onclick= "location.href='/'"
+                th:onclick="'window.location.href =\'/add_comment/' + ${post.id} + '/add_2_post\''"> Add comment to post </button>
     </div>
 
     <div>

@@ -27,6 +27,10 @@ public class Volunteer
     @JoinColumn(name = "volunteer_id")
     private Set<Post> posts = new HashSet<>();
 
+    @OneToOne
+    @JoinColumn(name = "volunteer_id")
+    private CommentUnderPost commentUnderPost;
+
 
     @Override
     public boolean equals(Object o) {

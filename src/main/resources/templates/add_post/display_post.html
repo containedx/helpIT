@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Your post</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
 <!--/*@thymesVar id="post" type="com.helpit.foundation.model.Post"*/-->
-<table>
-    <tr>
-        <th>ID</th>
-        <th>User</th>
-        <th>Foundation</th>
-        <th>Comment</th>
-    </tr>
 
+<div class="container">
+<table class="table table-hover table-bordered">
+    <thead class="bg-danger">
     <tr>
-        <td th:text="${post.id}">Bla</td>
+        <th scope="col">ID</th>
+        <th scope="col">User</th>
+        <th scope="col">Foundation</th>
+        <th scope="col">Comment</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td scope="row" th:text="${post.id}">Bla</td>
         <td th:text="${post.volunteer.login}">Bla</td>
         <td th:text="${post.foundation.name}">Bla</td>
         <td th:utext="${post.content}">Bla</td>
@@ -26,9 +33,15 @@
                  width="200" height="200" />
         </div>
     </tr>
-
+    </tbody>
 </table>
-<button> <a href="/add_post/list">List posts</a></button>
+    <button class="btn btn-warning" onclick= "location.href='/add_post/list'"> List posts </button>
+    <button class="btn btn-warning" onclick= "location.href='/add_comment/add2post'"> Add comment to the post </button>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

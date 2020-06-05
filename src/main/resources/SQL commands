@@ -6,3 +6,8 @@ CREATE TABLE IF NOT EXISTS comments (id INT PRIMARY KEY auto_increment, content 
 CREATE TABLE IF NOT EXISTS posts (id INT PRIMARY KEY auto_increment, content text, image varbinary(8000), volunteer_id INT references users(id), foundation_id INT references foundations(id));
 
 drop database helpIT;
+
+drop table helpit.comments;
+drop table helpit.foundations;
+drop table helpit.posts;
+drop table helpit.volunteers;
