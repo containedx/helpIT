@@ -1,6 +1,6 @@
 package com.helpit.repositories;
 
-import com.helpit.user.Type;
+import com.helpit.model.Type;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

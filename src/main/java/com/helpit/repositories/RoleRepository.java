@@ -1,6 +1,6 @@
 package com.helpit.repositories;
 
-import com.helpit.user.Role;
+import com.helpit.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

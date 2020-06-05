@@ -1,7 +1,6 @@
 package com.helpit.services;
 
-import com.helpit.user.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import com.helpit.model.User;
 import org.springframework.stereotype.Service;
 
 @Service

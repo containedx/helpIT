@@ -18,8 +18,8 @@
             <p th:text="${event.date}"/>
             <p th:text="${event.foundation}"/>
             <p th:text="${event.description}"/>
-            <a th:href="@{'/delete/' + ${event.id}}"><button>DELETE</button></a> <br>
-            <a th:href="@{'/sign/' + ${event.id}}"><button>SIGN FOR EVENT</button></a>
+            <a href="" th:href="@{'events/delete/' + ${event.id}}"><button>DELETE</button></a> <br>
+            <a href="" th:href="@{'events/sign/' + ${event.id}}"><button>SIGN FOR EVENT</button></a>
             <br><br>
 
         </div>

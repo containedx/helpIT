@@ -1,7 +1,7 @@
 package com.helpit.security;
 
 import com.helpit.services.UserService;
-import com.helpit.user.User;
+import com.helpit.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

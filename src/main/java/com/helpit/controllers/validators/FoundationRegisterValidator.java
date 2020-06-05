@@ -1,6 +1,6 @@
 package com.helpit.controllers.validators;
 
-import com.helpit.user.User;
+import com.helpit.model.User;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;

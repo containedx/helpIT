@@ -1,11 +1,12 @@
 package com.helpit.events;
 
-import com.helpit.user.Foundation;
-import com.helpit.user.User;
-import com.helpit.user.Volunteer;
+import com.helpit.model.Foundation;
+import com.helpit.model.User;
 import lombok.Data;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -28,7 +29,7 @@ public class Event {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="users_events", joinColumns = @JoinColumn(name="event_id"), inverseJoinColumns = @JoinColumn(name="user_id"))
-    private List<User> users;
+    private Set<User> users = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name="foundation_event", joinColumns = @JoinColumn(name="event_id"), inverseJoinColumns = @JoinColumn(name="foundation_id"))

@@ -1,4 +1,4 @@
-package com.helpit.user;
+package com.helpit.model;
 
 import lombok.Data;
 

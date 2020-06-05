@@ -3,7 +3,7 @@ package com.helpit.controllers;
 import com.helpit.controllers.validators.FoundationRegisterValidator;
 import com.helpit.controllers.validators.VolunteerRegisterValidator;
 import com.helpit.services.UserService;
-import com.helpit.user.User;
+import com.helpit.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;

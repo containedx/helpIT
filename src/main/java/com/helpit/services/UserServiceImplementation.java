@@ -3,15 +3,14 @@ package com.helpit.services;
 import com.helpit.repositories.RoleRepository;
 import com.helpit.repositories.TypesRepository;
 import com.helpit.repositories.UserRepository;
-import com.helpit.user.Role;
-import com.helpit.user.Type;
-import com.helpit.user.User;
+import com.helpit.model.Role;
+import com.helpit.model.Type;
+import com.helpit.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Service("userService")
 @Transactional
