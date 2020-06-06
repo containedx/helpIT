@@ -1,6 +1,6 @@
 package com.helpit.posts.controllers;
 
-import com.helpit.posts.pcmodel.Foundation;
+import com.helpit.posts.model.Foundation;
 import com.helpit.posts.repositories.FoundationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

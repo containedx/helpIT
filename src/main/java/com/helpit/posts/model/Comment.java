@@ -1,4 +1,4 @@
-package com.helpit.posts.pcmodel;
+package com.helpit.posts.model;
 
 import lombok.Data;
 

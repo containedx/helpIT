@@ -1,8 +1,8 @@
 package com.helpit.posts.controllers;
 
-import com.helpit.posts.pcmodel.Comment;
-import com.helpit.posts.pcmodel.Foundation;
-import com.helpit.posts.pcmodel.Volunteer;
+import com.helpit.posts.model.Comment;
+import com.helpit.posts.model.Foundation;
+import com.helpit.posts.model.Volunteer;
 import com.helpit.posts.repositories.CommentRepository;
 import com.helpit.posts.repositories.FoundationRepository;
 import com.helpit.posts.repositories.VolunteerRepository;

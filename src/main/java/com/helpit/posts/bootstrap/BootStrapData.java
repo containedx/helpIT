@@ -1,6 +1,6 @@
 package com.helpit.posts.bootstrap;
 
-import com.helpit.posts.pcmodel.*;
+import com.helpit.posts.model.*;
 import com.helpit.posts.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

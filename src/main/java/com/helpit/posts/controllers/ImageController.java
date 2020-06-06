@@ -1,6 +1,6 @@
 package com.helpit.posts.controllers;
 
-import com.helpit.posts.pcmodel.Post;
+import com.helpit.posts.model.Post;
 import com.helpit.posts.services.ImageServiceImpl;
 import com.helpit.posts.repositories.PostRepository;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
