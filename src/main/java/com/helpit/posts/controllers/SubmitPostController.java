@@ -1,12 +1,12 @@
-package com.helpit.foundation.controllers;
+package com.helpit.posts.controllers;
 
 
-import com.helpit.foundation.model.Foundation;
-import com.helpit.foundation.model.Post;
-import com.helpit.foundation.model.Volunteer;
-import com.helpit.foundation.repositories.FoundationRepository;
-import com.helpit.foundation.repositories.PostRepository;
-import com.helpit.foundation.repositories.VolunteerRepository;
+import com.helpit.posts.pcmodel.Foundation;
+import com.helpit.posts.pcmodel.Post;
+import com.helpit.posts.pcmodel.Volunteer;
+import com.helpit.posts.repositories.FoundationRepository;
+import com.helpit.posts.repositories.PostRepository;
+import com.helpit.posts.repositories.VolunteerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;

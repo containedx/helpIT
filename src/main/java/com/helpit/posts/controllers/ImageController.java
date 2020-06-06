@@ -1,8 +1,8 @@
-package com.helpit.foundation.controllers;
+package com.helpit.posts.controllers;
 
-import com.helpit.foundation.model.Post;
-import com.helpit.foundation.services.ImageServiceImpl;
-import com.helpit.foundation.repositories.PostRepository;
+import com.helpit.posts.pcmodel.Post;
+import com.helpit.posts.services.ImageServiceImpl;
+import com.helpit.posts.repositories.PostRepository;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

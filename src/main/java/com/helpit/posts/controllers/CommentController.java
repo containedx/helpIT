@@ -1,6 +1,6 @@
-package com.helpit.foundation.controllers;
+package com.helpit.posts.controllers;
 
-import com.helpit.foundation.repositories.CommentRepository;
+import com.helpit.posts.repositories.CommentRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

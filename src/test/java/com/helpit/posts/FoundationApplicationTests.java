@@ -1,8 +1,8 @@
-package com.helpit.foundation;
+package com.helpit.posts;
 
-import com.helpit.foundation.repositories.CommentRepository;
-import com.helpit.foundation.repositories.FoundationRepository;
-import com.helpit.foundation.repositories.VolunteerRepository;
+import com.helpit.posts.repositories.CommentRepository;
+import com.helpit.posts.repositories.FoundationRepository;
+import com.helpit.posts.repositories.VolunteerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

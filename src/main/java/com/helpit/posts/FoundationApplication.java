@@ -1,8 +1,7 @@
-package com.helpit.foundation;
+package com.helpit.posts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
 @SpringBootApplication //(exclude = {HibernateJpaAutoConfiguration.class})
 public class FoundationApplication {

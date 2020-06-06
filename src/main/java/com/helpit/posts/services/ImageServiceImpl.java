@@ -1,7 +1,7 @@
-package com.helpit.foundation.services;
+package com.helpit.posts.services;
 
-import com.helpit.foundation.model.Post;
-import com.helpit.foundation.repositories.PostRepository;
+import com.helpit.posts.pcmodel.Post;
+import com.helpit.posts.repositories.PostRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
