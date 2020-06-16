@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashSet;
 
 @Service("userService")
 @Transactional
@@ -61,7 +62,8 @@ public class UserServiceImplementation implements UserService {
     public void saveFoundation (User user) {
         if(!user.getPassword().equals(user.getConfirmPassword()))
             return;
-
+        user.getFoundation().setPost(new HashSet<>());
+        user.getFoundation().setComment(new HashSet<>());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
         String type_name = user.getFoundation().getType().getType();

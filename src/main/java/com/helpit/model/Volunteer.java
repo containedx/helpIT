@@ -1,10 +1,15 @@
 package com.helpit.model;
 
+import com.helpit.posts.model.Comment;
+import com.helpit.posts.model.CommentUnderPost;
+import com.helpit.posts.model.Post;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Data
@@ -15,7 +20,7 @@ public class Volunteer{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "volunteer_id")
-  private int id;
+  private Integer id;
 
   @Column(name="volunteer_name")
   @NotNull
@@ -27,7 +32,17 @@ public class Volunteer{
   @NotBlank
   private String surname;
 
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name = "volunteer_volunteer_id")
+  private Set<Comment> comments = new HashSet<>();
 
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name = "volunteer_volunteer_id")
+  private Set<Post> posts = new HashSet<>();
+
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name = "volunteer_volunteer_id")
+  private Set<CommentUnderPost> commentUnderPost = new HashSet<>();
 
 
 }

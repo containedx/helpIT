@@ -1,10 +1,14 @@
 package com.helpit.model;
 
+import com.helpit.posts.model.Comment;
+import com.helpit.posts.model.Post;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -14,7 +18,7 @@ public class Foundation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "foundation_id")
-    private int id;
+    private Integer id;
 
     @Column(name = "foundation_name")
     @NotNull
@@ -35,6 +39,34 @@ public class Foundation {
     @JoinTable(name = "foundation_types", joinColumns = @JoinColumn(name = "foundation_id"), inverseJoinColumns = @JoinColumn(name = "type_id"))
     private Type type;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "foundation_foundation_id")
+    private Set<Comment> comment = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "foundation_foundation_id")
+    private Set<Post> post = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Foundation that = (Foundation) o;
+
+        return id != null ? id.equals(that.id) : that.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    public Set<Post> getPost() {
+        return post;
+    }
+
+    public void setPost(Set<Post> post) {
+        this.post = post;
+    }
 }
