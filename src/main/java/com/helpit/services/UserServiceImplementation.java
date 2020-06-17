@@ -52,7 +52,7 @@ public class UserServiceImplementation implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
 
-        Role role = roleRepository.findByRole("VOLUNTEER");
+        Role role = roleRepository.findByRole("ROLE_VOLUNTEER");
         user.setRole(role);
         userRepository.save(user);
     }
@@ -69,7 +69,7 @@ public class UserServiceImplementation implements UserService {
         String type_name = user.getFoundation().getType().getType();
         Type type = typesRepository.findByType(type_name);
         user.getFoundation().setType(type);
-        Role role = roleRepository.findByRole("FOUNDATION");
+        Role role = roleRepository.findByRole("ROLE_FOUNDATION");
         user.setRole(role);
         userRepository.save(user);
     }

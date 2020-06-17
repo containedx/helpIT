@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your post</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<!--/*@thymesVar id="post" type="com.helpit.posts.model.Post"*/-->
+
+<div class="container">
+<table class="table table-hover table-bordered">
+    <thead class="bg-danger">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">User</th>
+        <th scope="col">Foundation</th>
+        <th scope="col">Comment</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td scope="row" th:text="${post.id}">Bla</td>
+        <td th:text="${post.volunteer.login}">Bla</td>
+        <td th:text="${post.foundation.name}">Bla</td>
+        <td th:utext="${post.content}">Bla</td>
+
+        <div>
+            <img src = ""
+                 th:src="@{'/post/' + ${post.id} + '/renderimage'}"
+                 width="200" height="200" />
+        </div>
+    </tr>
+    </tbody>
+</table>
+    <button class="btn btn-warning" onclick= "location.href='/add_post/list'"> List posts </button>
+    <button class="btn btn-warning" onclick= "location.href='/add_comment/add2post'"> Add comment to the post </button>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

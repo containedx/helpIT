@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +8,10 @@
 </head>
 <body>
 
-<div>
+<div sec:authorize="hasRole('ROLE_FOUNDATION')">
     <h2>New Event!:</h2>
 
-    <form action="#" th:action="@{create_event}" th:object="${event}" th:method="POST">
+    <form action="#" th:action="@{create_event}" th:object="${event}" th:method="POST"  >
 
         <p>
             NAME:

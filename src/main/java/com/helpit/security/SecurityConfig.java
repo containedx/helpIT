@@ -24,14 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure (HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/panel")
-                .hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")
-                .antMatchers("/", "/**")
-                .access("permitAll")
-                .antMatchers("events/add").hasRole("FOUNDATION")
-                .antMatchers("events/sign/*").hasRole("VOLUNTEER")
+        http.authorizeRequests()
+                .antMatchers("events/add").authenticated()
+                .antMatchers("events/sign/*").hasAuthority("ROLE_VOLUNTEER")
+                .antMatchers("/panel").hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")
 
-                .and().formLogin().loginPage("/login").failureUrl("/login").permitAll()
+                .and().formLogin().loginPage("/login").failureUrl("/login")
 
                 .and().logout().logoutSuccessUrl("/")
 

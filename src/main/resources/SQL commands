@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS foundation_event( foundation_id BIGINT REFERENCES
  CONSTRAINT PRIMARY KEY(foundation_id,event_id));
 
 
-INSERT INTO roles(role) VALUES("VOLUNTEER"),("FOUNDATION"), ("ADMIN");
+INSERT INTO roles(role) VALUES("ROLE_VOLUNTEER"),("ROLE_FOUNDATION"), ("ROLE_ADMIN");
 INSERT INTO types(type_name) values ("TYPE_FAMILY"), ("TYPE_PEACE"), ("TYPE_ENVIRONMENT"), ("TYPE_DISEASE"), ("TYPE_EDUCATION"), ("TYPE_CULTURE"), ("TYPE_ANIMALS"), ("TYPE_ADDICTION");
 
 
@@ -33,9 +33,21 @@ CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, content 
 CREATE TABLE IF NOT EXISTS comments_under_posts (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_id INT volunteer_references volunteers(volunteer_id), post_id BIGINT references posts(id));
 drop database helpIT;
 
-drop table helpit.comments;
-drop table helpit.comments_under_posts;
-drop table helpit.posts;
+truncate addresses;
+truncate events;
+truncate foundation_event;
+truncate foundation_types;
+truncate foundations;
+truncate foundations;
+truncate roles;
+truncate types;
+truncate user_address;
+truncate user_foundation;
+truncate user_role;
+truncate user_volunteer;
+truncate users;
+truncate users_events;
+truncate volunteers;
 
 
 
