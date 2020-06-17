@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Events</title>
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 
 <div>
     <h2>New Event!:</h2>
