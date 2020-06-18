@@ -18,10 +18,10 @@
             <p th:text="${event.date}"/>
             <p th:text="${event.foundation}"/>
             <p th:text="${event.description}"/>
-            <div sec:authorize="hasRole('FOUNDATION')">
+            <div sec:authorize="hasRole('ROLE_FOUNDATION')">
             <a href="" th:href="@{'events/delete/' + ${event.id}}" ><button>DELETE</button></a> <br>
             </div>
-            <div sec:authorize="hasRole('VOLUNTEER')">
+            <div sec:authorize="hasRole('ROLE_VOLUNTEER')">
                 <a href="" th:href="@{'events/sign/' + ${event.id}}"><button>SIGN FOR EVENT</button></a>
             </div>
             <br><br>
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-        <div sec:authorize="hasRole('FOUNDATION')">
+        <div sec:authorize="hasRole('ROLE_FOUNDATION')">
         <a href="events/add"  ><button>ADD NEW EVENT</button></a>
         </div>
 

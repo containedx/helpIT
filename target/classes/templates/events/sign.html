@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" >
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Events</title>
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 
 <div>
-    <h2>  <p th:text="${event.name}" /> </h2>
-    Event id is: <p th:text= "${event.id}" />
-    Please fill in form below to sign for it.
 
+    <h2> You successfully signed for Event! </h2>
 
         <p>
-            EVENT_ID:
+            event:
             <p th:text="${event.id}"/>
         </p>
-        <div th:each="user : ${event.users}">
-            <p>
-                Zapisany uczestnik:
 
-            </p>
-            <p th:text="${user.email}"></p>
+        <p>
+            event:
+        <p th:text="${user.email}"/>
+        </p>
+
+
+
+
         </div>
 
 

@@ -56,13 +56,15 @@ public class EventController {
     }
 
     @RequestMapping("/events/sign/{id}")
-    public String signForEvent(@PathVariable String id, Model model, @Valid @ModelAttribute("event") Event event){
+    public String signForEvent(@PathVariable Long id, Model model, @Valid @ModelAttribute("event") Event event){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
-        event.getUsers().add(user);
-        repo.save(event);
-        model.addAttribute("event", event);
+        Event current_event = getEvent(id);
+        current_event.getUsers().add(user);
+        repo.save(current_event);
+        model.addAttribute("event", current_event);
+        model.addAttribute("user", user);
         return "events/sign";
     }
 
