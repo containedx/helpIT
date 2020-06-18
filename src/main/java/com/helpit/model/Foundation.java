@@ -47,6 +47,9 @@ public class Foundation {
     @JoinColumn(name = "foundation_foundation_id")
     private Set<Post> post = new HashSet<>();
 
+    @Lob
+    private Byte[] image;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,11 +65,4 @@ public class Foundation {
         return id != null ? id.hashCode() : 0;
     }
 
-    public Set<Post> getPost() {
-        return post;
-    }
-
-    public void setPost(Set<Post> post) {
-        this.post = post;
-    }
 }

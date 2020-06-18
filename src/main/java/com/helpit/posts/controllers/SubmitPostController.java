@@ -2,11 +2,15 @@ package com.helpit.posts.controllers;
 
 
 import com.helpit.model.Foundation;
+import com.helpit.model.User;
 import com.helpit.posts.model.Post;
 import com.helpit.model.Volunteer;
 import com.helpit.posts.repositories.PostRepository;
 import com.helpit.repositories.FoundationRepository;
+import com.helpit.repositories.UserRepository;
 import com.helpit.repositories.VolunteerRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,14 +21,16 @@ import java.util.Optional;
 
 @Controller
 public class SubmitPostController {
-    private PostRepository postRepository;
-    private VolunteerRepository volunteerRepository;
-    private FoundationRepository foundationRepository;
+    private final PostRepository postRepository;
+    private final VolunteerRepository volunteerRepository;
+    private final FoundationRepository foundationRepository;
+    private final UserRepository userRepository;
 
-    public SubmitPostController(PostRepository postRepository, VolunteerRepository volunteerRepository, FoundationRepository foundationRepository) {
+    public SubmitPostController(PostRepository postRepository, VolunteerRepository volunteerRepository, FoundationRepository foundationRepository, UserRepository userRepository) {
         this.postRepository = postRepository;
         this.volunteerRepository = volunteerRepository;
         this.foundationRepository = foundationRepository;
+        this.userRepository = userRepository;
     }
 
     @RequestMapping("/add_post/submit")
@@ -92,6 +98,33 @@ public class SubmitPostController {
 
         model.addAttribute("comments", postRepository.findAll());
         return "redirect:/foundation/" + id + "/show";
+    }
+
+    @RequestMapping({"/charity/{id}/add_article"})
+    public String addArticleToFoundation(@PathVariable String id,
+                                         @RequestParam String title,
+                                         @RequestParam String editordata)
+    {
+        Post c = new Post();
+        c.setContent(editordata);
+        c.setTitle(title);
+        postRepository.save(c);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User user = userRepository.findByEmail(currentUserName);
+        user.getVolunteer().getPosts().add(c);
+        userRepository.save(user);
+
+        Optional<Foundation> f = foundationRepository.findById(Integer.valueOf(id));
+        if (f.isPresent()) {
+            c.setVolunteer(user.getVolunteer());
+            c.setFoundation(f.get());
+            f.get().getPost().add(c);
+            foundationRepository.save(f.get());
+        }
+
+        return "redirect:/charity/" + id + "/show";
     }
 }
 

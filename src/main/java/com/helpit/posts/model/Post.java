@@ -24,11 +24,11 @@ public class Post{
     @ManyToOne
     private Foundation foundation;
 
+    private String title;
+
     @Lob
     private String content;
 
-    @Lob
-    private Byte[] image;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
@@ -52,15 +52,4 @@ public class Post{
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", volunteer=" + volunteer +
-                ", foundation=" + foundation +
-                ", content='" + content + '\'' +
-                ", image=" + Arrays.toString(image) +
-                ", commentUnderPost=" + commentUnderPost +
-                '}';
-    }
 }

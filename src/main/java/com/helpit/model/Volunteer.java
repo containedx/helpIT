@@ -44,5 +44,6 @@ public class Volunteer{
   @JoinColumn(name = "volunteer_volunteer_id")
   private Set<CommentUnderPost> commentUnderPost = new HashSet<>();
 
-
+  @Lob
+  private Byte[] image;
 }

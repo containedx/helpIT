@@ -13,13 +13,14 @@ import java.util.Optional;
 
 @Controller
 public class PostController {
-    private final PostRepository post_repository;
-    private final FoundationRepository foundation_repository;
+    private final PostRepository postRepository;
+    private final FoundationRepository foundationRepository;
 
-    public PostController(PostRepository post_repository, FoundationRepository foundation_repository) {
-        this.post_repository = post_repository;
-        this.foundation_repository = foundation_repository;
+    public PostController(PostRepository postRepository, FoundationRepository foundationRepository) {
+        this.postRepository = postRepository;
+        this.foundationRepository = foundationRepository;
     }
+
 
     @RequestMapping({"/add_post/add"})
     public String getAddComment()
@@ -30,7 +31,7 @@ public class PostController {
     @RequestMapping({"/add_post/{id}/add_2_foundation"})
     public String AddPost2Foundation(@PathVariable String id, Model model)
     {
-        Optional<Foundation> foundation = foundation_repository.findById(Integer.valueOf(id));
+        Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
         if (foundation.isPresent()) {
             model.addAttribute("foundation", foundation.get());
         }
@@ -43,9 +44,7 @@ public class PostController {
     @RequestMapping({"/add_post/list"})
     public String getListComment(Model model)
     {
-        System.out.println("kurwa 1");
-        model.addAttribute("posts", post_repository.findAll());
-        System.out.println("kurwa 2");
+        model.addAttribute("posts", postRepository.findAll());
         return "/add_post/list";
     }
 
@@ -53,7 +52,7 @@ public class PostController {
     public String getListComment(@PathVariable String id, Model model)
     {
 
-        Optional<Post> post = post_repository.findById(Integer.valueOf(id));
+        Optional<Post> post = postRepository.findById(Integer.valueOf(id));
         if (post.isPresent()) {
             model.addAttribute("post", post.get());
         }
@@ -83,4 +82,5 @@ public class PostController {
     {
         return "/article/add";
     }
+
 }

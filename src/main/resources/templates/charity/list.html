@@ -10,7 +10,7 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
-    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="/css/root.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -71,256 +71,256 @@
 
 <section id="search-result">
     <div th:each="foundation : ${foundations}">
-    <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">
+    <a th:href="'/charity/' + ${foundation.getId()} + '/show'" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.jpg}" class="charity-card-img">
         <div class="charity-card-title" th:text="${foundation.getName()}">
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span th:text="${foundation.getType().getType()}">Education</span>
         </div>
     </a>
     </div>
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch1.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Education</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch2.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch2.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Animals</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch3.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Environment</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.png}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch1.png}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{../../images/category.png}" class="charity-card-category-img">
             <span>Family</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch2.png}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch2.png}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Disease</span>
         </div>
     </a>
 
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch3.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Addiction</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch1.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Environment</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch2.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch2.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Culture</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch3.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Disease</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.png}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch1.png}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Family</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch2.png}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch2.png}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Addicton</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch1.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Education</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch2.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch2.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Animals</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch3.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Environment</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.png}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch1.png}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Family</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch2.png}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch2.png}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Disease</span>
         </div>
     </a>
 
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch3.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Addiction</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{../../images/ch1.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Environment</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch2.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch2.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Culture</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch3.jpg}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Disease</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch1.png}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch1.png}" class="charity-card-img">
         <div class="charity-card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Family</span>
         </div>
     </a>
 
     <a href="/charity/show" class="charity-card">
-        <img alt="charity_img" th:src="@{images/ch2.png}" class="charity-card-img">
+        <img alt="charity_img" th:src="@{/images/ch2.png}" class="charity-card-img">
         <div class="charity- card-title">
             Helping Found
         </div>
         <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
             <span>Addicton</span>
         </div>
     </a>

@@ -1,8 +1,11 @@
 package com.helpit.posts.controllers;
 
+import com.helpit.model.Foundation;
 import com.helpit.posts.model.Post;
 import com.helpit.posts.services.ImageServiceImpl;
 import com.helpit.posts.repositories.PostRepository;
+import com.helpit.repositories.FoundationRepository;
+import com.helpit.repositories.VolunteerRepository;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,54 +22,59 @@ import java.util.Optional;
 
 @Controller
 public class ImageController {
-    private PostRepository post_repository;
-    private final ImageServiceImpl image_service;
+    private final FoundationRepository foundationRepository;
+    private final VolunteerRepository volunteerRepository;
 
-    public ImageController(PostRepository post_repository, ImageServiceImpl image_service) {
-        this.post_repository = post_repository;
-        this.image_service = image_service;
+    public ImageController(FoundationRepository foundationRepository, VolunteerRepository volunteerRepository, ImageServiceImpl imageService) {
+        this.foundationRepository = foundationRepository;
+        this.volunteerRepository = volunteerRepository;
+        this.imageService = imageService;
     }
 
-    @RequestMapping("/add_post/{id}/addImage")
+    private final ImageServiceImpl imageService;
+
+
+
+    @RequestMapping("/foundation/{id}/addImage")
     public String getImageForm(@PathVariable String id, Model model)
     {
-        Optional<Post> post = post_repository.findById(Integer.valueOf(id));
-        if(post.isPresent()){
-            model.addAttribute("post", post.get());
+        Optional<Foundation> p = foundationRepository.findById(Integer.valueOf(id));
+        if(p.isPresent()){
+            model.addAttribute("foundation", p.get());
         }
         else {
-            throw new RuntimeException("Cannot add image to post, because it is not present in the database");
+            throw new RuntimeException("Cannot add image to foundation, because it is not present in the database");
         }
 
-        return "add_post/image_form";
+        return "add_post/image_form"; //zmien to !!!
     }
 
-    @RequestMapping("/post/{id}/image")
+    @RequestMapping("/foundation/{id}/image")
     public String persistImage(@PathVariable String id, @RequestParam("imagefile")MultipartFile file, Model model) {
 
-        image_service.saveImageFile(Integer.valueOf(id), file);
-        Optional<Post> post = post_repository.findById(Integer.valueOf(id));
-        if (post.isPresent()) {
-            model.addAttribute("post", post.get());
+        imageService.saveImageFileToFoundation(Integer.valueOf(id), file);
+        Optional<Foundation> p = foundationRepository.findById(Integer.valueOf(id));
+        if(p.isPresent()){
+            model.addAttribute("foundation", p.get());
         }
         else {
             throw new RuntimeException("Sth went wrong in imageController");
         }
 
-        return "add_post/display_post";
+        return "add_post/display_post"; //zmien to !!
     }
 
-    @GetMapping("/post/{id}/renderimage")
+    @GetMapping("/foundation/{id}/renderimage")
     public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) {
 
         try {
-            Post post = post_repository.findById(Integer.valueOf(id)).get();
+            Foundation p = foundationRepository.findById(Integer.valueOf(id)).get();
 
-            if( post.getImage() != null ) {
-                byte[] unwrapped_image = new byte[post.getImage().length];
+            if( p.getImage() != null ) {
+                byte[] unwrapped_image = new byte[p.getImage().length];
 
                 int i = 0;
-                for ( Byte b : post.getImage() ) {
+                for ( Byte b : p.getImage() ) {
                     unwrapped_image[i++] = b;
                 }
 

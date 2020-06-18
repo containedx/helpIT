@@ -3,8 +3,8 @@ CREATE DATABASE helpIT;
 
 CREATE TABLE IF NOT EXISTS users (user_id BIGINT PRIMARY KEY auto_increment, username varchar(255) NOT NULL UNIQUE, email varchar(255) NOT NULL UNIQUE, password varchar(255) NOT NULL, active int NOT NULL,created_at timestamp NOT NULL DEFAULT current_timestamp );
 CREATE TABLE IF NOT EXISTS roles (role_id INT PRIMARY KEY auto_increment, role varchar(255) NOT NULL UNIQUE);
-CREATE TABLE IF NOT EXISTS foundations(foundation_id BIGINT AUTO_INCREMENT PRIMARY KEY, foundation_name VARCHAR(255), foundation_owner_name VARCHAR(255), foundation_owner_surname VARCHAR(255));
-CREATE TABLE IF NOT EXISTS volunteers(volunteer_id BIGINT AUTO_INCREMENT PRIMARY KEY, volunteer_name VARCHAR(255), volunteer_surname VARCHAR(255));
+CREATE TABLE IF NOT EXISTS foundations(foundation_id BIGINT AUTO_INCREMENT PRIMARY KEY,  image varbinary(8000), foundation_name VARCHAR(255), foundation_owner_name VARCHAR(255), foundation_owner_surname VARCHAR(255));
+CREATE TABLE IF NOT EXISTS volunteers(volunteer_id BIGINT AUTO_INCREMENT PRIMARY KEY, image varbinary(8000), volunteer_name VARCHAR(255), volunteer_surname VARCHAR(255));
 CREATE TABLE IF NOT EXISTS types(type_id INT AUTO_INCREMENT PRIMARY KEY , type_name VARCHAR(255) NOT NULL);
 CREATE TABLE IF NOT EXISTS foundation_types(foundation_id BIGINT REFERENCES users(user_id), type_id INT REFERENCES types(type_id), CONSTRAINT PRIMARY KEY(foundation_id,type_id));
 CREATE TABLE IF NOT EXISTS addresses(address_id BIGINT AUTO_INCREMENT PRIMARY KEY, address_city VARCHAR(255), address_street VARCHAR(255), address_postcode VARCHAR(255), address_number_of_home VARCHAR(16), address_number_of_flat INT);
@@ -24,13 +24,13 @@ INSERT INTO roles(role) VALUES("ROLE_VOLUNTEER"),("ROLE_FOUNDATION"), ("ROLE_ADM
 INSERT INTO types(type_name) values ("TYPE_FAMILY"), ("TYPE_PEACE"), ("TYPE_ENVIRONMENT"), ("TYPE_DISEASE"), ("TYPE_EDUCATION"), ("TYPE_CULTURE"), ("TYPE_ANIMALS"), ("TYPE_ADDICTION");
 
 
-call util.trunctables('helpit');
+call util.trunctables('helpIT');
 #Adrian
 
 
 CREATE TABLE IF NOT EXISTS comments (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id));
-CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, content text, image varbinary(8000), volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id));
-CREATE TABLE IF NOT EXISTS comments_under_posts (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_id INT volunteer_references volunteers(volunteer_id), post_id BIGINT references posts(id));
+CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, title text, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id));
+CREATE TABLE IF NOT EXISTS comments_under_posts (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), post_id BIGINT references posts(id));
 drop database helpIT;
 
 truncate addresses;
