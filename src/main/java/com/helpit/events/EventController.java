@@ -1,5 +1,7 @@
 package com.helpit.events;
 
+import com.helpit.model.Foundation;
+import com.helpit.repositories.FoundationRepository;
 import com.helpit.repositories.UserRepository;
 import com.helpit.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -21,16 +24,27 @@ public class EventController {
 
     private final UserRepository userRepository;
 
+    private final FoundationRepository foundationRepository;
+
     @Autowired
-    public EventController (EventRepository repo, UserRepository userRepository) {
+    public EventController (EventRepository repo, UserRepository userRepository, FoundationRepository foundationRepository) {
         this.repo = repo;
         this.userRepository=userRepository;
+        this.foundationRepository=foundationRepository;
     }
 
-
+    //all events
     @RequestMapping(value="/events",method=RequestMethod.GET)
     public String returnEventView(WebRequest request, Model model) {
         List<Event> listEvents = listAll();
+        model.addAttribute("listEvents", listEvents);
+        return "events/eventList";
+    }
+
+    @RequestMapping(value="/{foundation_id}/events",method=RequestMethod.GET)
+    public String showFoundationEvents(@PathVariable int foundation_id, Model model) {
+        Foundation foundation = foundationRepository.findById(foundation_id);
+        List<Event> listEvents = repo.findByFoundation(foundation);
         model.addAttribute("listEvents", listEvents);
         return "events/eventList";
     }
@@ -56,7 +70,7 @@ public class EventController {
     }
 
     @RequestMapping("/events/sign/{id}")
-    public String signForEvent(@PathVariable Long id, Model model, @Valid @ModelAttribute("event") Event event){
+    public String signForEvent(@PathVariable Long id, Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
