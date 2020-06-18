@@ -57,13 +57,11 @@ public class EventController {
 
     @RequestMapping("/events/sign/{id}")
     public String signForEvent(@PathVariable String id, Model model, @Valid @ModelAttribute("event") Event event){
-        System.out.println("kurwa1");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("kurwa2");
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
         event.getUsers().add(user);
-        //repo.save(event);
+        repo.save(event);
         model.addAttribute("event", event);
         return "events/sign";
     }
