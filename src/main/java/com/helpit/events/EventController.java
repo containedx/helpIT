@@ -57,9 +57,7 @@ public class EventController {
 
     @RequestMapping("/events/sign/{id}")
     public String signForEvent(@PathVariable String id, Model model, @Valid @ModelAttribute("event") Event event){
-        System.out.println("kurwa1");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("kurwa2");
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
         event.getUsers().add(user);
@@ -87,6 +85,4 @@ public class EventController {
     public void delete(Long id){
         repo.deleteById(id);
     }
-
-
 }

@@ -65,4 +65,22 @@ public class PostController {
 
         return "/add_post/display_post";
     }
+
+    @RequestMapping({"/article/show"})
+    public String getPostShow()
+    {
+        return "/article/show";
+    }
+
+    @RequestMapping({"/article/edit"})
+    public String getPostEdit()
+    {
+        return "/article/edit";
+    }
+
+    @RequestMapping({"/article/add"})
+    public String getPostAdd()
+    {
+        return "/article/add";
+    }
 }

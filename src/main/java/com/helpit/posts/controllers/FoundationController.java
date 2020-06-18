@@ -28,11 +28,41 @@ public class FoundationController {
         Optional<Foundation> foundation = foundation_repository.findById(Integer.valueOf(id));
         if(foundation.isPresent()){
             model.addAttribute("foundation", foundation.get());
-
         }
         else {
             throw new RuntimeException("Cannot display foundation, because it is not present in the database");
         }
         return "/foundation/show";
+    }
+
+    @RequestMapping({"/charity/show"})
+    public String getCharityShow()
+    {
+        return "/charity/show";
+    }
+
+    @RequestMapping({"/charity/events"})
+    public String getCharityEvents()
+    {
+        return "/charity/events";
+    }
+
+    @RequestMapping({"/charity/sponsors"})
+    public String getCharitySponsors()
+    {
+        return "/charity/sponsors";
+    }
+
+    @RequestMapping({"/charity/edit"})
+    public String getCharityEdit()
+    {
+        return "/registrations/edit_charity";
+    }
+
+    @RequestMapping({"/foundations_list"})
+    public String getFoundList(Model model)
+    {
+        model.addAttribute("foundations", foundation_repository.findAll());
+        return "/foundation/foundations_list";
     }
 }
