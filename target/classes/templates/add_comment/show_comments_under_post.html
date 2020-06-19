@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List posts</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<!--/*@thymesVar id="post" type="com.helpit.posts.model.Post"*/-->
+
+
+<div class="container">
+    <h1>Post view</h1>
+    <hr>
+    <table class="table table-hover table-bordered">
+        <thead class="bg-danger">
+        <tr>
+            <th scope="col">User</th>
+            <th scope="col">Content</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="comment : ${comments}">
+            <td th:text="${comment.volunteer.login}">Bla</td>
+            <td th:utext="${comment.content}">Bla</td>
+        </tr>
+        </tbody>
+
+    </table>
+    <button class="btn btn-warning" onclick= "location.href='/foundation/list'"> Foundations list </button>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

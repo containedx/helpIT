@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+    <link rel="stylesheet" href="/css/root.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:replace="partials/nav::nav"></div>
+
+<section id="search-bar">
+
+    <div id="search-options">
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+            <label for="styled-checkbox-1">Family</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2">
+            <label for="styled-checkbox-2">Peace</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" value="value3">
+            <label for="styled-checkbox-3">Environment</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" value="value4">
+            <label for="styled-checkbox-4">Disease</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" value="value5">
+            <label for="styled-checkbox-5">Education</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-6" type="checkbox" value="value6">
+            <label for="styled-checkbox-6">Culture</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" value="value7">
+            <label for="styled-checkbox-7">Animals</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" value="value8">
+            <label for="styled-checkbox-8">Addiction</label>
+        </div>
+
+        <a role="button">Filter</a>
+
+    </div>
+
+</section>
+
+<section id="search-result">
+    <div th:each="foundation : ${foundations}">
+    <a th:href="'/charity/' + ${foundation.getId()} + '/show'" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.jpg}" class="charity-card-img">
+        <div class="charity-card-title" th:text="${foundation.getName()}">
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span th:text="${foundation.getType().getType()}">Education</span>
+        </div>
+    </a>
+    </div>
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Education</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch2.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Animals</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Environment</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.png}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{../../images/category.png}" class="charity-card-category-img">
+            <span>Family</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch2.png}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Disease</span>
+        </div>
+    </a>
+
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Addiction</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Environment</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch2.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Culture</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Disease</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.png}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Family</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch2.png}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Addicton</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Education</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch2.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Animals</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Environment</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.png}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Family</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch2.png}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Disease</span>
+        </div>
+    </a>
+
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Addiction</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{../../images/ch1.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Environment</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch2.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Culture</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch3.jpg}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Disease</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch1.png}" class="charity-card-img">
+        <div class="charity-card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Family</span>
+        </div>
+    </a>
+
+    <a href="/charity/show" class="charity-card">
+        <img alt="charity_img" th:src="@{/images/ch2.png}" class="charity-card-img">
+        <div class="charity- card-title">
+            Helping Found
+        </div>
+        <div class="charity-card-category">
+            <img th:src="@{/images/category.png}" class="charity-card-category-img">
+            <span>Addicton</span>
+        </div>
+    </a>
+
+
+</section>
+
+<footer id="foot"></footer>
+
+<script type="text/javascript" charset="utf-8">
+
+    function hideShowSignIn() {
+
+        var y  = document.querySelector('#drop_view');
+        var x = document.getElementById("dropdown-signup");
+        var btn = document.getElementById("signup-btn")
+
+        if(x.style.display === 'none' || x.style.display === '') {
+
+            if(y.style.display === 'block') {
+                y.style.display = "none";
+            }
+
+            x.style.display = "block";
+            btn.style.left = "200px";
+        } else {
+            x.style.display = "none";
+            btn.style.left = "10px";
+        }
+    }
+
+    function hideShowOption() {
+
+        var x  = document.querySelector('#drop_view');
+        var y = document.getElementById("dropdown-signup");
+
+        if(x.style.display === 'none' || x.style.display === '') {
+
+            if(y.style.display === 'block') {
+                y.style.display = "none";
+            }
+
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>
+
+
+</body>
+
+</html>

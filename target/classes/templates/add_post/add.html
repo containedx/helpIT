@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add new post</title>
+
+    <link th:rel="stylesheet" th:href="@{/assets/summernote/summernote-bs4.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8 mt-5">
+            <h2 style="background: red; border-style: solid; border-radius: 5px; border-width: thin; text-align: center">Add new post</h2>
+            <hr>
+            <form method="post" th:action="@{/add_post/submit}">
+
+                <div class="form-group">
+                    <label for="login">User:</label>
+                    <input type="text" id="login" name="login" placeholder="User" autocomplete="off" class="form-control"
+                           />
+                </div>
+
+                <div class="form-group">
+                    <label for="foundation">Foundation:</label>
+                    <input type="text" id="foundation" name="foundation" placeholder="Foundation" autocomplete="off" class="form-control"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Content:</label>
+                    <textarea type="text" rows="4" id="content" name="content" placeholder="Content" class="form-control"
+                               autocomplete="off"></textarea>
+                </div>
+
+                <button class="btn btn-warning" type="submit">Submit form</button>
+
+                <br><br>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/summernote/summernote-bs4.js}"></script>
+
+<script>
+    $('#content').summernote({
+        height: 200
+    });
+</script>
+
+</body>
+</html>

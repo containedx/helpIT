@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<nav th:fragment="menu" id="nav">
+
+    <a id="navbar-logo" href="/">
+        <img alt="helpIT" th:src="@{/images/logo.png}" >
+        <h1>HelpIT</h1>
+    </a>
+
+
+    <div id="navbar-links">
+        <div><!-- styler --></div>
+
+        <a class="navbar-link" href="/">
+            <span>Find Charities</span>
+        </a>
+
+        <a class="navbar-link" href="/events">
+            <span>Events</span>
+        </a>
+
+    </div>
+
+    <div id="navbar-registers">
+        <a href="/login" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">
+            <span>Sign in / Register</span>
+        </a>
+
+        <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
+            <form th:action="logout" method='POST'>
+                <button type="submit" th:text="#{menu.logout}"></button>
+            </form>
+        </a>
+
+    </div>
+
+    <div id="navbar-user" >
+
+        <a id="options-btn" role="button" onclick="hideShowOption()">
+            <img alt="user_img" th:src="@{/images/user.png}" >
+
+            <div id="navbar-dropdown">
+                <i class="im im-angle-down"></i>
+            </div>
+        </a>
+
+        <ul class='dropdown-menu' id="drop_view">
+            <li class='option' id='option1'>
+                <a href="/article/add">Add new Article</a>
+            </li>
+            <li class='option' id='option2'>
+                <a href="/events/add">Add new Event</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+</body>
+</html>

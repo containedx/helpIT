@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+
+<div sec:authorize="hasRole('ROLE_FOUNDATION')">
+    <h2>New Event!:</h2>
+
+    <form action="#" th:action="@{create_event}" th:object="${event}" th:method="POST"  >
+
+        <p>
+            NAME:
+            <input type="text" th:field="*{name}"/>
+        </p>
+        <p>
+            DATE&TIME:<label>
+            <input type="date" th:field="*{date}"/>
+        </label>
+        </p>
+        <p>
+            DESCRIPTION: <label>
+            <textarea th:field="*{description}"></textarea>
+        </label>
+        </p>
+        <p>
+            <input type="submit" value="Create Event"/>
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

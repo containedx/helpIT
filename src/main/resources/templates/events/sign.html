@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+
+<div>
+    <h2>  <p th:text="${event.name}" /> </h2>
+    Event id is: <p th:text= "${event.id}" />
+    Please fill in form below to sign for it.
+
+
+        <p>
+            EVENT_ID:
+            <p th:text="${event.id}"/>
+        </p>
+        <div th:each="user : ${event.users}">
+            <p>
+                Zapisany uczestnik:
+
+            </p>
+            <p th:text="${user.email}"></p>
+        </div>
+
+
+</div>
+
+
+<a th:href="@{/events}">Back to all Events</a>
+
+
+</body>
+</html>

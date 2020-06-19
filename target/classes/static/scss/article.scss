@@ -13,10 +13,10 @@
 
   #article-content{
     display: grid;
-    grid-template-rows: 40px 80px 350px auto 300px auto;
+    grid-template-rows: 40px 80px 350px auto auto auto;
     width: 100%;
     max-width: 850px;
-    margin: 0 auto;
+    margin: 0 auto 60px auto;
 
     .article-content-nav{
       background: #f95c57;
@@ -101,17 +101,17 @@
       }
     }
 
-
     .article-content-text{
       border: 1px solid $border-color-strong;
       border-top: none;
+      margin:  0 0 45px 0;
 
       -webkit-box-shadow: 0px 15px 20px -18px rgb(211, 202, 216);
       -moz-box-shadow: 0px 15px 20px -18px  rgb(211, 202, 216);
       box-shadow: 0px 15px 20px -18px rgb(211, 202, 216);
 
       p{
-        padding: 10px 17px 15px 17px;
+        padding: 10px 17px 0 17px;
         line-height: 23px;
         font-size: 13px;
         color: #222;
@@ -128,7 +128,6 @@
     .article-content-add-comment{
       display: grid;
       grid-template-rows: 1fr 50px;
-      margin: 60px 0 0 0;
       position: relative;
 
       span{

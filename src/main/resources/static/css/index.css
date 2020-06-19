@@ -40,15 +40,16 @@
   #nav #navbar-links {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr repeat(1, auto);
+    grid-template-columns: 1fr repeat(2, auto);
     line-height: 60px;
+    column-gap: 10px;
     margin: 0 25px 0 0; }
     #nav #navbar-links .navbar-link {
       text-decoration: none;
       color: #111;
       position: relative;
       font-size: 13px;
-      padding: 0 5px 0 2px; }
+      padding: 0 9px 0 5px; }
       @media (max-width: 790px) {
         #nav #navbar-links .navbar-link {
           display: none; } }
@@ -66,7 +67,6 @@
       grid-template-columns: 3fr auto;
       margin: 11px 15px 0 0;
       border-radius: 60px;
-      padding: 0 28px;
       text-decoration: none;
       color: #fff;
       background: linear-gradient(to bottom right, #f06560, #e64339);
@@ -74,6 +74,19 @@
       cursor: pointer; }
       #nav #navbar-registers #signup-btn:hover {
         background: linear-gradient(to bottom right, #e2645f, #d64238); }
+      #nav #navbar-registers #signup-btn:first-child :not(form) {
+        padding: 0 28px; }
+      #nav #navbar-registers #signup-btn:first-child form button {
+        width: 100%;
+        height: 38px;
+        cursor: pointer;
+        border-radius: 60px;
+        padding: 0 28px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        color: #fff;
+        font-size: 14px;
+        line-height: 38px; }
       #nav #navbar-registers #signup-btn span {
         line-height: 38px;
         font-size: 14px;

@@ -46,15 +46,16 @@ html, body {
   #nav #navbar-links {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr repeat(1, auto);
+    grid-template-columns: 1fr repeat(2, auto);
     line-height: 60px;
+    column-gap: 10px;
     margin: 0 25px 0 0; }
     #nav #navbar-links .navbar-link {
       text-decoration: none;
       color: #111;
       position: relative;
       font-size: 13px;
-      padding: 0 5px 0 2px; }
+      padding: 0 9px 0 5px; }
       @media (max-width: 790px) {
         #nav #navbar-links .navbar-link {
           display: none; } }
@@ -72,7 +73,6 @@ html, body {
       grid-template-columns: 3fr auto;
       margin: 11px 15px 0 0;
       border-radius: 60px;
-      padding: 0 28px;
       text-decoration: none;
       color: #fff;
       background: linear-gradient(to bottom right, #f06560, #e64339);
@@ -80,6 +80,19 @@ html, body {
       cursor: pointer; }
       #nav #navbar-registers #signup-btn:hover {
         background: linear-gradient(to bottom right, #e2645f, #d64238); }
+      #nav #navbar-registers #signup-btn:first-child :not(form) {
+        padding: 0 28px; }
+      #nav #navbar-registers #signup-btn:first-child form button {
+        width: 100%;
+        height: 38px;
+        cursor: pointer;
+        border-radius: 60px;
+        padding: 0 28px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        color: #fff;
+        font-size: 14px;
+        line-height: 38px; }
       #nav #navbar-registers #signup-btn span {
         line-height: 38px;
         font-size: 14px;
@@ -299,7 +312,7 @@ html, body {
     max-width: 330px;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 80px 60px 60px 60px 60px;
+    grid-template-rows: 80px 60px 60px 60px 60px 60px;
     row-gap: 20px;
     border: 1px solid #d6cdca;
     border-top: none;
@@ -778,7 +791,8 @@ html, body {
       #charity #charity-content .charity-content-feed #events {
         display: grid;
         grid-auto-rows: 120px;
-        row-gap: 20px; }
+        row-gap: 20px;
+        margin: 34px 0 0 0; }
         #charity #charity-content .charity-content-feed #events .event {
           display: grid;
           grid-template-columns: 140px 1fr; }
@@ -829,10 +843,10 @@ html, body {
       padding: 90px 20px 20px  10px; } }
   #article #article-content {
     display: grid;
-    grid-template-rows: 40px 80px 350px auto 300px auto;
+    grid-template-rows: 40px 80px 350px auto auto auto;
     width: 100%;
     max-width: 850px;
-    margin: 0 auto; }
+    margin: 0 auto 60px auto; }
     #article #article-content .article-content-nav {
       background: #f95c57;
       border: 1px solid #b2b2b2;
@@ -894,11 +908,12 @@ html, body {
     #article #article-content .article-content-text {
       border: 1px solid #b2b2b2;
       border-top: none;
+      margin: 0 0 45px 0;
       -webkit-box-shadow: 0px 15px 20px -18px #d3cad8;
       -moz-box-shadow: 0px 15px 20px -18px #d3cad8;
       box-shadow: 0px 15px 20px -18px #d3cad8; }
       #article #article-content .article-content-text p {
-        padding: 10px 17px 15px 17px;
+        padding: 10px 17px 0 17px;
         line-height: 23px;
         font-size: 13px;
         color: #222; }
@@ -909,7 +924,6 @@ html, body {
     #article #article-content .article-content-add-comment {
       display: grid;
       grid-template-rows: 1fr 50px;
-      margin: 60px 0 0 0;
       position: relative; }
       #article #article-content .article-content-add-comment span {
         position: absolute;
@@ -987,7 +1001,7 @@ html, body {
       padding: 90px 20px 20px  10px; } }
   #event #event-content {
     display: grid;
-    grid-template-rows: 40px 70px auto auto 250px auto;
+    grid-template-rows: 40px 70px auto auto;
     width: 100%;
     max-width: 850px;
     margin: 0 auto; }

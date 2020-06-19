@@ -33,7 +33,7 @@
             <div class="charity-content-user">
                 <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
 
-                <h5>CHARITY LIFE</h5>
+                <h5 th:text="${foundation.getName()}"></h5>
             </div>
 
             <div class="charity-content-links">
@@ -46,12 +46,12 @@
 
             <div class="charity-content-feed">
 
-                <form id="add-article" action="">
+                <form id="add-article" th:action="'/charity/' + ${foundation.getId()} + '/add_article'">
                     <div class="add-article-content">
                         <div class="input-article">
                             <span>Article title</span>
                             <label>
-                                <input type="text"/>
+                                <input id="title" name="title" type="text"/>
                             </label>
                         </div>
 
@@ -73,13 +73,12 @@
                 </form>
 
                 <div id="articles">
-                    <div class="article">
+                    <div class="article" th:each="article : ${articles}">
                         <img th:src="@{/images/article.png}" alt="">
-
                         <div class="article-details">
-                            <div class="article-title">Title</div>
-                            <div class="article-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                            <a href="/article/show">read more</a>
+                            <div class="article-title" th:utext="${article.getVolunteer().getName()} + ' ' + ${article.getVolunteer().getSurname()}">Author</div>
+                            <div class="article-content" th:utext="${article.getTitle()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                            <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
                         </div>
                     </div>
 
@@ -164,7 +163,8 @@
             toolbar: [
                 ['font', ['bold', 'underline']],
                 ['para', ['ul', 'ol']],
-                ['view', ['fullscreen', 'codeview']]
+                ['view', ['fullscreen', 'codeview']],
+                ['insert', ['link', 'picture', 'video']]
             ],
             disableResizeEditor: true,
         });
