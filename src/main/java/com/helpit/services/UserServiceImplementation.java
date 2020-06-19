@@ -51,6 +51,9 @@ public class UserServiceImplementation implements UserService {
     public void saveVolunteer (User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
+        user.getVolunteer().setPosts(new HashSet<>());
+        user.getVolunteer().setComments(new HashSet<>());
+        user.getVolunteer().setCommentsUnderPost(new HashSet<>());
 
         Role role = roleRepository.findByRole("ROLE_VOLUNTEER");
         user.setRole(role);

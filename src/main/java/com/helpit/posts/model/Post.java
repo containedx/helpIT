@@ -32,7 +32,7 @@ public class Post{
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
-    private Set<CommentUnderPost> commentUnderPost = new HashSet<>();
+    private Set<CommentUnderPost> commentsUnderPost = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

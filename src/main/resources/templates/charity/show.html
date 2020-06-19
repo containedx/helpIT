@@ -74,10 +74,11 @@
 
                 <div id="articles">
                     <div class="article" th:each="article : ${articles}">
+                        <img th:src="@{/images/article.png}" alt="">
                         <div class="article-details">
-                            <div class="article-title" th:utext="${article.getTitle()}">Title</div>
-                            <div class="article-content" th:utext="${article.getContent()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                            <a href="/article/show">read more</a>
+                            <div class="article-title" th:utext="${article.getVolunteer().getName()} + ' ' + ${article.getVolunteer().getSurname()}">Author</div>
+                            <div class="article-content" th:utext="${article.getTitle()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                            <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
                         </div>
                     </div>
 

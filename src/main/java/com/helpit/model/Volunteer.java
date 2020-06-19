@@ -42,7 +42,7 @@ public class Volunteer{
 
   @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(name = "volunteer_volunteer_id")
-  private Set<CommentUnderPost> commentUnderPost = new HashSet<>();
+  private Set<CommentUnderPost> commentsUnderPost = new HashSet<>();
 
   @Lob
   private Byte[] image;

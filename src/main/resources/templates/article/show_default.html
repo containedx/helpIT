@@ -35,16 +35,15 @@
         </div>
 
         <div class="article-content-title">
-            <h2 th:text="${article.getTitle()}">This is the awesome Quokka Article Title</h2>
+            <h2>This is the awesome Quokka Article Title</h2>
         </div>
 
         <div class="article-content-image">
             <img th:src="@{/images/bg.png}">
-<!--            moznaby tu wrzucic zdjecie autora zamiast tego-->
         </div>
 
         <div class="article-content-text">
-            <p th:utext="${article.getContent()}">
+            <p>
                 What is Lorem Ipsum?
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
@@ -53,7 +52,7 @@
             </p>
         </div>
 
-        <form class="article-content-add-comment" th:action="'/article/' + ${article.getId()} + '/add_comment'">
+        <form class="article-content-add-comment">
             <span>Add Comment</span>
             <textarea id="summernote" name="editordata"></textarea>
             <div class="input-comment">
@@ -63,11 +62,11 @@
 
         <div class="article-content-comments">
 
-            <div class="article-comment" th:each="comment : ${article.getCommentsUnderPost()}">
+            <div class="article-comment">
                 <img th:src="@{/images/user.png}">
                 <div class="article-comment-content">
                     <i class="im im-care-left"></i>
-                    <div class="article-comment-text" th:utext="${comment.getContent()}">
+                    <div class="article-comment-text">
                         Hi! This is awesome!
                     </div>
                 </div>

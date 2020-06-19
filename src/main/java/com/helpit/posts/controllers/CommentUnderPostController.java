@@ -51,7 +51,7 @@ public class CommentUnderPostController {
                 cp.setVolunteer(v);
                 cp.setContent(content);
                 commentUnderPostRepository.save(cp);
-                model.addAttribute("comments", p.getCommentUnderPost());
+                model.addAttribute("comments", p.getCommentsUnderPost());
             }
             catch (Exception e) {
                 throw new RuntimeException("Sth went wrong");

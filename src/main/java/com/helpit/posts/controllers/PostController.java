@@ -68,6 +68,19 @@ public class PostController {
     @RequestMapping({"/article/show"})
     public String getPostShow()
     {
+        return "/article/show_default";
+    }
+
+    @RequestMapping({"/article/{id}/show"})
+    public String getPostShowById(@PathVariable String id, Model model)
+    {
+        Optional<Post> post = postRepository.findById(Integer.valueOf(id));
+        if (post.isPresent()) {
+            model.addAttribute("article", post.get());
+        }
+        else {
+            throw new RuntimeException("Sth went wrong");
+        }
         return "/article/show";
     }
 
