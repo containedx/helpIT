@@ -29,7 +29,7 @@
 
     <div id="navbar-registers">
         <a href="/login" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">
-            <span>Sign in / Register</span>
+            <span>Sign in</span>
         </a>
 
         <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
@@ -51,11 +51,45 @@
         </a>
 
         <ul class='dropdown-menu' id="drop_view">
+
             <li class='option' id='option1'>
-                <a href="/article/add">Add new Article</a>
+                <a href="/article/add" sec:authorize="hasRole('ROLE_VOLUNTEER')">Add new Article</a>
             </li>
+
             <li class='option' id='option2'>
-                <a href="/events/add">Add new Event</a>
+                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Add new Event</a>
+            </li>
+
+            <li class='option' id='option3'>
+                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Add Volunteer</a>
+            </li>
+
+            <li class='option' id='option4'>
+                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Volunteers List</a>
+            </li>
+
+            <li class='option' id='option5'>
+                <a href="/article/add" sec:authorize="hasRole('ROLE_VOLUNTEER')">Foundations List</a>
+            </li>
+
+            <li class='option' id='option6'>
+                <a href="/">Search Foundations</a>
+            </li>
+
+            <li class='option' id='option7'>
+                <a href="/events">Search Events</a>
+            </li>
+
+            <li class='option' id='option8'>
+                <a href="/login" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">Sign in / Register</a>
+            </li>
+
+            <li class='option' id='option9'>
+                <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
+                    <form th:action="logout" method="POST">
+                        <button type="submit" th:text="#{menu.logout}"></button>
+                    </form>
+                </a>
             </li>
         </ul>
     </div>

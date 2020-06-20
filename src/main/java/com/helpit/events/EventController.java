@@ -38,7 +38,7 @@ public class EventController {
     public String returnEventView(WebRequest request, Model model) {
         List<Event> listEvents = listAll();
         model.addAttribute("listEvents", listEvents);
-        return "events/eventList";
+        return "events/index";
     }
 
     @GetMapping("/events/add")
