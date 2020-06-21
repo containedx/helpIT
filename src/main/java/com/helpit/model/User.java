@@ -5,7 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 
 @Entity
 @Data
@@ -54,21 +53,15 @@ public class User {
     @JoinTable(name="user_volunteer", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="volunteer_id"))
     private Volunteer volunteer;
 
-<<<<<<< HEAD:src/main/java/com/helpit/model/User.java
-    
+
     public String getFoundationName(){
         return foundation.getName();
-=======
-
-    public String getFoundation_name(){
-        return foundation.getFoundation_name();
->>>>>>> kamil-skorupa:src/main/java/com/helpit/user/User.java
     }
-    
+
     public String getFoundationOwnerName(){
         return foundation.getOwnerName();
     }
-    
+
     public String getFoundationOwnerSurname(){
         return foundation.getOwnerSurname();
     }
@@ -101,34 +94,34 @@ public class User {
     }
 
     public void setFoundationName(String foundationName){
-         foundation.setName(foundationName);
+        foundation.setName(foundationName);
     }
 
     public void setFoundationOwnerName(String foundationOwnerName){
-         foundation.setOwnerName(foundationOwnerName );
+        foundation.setOwnerName(foundationOwnerName );
     }
 
     public void setFoundationOwnerSurname(String foundationOwnerSurname){
-         foundation.setOwnerSurname(foundationOwnerSurname );
+        foundation.setOwnerSurname(foundationOwnerSurname );
     }
 
     public void setCity(String city){
-         address.setCity(city );
+        address.setCity(city );
     }
 
     public void setPostcode(String postcode){
-         address.setPostcode(postcode );
+        address.setPostcode(postcode );
     }
 
     public void setStreet(String street){
-         address.setStreet(street );
+        address.setStreet(street );
     }
 
     public void setNumberOfHome(String numberOfHome ){
-         address.setNumberOfHome(numberOfHome );
+        address.setNumberOfHome(numberOfHome );
     }
 
     public void setNumberOfFlat(int numberOfFlat){
-         address.setNumberOfFlat(numberOfFlat );
+        address.setNumberOfFlat(numberOfFlat );
     }
 }

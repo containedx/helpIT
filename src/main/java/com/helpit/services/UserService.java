@@ -1,12 +1,12 @@
 package com.helpit.services;
 
-<<<<<<< HEAD
+
 import com.helpit.model.User;
 import org.springframework.stereotype.Service;
-=======
-import com.helpit.user.FoundationVol;
-import com.helpit.user.User;
->>>>>>> kamil-skorupa
+
+import com.helpit.model.FoundationVol;
+import com.helpit.model.User;
+
 
 @Service
 public interface UserService {

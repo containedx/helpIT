@@ -1,4 +1,4 @@
-package com.helpit.controller;
+package com.helpit.controllers;
 
 import com.helpit.repositories.FoundationRepository;
 import com.helpit.repositories.FoundationVolRepository;
@@ -52,7 +52,7 @@ public class VolunteerMenager {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User userExist = userService.findUserByEmail(currentUserName);
-        int id = userExist.getFoundation().getFoundation_id();
+        int id = userExist.getFoundation().getId();
         find(VolList, id);
         model.addAttribute("ListVol", VolList);
 
@@ -64,7 +64,7 @@ public class VolunteerMenager {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User userExist = userService.findUserByEmail(currentUserName);
-        int id = userExist.getVolunteer().getVolunteer_id();
+        int id = userExist.getVolunteer().getId();
         findFun(FunList, id);
         model.addAttribute("FunList", FunList);
 

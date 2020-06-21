@@ -50,4 +50,7 @@ truncate users_events;
 truncate volunteers;
 
 
-
+#kamil
+CREATE TABLE IF NOT EXISTS foundation_vol (id BIGINT AUTO_INCREMENT , foundation_id Bigint ,foundation_name VARCHAR(255) , vol_id bigint, vol_name VARCHAR(255) , vol_surname VARCHAR(255), vol_email VARCHAR(255) , PRIMARY KEY(id,foundation_id,vol_id)) ;
+CREATE TABLE IF NOT EXISTS users_foundation_vol (user_id BIGINT REFERENCES users(user_id),volunteer_id BIGINT REFERENCES foundation_vol(vol_id), CONSTRAINT PRIMARY KEY (volunteer_id, user_id));
+CREATE TABLE IF NOT EXISTS foundation_foundation_vol (foundation_id BIGINT REFERENCES foundations(foundation_id), fun_id BIGINT REFERENCES foundation_vol(foundation_id), CONSTRAINT PRIMARY KEY(foundation_id,fun_id))
