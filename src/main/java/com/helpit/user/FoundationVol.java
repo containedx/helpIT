@@ -8,7 +8,9 @@ import org.hibernate.SharedSessionContract;
 import org.hibernate.Transaction;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -23,7 +25,8 @@ public class FoundationVol {
 
     @Column(name = "foundation_id")
     private int foundation_id;
-
+    @Column (name = "foundation_name")
+    private String foundation_name;
     @Column(name = "vol_id")
     private int vol_id;
 
@@ -38,19 +41,12 @@ public class FoundationVol {
 
 
 
-/*
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="users_foundation_vol", joinColumns = @JoinColumn(name="volunteer_id"), inverseJoinColumns = @JoinColumn(name="user_id"))
+    private Set<User> users = new HashSet<>();
+
+
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinTable(name="volunteers", joinColumns = @JoinColumn(name="volunteer_id"))
-    private Volunteer volunteer;
-
-
-    @ManyToOne( cascade = CascadeType.ALL)
-    @JoinTable(name="foundations", joinColumns = @JoinColumn(name="foundation_id"))
+    @JoinTable(name="foundation_foundation_vol", joinColumns = @JoinColumn(name="fun_id"), inverseJoinColumns = @JoinColumn(name="foundation_id"))
     private Foundation foundation;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinTable(name="users", joinColumns = @JoinColumn(name="user_id"))
-    private User User;
-*/
-
 }
