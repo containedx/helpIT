@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddVolunteer</title>
+</head>
+<body>
+
+<div sec:authorize="hasRole('ROLE_FOUNDATION')">
+
+    <form action="#" th:action="@{crate_vol}" th:object="${vol}" th:method="POST" >
+
+        <p>
+            Name:
+            <input type="text" th:field="*{vol_name}"/>
+        </p>
+        <p>
+            Surname:
+            <input type="text" th:field="*{vol_surname}"/>
+
+        </p>
+        <p>
+            Email:
+            <input type="text" th:field="*{vol_email}"/>
+
+        </p>
+        <p>
+            <input type="submit" value="Add new volonteer" />
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

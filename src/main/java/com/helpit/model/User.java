@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Data
@@ -53,9 +54,15 @@ public class User {
     @JoinTable(name="user_volunteer", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="volunteer_id"))
     private Volunteer volunteer;
 
+<<<<<<< HEAD:src/main/java/com/helpit/model/User.java
     
     public String getFoundationName(){
         return foundation.getName();
+=======
+
+    public String getFoundation_name(){
+        return foundation.getFoundation_name();
+>>>>>>> kamil-skorupa:src/main/java/com/helpit/user/User.java
     }
     
     public String getFoundationOwnerName(){
