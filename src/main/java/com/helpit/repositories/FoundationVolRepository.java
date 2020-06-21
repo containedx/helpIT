@@ -1,6 +1,6 @@
 package com.helpit.repositories;
 
-import com.helpit.user.FoundationVol;
+import com.helpit.model.FoundationVol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.helpit.services;
 
-import com.helpit.user.FoundationVol;
-import com.helpit.user.User;
+import com.helpit.model.FoundationVol;
+import com.helpit.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
