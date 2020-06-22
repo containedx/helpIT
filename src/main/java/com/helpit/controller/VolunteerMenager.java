@@ -8,6 +8,7 @@ import com.helpit.services.UserService;
 import com.helpit.user.Foundation;
 import com.helpit.user.FoundationVol;
 import com.helpit.user.User;
+import com.helpit.user.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -87,7 +88,11 @@ public class VolunteerMenager {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User userExist = userService.findUserByEmail(currentUserName);
-        vol.setFoundation(userExist.getFoundation());
+        vol.setFoundation_id(userExist.getFoundation().getFoundation_id());
+        vol.setFoundation_name(userExist.getFoundation().getFoundation_name());
+        User userExist2 = userService.findUserByEmail(vol.getVol_email());
+        vol.setVol_id(userExist2.getVolunteer().getVolunteer_id());
+
         repo.save(vol);
     }
 

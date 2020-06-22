@@ -10,7 +10,7 @@
 
 <div sec:authorize="hasRole('ROLE_FOUNDATION')">
 
-    <form action="#" th:action="@{crate_vol}" th:object="${vol}" th:method="POST" >
+    <form action="#" th:action="@{'/create_vol'}" th:object="${vol}" th:method="POST" >
 
         <p>
             Name:
@@ -26,6 +26,7 @@
             <input type="text" th:field="*{vol_email}"/>
 
         </p>
+
         <p>
             <input type="submit" value="Add new volonteer" />
         </p>
