@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FoundationRepository extends JpaRepository<Foundation,Integer> {
-    public Foundation findById(int id);
 }

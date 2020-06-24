@@ -43,8 +43,9 @@ public class EventController {
 
     @RequestMapping(value="/{foundation_id}/events",method=RequestMethod.GET)
     public String showFoundationEvents(@PathVariable int foundation_id, Model model) {
-        Foundation foundation = foundationRepository.findById(foundation_id);
-        List<Event> listEvents = repo.findByFoundation(foundation);
+        Foundation foundation = findFoundationById(foundation_id);
+        List<Event> listEvents = listAll();
+        listEvents = listSpecific(listEvents, foundation);
         model.addAttribute("listEvents", listEvents);
         return "events/eventList";
     }
@@ -84,6 +85,15 @@ public class EventController {
 
     public List<Event> listAll() {
         return repo.findAll();
+    }
+
+    public Foundation findFoundationById(int id) {
+        return foundationRepository.findById(id).get();
+    }
+
+    public List<Event> listSpecific(List<Event> list, Foundation foundation) {
+        list.removeIf(p->p.getFoundation()!=foundation);
+        return list;
     }
 
     public void saveEvent(Event event){
