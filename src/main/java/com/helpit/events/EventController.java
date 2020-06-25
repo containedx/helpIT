@@ -43,7 +43,7 @@ public class EventController {
 
     @RequestMapping(value="/{foundation_id}/events",method=RequestMethod.GET)
     public String showFoundationEvents(@PathVariable int foundation_id, Model model) {
-        Foundation foundation = findFoundationById(foundation_id);
+        User foundation = findFoundationById(foundation_id);
         List<Event> listEvents = listAll();
         listEvents = listSpecific(listEvents, foundation);
         model.addAttribute("listEvents", listEvents);
@@ -87,11 +87,11 @@ public class EventController {
         return repo.findAll();
     }
 
-    public Foundation findFoundationById(int id) {
-        return foundationRepository.findById(id).get();
+    public User findFoundationById(int id) {
+        return userRepository.findById(id).get();
     }
 
-    public List<Event> listSpecific(List<Event> list, Foundation foundation) {
+    public List<Event> listSpecific(List<Event> list, User foundation) {
         list.removeIf(p->p.getFoundation()!=foundation);
         return list;
     }
@@ -100,7 +100,7 @@ public class EventController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
-        event.setFoundation(user.getFoundation());
+        event.setFoundation(user);
         repo.save(event);
     }
 
