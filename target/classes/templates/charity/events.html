@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+    <link rel="stylesheet" href="/css/root.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div th:replace="partials/nav::nav"></div>
+
+<section id="charity">
+
+    <div id="charity-content">
+
+        <div class="charity-content-nav">
+            <a href="/">
+                <i class="im im-arrow-left"></i>
+            </a>
+
+            <a href="/charity/edit" role="button">Edit Profile</a>
+        </div>
+
+        <div class="charity-content-user">
+            <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
+
+            <h5>CHARITY LIFE</h5>
+        </div>
+
+        <div class="charity-content-links">
+            <a href="/charity/show">Feed</a>
+            <a href="/charity/events">Events<i class="im im-care-up"></i></a>
+            <a href="/charity/sponsors">Sponsors</a>
+        </div>
+
+        <div class="charity-content-feed">
+
+            <form id="add-event" action="">
+                <div class="event-inputs-left">
+                    <div class="input-event">
+                        <span>Event Name</span>
+                        <label>
+                            <input type="text"/>
+                        </label>
+                    </div>
+                    <div class="input-event">
+                        <span>Date and time</span>
+                        <label>
+                            <input type="datetime-local"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="event-inputs-right">
+
+                    <div class="textarea-event">
+                        <span>Event Description</span>
+                        <label>
+                            <textarea id="summernote" name="editordata"></textarea>
+                        </label>
+                    </div>
+                    <input id="add-event-btn" type="submit" value="Create Event" />
+                </div>
+            </form>
+
+            <div id="events">
+                <div class="event">
+                    <img th:src="@{/images/event.png}">
+
+                    <div class="event-details">
+                        <div class="event-title">Title</div>
+                        <div class="event-date">22/12/2020</div>
+                        <div class="event-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                        <a href="/event/show">read more</a>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <img th:src="@{/images/event.png}">
+
+                    <div class="event-details">
+                        <div class="event-title">Title</div>
+                        <div class="event-date">22/12/2020</div>
+                        <div class="event-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                        <a href="/event/show">read more</a>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <img th:src="@{/images/event.png}">
+
+                    <div class="event-details">
+                        <div class="event-title">Title</div>
+                        <div class="event-date">22/12/2020</div>
+                        <div class="event-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                        <a href="/event/show">read more</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<footer id="foot"></footer>
+
+<script type="text/javascript" charset="utf-8">
+
+    function hideShowSignIn() {
+
+        var y  = document.querySelector('#drop_view');
+        var x = document.getElementById("dropdown-signup");
+        var btn = document.getElementById("signup-btn")
+
+        if(x.style.display === 'none' || x.style.display === '') {
+
+            if(y.style.display === 'block') {
+                y.style.display = "none";
+            }
+
+            x.style.display = "block";
+            btn.style.left = "200px";
+        } else {
+            x.style.display = "none";
+            btn.style.left = "10px";
+        }
+    }
+
+    function hideShowOption() {
+
+        var x  = document.querySelector('#drop_view');
+        var y = document.getElementById("dropdown-signup");
+
+        if(x.style.display === 'none' || x.style.display === '') {
+
+            if(y.style.display === 'block') {
+                y.style.display = "none";
+            }
+
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>
+
+<!-- summernote -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<script>
+    $('#summernote').summernote({
+        height: 60,
+        toolbar: [
+            ['font', ['bold', 'underline']],
+            ['para', ['ul', 'ol']],
+            ['view', ['fullscreen', 'codeview']]
+        ],
+        disableResizeEditor: true
+    });
+
+    $('#summernote').summernote('code', '<p></p>');
+
+</script>
+
+</body>
+
+</html>

@@ -38,7 +38,6 @@ truncate events;
 truncate foundation_event;
 truncate foundation_types;
 truncate foundations;
-truncate foundations;
 truncate roles;
 truncate types;
 truncate user_address;
@@ -48,6 +47,26 @@ truncate user_volunteer;
 truncate users;
 truncate users_events;
 truncate volunteers;
+
+
+drop table addresses;
+drop table events;
+drop table foundation_event;
+drop table foundation_types;
+drop table foundation;
+drop table roles;
+drop table types;
+drop table user_address;
+drop table user_foundation;
+drop table user_role;
+drop table user_volunteer;
+drop table users;
+drop table users_events;
+drop table volunteers;
+drop table comments;
+drop table posts;
+drop table comments_under_posts;
+
 
 
 

@@ -9,15 +9,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Configuration
 @Controller
 public class WebConfig {
 
 
-    @GetMapping("/")
-    public String showHomePage(){
-        return "index";
-    }
+
 
     @GetMapping("/signup")
     public String showRegistrationPage(){

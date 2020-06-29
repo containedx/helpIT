@@ -9,6 +9,76 @@
 <body>
 
 <div th:replace="fragments/menu::menu"></div>
-<div class = "green"></div>
+<form id="foundationForm" th:action="search" th:object="${userFoundation}" th:method="POST">
+
+<section id="search-bar">
+
+    <br>
+    Name:<input type="text" name="foundationName" th:field="*{name}" >
+    <br>
+    City:<input type="text" name="foundationCity" th:field="*{city}">
+    <br>
+    <div id="search-options">
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" name="family" th:field="*{family}">
+            <label for="styled-checkbox-1">Family</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" name="peace" th:field="*{peace}">
+            <label for="styled-checkbox-2">Peace</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" name="environment" th:field="*{environment}">
+            <label for="styled-checkbox-3">Environment</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" name="disease" th:field="*{disease}">
+            <label for="styled-checkbox-4">Disease</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" name="education" th:field="*{education}">
+            <label for="styled-checkbox-5">Education</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-6" type="checkbox" name="culture" th:field="*{culture}">
+            <label for="styled-checkbox-6">Culture</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" name="animals" th:field="*{animals}">
+            <label for="styled-checkbox-7">Animals</label>
+        </div>
+
+        <div class="search-option">
+            <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" name="addiction" th:field="*{addiction}">
+            <label for="styled-checkbox-8">Addiction</label>
+        </div>
+
+        <button type="submit">Szukaj</button>
+    </div>
+
+</section>
+</form>
+
+<section id="search-result" class="search-result--foundations">
+    <div>
+            <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">
+                <!-- <p th:text="${user.foundation.image}"/>-->
+                <p th:text="${user.foundation.name}"/>
+                <p th:text="${user.address.city}"/>
+                <p th:text="${user.foundation.type.type}"/>
+                <br><br>
+            </a>
+
+    </div>
+
+
+</section>
 </body>
 </html>
