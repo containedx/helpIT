@@ -190,7 +190,7 @@
   #search-bar #search-options {
     height: 55px;
     width: 100%;
-    max-width: 742px;
+    max-width: 762px;
     display: grid;
     grid-template-columns: 200px 200px 150px 150px;
     grid-template-rows: 1fr;
@@ -199,7 +199,7 @@
     @media (max-width: 800px) {
       #search-bar #search-options {
         grid-template-columns: 150px 150px;
-        max-width: 310px; } }
+        max-width: 330px; } }
     #search-bar #search-options button {
       height: 36px;
       margin: 10px 0 0 0;
@@ -213,10 +213,13 @@
       display: grid;
       grid-template-columns: 50px 150px;
       grid-template-rows: 1fr;
-      height: 35px;
+      height: 36px;
       margin: 10px 0 0 0; }
-      #search-bar #search-options #search-name input {
-        width: 150px; }
+      #search-bar #search-options #search-name .search-name-input {
+        width: 150px;
+        border: 1px solid #d6d6d6 !important;
+        font-size: 13px;
+        padding: 0 0 0  10px; }
       @media (max-width: 800px) {
         #search-bar #search-options #search-name {
           display: none; } }
@@ -228,20 +231,24 @@
       display: grid;
       grid-template-columns: 1fr 2fr;
       grid-template-rows: 1fr;
-      height: 35px;
-      margin: 10px 0 0 0;
+      height: 36px;
+      margin: 10px 10px 0 10px;
       width: 90px; }
       @media (max-width: 800px) {
         #search-bar #search-options #search-city {
           display: none; } }
+      #search-bar #search-options #search-city .search-city-input {
+        border: 1px solid #d6d6d6 !important;
+        font-size: 13px;
+        padding: 0 0 0 10px; }
       #search-bar #search-options #search-city span {
         padding: 0 5px 0 5px;
         font-size: 13px;
         line-height: 35px; }
     #search-bar #search-options #search-options-dropdown {
-      border: 1px solid #999;
+      border: 1px solid #d6d6d6;
       height: 35px;
-      margin: 10px 10px 0 10px;
+      margin: 10px 0 0 20px;
       position: relative;
       cursor: pointer;
       background-color: #fff;
@@ -262,7 +269,7 @@
         visibility: hidden;
         position: absolute;
         z-index: -999;
-        border: 1px solid #999;
+        border: 1px solid #d6d6d6;
         font-size: 13px;
         top: 30px;
         left: -1px;

@@ -271,7 +271,7 @@
   #search-options{
       height: 55px;
       width: 100%;
-      max-width: 742px;
+      max-width: 762px;
       //background-color: #c5f9d5;
       display: grid;
       grid-template-columns: 200px 200px 150px 150px;
@@ -282,7 +282,7 @@
 
       @media (max-width: 800px) {
         grid-template-columns: 150px 150px;
-        max-width: 310px;
+        max-width: 330px;
       }
 
       button{
@@ -302,11 +302,15 @@
         display: grid;
         grid-template-columns: 50px 150px;
         grid-template-rows: 1fr;
-        height: 35px;
+        height: 36px;
         margin: 10px 0 0 0;
 
-        input{
+
+        .search-name-input{
           width: 150px;
+          border:1px solid #d6d6d6 !important;
+          font-size: 13px;
+          padding: 0 0 0  10px;
         }
 
         @media (max-width: 800px) {
@@ -324,12 +328,19 @@
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-template-rows: 1fr;
-        height: 35px;
-        margin: 10px 0 0 0;
+        height: 36px;
+        margin: 10px 10px 0 10px;
         width: 90px;
+
 
         @media (max-width: 800px) {
           display: none;
+        }
+
+        .search-city-input{
+          border:1px solid #d6d6d6 !important;
+          font-size: 13px;
+          padding: 0 0 0 10px;
         }
 
         span{
@@ -340,9 +351,9 @@
       }
 
       #search-options-dropdown{
-        border:1px solid #999;
+        border:1px solid #d6d6d6;
         height: 35px;
-        margin: 10px 10px 0 10px;
+        margin: 10px 0 0 20px;
         position: relative;
         cursor: pointer;
         background-color: #fff;
@@ -372,7 +383,7 @@
           visibility: hidden;
           position: absolute;
           z-index: -999;
-          border: 1px solid #999;
+          border:1px solid #d6d6d6;
           font-size: 13px;
           top: 30px;
           left: -1px;

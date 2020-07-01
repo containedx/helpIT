@@ -171,6 +171,8 @@
         margin: 0;
       }
 
+      // ARTICLES
+
       #add-article{
         //background-color: #f0b0d7;
         display: grid;
@@ -414,6 +416,9 @@
         }
       }
 
+
+      // EVENTS
+
       #add-event {
         //background-color: #f0b0d7;
         display: grid;
@@ -588,6 +593,83 @@
           }
         }
       }
+
+      // OPINIONS
+
+      #add-opinion{
+        width: 100%;
+        height: 150px;
+        background-color: lightgreen;
+        display: grid;
+        grid-template-columns: 1fr 150px;
+        column-gap: 10px;
+
+        .add-opinion-col{
+          background-color: #ee98c4;
+
+
+          &.add-opinion-col--left{
+            display: grid;
+            grid-template-rows: 30px 1fr;
+
+            #add-opinion-title{
+
+            }
+
+            #add-opinion-text{
+
+            }
+          }
+
+          &.add-opinion-col--right{
+            display: grid;
+            grid-template-rows: 30px 40px 1fr;
+
+            #add-opinion-rating{
+
+            }
+
+            input{
+              margin: 30px 0 0 0;
+
+            }
+          }
+        }
+      }
+
+      #opinion-cards{
+        display: grid;
+        grid-auto-rows: auto;
+        row-gap: 5px;
+        margin: 10px 0 0 0;
+
+        .opinion-card{
+          min-height: 50px;
+          background-color: #f2dede;
+
+          .opinion-card-img{
+
+          }
+
+          .opinion-card-content{
+
+            .opinion-card-content-title {
+
+            }
+
+            .opinion-card-content-rating{
+
+            }
+
+            .opinion-card-content-text{
+
+            }
+          }
+        }
+
+      }
+
+
     }
   }
 }

@@ -61,10 +61,10 @@ public class FoundationController {
         return "/charity/events";
     }
 
-    @RequestMapping({"/charity/sponsors"})
+    @RequestMapping({"/foundation/opinions"})
     public String getCharitySponsors()
     {
-        return "/charity/sponsors";
+        return "/charity/opinions";
     }
 
     @RequestMapping({"/charity/edit"})

@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,7 +16,7 @@
 
 <body>
 
-<div th:replace="partials/nav::nav"></div>
+<div th:replace="fragments/menu::menu"></div>
 
 <section id="charity">
 
@@ -37,51 +39,54 @@
         <div class="charity-content-links">
             <a href="/charity/show">Feed</a>
             <a href="/charity/events">Events</a>
-            <a href="/charity/sponsors">Sponsors<i class="im im-care-up"></i></a>
+            <a href="/foundation/opinions">Opinions<i class="im im-care-up"></i></a>
         </div>
 
         <div class="charity-content-feed">
+            
+            <div id="add-opinion">
 
-            <form action="#" th:action="@{/create_event}" th:object="${event}" method="post" >
-                <input type="text" th:field="*{name}"/>
-                <input type="datetime-local" th:field="*{date}"/>
-                <input type="text" th:field="*{foundation}"/>
-                <textarea th:field="*{description}"></textarea>
-                <input type="submit" value="Create Event" />
-            </form>
+                <div class="add-opinion-col add-opinion-col--left">
+                    <span>Leave Opinion</span>
+                    <textarea id="add-opinion-text"></textarea>
 
-            <div id="articles">
-                <div class="article">
-                    <img src="/images/article.png" alt="">
-
-                    <div class="article-details">
-                        <div class="article-title">Title</div>
-                        <div class="article-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                        <a href="/article/show">read more</a>
-                    </div>
                 </div>
 
-                <div class="article">
-                    <img src="/images/article.png" alt="">
+                <div class="add-opinion-col add-opinion-col--right">
+                    <span>Rate it </span>
 
-                    <div class="article-details">
-                        <div class="article-title">Title</div>
-                        <div class="article-content">Quokka says quokk quokk quokk quokk XD</div>
-                        <a href="/article/show">read more</a>
-                    </div>
-                </div>
+                    <select id="add-opinion-rating">
+                        <option>5</option>
+                        <option>4</option>
+                        <option>3</option>
+                        <option>2</option>
+                        <option>1</option>
+                    </select>
 
-                <div class="article">
-                    <img src="/images/article.png" alt="">
-
-                    <div class="article-details">
-                        <div class="article-title">Title</div>
-                        <div class="article-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                        <a href="/article/show">read more</a>
-                    </div>
+                    <input type="submit">
                 </div>
 
             </div>
+
+            <section id="opinion-cards">
+                <div class="opinion-card">
+                    <img src="" alt="" class="opinion-card-img">
+                    <div class="opinion-card-content">
+                        <div class="opinion-card-content-title">Well...</div>
+                        <div class="opinion-card-content-rating">2</div>
+                        <div class="opinion-card-content-text">Irresponsible administration...</div>
+                    </div>
+                </div>
+
+                <div class="opinion-card">
+                    <img src="" alt="" class="opinion-card-img">
+                    <div class="opinion-card-content">
+                        <div class="opinion-card-content-title">Awesome!</div>
+                        <div class="opinion-card-content-rating">5</div>
+                        <div class="opinion-card-content-text">Just what I was looking for!</div>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </div>
