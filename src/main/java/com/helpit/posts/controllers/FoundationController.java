@@ -73,7 +73,7 @@ public class FoundationController {
         return "/registrations/edit_charity";
     }
 
-    @RequestMapping({"/charity/list"})
+    @RequestMapping({"/charities"})
     public String getFoundList(Model model)
     {
         model.addAttribute("foundations", foundation_repository.findAll());
