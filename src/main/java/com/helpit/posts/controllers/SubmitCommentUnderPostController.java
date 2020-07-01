@@ -19,16 +19,15 @@ import java.util.Optional;
 @Controller
 public class SubmitCommentUnderPostController {
     private final CommentUnderPostRepository commentUnderPostRepository;
-    private final VolunteerRepository volunteerRepository;
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
-    public SubmitCommentUnderPostController(CommentUnderPostRepository commentUnderPostRepository, VolunteerRepository volunteerRepository, PostRepository postRepository, UserRepository userRepository) {
+    public SubmitCommentUnderPostController(CommentUnderPostRepository commentUnderPostRepository, PostRepository postRepository, UserRepository userRepository) {
         this.commentUnderPostRepository = commentUnderPostRepository;
-        this.volunteerRepository = volunteerRepository;
         this.postRepository = postRepository;
         this.userRepository = userRepository;
     }
+
 
     @RequestMapping({"/article/{id}/add_comment"})
     public String addArticleToFoundation(@PathVariable String id,

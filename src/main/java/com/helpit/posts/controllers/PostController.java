@@ -90,9 +90,10 @@ public class PostController {
         return "/article/edit";
     }
 
-    @RequestMapping({"/article/add"})
-    public String getPostAdd()
+    @RequestMapping({"/article/adding"})
+    public String getPostAdd(Model model)
     {
+        model.addAttribute("foundations", foundationRepository.findAll());
         return "/article/add";
     }
 

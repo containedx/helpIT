@@ -28,21 +28,24 @@
 
         <div class="charity-content-feed charity-content-feed--new">
 
-            <form id="add-article" class="add-article--new" action="">
+            <form id="add-article" class="add-article--new" action="/article/submit">
                 <div class="add-article-content">
 
                     <div class="input-col">
                         <div class="input-article">
                             <span>Article title</span>
                             <label>
-                                <input type="text"/>
+                                <input name="title" type="text"/>
                             </label>
                         </div>
                         <div class="input-article">
-                            <span>Choose foundation</span>
-                            <label>
-                                <input type="text"/>
-                            </label>
+<!--                            <span></span>-->
+                            <label for="selected"> Choose foundation</label> <br>
+                                <select id="selected" name="selected" >
+                                    <option value="" disabled selected hidden>Select foundation</option>
+                                    <option value="#" th:each="foundation : ${foundations}" th:value="${foundation.getId()}" th:text="${foundation.getName()}">#</option>
+                                </select>
+<!--                            </label>-->
                         </div>
 
                     </div>
@@ -123,7 +126,8 @@
         toolbar: [
             ['font', ['bold', 'underline']],
             ['para', ['ul', 'ol']],
-            ['view', ['fullscreen', 'codeview']]
+            ['view', ['fullscreen', 'codeview']],
+            ['insert', ['link', 'picture', 'video']]
         ],
         disableResizeEditor: true,
     });
