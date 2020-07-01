@@ -67,7 +67,12 @@ class PostControllerTest {
     }
 
     @Test
-    void getPostAdd() {
+    void getPostAdd() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
+        mockMvc.perform(MockMvcRequestBuilders.get("/article/adding"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/article/add"))
+                .andExpect(MockMvcResultMatchers.model().attributeExists("foundations"));
     }
 }

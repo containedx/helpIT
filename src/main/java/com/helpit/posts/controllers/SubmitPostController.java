@@ -126,5 +126,35 @@ public class SubmitPostController {
 
         return "redirect:/charity/" + id + "/show";
     }
+
+    @RequestMapping("/article/submit")
+    public String addArticleToSelectedFoundation( @RequestParam String title,
+                                                  @RequestParam String selected,
+                                                  @RequestParam String editordata) {
+        Post post = new Post();
+        post.setContent(editordata);
+        post.setTitle(title);
+        postRepository.save(post);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User user = userRepository.findByEmail(currentUserName);
+        user.getVolunteer().getPosts().add(post);
+        userRepository.save(user);
+
+        Optional<Foundation> f = foundationRepository.findById(Integer.valueOf(selected));
+        if (f.isPresent()) {
+            post.setVolunteer(user.getVolunteer());
+            post.setFoundation(f.get());
+            f.get().getPost().add(post);
+            foundationRepository.save(f.get());
+        }
+        else
+        {
+            throw new RuntimeException("Selected foundation not found");
+        }
+
+        return "redirect:/charity/" + selected + "/show";
+    }
 }
 

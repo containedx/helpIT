@@ -78,4 +78,28 @@ class SubmitPostControllerTest {
         verify(userRepository, times(1)).findByEmail(anyString());
         verify(foundationRepository, times(1)).findById(anyInt());
     }
+
+    @Test
+    void addArticleToSelectedFoundation() throws Exception {
+        Foundation foundation = new Foundation();
+        foundation.setId(1);
+
+        user.setVolunteer(new Volunteer());
+        user.getVolunteer().setPosts(new HashSet<Post>());
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+
+        when(userRepository.findByEmail(anyString())).thenReturn(user);
+        when(foundationRepository.findById(anyInt())).thenReturn(Optional.of(foundation));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/article/submit")
+                .param("title", "War destroys Iraq")
+                .param("editordata", "Indeed")
+                .param("selected", "1"))
+                .andDo(print())
+                .andExpect(status().is(302)) //status przekierowania
+                .andExpect(view().name("redirect:/charity/1/show"));
+
+        verify(userRepository, times(1)).findByEmail(anyString());
+        verify(foundationRepository, times(1)).findById(anyInt());
+    }
 }
