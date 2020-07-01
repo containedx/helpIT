@@ -48,8 +48,50 @@
 
                     <div class="form-group">
                         <label for="password_confirmation">Password confirmation</label>
-                        <input th:field="*{password}" type="password" id="password_confirmation" class="form-control" placeholder="Password">
+                        <input th:field="*{confirmPassword}" type="password" id="password_confirmation" class="form-control" placeholder="Password confirmation">
                         <p th:each="error : ${#fields.errors('password')}" th:text="${error}">Validation error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input th:field="*{volunteer.name}" type="text" id="name" class="form-control" placeholder="Name">
+                        <p th:each="error : ${#fields.errors('volunteer.name')}" th:text="${error}">Validation error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input th:field="*{volunteer.surname}" type="text" id="surname" class="form-control" placeholder="Surname">
+                        <p th:each="error : ${#fields.errors('volunteer.surname')}" th:text="${error}">Validation error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input th:field="*{address.city}" type="text" id="city" class="form-control" placeholder="City">
+                        <p th:each="error : ${#fields.errors('address.city')}" th:text="${error}">Validation error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postcode">Postcode</label>
+                        <input th:field="*{address.postcode}" type="text" id="postcode" class="form-control" placeholder="Postcode">
+                        <p th:each="error : ${#fields.errors('address.postcode')}" th:text="${error}">Validation error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="street">Street</label>
+                        <input th:field="*{address.street}" type="text" id="street" class="form-control" placeholder="Street">
+                        <p th:each="error : ${#fields.errors('address.street')}" th:text="${error}">Validation error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="building">Number of building</label>
+                        <input th:field="*{address.numberOfHome}" type="text" id="building" class="form-control" placeholder="Number of building">
+                        <p th:each="error : ${#fields.errors('address.numberOfHome')}" th:text="${error}">Validation error</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apart">Number of apartment</label>
+                        <input th:field="*{address.numberOfFlat}" type="text" id="apart" class="form-control" placeholder="Number of apartment">
+                        <p th:each="error : ${#fields.errors('address.numberOfFlat')}" th:text="${error}">Validation error</p>
                     </div>
 
                     <div class="form-btn">

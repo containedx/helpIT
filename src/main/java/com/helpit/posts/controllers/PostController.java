@@ -1,14 +1,17 @@
 package com.helpit.posts.controllers;
 
+import com.helpit.events.Event;
 import com.helpit.model.Foundation;
 import com.helpit.posts.model.Post;
 import com.helpit.posts.repositories.PostRepository;
 import com.helpit.repositories.FoundationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -60,8 +63,6 @@ public class PostController {
             throw new RuntimeException("Sth went wrong");
         }
 
-
-
         return "/add_post/display_post";
     }
 
@@ -75,6 +76,7 @@ public class PostController {
     public String getPostShowById(@PathVariable String id, Model model)
     {
         Optional<Post> post = postRepository.findById(Integer.valueOf(id));
+
         if (post.isPresent()) {
             model.addAttribute("article", post.get());
         }
@@ -82,6 +84,12 @@ public class PostController {
             throw new RuntimeException("Sth went wrong");
         }
         return "/article/show";
+    }
+
+    @RequestMapping("article/delete/{id}")
+    public String deletePost(@Valid @ModelAttribute("post") Post post) {
+        delete(post.getId());
+        return "redirect:/";
     }
 
     @RequestMapping({"/article/edit"})
@@ -95,5 +103,11 @@ public class PostController {
     {
         return "/article/add";
     }
+
+
+    public void delete(Integer id){
+        postRepository.deleteById(id);
+    }
+
 
 }

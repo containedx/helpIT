@@ -28,9 +28,9 @@
                 <i class="im im-arrow-left"></i>
             </a>
 
-            <a href="/article/edit" role="button">Edit Article</a>
+            <a sec:authorize="isAuthenticated()" href="/article/edit" role="button">Edit Article</a>
 
-            <a href="/article/delete" role="button">Delete</a>
+            <a sec:authorize="isAuthenticated()" th:href="'/article/delete/' + ${article.getId()}" role="button">Delete</a>
 
         </div>
 

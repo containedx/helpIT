@@ -4,7 +4,7 @@
   height: 60px;
   width: 100vw;
   background-color: #fff;
-  border-bottom: 3px solid #f4f4f4;
+  border-bottom: 3px solid #eeeeee;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 185px 1fr auto 90px;
@@ -262,51 +262,164 @@
 #search-bar{
   height: 55px;
   width: 100%;
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #e5e5e5;;
   position: fixed;
   top: 62px;
-  background-color: #fff;
+  background-color: #fbfbfb;
   z-index: 99;
 
   #search-options{
-    height: 55px;
-    width: 100%;
-    max-width: 1160px;
-    //background-color: #c5f9d5;
+      height: 55px;
+      width: 100%;
+      max-width: 742px;
+      //background-color: #c5f9d5;
+      display: grid;
+      grid-template-columns: 200px 200px 150px 150px;
+      grid-template-rows: 1fr;
+      column-gap: 10px;
+      margin: 0 auto;
 
-    display: grid;
-    grid-template-columns: repeat(8, auto ) 150px;
-    grid-template-rows: 1fr;
-    margin: 0 auto;
 
-
-    .search-option{
-      //background-color: #8bd653;
-      float: left;
-      height: 38px;
-      padding: 17px 0 0 0;
-      font-size: 13px;
-
-    }
-
-    a{
-      margin: 12px 15px;
-      border-radius: 2px;
-      cursor: pointer;
-      line-height: 31px;
-      text-align: center;
-      color: #111;
-      font-size: 13px;
-      border: 1px solid #d3d3d3;
-
-      &:hover{
-        border: 1px solid #b4b4b4;
+      @media (max-width: 800px) {
+        grid-template-columns: 150px 150px;
+        max-width: 310px;
       }
 
+      button{
+        height: 36px;
+        margin: 10px 0 0 0;
+        background-color: #fd6c67;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+
+        &:hover{
+          background-color: #ef6b66;
+        }
+      }
+
+      #search-name{
+        display: grid;
+        grid-template-columns: 50px 150px;
+        grid-template-rows: 1fr;
+        height: 35px;
+        margin: 10px 0 0 0;
+
+        input{
+          width: 150px;
+        }
+
+        @media (max-width: 800px) {
+          display: none;
+        }
+
+        span{
+          padding: 0 5px 0 0;
+          font-size: 13px;
+          line-height: 35px;
+        }
+      }
+
+      #search-city{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+        height: 35px;
+        margin: 10px 0 0 0;
+        width: 90px;
+
+        @media (max-width: 800px) {
+          display: none;
+        }
+
+        span{
+          padding: 0 5px 0 5px;
+          font-size: 13px;
+          line-height: 35px;
+        }
+      }
+
+      #search-options-dropdown{
+        border:1px solid #999;
+        height: 35px;
+        margin: 10px 10px 0 10px;
+        position: relative;
+        cursor: pointer;
+        background-color: #fff;
+        text-align: center;
+
+        &:hover{
+          .search-options-dropdown-content {
+            visibility: visible;
+            z-index: 999;
+
+          }
+        }
+
+        span{
+          line-height: 35px;
+          text-align: center;
+          font-size: 12px;
+          background-color: #fff;
+          z-index: 9999;
+
+        }
+
+        .search-options-dropdown-content{
+          display: grid;
+          grid-template-columns:128px;
+          grid-auto-rows: 40px;
+          visibility: hidden;
+          position: absolute;
+          z-index: -999;
+          border: 1px solid #999;
+          font-size: 13px;
+          top: 30px;
+          left: -1px;
+          background-color: #fdfdfd;
+
+          .search-option{
+            //background-color: #8bd653;
+            float: left;
+            padding: 17px 0 0 10px;
+            font-size: 13px;
+            width: 128px;
+            display: grid;
+            grid-template-columns:20px 98px;
+            grid-template-rows:1fr;
+
+            input{
+              cursor: pointer;
+
+            }
+
+            label{
+              //background-color: #23527c;
+              cursor: pointer;
+            }
+
+          }
+        }
+      }
+
+      a{
+        margin: 12px 15px;
+        border-radius: 2px;
+        cursor: pointer;
+        line-height: 31px;
+        text-align: center;
+        color: #111;
+        font-size: 13px;
+        border: 1px solid #d3d3d3;
+
+        &:hover{
+          border: 1px solid #b4b4b4;
+        }
+
+
+      }
 
     }
-
-  }
 
 }
 
@@ -366,16 +479,20 @@
     }
 
     .search-result-event-card{
-      border: 1px solid #f3f3f3;
+      border: 1px solid #e6e6e6;
       border-radius: 3px;
       display: grid;
       grid-template-columns: auto 1fr;
       grid-template-rows: 1fr;
       text-decoration: none;
       color: #111;
+      -webkit-box-shadow: 0px 25px 22px -18px rgb(241, 231, 247);
+      -moz-box-shadow: 0px 25px 22px -18px  rgb(241, 231, 247);
+      box-shadow: 0px 25px 22px -18px rgb(241, 231, 247);
+      cursor: pointer;
 
       .event-card-logo{
-        height: 140px;
+        height: 138px;
       }
 
       .search-result-event-card-content{
@@ -541,6 +658,11 @@
 
         }
       }
+      &:hover{
+        -webkit-box-shadow: 0px 25px 22px -18px rgb(198, 189, 203);
+        -moz-box-shadow: 0px 25px 22px -18px  rgb(198, 189, 203);
+        box-shadow: 0px 25px 22px -18px rgb(198, 189, 203);
+      }
     }
   }
 
@@ -551,10 +673,9 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 160px 45px 35px;
-
-    -webkit-box-shadow: 0px 15px 22px -18px rgb(250, 241, 255);
-    -moz-box-shadow: 0px 15px 22px -18px   rgb(250, 241, 255);
-    box-shadow: 0px 15px 22px -18px   rgb(250, 241, 255);
+    -webkit-box-shadow: 0px 25px 22px -18px rgb(241, 231, 247);
+    -moz-box-shadow: 0px 25px 22px -18px  rgb(241, 231, 247);
+    box-shadow: 0px 25px 22px -18px rgb(241, 231, 247);
 
     .charity-card-img{
       border-top-right-radius: 3px;
@@ -607,9 +728,9 @@
     }
 
     &:hover{
-      -webkit-box-shadow: 0px 15px 22px -18px rgb(198, 189, 203);
-      -moz-box-shadow: 0px 15px 22px -18px  rgb(198, 189, 203);
-      box-shadow: 0px 15px 22px -18px rgb(198, 189, 203);
+      -webkit-box-shadow: 0px 25px 22px -18px rgb(198, 189, 203);
+      -moz-box-shadow: 0px 25px 22px -18px  rgb(198, 189, 203);
+      box-shadow: 0px 25px 22px -18px rgb(198, 189, 203);
     }
 
     //background-color: #82aae6;

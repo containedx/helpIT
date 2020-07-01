@@ -19,71 +19,96 @@
 
 <div th:replace="fragments/menu::menu"></div>
 
-<section id="search-bar">
+<form id="foundationForm" th:action="search" th:object="${userFoundation}" th:method="POST">
 
-    <div id="search-options">
+    <section id="search-bar">
 
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-            <label for="styled-checkbox-1">Family</label>
+        <div id="search-options">
+
+            <div id="search-name">
+                <span>Name:</span>
+                <input type="text" name="foundationName" th:field="*{name}" >
+            </div>
+
+            <div id="search-city">
+                <span>City:</span>
+                <input type="text" name="foundationCity" th:field="*{city}">
+            </div>
+
+            <div id="search-options-dropdown">
+
+                <span>Select by Type</span>
+
+                <div class="search-options-dropdown-content">
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" name="family" th:field="*{family}">
+                        <label for="styled-checkbox-1">Family</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" name="peace" th:field="*{peace}">
+                        <label for="styled-checkbox-2">Peace</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" name="environment" th:field="*{environment}">
+                        <label for="styled-checkbox-3">Environment</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" name="disease" th:field="*{disease}">
+                        <label for="styled-checkbox-4">Disease</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" name="education" th:field="*{education}">
+                        <label for="styled-checkbox-5">Education</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-6" type="checkbox" name="culture" th:field="*{culture}">
+                        <label for="styled-checkbox-6">Culture</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" name="animals" th:field="*{animals}">
+                        <label for="styled-checkbox-7">Animals</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" name="addiction" th:field="*{addiction}">
+                        <label for="styled-checkbox-8">Addiction</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="submit">Szukaj</button>
         </div>
 
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2">
-            <label for="styled-checkbox-2">Peace</label>
-        </div>
+    </section>
 
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" value="value3">
-            <label for="styled-checkbox-3">Environment</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" value="value4">
-            <label for="styled-checkbox-4">Disease</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" value="value5">
-            <label for="styled-checkbox-5">Education</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-6" type="checkbox" value="value6">
-            <label for="styled-checkbox-6">Culture</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" value="value7">
-            <label for="styled-checkbox-7">Animals</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" value="value8">
-            <label for="styled-checkbox-8">Addiction</label>
-        </div>
-
-        <a role="button">Filter</a>
-
-    </div>
-
-</section>
+</form>
 
 <section id="search-result" class="search-result--foundations">
+    <div>
+        <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">
 
-    <a th:href="@{'/foundation/' + ${foundation.id} + '/show'}" class="charity-card" th:each="foundation : ${foundations}">
+            <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">
+            <div class="charity-card-title" th:text="${user.foundation.name}">
+                Test
+            </div>
+            <div class="charity-card-category">
+                <img  th:src="@{images/category.png}" class="charity-card-category-img">
+                <span th:text="${user.foundation.type.type}">Education</span>
+            </div>
 
-        <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">
-        <div class="charity-card-title" th:text="${foundation.name}">
-            Test
-        </div>
-        <div class="charity-card-category">
-            <img  th:src="@{images/category.png}" class="charity-card-category-img">
-            <span>Education</span>
-        </div>
-    </a>
+        </a>
+    </div>
+
 
 </section>
+
 
 <footer id="foot"></footer>
 
