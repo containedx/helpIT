@@ -48,7 +48,7 @@
 
                 <div class="add-opinion-col add-opinion-col--left">
                     <span>Leave Opinion</span>
-                    <textarea id="add-opinion-text"></textarea>
+                    <textarea id="add-opinion-text" name="editordata"></textarea>
 
                 </div>
 
@@ -95,6 +95,10 @@
 
 <footer id="foot"></footer>
 
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <script type="text/javascript" charset="utf-8">
 
     function hideShowSignIn() {
@@ -117,41 +121,36 @@
         }
     }
 
-    function hideEl(){
-        var y  = document.querySelector('#dropdown-signup');
+    function hideShowOption() {
 
-        if(y.style.display === 'block') {
-            y.style.display = "none";
+        var x  = document.querySelector('#drop_view');
+        var y = document.getElementById("dropdown-signup");
+
+        if(x.style.display === 'none' || x.style.display === '') {
+
+            if(y.style.display === 'block') {
+                y.style.display = "none";
+            }
+
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
         }
     }
 
-    function manageDrop(){
-        var btn = document.querySelector('#navbar-user'),
-            view = document.querySelector('#drop_view'),
-            viewItems = view.querySelectorAll('li'),
-            body = document.body;
+    $('#add-opinion-text').summernote({
+        height: 75,
+        toolbar: [
+            ['font', ['bold', 'underline']],
+            ['para', ['ul', 'ol']],
+            ['view', ['fullscreen', 'codeview']],
+            ['insert', ['link', 'picture', 'video']]
+        ],
+        disableResizeEditor: true,
+    });
 
-        btn.addEventListener('click', function(e){
-            e.stopPropagation();
-            view.classList.toggle('is_active');
-        }); // open menu
+    $('#add-opinion-text').summernote('code', '');
 
-        for(var i = 0; i < viewItems.length; i++){
-            viewItems[i].addEventListener('click', function(e){
-                e.stopPropagation();
-                view.classList.remove('is_active');
-            });
-        } // carry item content to output,
-          // close after click
-
-        body.addEventListener('click', function(){
-            if(view.classList.contains('is_active')){
-                view.classList.remove('is_active');
-            }
-        }); // close after click outside
-    }
-
-    manageDrop();
 
 </script>
 
