@@ -4,6 +4,7 @@ import com.helpit.model.Foundation;
 import com.helpit.model.Volunteer;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -62,5 +63,21 @@ class PostTest {
 
         assertNotNull(post.getCommentsUnderPost());
         assertEquals(1, post.getCommentsUnderPost().size());
+    }
+
+    @Test
+    void getCreateTime() {
+        LocalDateTime cur = LocalDateTime.of(1994, 11, 2, 2, 11);
+        post.setCreateTime(cur);
+
+        assertEquals(cur, post.getCreateTime());
+    }
+
+    @Test
+    void getUpdateTime() {
+        LocalDateTime cur = LocalDateTime.of(1994, 11, 2, 2, 11);
+        post.setUpdateTime(cur);
+
+        assertEquals(cur, post.getUpdateTime());
     }
 }

@@ -4,6 +4,8 @@ import com.helpit.model.Volunteer;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.core.parameters.P;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommentUnderPostTest {
@@ -42,5 +44,21 @@ class CommentUnderPostTest {
     void getContent() {
         commentUnderPost.setContent("See ya soon!");
         assertEquals("See ya soon!", commentUnderPost.getContent());
+    }
+
+    @Test
+    void getCreateTime() {
+        LocalDateTime cur = LocalDateTime.of(1994, 11, 2, 2, 11);
+        commentUnderPost.setCreateTime(cur);
+
+        assertEquals(cur, commentUnderPost.getCreateTime());
+    }
+
+    @Test
+    void getUpdateTime() {
+        LocalDateTime cur = LocalDateTime.of(1994, 11, 2, 2, 11);
+        commentUnderPost.setUpdateTime(cur);
+
+        assertEquals(cur, commentUnderPost.getUpdateTime());
     }
 }

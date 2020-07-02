@@ -27,4 +27,5 @@ public class CommentController
         model.addAttribute("comments", comment_repository.findAll());
         return "/add_comment/list";
     }
+
 }

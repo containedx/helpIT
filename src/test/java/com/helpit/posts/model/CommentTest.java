@@ -4,6 +4,8 @@ import com.helpit.model.Foundation;
 import com.helpit.model.Volunteer;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommentTest {
@@ -42,5 +44,27 @@ class CommentTest {
     void getContent() {
         comment.setContent("Are U aware of that?");
         assertEquals("Are U aware of that?", comment.getContent());
+    }
+
+    @Test
+    void getRate() {
+        comment.setRate(5);
+        assertEquals(5, comment.getRate());
+    }
+
+    @Test
+    void getCreateTime() {
+        LocalDateTime cur = LocalDateTime.of(1994, 11, 2, 2, 11);
+        comment.setCreateTime(cur);
+
+        assertEquals(cur, comment.getCreateTime());
+    }
+
+    @Test
+    void getUpdateTime() {
+        LocalDateTime cur = LocalDateTime.of(1994, 11, 2, 2, 11);
+        comment.setUpdateTime(cur);
+
+        assertEquals(cur, comment.getUpdateTime());
     }
 }

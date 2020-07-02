@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
@@ -5,16 +6,94 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div th:fragment="menu">
-    <div class="nav" sec:authorize="isAnonymous()">
-        <a href="/login" th:text="#{menu.login}"></a>
-        <a href="/signup" th:text="#{menu.signup}"></a>
+<nav th:fragment="menu" id="nav">
+
+    <a id="navbar-logo" href="/">
+        <img alt="helpIT" th:src="@{/images/logo.png}" >
+        <h1>HelpIT</h1>
+    </a>
+
+
+    <div id="navbar-links">
+        <div><!-- styler --></div>
+
+        <a class="navbar-link" href="/">
+            <span>Find Charities</span>
+        </a>
+
+        <a class="navbar-link" href="/events">
+            <span>Events</span>
+        </a>
+
     </div>
-    <div class="nav" sec:authorize="isAuthenticated()">
-       <form th:action="logout" method='POST'>
-           <button type="submit" th:text="#{menu.logout}"></button>
-       </form>
+
+    <div id="navbar-registers">
+        <a href="/login" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">
+            <span>Sign in</span>
+        </a>
+
+        <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
+            <form th:action="logout" method='POST'>
+                <button type="submit">Sign out</button>
+            </form>
+        </a>
+
     </div>
-</div>
+
+    <div id="navbar-user" >
+
+        <a id="options-btn" role="button" onclick="hideShowOption()">
+            <img alt="user_img" th:src="@{/images/user.png}" >
+
+            <div id="navbar-dropdown">
+                <i class="im im-angle-down"></i>
+            </div>
+        </a>
+
+        <ul class='dropdown-menu' id="drop_view">
+
+            <li class='option' id='option1'>
+                <a href="/article/add" sec:authorize="hasRole('ROLE_VOLUNTEER')">Add new Article</a>
+            </li>
+
+            <li class='option' id='option2'>
+                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Add new Event</a>
+            </li>
+
+            <li class='option' id='option3'>
+                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Add Volunteer</a>
+            </li>
+
+            <li class='option' id='option4'>
+                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Volunteers List</a>
+            </li>
+
+            <li class='option' id='option5'>
+                <a href="/article/add" sec:authorize="hasRole('ROLE_VOLUNTEER')">Foundations List</a>
+            </li>
+
+            <li class='option' id='option6'>
+                <a href="/">Search Foundations</a>
+            </li>
+
+            <li class='option' id='option7'>
+                <a href="/events">Search Events</a>
+            </li>
+
+            <li class='option' id='option8'>
+                <a href="/login" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">Sign in / Register</a>
+            </li>
+
+            <li class='option' id='option9'>
+                <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
+                    <form th:action="logout" method="POST">
+                        <button type="submit" th:text="#{menu.logout}"></button>
+                    </form>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
 </body>
 </html>
