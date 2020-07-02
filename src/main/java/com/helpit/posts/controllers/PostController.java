@@ -22,49 +22,6 @@ public class PostController {
     }
 
 
-    @RequestMapping({"/add_post/add"})
-    public String getAddComment()
-    {
-        return "/add_post/add";
-    }
-
-    @RequestMapping({"/add_post/{id}/add_2_foundation"})
-    public String AddPost2Foundation(@PathVariable String id, Model model)
-    {
-        Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
-        if (foundation.isPresent()) {
-            model.addAttribute("foundation", foundation.get());
-        }
-        else {
-            throw new RuntimeException("Sth went wrong");
-        }
-        return "/add_post/add_2_foundation";
-    }
-
-    @RequestMapping({"/add_post/list"})
-    public String getListComment(Model model)
-    {
-        model.addAttribute("posts", postRepository.findAll());
-        return "/add_post/list";
-    }
-
-    @RequestMapping({"/add_post/{id}/display_post"})
-    public String getListComment(@PathVariable String id, Model model)
-    {
-
-        Optional<Post> post = postRepository.findById(Integer.valueOf(id));
-        if (post.isPresent()) {
-            model.addAttribute("post", post.get());
-        }
-        else {
-            throw new RuntimeException("Sth went wrong");
-        }
-
-
-
-        return "/add_post/display_post";
-    }
-
     @RequestMapping({"/article/show"})
     public String getPostShow()
     {

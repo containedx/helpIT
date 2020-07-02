@@ -15,17 +15,5 @@ public class CommentController
         this.comment_repository = comment_repository;
     }
 
-    @RequestMapping({"/add_comment/add"})
-    public String getAddComment()
-    {
-        return "/add_comment/add";
-    }
-
-    @RequestMapping({"/add_comment/list"})
-    public String getListComment(Model model)
-    {
-        model.addAttribute("comments", comment_repository.findAll());
-        return "/add_comment/list";
-    }
 
 }
