@@ -15,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Controller
@@ -48,6 +49,15 @@ public class EventController {
         listEvents = listSpecific(listEvents, foundation);
         model.addAttribute("listEvents", listEvents);
         return "events/eventList";
+    }
+
+    @RequestMapping(value="/{event_id}/volunteerslist", method=RequestMethod.GET)
+    public String showVolunteersList(@PathVariable Long event_id, Model model)
+    {
+        Event event = getEvent(event_id);
+        Set<User> volList = event.getUsers();
+        model.addAttribute("volList", volList);
+        return "events/volList";
     }
 
     @GetMapping("/events/add")
