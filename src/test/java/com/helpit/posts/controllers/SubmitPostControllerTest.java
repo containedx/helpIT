@@ -70,7 +70,9 @@ class SubmitPostControllerTest {
         when(foundationRepository.findById(anyInt())).thenReturn(Optional.of(foundation));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/charity/1/add_article")
-                .param("title", "War destroys Iraq").param("editordata", "Indeed"))
+                .param("title", "War destroys Iraq")
+                .param("editordata", "Indeed")
+                .param("category", "family"))
                 .andDo(print())
                 .andExpect(status().is(302)) //status przekierowania
                 .andExpect(view().name("redirect:/charity/1/show"));
@@ -94,7 +96,8 @@ class SubmitPostControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/article/submit")
                 .param("title", "War destroys Iraq")
                 .param("editordata", "Indeed")
-                .param("selected", "1"))
+                .param("selected", "1")
+                .param("category", "family"))
                 .andDo(print())
                 .andExpect(status().is(302)) //status przekierowania
                 .andExpect(view().name("redirect:/charity/1/show"));

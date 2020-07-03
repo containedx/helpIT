@@ -1,6 +1,7 @@
 package com.helpit.posts.model;
 
 import com.helpit.model.Foundation;
+import com.helpit.model.Types;
 import com.helpit.model.Volunteer;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,6 +40,9 @@ public class Post{
     @UpdateTimestamp
     @Column(name = "update_timestamp")
     private LocalDateTime updateTime;
+
+    @Enumerated(value = EnumType.STRING)
+    private Types category;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")

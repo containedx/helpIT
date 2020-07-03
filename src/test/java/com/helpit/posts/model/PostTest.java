@@ -1,9 +1,11 @@
 package com.helpit.posts.model;
 
 import com.helpit.model.Foundation;
+import com.helpit.model.Types;
 import com.helpit.model.Volunteer;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -79,5 +81,11 @@ class PostTest {
         post.setUpdateTime(cur);
 
         assertEquals(cur, post.getUpdateTime());
+    }
+
+    @Test
+    void getCategory() {
+        post.setCategory(Types.culture);
+        assertEquals(Types.culture, post.getCategory());
     }
 }

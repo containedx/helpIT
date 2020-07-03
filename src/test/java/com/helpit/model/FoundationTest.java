@@ -15,11 +15,6 @@ class FoundationTest {
 
     private Foundation foundation = new Foundation();
 
-//    @BeforeEach
-//    void setUp() {
-//        foundation = new Foundation();
-//    }
-
     @Test
     void getId() {
         foundation.setId(1);

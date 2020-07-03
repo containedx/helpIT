@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -83,8 +84,10 @@ class FoundationControllerTest {
         Comment c1 = new Comment();
         Comment c2 = new Comment();
         c1.setId(1);
+        c1.setCreateTime(LocalDateTime.of(1993,1,22,22,1));
         c1.setRate(5);
         c2.setId(2);
+        c2.setCreateTime(LocalDateTime.of(1993,1,23,22,1));
         c2.setRate(4);
         foundation.getComment().add(c1);
         foundation.getComment().add(c2);

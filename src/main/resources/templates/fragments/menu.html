@@ -32,6 +32,10 @@
             <span>Sign in</span>
         </a>
 
+        <a href="/signup" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">
+            <span>Sign up</span>
+        </a>
+
         <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
             <form th:action="logout" method='POST'>
                 <button type="submit">Sign out</button>
@@ -53,7 +57,7 @@
         <ul class='dropdown-menu' id="drop_view">
 
             <li class='option' id='option1'>
-                <a href="/article/add" sec:authorize="hasRole('ROLE_VOLUNTEER')">Add new Article</a>
+                <a href="/article/adding" sec:authorize="hasRole('ROLE_VOLUNTEER')">Add new Article</a>
             </li>
 
             <li class='option' id='option2'>
@@ -69,7 +73,7 @@
             </li>
 
             <li class='option' id='option5'>
-                <a href="/article/add" sec:authorize="hasRole('ROLE_VOLUNTEER')">Foundations List</a>
+                <a href="/charities" sec:authorize="hasRole('ROLE_VOLUNTEER')">Foundations List</a>
             </li>
 
             <li class='option' id='option6'>

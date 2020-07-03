@@ -72,7 +72,7 @@
 
 
     <section id="opinion-cards">
-        <div class="opinion-card" th:each="opinion : ${foundation.getComment()}">
+        <div class="opinion-card" th:each="opinion : ${opinions}">
             <img src="" alt="" class="opinion-card-img">
             <div class="opinion-card-content">
                 <div class="opinion-card-content-rating" th:text="${opinion.getRate()}">2</div>

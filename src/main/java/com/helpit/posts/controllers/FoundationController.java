@@ -1,12 +1,17 @@
 package com.helpit.posts.controllers;
 
 import com.helpit.model.Foundation;
+import com.helpit.posts.model.Comment;
+import com.helpit.posts.model.Post;
 import com.helpit.repositories.FoundationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -17,23 +22,6 @@ public class FoundationController {
         this.foundationRepository = foundationRepository;
     }
 
-    @RequestMapping({"/foundation/list", "/foundation/list.html"})
-    public String getFoundations(Model model) {
-        model.addAttribute("foundations", foundationRepository.findAll());
-        return "/foundation/list";
-    }
-
-    @RequestMapping({"/foundation/{id}/show"})
-    public String getFoundationSite(@PathVariable String id, Model model) {
-        Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
-        if(foundation.isPresent()){
-            model.addAttribute("foundation", foundation.get());
-        }
-        else {
-            throw new RuntimeException("Cannot display foundation, because it is not present in the database");
-        }
-        return "/foundation/show";
-    }
 
     @RequestMapping({"/charity/show"})
     public String getCharityShow()
@@ -47,7 +35,11 @@ public class FoundationController {
         Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
         if(foundation.isPresent()){
             model.addAttribute("foundation", foundation.get());
-            model.addAttribute("articles", foundation.get().getPost());
+
+            //sortowanie w kolejnosci od najnowszych
+            List<Post> listOfArticles = new ArrayList<>(foundation.get().getPost());
+            listOfArticles.sort(Comparator.comparing(Post::getCreateTime).reversed());
+            model.addAttribute("articles", listOfArticles);
         }
         else {
             throw new RuntimeException("Cannot display foundation, because it is not present in the database");
@@ -68,6 +60,10 @@ public class FoundationController {
     {
         Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
         if(foundation.isPresent()){
+            List<Comment> opinions = new ArrayList<>(foundation.get().getComment());
+            opinions.sort(Comparator.comparing(Comment::getCreateTime).reversed());
+            model.addAttribute("opinions", opinions);
+
             model.addAttribute("foundation", foundation.get());
 
             double sumOfRates = foundation.get().getComment().stream().map(comment -> comment.getRate()).mapToInt(Integer::intValue).sum();
