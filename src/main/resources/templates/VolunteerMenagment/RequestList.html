@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}">
+</head>
+<body>
+
+
+<h2>My requests</h2>
+</div>
+
+<div>
+    <div th:each="request : ${volRequests}">
+        <p th:text="${request.vol_email}"/>
+        <p th:text="${request.vol_description}"/>
+        <br><br>
+
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

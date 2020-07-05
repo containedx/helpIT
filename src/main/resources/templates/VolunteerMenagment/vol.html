@@ -13,7 +13,7 @@
 <div class="nav" sec:authorize="hasRole('ROLE_FOUNDATION')">
     <a th:href="@{'/checkVolunteer'}"><button>Get my Vol</button></a>
     <a href="/add"><button>Add new Volunteer</button></a>
-
+    <a href="/checkRequests"><button>Check Requests </button></a>
     <div th:each="vol : ${ListVol}">
 
 <ol>
@@ -30,7 +30,7 @@
 </div>
 <div class="nav" sec:authorize="hasRole('ROLE_VOLUNTEER')">
     <a th:href="@{'/checkFoundations'}"><button>Show my Foundations</button></a>
-    <a href="/request"><button>Volunteer application </button></a>
+    <a href="/SendRequest"><button>Volunteer application </button></a>
 
     <div th:each="fun : ${FunList}">
 

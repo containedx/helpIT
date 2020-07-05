@@ -1,19 +1,12 @@
 package com.helpit.controllers;
 
-import com.helpit.repositories.FoundationRepository;
-import com.helpit.repositories.FoundationVolRepository;
-import com.helpit.repositories.UserRepository;
-import com.helpit.repositories.VolunteerRepository;
+import com.helpit.model.*;
+import com.helpit.repositories.*;
 import com.helpit.services.UserService;
 
 import com.helpit.model.Foundation;
 import com.helpit.model.FoundationVol;
 import com.helpit.model.User;
-
-import com.helpit.model.Foundation;
-import com.helpit.model.FoundationVol;
-import com.helpit.model.User;
-import com.helpit.model.Volunteer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -40,6 +33,8 @@ public class VolunteerMenager {
     private FoundationRepository funRepo;
     @Autowired
     private VolunteerRepository Volrepo;
+    @Autowired
+    private VolRequestsRepository RequestRepo;
     private int numberValue = 0;
 
     public String currentUserName(Principal principal) {
@@ -89,6 +84,51 @@ public class VolunteerMenager {
         saveVolunteer(vol);
         return "VolunteerMenagment/vol";
     }
+
+    @GetMapping("/SendRequest")
+    public String SendRequest(WebRequest request, Model model) {
+        Vol_Requests vol_request = new Vol_Requests();
+        model.addAttribute("vol_request", vol_request);
+        return "VolunteerMenagment/SendRequest";
+    }
+
+    @RequestMapping(value="/create_request", method = RequestMethod.POST)
+    public String CreateRequest(@Valid @ModelAttribute("vol_request") Vol_Requests vol_request) {
+        saveRequest(vol_request);
+        return "VolunteerMenagment/vol";
+    }
+
+
+    @RequestMapping("/checkRequests")
+    public String checkRequests(Model model) {
+        List <Vol_Requests> volRequests = RequestRepo.findAll();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User userExist = userService.findUserByEmail(currentUserName);
+        int id = userExist.getFoundation().getId();
+        findRequest(volRequests,id);
+        model.addAttribute("volRequests", volRequests);
+
+        return "VolunteerMenagment/RequestList";
+    }
+
+    private List<Vol_Requests> findRequest(List<Vol_Requests> volRequests, int id) {
+        volRequests.removeIf(p->p.getFoundation_id()!= id);
+        return volRequests;
+    }
+
+    private void saveRequest(Vol_Requests vol_request) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User userExist = userService.findUserByEmail(currentUserName);
+        vol_request.setVol_id(userExist.getVolunteer().getId());
+        User userExist2 = userService.findUserByEmail(vol_request.getFoundation_email());
+        vol_request.setFoundation_id(userExist2.getFoundation().getId());
+
+        RequestRepo.save(vol_request);
+    }
+
+
 
     private void saveVolunteer(FoundationVol vol) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
