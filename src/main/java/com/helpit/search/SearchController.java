@@ -37,7 +37,7 @@ public class SearchController {
             userList=userRepository.findAllByFoundation_NameContaining(user.getName());
         else
             userList=userRepository.findAll();
-        userList=userList.stream().filter(e->e.getRole().equals("ROLE_FOUNDATION")).collect(Collectors.toList());
+        userList=userList.stream().filter(e->e.getRole().getRole().equals("ROLE_FOUNDATION")).collect(Collectors.toList());
         Set<User> temp = new LinkedHashSet<>();
         boolean checked=false;
         if(user.getFamily()){

@@ -66,19 +66,17 @@
 </section>
 </form>
 
-<!--<section id="search-result" class="search-result&#45;&#45;foundations">-->
-<!--    <div>-->
-<!--            <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">-->
-<!--                &lt;!&ndash; <p th:text="${user.foundation.image}"/>&ndash;&gt;-->
-<!--                <p th:text="${user.foundation.name}"/>-->
-<!--                <p th:text="${user.address.city}"/>-->
-<!--                <p th:text="${user.foundation.type.type}"/>-->
-<!--                <br><br>-->
-<!--            </a>-->
+<section id="search-result" class="search-result&#45;&#45;foundations">
+    <div>
+            <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">
+                <!-- <p th:text="${user.foundation.image}"/>-->
+                <p th:text="${user.foundation.name}"/>
+                <p th:text="${user.address.city}"/>
+                <p th:text="${user.foundation.type.type}"/>
+                <br><br>
+            </a>
+    </div>
 
-<!--    </div>-->
-
-
-<!--</section>-->
+</section>
 </body>
 </html>
