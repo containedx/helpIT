@@ -1,39 +1,27 @@
 package com.helpit.posts.controllers;
 
 import com.helpit.model.Foundation;
+import com.helpit.posts.model.Comment;
+import com.helpit.posts.model.Post;
 import com.helpit.repositories.FoundationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class FoundationController {
-    private final FoundationRepository foundation_repository;
+    private final FoundationRepository foundationRepository;
 
-    public FoundationController(FoundationRepository foundation_repository) {
-        this.foundation_repository = foundation_repository;
+    public FoundationController(FoundationRepository foundationRepository) {
+        this.foundationRepository = foundationRepository;
     }
 
-    @RequestMapping({"/foundation/list", "/foundation/list.html"})
-    public String getFoundations(Model model) {
-        model.addAttribute("foundations", foundation_repository.findAll());
-        return "/foundation/list";
-    }
-
-    @RequestMapping({"/foundation/{id}/show"})
-    public String getFoundationSite(@PathVariable String id, Model model) {
-        Optional<Foundation> foundation = foundation_repository.findById(Integer.valueOf(id));
-        if(foundation.isPresent()){
-            model.addAttribute("foundation", foundation.get());
-        }
-        else {
-            throw new RuntimeException("Cannot display foundation, because it is not present in the database");
-        }
-        return "/foundation/show";
-    }
 
     @RequestMapping({"/charity/show"})
     public String getCharityShow()
@@ -44,10 +32,14 @@ public class FoundationController {
     @RequestMapping({"/charity/{id}/show"})
     public String getCharityShow(@PathVariable String id, Model model)
     {
-        Optional<Foundation> foundation = foundation_repository.findById(Integer.valueOf(id));
+        Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
         if(foundation.isPresent()){
             model.addAttribute("foundation", foundation.get());
-            model.addAttribute("articles", foundation.get().getPost());
+
+            //sortowanie w kolejnosci od najnowszych
+            List<Post> listOfArticles = new ArrayList<>(foundation.get().getPost());
+            listOfArticles.sort(Comparator.comparing(Post::getCreateTime).reversed());
+            model.addAttribute("articles", listOfArticles);
         }
         else {
             throw new RuntimeException("Cannot display foundation, because it is not present in the database");
@@ -61,11 +53,29 @@ public class FoundationController {
         return "/charity/events";
     }
 
-    @RequestMapping({"/charity/sponsors"})
-    public String getCharitySponsors()
+
+    @RequestMapping({"/charity/{id}/opinion"})
+    public String getCharityOpinions(@PathVariable String id,
+                                     Model model)
     {
-        return "/charity/sponsors";
+        Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
+        if(foundation.isPresent()){
+            List<Comment> opinions = new ArrayList<>(foundation.get().getComment());
+            opinions.sort(Comparator.comparing(Comment::getCreateTime).reversed());
+            model.addAttribute("opinions", opinions);
+
+            model.addAttribute("foundation", foundation.get());
+
+            double sumOfRates = foundation.get().getComment().stream().map(comment -> comment.getRate()).mapToInt(Integer::intValue).sum();
+            double rating = sumOfRates / (double)foundation.get().getComment().size(); //
+            model.addAttribute("rating", rating);
+        }
+        else {
+            throw new RuntimeException("Cannot display foundation, because it is not present in the database");
+        }
+        return "/charity/opinions";
     }
+
 
     @RequestMapping({"/charity/edit"})
     public String getCharityEdit()
@@ -76,7 +86,7 @@ public class FoundationController {
     @RequestMapping({"/charities"})
     public String getFoundList(Model model)
     {
-        model.addAttribute("foundations", foundation_repository.findAll());
+        model.addAttribute("foundations", foundationRepository.findAll());
         return "/charity/list";
     }
 }

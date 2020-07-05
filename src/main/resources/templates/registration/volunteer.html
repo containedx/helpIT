@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-<div th:replace="fragments/menu::menu"></div>
+<!--<div th:replace="fragments/menu::menu"></div>-->
 <form id="volunteerForm" th:action="add_volunteer" th:object="${user}" th:method="POST">
     <input type="hidden"
            name="${_csrf.parameterName}"

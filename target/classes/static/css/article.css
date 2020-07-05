@@ -8,10 +8,10 @@
       padding: 90px 20px 20px  10px; } }
   #article #article-content {
     display: grid;
-    grid-template-rows: 40px 80px 350px auto 300px auto;
+    grid-template-rows: 40px 80px 350px auto auto auto;
     width: 100%;
     max-width: 850px;
-    margin: 0 auto; }
+    margin: 0 auto 60px auto; }
     #article #article-content .article-content-nav {
       background: #f95c57;
       border: 1px solid #b2b2b2;
@@ -30,7 +30,7 @@
         #article #article-content .article-content-nav a:first-of-type:hover {
           background-color: #e2645f; }
         #article #article-content .article-content-nav a:first-of-type i {
-          line-height: 24px;
+          line-height: 22px;
           font-size: 15px; }
       #article #article-content .article-content-nav a:nth-of-type(2) {
         height: 40px;
@@ -73,11 +73,12 @@
     #article #article-content .article-content-text {
       border: 1px solid #b2b2b2;
       border-top: none;
+      margin: 0 0 45px 0;
       -webkit-box-shadow: 0px 15px 20px -18px #d3cad8;
       -moz-box-shadow: 0px 15px 20px -18px #d3cad8;
       box-shadow: 0px 15px 20px -18px #d3cad8; }
       #article #article-content .article-content-text p {
-        padding: 10px 17px 15px 17px;
+        padding: 10px 17px 0 17px;
         line-height: 23px;
         font-size: 13px;
         color: #222; }
@@ -88,7 +89,6 @@
     #article #article-content .article-content-add-comment {
       display: grid;
       grid-template-rows: 1fr 50px;
-      margin: 60px 0 0 0;
       position: relative; }
       #article #article-content .article-content-add-comment span {
         position: absolute;

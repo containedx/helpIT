@@ -2,70 +2,95 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+    <link rel="stylesheet" href="css/root.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
 
 <div th:replace="fragments/menu::menu"></div>
+
 <form id="foundationForm" th:action="search" th:object="${userFoundation}" th:method="POST">
 
-<section id="search-bar">
+    <section id="search-bar">
 
-    <br>
-    Name:<input type="text" name="foundationName" th:field="*{name}" >
-    <br>
-    City:<input type="text" name="foundationCity" th:field="*{city}">
-    <br>
-    <div id="search-options">
+        <div id="search-options">
 
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" name="family" th:field="*{family}">
-            <label for="styled-checkbox-1">Family</label>
+            <div id="search-name">
+                <span>Name:</span>
+                <input class="search-name-input" type="text" name="foundationName" th:field="*{name}" placeholder="Charity Name">
+            </div>
+
+            <div id="search-city">
+                <span>City:</span>
+                <input class="search-city-input" type="text" name="foundationCity" th:field="*{city}" placeholder="City">
+            </div>
+
+            <div id="search-options-dropdown">
+
+                <span>Select by Type</span>
+
+                <div class="search-options-dropdown-content">
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" name="family" th:field="*{family}">
+                        <label for="styled-checkbox-1">Family</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" name="peace" th:field="*{peace}">
+                        <label for="styled-checkbox-2">Peace</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" name="environment" th:field="*{environment}">
+                        <label for="styled-checkbox-3">Environment</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" name="disease" th:field="*{disease}">
+                        <label for="styled-checkbox-4">Disease</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" name="education" th:field="*{education}">
+                        <label for="styled-checkbox-5">Education</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-6" type="checkbox" name="culture" th:field="*{culture}">
+                        <label for="styled-checkbox-6">Culture</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" name="animals" th:field="*{animals}">
+                        <label for="styled-checkbox-7">Animals</label>
+                    </div>
+
+                    <div class="search-option">
+                        <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" name="addiction" th:field="*{addiction}">
+                        <label for="styled-checkbox-8">Addiction</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="submit">Szukaj</button>
         </div>
 
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" name="peace" th:field="*{peace}">
-            <label for="styled-checkbox-2">Peace</label>
-        </div>
+    </section>
 
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" name="environment" th:field="*{environment}">
-            <label for="styled-checkbox-3">Environment</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" name="disease" th:field="*{disease}">
-            <label for="styled-checkbox-4">Disease</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" name="education" th:field="*{education}">
-            <label for="styled-checkbox-5">Education</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-6" type="checkbox" name="culture" th:field="*{culture}">
-            <label for="styled-checkbox-6">Culture</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" name="animals" th:field="*{animals}">
-            <label for="styled-checkbox-7">Animals</label>
-        </div>
-
-        <div class="search-option">
-            <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" name="addiction" th:field="*{addiction}">
-            <label for="styled-checkbox-8">Addiction</label>
-        </div>
-
-        <button type="submit">Szukaj</button>
-    </div>
-
-</section>
 </form>
 
+<<<<<<< HEAD
 <section id="search-result" class="search-result&#45;&#45;foundations">
     <div>
             <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">
@@ -80,3 +105,46 @@
 </section>
 </body>
 </html>
+=======
+<!--<section id="search-result" class="search-result&#45;&#45;foundations" >-->
+<!--    <div>-->
+<!--        <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">-->
+
+<!--            <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">-->
+<!--            <div class="charity-card-title" th:text="${user.foundation.name}">-->
+<!--                Test-->
+<!--            </div>-->
+<!--            <div class="charity-card-category">-->
+<!--                <img  th:src="@{images/category.png}" class="charity-card-category-img">-->
+<!--                <span th:text="${user.foundation.type.type}">Education</span>-->
+<!--            </div>-->
+
+<!--        </a>-->
+<!--    </div>-->
+
+
+<!--</section>-->
+
+
+<footer id="foot"></footer>
+
+<script type="text/javascript" charset="utf-8">
+
+
+    function hideShowOption() {
+
+        var x  = document.querySelector('#drop_view');
+
+        if(x.style.display === 'none' || x.style.display === '') {
+
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>
+
+
+</body>
+>>>>>>> 77e88c44ddbcc7e06adfc9d88e83741737400a0a

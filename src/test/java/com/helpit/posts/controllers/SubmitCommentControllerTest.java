@@ -3,11 +3,10 @@ package com.helpit.posts.controllers;
 import com.helpit.model.Foundation;
 import com.helpit.model.User;
 import com.helpit.model.Volunteer;
-import com.helpit.posts.model.Post;
-import com.helpit.posts.repositories.PostRepository;
+import com.helpit.posts.model.Comment;
+import com.helpit.posts.repositories.CommentRepository;
 import com.helpit.repositories.FoundationRepository;
 import com.helpit.repositories.UserRepository;
-import com.helpit.repositories.VolunteerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -30,24 +29,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-class SubmitPostControllerTest {
+class SubmitCommentControllerTest {
 
     @Mock
-    PostRepository postRepository;
-    @Mock
-    VolunteerRepository volunteerRepository;
-    @Mock
-    FoundationRepository foundationRepository;
+    CommentRepository commentRepository;
     @Mock
     UserRepository userRepository;
+    @Mock
+    FoundationRepository foundationRepository;
 
-    SubmitPostController controller;
+    SubmitCommentController controller;
     User user;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        controller = new SubmitPostController(postRepository, volunteerRepository, foundationRepository, userRepository);
+        controller = new SubmitCommentController(commentRepository, userRepository, foundationRepository);
 
         user = new User();
         user.setId(1);
@@ -58,49 +55,26 @@ class SubmitPostControllerTest {
     }
 
     @Test
-    void addArticleToFoundation() throws Exception {
-        Foundation foundation = new Foundation();
-        foundation.setId(1);
+    void submitOpinion() throws Exception {
+        Volunteer volunteer = new Volunteer();
+        volunteer.setId(1);
+        volunteer.setComments(new HashSet<Comment>());
+        user.setVolunteer(volunteer);
 
-        user.setVolunteer(new Volunteer());
-        user.getVolunteer().setPosts(new HashSet<Post>());
+        Foundation foundation = new Foundation();
+        foundation.setId(2);
+
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
         when(userRepository.findByEmail(anyString())).thenReturn(user);
         when(foundationRepository.findById(anyInt())).thenReturn(Optional.of(foundation));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/charity/1/add_article")
-                .param("title", "War destroys Iraq")
-                .param("editordata", "Indeed")
-                .param("category", "family"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/charity/1/submitopinion")
+        .param("editordata", "spring to fajna sprawa")
+        .param("rating", "5"))
                 .andDo(print())
-                .andExpect(status().is(302)) //status przekierowania
-                .andExpect(view().name("redirect:/charity/1/show"));
-
-        verify(userRepository, times(1)).findByEmail(anyString());
-        verify(foundationRepository, times(1)).findById(anyInt());
-    }
-
-    @Test
-    void addArticleToSelectedFoundation() throws Exception {
-        Foundation foundation = new Foundation();
-        foundation.setId(1);
-
-        user.setVolunteer(new Volunteer());
-        user.getVolunteer().setPosts(new HashSet<Post>());
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
-
-        when(userRepository.findByEmail(anyString())).thenReturn(user);
-        when(foundationRepository.findById(anyInt())).thenReturn(Optional.of(foundation));
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/article/submit")
-                .param("title", "War destroys Iraq")
-                .param("editordata", "Indeed")
-                .param("selected", "1")
-                .param("category", "family"))
-                .andDo(print())
-                .andExpect(status().is(302)) //status przekierowania
-                .andExpect(view().name("redirect:/charity/1/show"));
+                .andExpect(status().is(302)) //przekierowanie
+        .andExpect(view().name("redirect:/charity/1/opinion"));
 
         verify(userRepository, times(1)).findByEmail(anyString());
         verify(foundationRepository, times(1)).findById(anyInt());

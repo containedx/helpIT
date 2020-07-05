@@ -6,7 +6,7 @@
     <title>Rejestracja</title>
 </head>
 <body>
-<div th:replace="fragments/menu::menu"></div>
+<!--<div th:replace="fragments/menu::menu"></div>-->
 <form id="foundationForm" th:action="add_foundation" th:object="${user}" th:method="POST">
     <input type="hidden"
            name="${_csrf.parameterName}"

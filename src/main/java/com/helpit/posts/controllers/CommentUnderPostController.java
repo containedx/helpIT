@@ -27,42 +27,5 @@ public class CommentUnderPostController {
         this.volunteerRepository = volunteerRepository;
     }
 
-    @RequestMapping({"/add_comment/{id}/add_2_post"})
-    public String addCommentUnderPost(@PathVariable String id, Model model) {
 
-        model.addAttribute("post", id);
-        return "/add_comment/add_2_post";
-    }
-
-    @RequestMapping({"/add_comment_2_post/{id}"})
-    public String getCommentsUnderPost(@PathVariable String id,
-                                       @RequestParam  String content,
-                                       Model model) {
-        Optional<Post> post = postRepository.findById(Integer.valueOf(id));
-        if( post.isPresent() ) {
-            CommentUnderPost cp = new CommentUnderPost();
-            Volunteer v = new Volunteer();
-            volunteerRepository.save(v);
-
-            v.setSurname("janek");
-            try {
-                Post p = postRepository.findById(Integer.valueOf(id)).get();
-                cp.setPost(p);
-                cp.setVolunteer(v);
-                cp.setContent(content);
-                commentUnderPostRepository.save(cp);
-                model.addAttribute("comments", p.getCommentsUnderPost());
-            }
-            catch (Exception e) {
-                throw new RuntimeException("Sth went wrong");
-            }
-
-
-        }
-        else {
-            throw new RuntimeException("Cannot add to post");
-        }
-
-        return "/add_comment/show_comments_under_post";
-    }
 }
