@@ -18,68 +18,44 @@
 
 <div th:replace="fragments/menu::menu"></div>
 
-<section id="charity">
+<section id="volunteer">
 
-    <div id="charity-content">
+    <div id="volunteer-content">
 
-        <div class="charity-content-nav">
+        <div class="volunteer-content-nav">
             <a href="/">
                 <i class="im im-arrow-left"></i>
             </a>
 
-            <a href="/charity/edit" role="button">Edit Profile</a>
+            <a href="/volunteer/edit" role="button">Edit Profile</a>
         </div>
 
-        <div class="charity-content-user">
-            <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
+        <div class="volunteer-content-user">
+            <img alt="charity_logo" th:src="@{/images/user.png}">
 
             <!-- <h5 th:text="${foundation.name}"></h5> -->
-            <h5 th:text="${foundation.name}"></h5>
+            <h5> User Name</h5>
         </div>
 
-        <div class="charity-content-links">
-            <a  th:href="@{'/foundation/' + ${foundation.getId()} + '/show'}">Feed
+        <div class="volunteer-content-links">
+            <a  href="" >Feed
                 <i class="im im-care-up"></i>
             </a>
-            <a th:href="@{'/foundation/' + ${foundation.getId()} + '/events'}">Events</a>
-            <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions</a>
         </div>
 
-        <div class="charity-content-feed">
-
-            <form id="add-article" th:action="'/foundation/' + ${foundation.getId()} + '/add_article'" sec:authorize="isAuthenticated()">
-                <div class="add-article-content">
-                    <div class="input-article">
-                        <span>Article title</span>
-                        <label>
-                            <input id="title" name="title" type="text"/>
-                        </label>
-                    </div>
-
-                    <div class="textarea-article">
-                        <span>Article content</span>
-                        <label>
-                            <textarea id="summernote" name="editordata"></textarea>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="add-article-controllers">
-                    <div class="upload">
-                        <span></span>
-                        <i class="im im-export"></i>
-                    </div>
-                    <input type="submit" value="Create Article"/>
-                </div>
-            </form>
+        <div class="volunteer-content-feed">
 
             <div id="articles">
-                <div class="article" th:each="article : ${articles}">
+                <div class="article" >
                     <img th:src="@{/images/article.png}" alt="">
                     <div class="article-details">
-                        <div class="article-title" th:utext="${article.getTitle()}">Author</div>
-                        <div class="article-content" th:utext="${article.getContent()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                        <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
+                        <div class="article-title" >Title</div>
+                        <div class="article-content" >Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                        <div class="article-links">
+                            <span></span>
+                            <a href="">read more</a>
+                            <a href="">delete</a>
+                        </div>
                     </div>
                 </div>
 

@@ -37,48 +37,51 @@
         </div>
 
         <div class="charity-content-links">
-            <a href="/charity/show">Feed</a>
+            <a  href="/charity/show" th:href="'/charity/' + ${foundation.getId() + '/show'}">Feed</a>
             <a href="/charity/events">Events</a>
-            <a href="/foundation/opinions">Opinions<i class="im im-care-up"></i></a>
+            <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions<i class="im im-care-up"></i></a>
         </div>
 
         <div class="charity-content-feed">
-            
-            <div id="add-opinion">
 
-                <div class="add-opinion-col add-opinion-col--left">
-                    <span>Leave Opinion</span>
-                    <textarea id="add-opinion-text" name="editordata"></textarea>
+            <div class="charity-content-feed">
+                <form th:action="'/charity/' + ${foundation.getId()} + '/submitopinion'">
+                    <div id="add-opinion">
 
-                </div>
+                        <div class="add-opinion-col add-opinion-col--left">
+                            <span>Leave Opinion</span>
+                            <textarea id="add-opinion-text" name="editordata"></textarea>
 
-                <div class="add-opinion-col add-opinion-col--right">
-                    <span>Rate it </span>
+                        </div>
 
-                    <select id="add-opinion-rating">
-                        <option>5</option>
-                        <option>4</option>
-                        <option>3</option>
-                        <option>2</option>
-                        <option>1</option>
-                    </select>
+                        <div class="add-opinion-col add-opinion-col--right">
+                            <span>Rate it </span>
 
-                    <input type="submit">
-                </div>
+                            <select id="add-opinion-rating" name="rating">
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
 
+                            <input type="submit">
+                        </div>
+
+                    </div>
+                </form>
             </div>
 
             <section id="opinion-cards">
-                <div class="opinion-card">
+                <div class="opinion-card" th:each="opinion : ${foundation.getComment()}">
                     <img src="" alt="" class="opinion-card-img">
                     <div class="opinion-card-content">
-                        <div class="opinion-card-content-title">Well...</div>
-                        <div class="opinion-card-content-rating">2</div>
-                        <div class="opinion-card-content-text">Irresponsible administration...</div>
+                        <div class="opinion-card-content-rating" th:text="${opinion.getRate()}">2</div>
+                        <div class="opinion-card-content-text" th:utext="${opinion.getContent()}">Irresponsible administration...</div>
                     </div>
                 </div>
 
-                <div class="opinion-card">
+                <div class="opinion-card" th:remove="all">
                     <img src="" alt="" class="opinion-card-img">
                     <div class="opinion-card-content">
                         <div class="opinion-card-content-title">Awesome!</div>
