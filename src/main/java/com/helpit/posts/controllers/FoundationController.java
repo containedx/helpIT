@@ -23,7 +23,7 @@ public class FoundationController {
         return "/foundation/list";
     }
 
-    @RequestMapping({"/foundation/{id}/show"})
+    @RequestMapping({"/charity/{id}/show"})
     public String getFoundationSite(@PathVariable String id, Model model) {
         Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
         if(foundation.isPresent()){
@@ -41,7 +41,7 @@ public class FoundationController {
         return "/charity/show_default";
     }
 
-    @RequestMapping({"/charity/{id}/show"})
+    @RequestMapping({"/foundation/{id}/show"})
     public String getCharityShow(@PathVariable String id, Model model)
     {
         Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
@@ -52,7 +52,7 @@ public class FoundationController {
         else {
             throw new RuntimeException("Cannot display foundation, because it is not present in the database");
         }
-        return "/charity/show";
+        return "/foundation/show";
     }
 
     @RequestMapping({"/charity/events"})

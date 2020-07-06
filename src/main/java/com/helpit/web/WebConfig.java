@@ -58,6 +58,19 @@ public class WebConfig {
         return "manager";
     }
 
+    @RequestMapping({"/volunteer/edit"})
+    public String getVolunteerEdit()
+    {
+        return "/volunteer/edit";
+    }
+
+    @RequestMapping({"/foundation/edit"})
+    public String getFoundationEdit()
+    {
+        return "/foundation/edit";
+    }
+
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();

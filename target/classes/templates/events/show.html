@@ -27,7 +27,7 @@
             <a th:href="'/foundation/' + ${event.foundation.getId()} + '/show'">
                 <i class="im im-arrow-left"></i>
             </a>
-            <a href="/event/edit" role="button">Edit Event</a>
+            <a href=""></a>
 
             <a sec:authorize="hasRole('ROLE_FOUNDATION')" th:href="@{'events/delete/' + ${event.id}}"role="button">Delete</a>
         </div>
