@@ -37,6 +37,7 @@ public class SearchController {
             userList=userRepository.findAllByFoundation_NameContaining(user.getName());
         else
             userList=userRepository.findAll();
+        userList=userList.stream().filter(e->e.getRole().getRole().equals("ROLE_FOUNDATION")).collect(Collectors.toList());
         Set<User> temp = new LinkedHashSet<>();
         boolean checked=false;
         if(user.getFamily()){
@@ -87,6 +88,7 @@ public class SearchController {
         if(checked)
             userList=temp.stream().collect(Collectors.toList());
 
+
         model.addAttribute("listFoundations",userList);
         return "index";
     }
@@ -95,12 +97,9 @@ public class SearchController {
         List<User> foundations = new ArrayList<>();
         SearchedFoundation user = new SearchedFoundation();
 
-        foundations=userRepository.findAll();
+        foundations=userRepository.findAllByRole_Role("ROLE_FOUNDATION");
         model.addAttribute("listFoundations",foundations);
         model.addAttribute("userFoundation",user);
         return "index";
     }
-
-
-
 }

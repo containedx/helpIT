@@ -27,10 +27,10 @@ INSERT INTO types(type_name) values ("TYPE_FAMILY"), ("TYPE_PEACE"), ("TYPE_ENVI
 call util.trunctables('helpIT');
 #Adrian
 
+CREATE TABLE IF NOT EXISTS comments (id BIGINT PRIMARY KEY auto_increment, rate INT,content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id), create_timestamp timestamp, update_timestamp timestamp);
+CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, title text, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id), create_timestamp timestamp, update_timestamp timestamp);
+CREATE TABLE IF NOT EXISTS comments_under_posts (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), post_id BIGINT references posts(id), create_timestamp timestamp, update_timestamp timestamp);
 
-CREATE TABLE IF NOT EXISTS comments (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id));
-CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, title text, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id));
-CREATE TABLE IF NOT EXISTS comments_under_posts (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), post_id BIGINT references posts(id));
 drop database helpIT;
 
 truncate addresses;

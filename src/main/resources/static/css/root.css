@@ -486,7 +486,14 @@ html, body {
     grid-template-rows: 160px 45px 35px;
     -webkit-box-shadow: 0px 25px 22px -18px #f1e7f7;
     -moz-box-shadow: 0px 25px 22px -18px #f1e7f7;
-    box-shadow: 0px 25px 22px -18px #f1e7f7; }
+    box-shadow: 0px 25px 22px -18px #f1e7f7;
+    position: relative; }
+    #search-result .charity-card .join-link {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #fff;
+      border: 1px solid #dadada; }
     #search-result .charity-card .charity-card-img {
       border-top-right-radius: 3px;
       border-top-left-radius: 3px;
@@ -711,7 +718,7 @@ html, body {
         #charity #charity-content .charity-content-nav a:first-of-type i {
           line-height: 21px;
           font-size: 15px; }
-      #charity #charity-content .charity-content-nav a:last-of-type {
+      #charity #charity-content .charity-content-nav a:nth-of-type(2) {
         height: 40px;
         width: auto;
         padding: 0 20px 0 10px;
@@ -720,7 +727,7 @@ html, body {
         float: right;
         line-height: 40px;
         color: #fff; }
-        #charity #charity-content .charity-content-nav a:last-of-type:hover {
+        #charity #charity-content .charity-content-nav a:nth-of-type(2):hover {
           text-decoration: underline; }
     #charity #charity-content .charity-content-user {
       background-color: #fcfcfc;
@@ -1718,3 +1725,48 @@ html, body {
                 padding: 0 20px 0 0; }
                 #volunteer #volunteer-content .volunteer-content-feed #articles .article .article-details .article-links a:hover {
                   text-decoration: underline; }
+
+.manager {
+  height: auto;
+  max-width: 800px;
+  width: 100%;
+  margin: 115px auto 40px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 35px auto;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 150 20px -15px #b7aebc;
+  -moz-box-shadow: 0px 0px 20px -15px #b7aebc;
+  box-shadow: 0px 0px 20px -15px #b7aebc; }
+  .manager:nth-of-type(2) {
+    margin: 0px auto 40px auto; }
+  .manager h4 {
+    color: #fff;
+    font-size: 13px;
+    background: #fa5b53;
+    padding: 0 0 0 15px;
+    margin: 0 0 0 0;
+    height: 35px;
+    line-height: 35px; }
+  .manager .manager-rows {
+    grid-auto-rows: 50px; }
+    .manager .manager-rows .manager-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      grid-template-rows: 1fr; }
+      .manager .manager-rows .manager-row:nth-child(even) {
+        background: #e7e7e7; }
+      .manager .manager-rows .manager-row:nth-child(odd) {
+        background: #fff; }
+      .manager .manager-rows .manager-row .manager-row-name {
+        line-height: 50px;
+        padding: 0 0 0 15px;
+        font-size: 13px; }
+      .manager .manager-rows .manager-row .manager-row-link {
+        text-decoration: none;
+        line-height: 50px;
+        font-size: 13px;
+        padding: 0 20px; }
+        .manager .manager-rows .manager-row .manager-row-link:hover {
+          text-decoration: underline; }

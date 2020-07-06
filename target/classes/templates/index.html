@@ -91,11 +91,10 @@
 </form>
 
 <section id="search-result" class="search-result--foundations">
-    <div>
-        <!--
-        <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">
 
+        <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">
             <img alt="charity_img" th:src="@{images/ch1.jpg}" class="charity-card-img">
+
             <div class="charity-card-title" th:text="${user.foundation.name}">
                 Test
             </div>
@@ -103,10 +102,7 @@
                 <img  th:src="@{images/category.png}" class="charity-card-category-img">
                 <span th:text="${user.foundation.type.type}">Education</span>
             </div>
--->
         </a>
-    </div>
-
 
 </section>
 

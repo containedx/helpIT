@@ -39,7 +39,7 @@
         #charity #charity-content .charity-content-nav a:first-of-type i {
           line-height: 21px;
           font-size: 15px; }
-      #charity #charity-content .charity-content-nav a:last-of-type {
+      #charity #charity-content .charity-content-nav a:nth-of-type(2) {
         height: 40px;
         width: auto;
         padding: 0 20px 0 10px;
@@ -48,7 +48,7 @@
         float: right;
         line-height: 40px;
         color: #fff; }
-        #charity #charity-content .charity-content-nav a:last-of-type:hover {
+        #charity #charity-content .charity-content-nav a:nth-of-type(2):hover {
           text-decoration: underline; }
     #charity #charity-content .charity-content-user {
       background-color: #fcfcfc;

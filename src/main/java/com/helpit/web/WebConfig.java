@@ -52,6 +52,12 @@ public class WebConfig {
         return "/volunteer/show";
     }
 
+    @RequestMapping({"/user/manager"})
+    public String getUserManager()
+    {
+        return "manager";
+    }
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
