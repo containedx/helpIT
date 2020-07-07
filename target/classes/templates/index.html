@@ -92,7 +92,7 @@
 
 <section id="search-result" class="search-result&#45;&#45;foundations">
     <div>
-            <a th:href="@{'/foundation/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">
+            <a th:href="@{'/charity/' + ${user.foundation.id} + '/show'}" class="charity-card" th:each="user : ${listFoundations}">
                 <!-- <p th:text="${user.foundation.image}"/>-->
                 <p th:text="${user.foundation.name}"/>
                 <p th:text="${user.address.city}"/>
