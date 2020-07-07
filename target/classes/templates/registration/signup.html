@@ -4,18 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+    <link rel="stylesheet" href="css/root.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div th:replace="fragments/menu::menu"></div>
-    <a href="signup/foundation">
+<!--<div th:replace="fragments/menu::menu"></div> <br>-->
+<div>
+    <a href="/signup/add_foundation">
         <div>
             <p>Załóż konto jako fundacja</p>
         </div>
     </a>
-<a href="signup/volunteer">
+
+<a href="/signup/add_volunteer">
     <div>
         <p>Założ konto jako wolontariusz</p>
     </div>
 </a>
+</div>
 </body>
 </html>

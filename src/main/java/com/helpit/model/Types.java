@@ -20,4 +20,6 @@ public enum Types {
     public String getTypeName () {
         return typeName;
     }
+
+
 }

@@ -480,7 +480,14 @@
     grid-template-rows: 160px 45px 35px;
     -webkit-box-shadow: 0px 25px 22px -18px #f1e7f7;
     -moz-box-shadow: 0px 25px 22px -18px #f1e7f7;
-    box-shadow: 0px 25px 22px -18px #f1e7f7; }
+    box-shadow: 0px 25px 22px -18px #f1e7f7;
+    position: relative; }
+    #search-result .charity-card .join-link {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #fff;
+      border: 1px solid #dadada; }
     #search-result .charity-card .charity-card-img {
       border-top-right-radius: 3px;
       border-top-left-radius: 3px;

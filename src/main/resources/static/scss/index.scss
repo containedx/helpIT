@@ -687,6 +687,15 @@
     -webkit-box-shadow: 0px 25px 22px -18px rgb(241, 231, 247);
     -moz-box-shadow: 0px 25px 22px -18px  rgb(241, 231, 247);
     box-shadow: 0px 25px 22px -18px rgb(241, 231, 247);
+    position: relative;
+
+    .join-link{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #fff;
+      border: 1px solid #dadada;
+    }
 
     .charity-card-img{
       border-top-right-radius: 3px;
