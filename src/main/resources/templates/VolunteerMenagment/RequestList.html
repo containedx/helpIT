@@ -16,6 +16,8 @@
     <div th:each="request : ${volRequests}">
         <p th:text="${request.vol_email}"/>
         <p th:text="${request.vol_description}"/>
+        <a href="" th:href="@{'request/delete/' + ${request.id}}"><button>DELETE</button></a> <br>
+        <a href="" th:href="@{'request/accept/' + ${request.id}}"><button>ACCEPT</button></a>
         <br><br>
 
     </div>

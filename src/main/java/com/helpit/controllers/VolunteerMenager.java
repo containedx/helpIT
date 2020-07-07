@@ -1,5 +1,6 @@
 package com.helpit.controllers;
 
+import com.helpit.events.Event;
 import com.helpit.model.*;
 import com.helpit.repositories.*;
 import com.helpit.services.UserService;
@@ -110,7 +111,37 @@ public class VolunteerMenager {
         model.addAttribute("volRequests", volRequests);
 
         return "VolunteerMenagment/RequestList";
+
+
+
     }
+
+    @RequestMapping("request/delete/{id}")
+    public String deleteRequest(@Valid @ModelAttribute("Vol_Requests") Vol_Requests vol_requests) {
+        RequestRepo.deleteById(vol_requests.getId());
+        return "VolunteerMenagment/RequestList";
+
+    }
+
+    @RequestMapping("request/accept/{id}")
+    public String acceptRequest(@PathVariable Integer id, Model model, @Valid @ModelAttribute("Vol_Requests") Vol_Requests vol_requests) {
+        vol_requests = RequestRepo.getOne(id);
+        FoundationVol vol = new FoundationVol();
+        User userExist = userService.findUserByEmail(vol_requests.getFoundation_email());
+        vol.setFoundation_id(userExist.getFoundation().getId());
+        vol.setFoundation_name(userExist.getFoundation().getName());
+        vol.setVol_email(vol_requests.getVol_email());
+        User userExist2 = userService.findUserByEmail(vol_requests.getVol_email());
+        vol.setVol_id(userExist2.getVolunteer().getId());
+        vol.setVol_name(userExist2.getVolunteer().getName());
+        vol.setVol_name(userExist2.getVolunteer().getSurname());
+        saveVolunteer(vol);
+        RequestRepo.deleteById(vol_requests.getId());
+        return "VolunteerMenagment/RequestList";
+
+    }
+
+
 
     private List<Vol_Requests> findRequest(List<Vol_Requests> volRequests, int id) {
         volRequests.removeIf(p->p.getFoundation_id()!= id);

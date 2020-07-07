@@ -13,7 +13,7 @@ public class Vol_Requests
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @Column(name = "vol_description")
     private String vol_description;
