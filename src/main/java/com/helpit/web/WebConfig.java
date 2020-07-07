@@ -19,6 +19,7 @@ public class WebConfig {
 
 
 
+
     @GetMapping("/signup")
     public String showRegistrationPage(){
         return "registration/signup";

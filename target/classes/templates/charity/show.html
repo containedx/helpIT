@@ -64,11 +64,22 @@
                     </div>
                 </div>
 
+                <div class="input-article">
+                    <label for="category"> Choose category</label> <br>
+                    <select id="category" name="category" >
+                        <option value="" disabled selected hidden>Select category</option>
+                        <option value="family">Family</option>
+                        <option value="peace">Peace</option>
+                        <option value="environment">Environment</option>
+                        <option value="disease">Disease</option>
+                        <option value="education">Education</option>
+                        <option value="culture">Culture</option>
+                        <option value="animals">Animals</option>
+                        <option value="addiction">Addiction</option>
+                    </select>
+                </div>
+
                 <div class="add-article-controllers">
-                    <div class="upload">
-                        <span></span>
-                        <i class="im im-export"></i>
-                    </div>
                     <input type="submit" value="Create Article"/>
                 </div>
             </form>
@@ -78,6 +89,7 @@
                     <img th:src="@{/images/article.png}" alt="">
                     <div class="article-details">
                         <div class="article-title" th:utext="${article.getTitle()}">Author</div>
+                        <div class="article-title" th:utext="${article.getCategory()}">Category</div>
                         <div class="article-content" th:utext="${article.getContent()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
                         <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
                     </div>

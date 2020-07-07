@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<br><br><br>
+<div class="box"><!--sec:authorize="hasRole('ROLE_ADMIN')"-->
+    <form id="updateForm" th:action="update" th:object="${user}" th:method="POST">
+        <span class="text-center" th:text="'Edycja użytkownika:' + ${user.username}"> </span>
+        <div class="input-container">
+            <input th:value="*{email}" th:field="*{email}"/>
+            <label>Email</label>
+        </div>
+        <div class="input-container">
+            <input name="password" id="password" th:field="*{password}"/>
+            <label>Hasło</label>
+        </div>
+        <div class="input-container">
+            <input th:value="*{address.city}" th:field="*{address.city}"/>
+            <label>Miasto</label>
+        </div>
+        <div class="input-container">
+            <input th:value="*{address.postcode}" th:field="*{address.postcode}"/>
+            <label>Kod pocztowy</label>
+        </div>
+        <div class="input-container">
+            <input th:value="*{address.street}" th:field="*{address.street}"/>
+            <label>Ulica</label>
+        </div>
+        <div class="input-container">
+            <input th:value="*{address.numberOfHome}" th:field="*{address.numberOfHome}"/>
+            <label>Number domu</label>
+        </div>
+        <div class="input-container">
+            <input th:value="*{address.numberOfFlat}" th:field="*{address.numberOfFlat}"/>
+            <label>Numer mieszkania</label>
+        </div>
+        <button type="submit" class="btn">Zatwierdź</button>
+        <a href="/admin"><button type="button" class="btn">Powrót</button></a>
+    </form>
+</div>
+<script>
+    document.body.querySelector("#password").value=""
+</script>
+</body>
+</html>

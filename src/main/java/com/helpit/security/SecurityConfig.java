@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("events/sign/*").hasAuthority("ROLE_VOLUNTEER")
                 .antMatchers("/panel").hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")*/
                 .antMatchers("/*").permitAll()
+                .antMatchers("/admin").hasRole("ADMIN")
 
                 .and().formLogin().loginPage("/login").failureUrl("/login")
 

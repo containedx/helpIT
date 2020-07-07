@@ -38,6 +38,9 @@ public class BasicAuthenticationProvider implements AuthenticationProvider {
         if (!bCryptPasswordEncoder.matches(password,user.getPassword()) ) {
             throw new BadCredentialsException("Wrong password.");
         }
+        if(user.getActive()==0){
+            throw new BadCredentialsException("User is banned");
+        }
 
         Collection<GrantedAuthority> authorities = new HashSet<>();
         GrantedAuthority grantedAuthority = new GrantedAuthority() {
