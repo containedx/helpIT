@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
@@ -6,6 +9,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<<<<<<< HEAD
 <nav th:fragment="menu" id="nav">
 
     <a id="navbar-logo" href="/">
@@ -95,5 +99,18 @@
     </div>
 
 </nav>
+=======
+<div th:fragment="menu">
+    <div class="nav" sec:authorize="isAnonymous()">
+        <a href="/login" th:text="#{menu.login}"></a>
+        <a href="/signup" th:text="#{menu.signup}"></a>
+    </div>
+    <div class="nav" sec:authorize="isAuthenticated()">
+       <form th:action="logout" method='POST'>
+           <button type="submit" th:text="#{menu.logout}"></button>
+       </form>
+    </div>
+</div>
+>>>>>>> develop
 </body>
 </html>

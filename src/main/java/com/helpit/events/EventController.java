@@ -1,7 +1,5 @@
 package com.helpit.events;
 
-import com.helpit.model.Foundation;
-import com.helpit.repositories.FoundationRepository;
 import com.helpit.repositories.UserRepository;
 import com.helpit.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,7 @@ import java.util.Optional;
 import java.util.Set;
 
 
+
 @Controller
 public class EventController {
 
@@ -32,6 +31,7 @@ public class EventController {
         this.repo = repo;
         this.userRepository=userRepository;
         this.foundationRepository = foundationRepository;
+
     }
 
 
@@ -39,6 +39,7 @@ public class EventController {
     public String returnEventView(WebRequest request, Model model) {
         List<Event> listEvents = listAll();
         model.addAttribute("listEvents", listEvents);
+
         return "events/index";
     }
 
@@ -46,7 +47,8 @@ public class EventController {
     public String addEvent(WebRequest request, Model model) {
         Event event = new Event();
         model.addAttribute("event", event);
-        return "/";
+
+        return "events/add";
     }
 
     //don't change it to postmapping!
@@ -56,35 +58,6 @@ public class EventController {
         return "events/show";
     }
 
-    @RequestMapping(value="foundation/{id}/events",method=RequestMethod.GET)
-    public String showFoundationEvents(@PathVariable int id, Model model) {
-        Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
-        if(foundation.isPresent()){
-            model.addAttribute("foundation", foundation.get());
-            //model.addAttribute("events", foundation.get().getEvent());
-        }
-        else {
-            throw new RuntimeException("Cannot display foundation, because it is not present in the database");
-        }
-        return "events/eventList";
-    }
-
-    @RequestMapping(value="/events2/{id}/show",method=RequestMethod.GET)
-    public String showFoundationEvent(@PathVariable int id, Model model) {
-        Optional<Foundation> foundation = foundationRepository.findById(id);
-        //Set<User> volList = event.getUsers();
-        //model.addAttribute("volList", volList);
-        return "events/show";
-    }
-
-    @RequestMapping(value="/foundation/{foundation_id}/events",method=RequestMethod.GET)
-    public String showFoundationEventsList(@PathVariable int foundation_id, Model model) {
-        User foundation = findFoundationById(foundation_id);
-        List<Event> listEvents = listAll();
-        listEvents = listSpecific(listEvents, foundation);
-        model.addAttribute("listEvents", listEvents);
-        return "charity/events";
-    }
 
     @RequestMapping(value="/events/show",method=RequestMethod.GET)
     public String showFoundationEventTemp() {
@@ -112,6 +85,7 @@ public class EventController {
         return repo.findAll();
     }
 
+
     public User findFoundationById(int id) {
         return userRepository.findById(id).get();
     }
@@ -126,6 +100,7 @@ public class EventController {
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
         event.setFoundation(user);
+
         repo.save(event);
     }
 

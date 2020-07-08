@@ -33,6 +33,7 @@ public class Event {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name="foundation_event", joinColumns = @JoinColumn(name="event_id"), inverseJoinColumns = @JoinColumn(name="foundation_id"))
+
     private User foundation;
 
 }

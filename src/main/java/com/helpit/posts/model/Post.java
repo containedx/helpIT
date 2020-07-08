@@ -3,11 +3,13 @@ package com.helpit.posts.model;
 import com.helpit.model.Foundation;
 import com.helpit.model.Volunteer;
 import lombok.Data;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,6 +34,7 @@ public class Post{
     @Lob
     private String content;
 
+
     @CreationTimestamp
     @Column(name = "create_timestamp")
     private LocalDateTime createTime;
@@ -39,6 +42,7 @@ public class Post{
     @UpdateTimestamp
     @Column(name = "update_timestamp")
     private LocalDateTime updateTime;
+
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
@@ -63,3 +67,4 @@ public class Post{
     }
 
 }
+

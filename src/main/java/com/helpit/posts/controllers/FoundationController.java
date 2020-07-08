@@ -11,21 +11,24 @@ import java.util.Optional;
 
 @Controller
 public class FoundationController {
-    private final FoundationRepository foundationRepository;
 
-    public FoundationController(FoundationRepository foundationRepository) {
-        this.foundationRepository = foundationRepository;
+    private final FoundationRepository foundation_repository;
+
+    public FoundationController(FoundationRepository foundation_repository) {
+        this.foundation_repository = foundation_repository;
     }
 
     @RequestMapping({"/foundation/list", "/foundation/list.html"})
     public String getFoundations(Model model) {
-        model.addAttribute("foundations", foundationRepository.findAll());
+
+        model.addAttribute("foundations", foundation_repository.findAll());
         return "/foundation/list";
     }
 
-    @RequestMapping({"/charity/{id}/show"})
+    @RequestMapping({"/foundation/{id}/show"})
     public String getFoundationSite(@PathVariable String id, Model model) {
-        Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
+        Optional<Foundation> foundation = foundation_repository.findById(Integer.valueOf(id));
+
         if(foundation.isPresent()){
             model.addAttribute("foundation", foundation.get());
         }
@@ -45,6 +48,7 @@ public class FoundationController {
     public String getCharityShow(@PathVariable String id, Model model)
     {
         Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
+
         if(foundation.isPresent()){
             model.addAttribute("foundation", foundation.get());
             model.addAttribute("articles", foundation.get().getPost());
@@ -52,6 +56,7 @@ public class FoundationController {
         else {
             throw new RuntimeException("Cannot display foundation, because it is not present in the database");
         }
+
         return "/foundation/show";
     }
 
@@ -81,11 +86,19 @@ public class FoundationController {
     }
 
 
+    @RequestMapping({"/charity/sponsors"})
+    public String getCharitySponsors()
+    {
+        return "/charity/sponsors";
+    }
+
+
     @RequestMapping({"/charity/edit"})
     public String getCharityEdit()
     {
         return "/registrations/edit_charity";
     }
+
 
     @RequestMapping({"/charities"})
     public String getFoundList(Model model)
@@ -93,4 +106,5 @@ public class FoundationController {
         model.addAttribute("foundations", foundationRepository.findAll());
         return "/charity/list";
     }
+
 }

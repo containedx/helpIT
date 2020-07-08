@@ -104,10 +104,8 @@ public class PostController {
         return "/article/add";
     }
 
-
     public void delete(Integer id){
         postRepository.deleteById(id);
     }
-
 
 }

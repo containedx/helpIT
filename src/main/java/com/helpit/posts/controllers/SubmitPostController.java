@@ -101,6 +101,7 @@ public class SubmitPostController {
     }
 
     @RequestMapping({"/foundation/{id}/add_article"})
+
     public String addArticleToFoundation(@PathVariable String id,
                                          @RequestParam String title,
                                          @RequestParam String editordata)
@@ -125,6 +126,7 @@ public class SubmitPostController {
         }
 
         return "redirect:/foundation/" + id + "/show";
+
     }
 }
 

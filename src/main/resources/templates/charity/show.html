@@ -32,6 +32,7 @@
                 <a href="/charity/edit" sec:authorize="hasRole('ROLE_FOUNDATION')" role="button">Edit Profile</a>
 
                 <a href=""></a>
+
             </div>
 
             <div class="charity-content-user">
@@ -41,11 +42,13 @@
             </div>
 
             <div class="charity-content-links">
+
                 <a href="/charity/show" th:href="'/charity/' + ${foundation.getId() + '/show'}">Feed
                     <i class="im im-care-up"></i>
                 </a>
                 <a href="/charity/events">Events</a>
                 <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions</a>
+
             </div>
 
             <div class="charity-content-feed">

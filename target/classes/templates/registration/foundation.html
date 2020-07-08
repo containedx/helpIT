@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -178,4 +179,125 @@
 
 </body>
 
+=======
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+</head>
+<body>
+<div th:replace="fragments/menu::menu"></div>
+<form id="foundationForm" th:action="add_foundation" th:object="${user}" th:method="POST">
+    <input type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
+    <div>
+        <label th:text="#{label.registration.username}">first</label>
+        <input th:field="*{username}"/>
+        <div th:if="${#fields.hasErrors('username')}">
+            <p th:each="error: ${#fields.errors('username')}" th:errors="${error}">Validation error</p>
+        </div>
+
+    </div>
+    <div>
+        <label th:text="#{label.registration.email}">email</label>
+        <input type="email" th:field="*{email}"/>
+        <p th:each="error : ${#fields.errors('email')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.password}">password</label>
+        <input type="password" th:field="*{password}"/>
+        <p th:each="error : ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.confirm.password}">password</label>
+        <input type="password" th:field="*{confirmPassword}"/>
+        <p th:each="error : ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+    </div>
+
+    <div>
+        <label th:text="#{label.registration.foundation.name}"></label>
+        <input th:field="*{foundation.name}"/>
+        <p th:each="error : ${#fields.errors('foundation.name')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.foundation.owner.name}"></label>
+        <input th:field="*{foundation.ownerName}"/>
+        <p th:each="error : ${#fields.errors('foundation.ownerName')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.foundation.owner.surname}"></label>
+        <input th:field="*{foundation.ownerSurname}"/>
+        <p th:each="error : ${#fields.errors('foundation.ownerSurname')}"
+           th:text="${error}">Validation error</p>
+    </div>
+
+
+    <div>
+        <label th:text="#{label.registration.address.city}"></label>
+        <input th:field="*{address.city}"/>
+        <p th:each="error : ${#fields.errors('address.city')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.address.postcode}"></label>
+        <input th:field="*{address.postcode}"/>
+        <p th:each="error : ${#fields.errors('address.postcode')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.address.street}"></label>
+        <input th:field="*{address.street}"/>
+        <p th:each="error : ${#fields.errors('address.street')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.address.number.home}"></label>
+        <input th:field="*{address.numberOfHome}"/>
+        <p th:each="error : ${#fields.errors('address.numberOfHome')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label th:text="#{label.registration.address.number.flat}"></label>
+        <input th:field="*{address.numberOfFlat}"/>
+        <p th:each="error : ${#fields.errors('address.numberOfFlat')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <input type="radio" th:value="TYPE_FAMILY" th:field="*{foundation.type.type}" checked>
+        <label th:text="#{label.registration.types.family}"></label>
+
+        <input type="radio" th:value="TYPE_PEACE" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.peace}"></label>
+
+        <input type="radio" th:value="TYPE_ENVIRONMENT" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.environment}"></label>
+
+        <input type="radio" th:value="TYPE_DISEASE" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.disease}"></label>
+
+        <input type="radio" th:value="TYPE_EDUCATION" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.education}"></label>
+
+        <input type="radio" th:value="TYPE_CULTURE" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.culture}"></label>
+
+        <input type="radio" th:value="TYPE_ANIMALS" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.animals}"></label>
+
+        <input type="radio" th:value="TYPE_ADDICTION" th:field="*{foundation.type.type}"/>
+        <label th:text="#{label.registration.types.addiction}"></label>
+
+    </div>
+
+    <button type="submit" th:text="#{label.registration.submit}">submit</button>
+</form>
+</body>
+>>>>>>> develop
 </html>

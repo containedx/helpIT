@@ -7,15 +7,26 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.HashSet;
 import java.util.Set;
 
+
+import org.springframework.web.context.request.WebRequest;
+
+
 @Configuration
 @Controller
 public class WebConfig {
+
+
+    @GetMapping("/")
+    public String showHomePage(){
+        return "index";
+    }
 
     @GetMapping("/signup")
     public String showRegistrationPage(){
@@ -45,7 +56,6 @@ public class WebConfig {
         model.addAttribute("user",user);
         return "registration/volunteer";
     }
-
     @RequestMapping({"/volunteer"})
     public String getVolunteer()
     {
@@ -76,5 +86,6 @@ public class WebConfig {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
+
 
 }
