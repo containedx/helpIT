@@ -14,9 +14,8 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.HashSet;
 import java.util.Set;
-
-
 import org.springframework.web.context.request.WebRequest;
+
 
 
 @Configuration
@@ -51,30 +50,13 @@ public class WebConfig {
         model.addAttribute("user",user);
         return "registration/volunteer";
     }
-    @RequestMapping({"/volunteer"})
-    public String getVolunteer()
-    {
-        return "/volunteer/show";
-    }
+
 
     @RequestMapping({"/user/manager"})
     public String getUserManager()
     {
         return "manager";
     }
-
-    @RequestMapping({"/volunteer/edit"})
-    public String getVolunteerEdit()
-    {
-        return "/volunteer/edit";
-    }
-
-    @RequestMapping({"/foundation/edit"})
-    public String getFoundationEdit()
-    {
-        return "/foundation/edit";
-    }
-
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){

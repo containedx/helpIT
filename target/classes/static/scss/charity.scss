@@ -11,7 +11,9 @@
     padding: 90px 20px 20px  10px;
   }
 
-  #charity-content{ 
+
+  #charity-content{
+
     display: grid;
     grid-template-rows: 40px 180px 46px auto;
     width: 100%;
@@ -360,9 +362,10 @@
         margin: 30px 0 0 0;
 
         .article{
-          //background-color: #b6f0bf;
+          //background-color: #b6f0bf; 
           display: grid;
           grid-template-columns: 140px 1fr;
+          overflow: hidden;
 
           img{
             border: 1px solid #999;

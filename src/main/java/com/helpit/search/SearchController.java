@@ -93,6 +93,7 @@ public class SearchController {
         return "index";
     }
 
+
     @RequestMapping(value={"/","/search"})
     public String showHomePage(Model model){
         List<User> foundations = new ArrayList<>();
@@ -103,4 +104,6 @@ public class SearchController {
         model.addAttribute("userFoundation",user);
         return "index";
     }
+
+
 }

@@ -28,16 +28,20 @@ call util.trunctables('helpIT');
 
 #Adrian
 
+
 CREATE TABLE IF NOT EXISTS comments (id BIGINT PRIMARY KEY auto_increment, rate INT,content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id), create_timestamp timestamp, update_timestamp timestamp);
-CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, title text, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id), create_timestamp timestamp, update_timestamp timestamp);
+CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, title text, content text, category text,volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id), create_timestamp timestamp, update_timestamp timestamp);
 CREATE TABLE IF NOT EXISTS comments_under_posts (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), post_id BIGINT references posts(id), create_timestamp timestamp, update_timestamp timestamp);
+
+
 drop database helpIT;
 
+
+call util.trunctables('helpIT');
 truncate addresses;
 truncate events;
 truncate foundation_event;
 truncate foundation_types;
-truncate foundations;
 truncate foundations;
 truncate roles;
 truncate types;
@@ -48,6 +52,26 @@ truncate user_volunteer;
 truncate users;
 truncate users_events;
 truncate volunteers;
+
+
+drop table addresses;
+drop table events;
+drop table foundation_event;
+drop table foundation_types;
+drop table foundations;
+drop table roles;
+drop table types;
+drop table user_address;
+drop table user_foundation;
+drop table user_role;
+drop table user_volunteer;
+drop table users;
+drop table users_events;
+drop table volunteers;
+drop table comments;
+drop table posts;
+drop table comments_under_posts;
+
 
 
 

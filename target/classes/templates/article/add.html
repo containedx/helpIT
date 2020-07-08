@@ -28,21 +28,37 @@
 
         <div class="charity-content-feed charity-content-feed--new">
 
-            <form id="add-article" class="add-article--new" action="">
+            <form id="add-article" class="add-article--new" action="/article/submit">
                 <div class="add-article-content">
 
                     <div class="input-col">
                         <div class="input-article">
                             <span>Article title</span>
                             <label>
-                                <input type="text"/>
+                                <input name="title" type="text"/>
                             </label>
                         </div>
                         <div class="input-article">
-                            <span>Choose foundation</span>
-                            <label>
-                                <input type="text"/>
-                            </label>
+                            <label for="selected"> Choose foundation</label> <br>
+                                <select id="selected" name="selected" >
+                                    <option value="" disabled selected hidden>Select foundation</option>
+                                    <option value="#" th:each="foundation : ${foundations}" th:value="${foundation.getId()}" th:text="${foundation.getName()}">#</option>
+                                </select>
+                        </div>
+
+                        <div class="input-article">
+                            <label for="category"> Choose category</label> <br>
+                            <select id="category" name="category" >
+                                <option value="" disabled selected hidden>Select category</option>
+                                <option value="family">Family</option>
+                                <option value="peace">Peace</option>
+                                <option value="environment">Environment</option>
+                                <option value="disease">Disease</option>
+                                <option value="education">Education</option>
+                                <option value="culture">Culture</option>
+                                <option value="animals">Animals</option>
+                                <option value="addiction">Addiction</option>
+                            </select>
                         </div>
 
                     </div>
@@ -56,10 +72,6 @@
                 </div>
 
                 <div class="add-article-controllers">
-                    <div class="upload">
-                        <input type="file" name="upload"/>
-                        <i class="im im-export"></i>
-                    </div>
                     <input type="submit" value="Create Article"/>
                 </div>
             </form>
@@ -118,7 +130,8 @@
         toolbar: [
             ['font', ['bold', 'underline']],
             ['para', ['ul', 'ol']],
-            ['view', ['fullscreen', 'codeview']]
+            ['view', ['fullscreen', 'codeview']],
+            ['insert', ['link', 'picture', 'video']]
         ],
         disableResizeEditor: true,
     });

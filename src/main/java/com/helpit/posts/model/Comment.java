@@ -3,6 +3,8 @@ package com.helpit.posts.model;
 import com.helpit.model.Foundation;
 import com.helpit.model.Volunteer;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -66,6 +68,7 @@ public class Comment
     }
 
 
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -75,5 +78,6 @@ public class Comment
                 ", content='" + content + '\'' +
                 '}';
     }
+
 }
 

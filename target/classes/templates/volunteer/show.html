@@ -43,18 +43,52 @@
             </a>
         </div>
 
+        <form id="filter-article" class="add-article--new" action="/article/filter">
+            <div class="add-article-content">
+
+                <div class="input-col">
+                    <div class="input-article">
+                        <label for="category"> Choose category</label> <br>
+                        <select id="category" name="category" >
+                            <option value="all" selected hidden>Select category</option>
+                            <option value="family">Family</option>
+                            <option value="peace">Peace</option>
+                            <option value="environment">Environment</option>
+                            <option value="disease">Disease</option>
+                            <option value="education">Education</option>
+                            <option value="culture">Culture</option>
+                            <option value="animals">Animals</option>
+                            <option value="addiction">Addiction</option>
+                        </select>
+                    </div>
+
+                    <div class="input-article">
+                        <label for="foundation"> Choose foundation</label> <br>
+                        <select id="foundation" name="foundation" >
+                            <option value="all" selected hidden>Select foundation name</option>
+                            <option th:each="foundation : ${foundations}" th:value="${foundation.getId()}" th:text="${foundation.getName()}">Foundation</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="add-article-controllers">
+                <input type="submit" value="Filter"/>
+            </div>
+        </form>
+
         <div class="volunteer-content-feed">
 
             <div id="articles">
-                <div class="article" >
+                <div class="article" th:each="article : ${articles}">
                     <img th:src="@{/images/article.png}" alt="">
                     <div class="article-details">
-                        <div class="article-title" >Title</div>
-                        <div class="article-content" >Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                        <div class="article-title" th:text="${article.getTitle()}">Title</div>
+                        <div class="article-content" th:utext="${article.getContent()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
                         <div class="article-links">
                             <span></span>
-                            <a href="">read more</a>
-                            <a href="">delete</a>
+                            <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
+                            <a th:href="'/article/' + ${article.getId()} + '/delete'">delete</a>
                         </div>
                     </div>
                 </div>
