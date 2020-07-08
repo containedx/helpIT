@@ -1,5 +1,6 @@
 package com.helpit.events;
 
+import com.helpit.repositories.FoundationRepository;
 import com.helpit.repositories.UserRepository;
 import com.helpit.model.User;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -107,35 +106,8 @@
                 </div>
 
             </div>
-=======
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}">
-</head>
-<body>
-
-
-        <h2>All Events:</h2>
-    </div>
-
-    <div>
-        <div th:each="event : ${listEvents}">
-            <h3><p th:text="${event.name}"/></h3>
-            <p th:text="${event.date}"/>
-            <p th:text="${event.foundation}"/>
-            <p th:text="${event.description}"/>
-            <a href="" th:href="@{'events/delete/' + ${event.id}}"><button>DELETE</button></a> <br>
-            <a href="" th:href="@{'events/sign/' + ${event.id}}"><button>SIGN FOR EVENT</button></a>
-            <br><br>
->>>>>>> develop
-
         </div>
     </div>
-
-<<<<<<< HEAD
 </section>
 
 <footer id="foot"></footer>
@@ -178,10 +150,4 @@
 
 </body>
 
-=======
-        <a href="events/add"><button>ADD NEW EVENT</button></a>
-
-
-</body>
->>>>>>> develop
 </html>

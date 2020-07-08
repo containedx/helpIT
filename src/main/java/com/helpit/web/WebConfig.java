@@ -1,6 +1,7 @@
 package com.helpit.web;
 
 import com.helpit.model.User;
+import com.helpit.repositories.FoundationRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,12 +22,6 @@ import org.springframework.web.context.request.WebRequest;
 @Configuration
 @Controller
 public class WebConfig {
-
-
-    @GetMapping("/")
-    public String showHomePage(){
-        return "index";
-    }
 
     @GetMapping("/signup")
     public String showRegistrationPage(){

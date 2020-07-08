@@ -65,42 +65,5 @@ public class SubmitCommentController
     }
 
 
-    public SubmitCommentController(CommentRepository commentRepository, VolunteerRepository volunteerRepository, FoundationRepository foundationRepository) {
-        this.commentRepository = commentRepository;
-        this.volunteerRepository = volunteerRepository;
-        this.foundationRepository = foundationRepository;
-    }
-
-    @RequestMapping("/add_comment/submit")
-    public String getComments(Model model,
-                              @RequestParam  String login,
-                              @RequestParam  String foundation,
-                              @RequestParam  String content)
-    {
-        Comment c = new Comment();
-        c.setContent(content);
-        commentRepository.save(c);
-
-        Foundation f = new Foundation();
-        f.setName(foundation);
-        foundationRepository.save(f);
-
-        Volunteer u = new Volunteer();
-        u.setSurname(login);
-        volunteerRepository.save(u);
-
-        c.setVolunteer(u);
-        c.setFoundation(f);
-
-        u.getComments().add(c);
-        f.getComment().add(c);
-
-        foundationRepository.save(f);
-        volunteerRepository.save(u);
-        commentRepository.save(c);
-
-        model.addAttribute("comments", commentRepository.findAll());
-        return "redirect:/add_comment/list";
-    }
 }
 

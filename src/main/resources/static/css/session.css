@@ -1,0 +1,71 @@
+#session-new {
+  min-height: 550px;
+  width: 100%;
+  margin: 119px 0 0 0; }
+  #session-new #session-new-form {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 80px 60px 60px 60px 60px 60px;
+    row-gap: 20px;
+    border: 1px solid #d6cdca;
+    border-top: none;
+    border-radius: 3px;
+    padding: 0 0 10px 0;
+    -webkit-box-shadow: 0px 7px 12px -11px #d0d0d0;
+    -moz-box-shadow: 0px 7px 12px -11px #d0d0d0;
+    box-shadow: 0px 7px 12px -11px #d0d0d0; }
+    #session-new #session-new-form .form-title {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      padding: 0 20px;
+      background: linear-gradient(to bottom right, #f06560, #e65047);
+      border-bottom: 2px solid #d6d6d6;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px; }
+      #session-new #session-new-form .form-title span {
+        text-align: center;
+        font-size: 22px;
+        line-height: 80px;
+        color: #fff; }
+    #session-new #session-new-form .form-group {
+      display: grid;
+      grid-template-rows: 20px 40px;
+      padding: 0 20px; }
+      #session-new #session-new-form .form-group label {
+        font-size: 12px;
+        line-height: 15px; }
+      #session-new #session-new-form .form-group input {
+        background-color: #fff;
+        border: 1px solid #999;
+        padding: 0 0 0 10px; }
+    #session-new #session-new-form .form-btn {
+      padding: 0 20px; }
+      #session-new #session-new-form .form-btn input {
+        background-color: #fff;
+        border: 1px solid #999;
+        width: 100%;
+        margin: 0px auto 0 auto;
+        height: 45px;
+        cursor: pointer; }
+        #session-new #session-new-form .form-btn input:hover {
+          border: 1px solid #707070; }
+    #session-new #session-new-form .form-or {
+      display: grid;
+      grid-template-rows: 15px 45px;
+      padding: 0 20px; }
+      #session-new #session-new-form .form-or span {
+        line-height: 15px;
+        text-align: center;
+        font-size: 13px; }
+      #session-new #session-new-form .form-or a {
+        line-height: 45px;
+        text-align: center;
+        font-size: 13px;
+        color: #333334;
+        text-decoration: none;
+        cursor: pointer; }
+        #session-new #session-new-form .form-or a:hover {
+          text-decoration: underline; }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
 
 <head>
     <meta charset="utf-8">
@@ -135,57 +134,4 @@
 
 </body>
 
-=======
-<head>
-    <meta charset="UTF-8">
-    <title>Your post</title>
-
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-</head>
-<body>
-<!--/*@thymesVar id="foundation" type="com.helpit.posts.model.Foundation"*/-->
-
-<div class="container">
-    <div>
-        <h1 class="display-1" th:text="${foundation.name}"></h1>
-    </div>
-    <div class="jumbotron">
-        <p>Here we could add image</p>
-    </div>
-    <div>
-        <h5>Posts</h5>
-    </div>
-    <div class="border bg-success" th:each="post : ${foundation.post}">
-        <p class="lead" th:text="${post.getVolunteer().getSurname()} + ' ' + ${post.getVolunteer().getName()}">Bla</p>
-        <p  th:utext="${post.getContent()}">Bla</p>
-
-        <button class="btn btn-warning" onclick= "location.href='/'"
-                th:onclick="'window.location.href =\'/add_comment/' + ${post.getId()} + '/add_2_post\''"> Add comment to post </button>
-    </div>
-
-    <div>
-        <h5>Comments</h5>
-    </div>
-    <div class="border bg-primary" th:each="comment : ${foundation.getComment()}">
-        <p class="lead" th:text="${comment.getVolunteer().getSurname()}">Bla</p>
-        <p  th:utext="${comment.getContent()}">Bla</p>
-    </div>
-
-
-    <button class="btn btn-warning" onclick= "location.href='/foundation/list'"> Foundations list </button>
-    <button class="btn btn-danger" onclick= "location.href='/'"
-            th:onclick="'window.location.href =\'/add_post/' + ${foundation.getId()} + '/add_2_foundation\''"> Add post </button>
-</div>
-
-
-<br><br>
-
-
-
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-</body>
->>>>>>> develop
 </html>

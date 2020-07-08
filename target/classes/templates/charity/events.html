@@ -37,34 +37,57 @@
         </div>
 
         <div class="charity-content-links">
-            <a href="/charity/show">Feed</a>
-            <a href="/charity/events">Events<i class="im im-care-up"></i></a>
-            <a href="/foundation/opinions">Opinions</a>
+            <a href="">Feed</a>
+            <a href="">Events<i class="im im-care-up"></i></a>
+            <a href="">Opinions</a>
+
         </div>
 
         <div class="charity-content-feed">
 
+            <!--
             <form id="add-event"  action="#" th:action="@{create_event}" th:object="${event}" th:method="POST">
+            -->
+
+            <form id="add-event" action="">
+
                 <div class="event-inputs-left">
                     <div class="input-event">
                         <span>Event Name</span>
                         <label>
+
+                            <!--
                             <input type="text" th:field="*{name}"/>
+                            -->
+
+                            <input type="text"/>
+
                         </label>
                     </div>
                     <div class="input-event">
                         <span>Date and time</span>
                         <label>
+                            <!--
                             <input type="datetime-local" th:field="*{date}"/>
+                            -->
+
+                            <input type="datetime-local"/>
                         </label>
                     </div>
                 </div>
+
                 <div class="event-inputs-right">
 
                     <div class="textarea-event">
                         <span>Event Description</span>
                         <label>
+
+                            <!--
                             <textarea id="summernote" name="editordata" th:field="*{description}"></textarea>
+                            -->
+
+                            <textarea id="summernote" name="editordata"></textarea>
+
                         </label>
                     </div>
                     <input id="add-event-btn" type="submit" value="Create Event" />
@@ -72,11 +95,23 @@
             </form>
 
             <div id="events">
-                <div class="event" th:each="vol : ${listVol}">
+
+                <div class="event">
                     <img th:src="@{/images/event.png}">
 
-                    <div class="event-details" >
-                        <div class="event-title" th:text="${vol.email}">Title</div>
+                    <div class="event-details">
+                        <div class="event-title">Title</div>
+                        <div class="event-date">22/12/2020</div>
+                        <div class="event-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                        <a href="/event/show">read more</a>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <img th:src="@{/images/event.png}">
+
+                    <div class="event-details">
+                        <div class="event-title">Title</div>
                         <div class="event-date">22/12/2020</div>
                         <div class="event-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
                         <a href="/event/show">read more</a>
