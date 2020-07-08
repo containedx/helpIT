@@ -44,18 +44,18 @@
 
         <div class="charity-content-feed">
 
-            <form id="add-event" action="">
+            <form id="add-event"  action="#" th:action="@{create_event}" th:object="${event}" th:method="POST">
                 <div class="event-inputs-left">
                     <div class="input-event">
                         <span>Event Name</span>
                         <label>
-                            <input type="text"/>
+                            <input type="text" th:field="*{name}"/>
                         </label>
                     </div>
                     <div class="input-event">
                         <span>Date and time</span>
                         <label>
-                            <input type="datetime-local"/>
+                            <input type="datetime-local" th:field="*{date}"/>
                         </label>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     <div class="textarea-event">
                         <span>Event Description</span>
                         <label>
-                            <textarea id="summernote" name="editordata"></textarea>
+                            <textarea id="summernote" name="editordata" th:field="*{description}"></textarea>
                         </label>
                     </div>
                     <input id="add-event-btn" type="submit" value="Create Event" />
@@ -72,22 +72,11 @@
             </form>
 
             <div id="events">
-                <div class="event">
+                <div class="event" th:each="vol : ${listVol}">
                     <img th:src="@{/images/event.png}">
 
-                    <div class="event-details">
-                        <div class="event-title">Title</div>
-                        <div class="event-date">22/12/2020</div>
-                        <div class="event-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                        <a href="/event/show">read more</a>
-                    </div>
-                </div>
-
-                <div class="event">
-                    <img th:src="@{/images/event.png}">
-
-                    <div class="event-details">
-                        <div class="event-title">Title</div>
+                    <div class="event-details" >
+                        <div class="event-title" th:text="${vol.email}">Title</div>
                         <div class="event-date">22/12/2020</div>
                         <div class="event-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
                         <a href="/event/show">read more</a>

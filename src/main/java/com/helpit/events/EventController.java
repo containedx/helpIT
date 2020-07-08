@@ -15,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Controller
@@ -45,7 +46,7 @@ public class EventController {
     public String addEvent(WebRequest request, Model model) {
         Event event = new Event();
         model.addAttribute("event", event);
-        return "events/add";
+        return "/";
     }
 
     //don't change it to postmapping!
@@ -68,12 +69,21 @@ public class EventController {
         return "events/eventList";
     }
 
-    @RequestMapping(value="/events/{id}/show",method=RequestMethod.GET)
+    @RequestMapping(value="/events2/{id}/show",method=RequestMethod.GET)
     public String showFoundationEvent(@PathVariable int id, Model model) {
         Optional<Foundation> foundation = foundationRepository.findById(id);
-        //List<Event> listEvents = repo.findById();
-        //model.addAttribute("listEvents", listEvents);
+        //Set<User> volList = event.getUsers();
+        //model.addAttribute("volList", volList);
         return "events/show";
+    }
+
+    @RequestMapping(value="/foundation/{foundation_id}/events",method=RequestMethod.GET)
+    public String showFoundationEventsList(@PathVariable int foundation_id, Model model) {
+        User foundation = findFoundationById(foundation_id);
+        List<Event> listEvents = listAll();
+        listEvents = listSpecific(listEvents, foundation);
+        model.addAttribute("listEvents", listEvents);
+        return "charity/events";
     }
 
     @RequestMapping(value="/events/show",method=RequestMethod.GET)
@@ -102,11 +112,20 @@ public class EventController {
         return repo.findAll();
     }
 
+    public User findFoundationById(int id) {
+        return userRepository.findById(id).get();
+    }
+
+    public List<Event> listSpecific(List<Event> list, User foundation) {
+        list.removeIf(p->p.getFoundation()!=foundation);
+        return list;
+    }
+
     public void saveEvent(Event event){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
-        event.setFoundation(user.getFoundation());
+        event.setFoundation(user);
         repo.save(event);
     }
 
