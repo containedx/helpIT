@@ -19,10 +19,10 @@ public class Vol_Requests
     private String vol_description;
 
 
-    @Column(name = "foundation_foundation_id")
+    @Column(name = "fun_foundation_id")
     private int foundation_id;
 
-    @Column(name = "volunteer_volunteer_id")
+    @Column(name = "vol_volunteer_id")
 
     private int vol_id;
 
