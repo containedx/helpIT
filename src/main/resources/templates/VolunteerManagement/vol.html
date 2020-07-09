@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Volunteer Menager</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}">
+
+</head>
+<body>
+
+
+<div class="nav" sec:authorize="hasRole('ROLE_FOUNDATION')">
+    <a href="/"><button>Main Page</button></a>
+    <a th:href="@{'/checkVolunteer'}"><button>Show my Volunteers</button></a>
+    <a href="/checkRequests"><button>Check Requests </button></a>
+    <div th:each="vol : ${ListVol}">
+
+<ol>
+    <li>
+        <p>Name: <span th:text="${vol.vol_name}"></span></p>
+
+        <p>Surname: <span th:text="${vol.vol_surname}"></span></p>
+
+        <p>Email: <span th:text="${vol.vol_email}"></span></p>
+        <a href="" th:href="@{'vol/delete/' + ${vol.id}}"><button>DELETE</button></a> <br>
+        <br><br> </li>
+</ol>
+    </div>
+</div >
+<div class="nav" sec:authorize="hasRole('ROLE_VOLUNTEER')">
+    <a href="/"><button>Main Page</button></a>
+    <a th:href="@{'/checkFoundations'}"><button>Show my Foundations</button></a>
+    <a href="/SendRequest"><button>Volunteer application </button></a>
+
+    <div th:each="fun : ${FunList}">
+
+        <ol>
+            <li>
+                <p>Name: <span th:text="${fun.foundation_name}"></span></p>
+                <br><br> </li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>
