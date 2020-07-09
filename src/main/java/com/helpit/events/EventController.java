@@ -32,6 +32,7 @@ public class EventController {
     @Autowired
     public EventController(EventRepository repo, UserRepository userRepository, FoundationRepository foundationRepository) {
         this.repo = repo;
+
         this.userRepository=userRepository;
         this.foundationRepository = foundationRepository;
 
@@ -52,6 +53,8 @@ public class EventController {
     }
 
 
+
+
     @RequestMapping(value="/events",method=RequestMethod.GET)
     public String returnEventView(WebRequest request, Model model) {
         List<Event> listEvents = listAll();
@@ -59,6 +62,8 @@ public class EventController {
 
         return "events/index";
     }
+
+
 
     @GetMapping("/events/add")
     public String addEvent(WebRequest request, Model model) {
