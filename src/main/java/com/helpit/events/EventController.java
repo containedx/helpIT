@@ -27,11 +27,27 @@ public class EventController {
 
     private final FoundationRepository foundationRepository;
 
+
+
     @Autowired
     public EventController(EventRepository repo, UserRepository userRepository, FoundationRepository foundationRepository) {
         this.repo = repo;
         this.userRepository=userRepository;
         this.foundationRepository = foundationRepository;
+
+    }
+
+
+    @RequestMapping(value="/charity/{foundation_id}/events", method=RequestMethod.GET)
+    public String showFoundationEvents(WebRequest request, @PathVariable int foundation_id, Model model) {
+        User foundation = findFoundationById(foundation_id);
+        List<Event> listEvents = listAll();
+        listEvents = listSpecific(listEvents, foundation);
+        model.addAttribute("listEvents", listEvents);
+        Event event = new Event();
+        model.addAttribute("event", event);
+        model.addAttribute("foundation", foundation);
+        return "/charity/events";
 
     }
 
@@ -53,16 +69,19 @@ public class EventController {
     }
 
     //don't change it to postmapping!
-    @RequestMapping(value="events/create_event", method = RequestMethod.POST)
-    public String showEventAfterCreate(@Valid @ModelAttribute("event") Event event) {
+    @RequestMapping(value="charity/{id}/create_event", method = RequestMethod.POST)
+    public String showEventAfterCreate(@Valid @ModelAttribute("event") Event event, @PathVariable String id) {
         saveEvent(event);
         return "events/show";
     }
 
 
-    @RequestMapping(value="/events/show",method=RequestMethod.GET)
-    public String showFoundationEventTemp() {
-        return "events/show_default";
+    @RequestMapping(value="/event/{id}/show", method=RequestMethod.GET)
+    public String showFoundationEventTemp(@PathVariable String id, Model model) {
+        Event current_event = getEvent(Long.valueOf(id));
+        model.addAttribute("event", current_event);
+
+        return "events/show";
     }
 
     @RequestMapping("events/delete/{id}")
@@ -71,19 +90,30 @@ public class EventController {
         return "events/del";
     }
 
+    public List<Event> listAll() {
+        return repo.findAll();
+    }
+
+
     @RequestMapping("/events/sign/{id}")
-    public String signForEvent(@PathVariable String id, Model model, @Valid @ModelAttribute("event") Event event){
+    public String signForEvent(@PathVariable Long id, Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
-        event.getUsers().add(user);
-        repo.save(event);
-        model.addAttribute("event", event);
+        Event current_event = getEvent(id);
+        current_event.getUsers().add(user);
+        repo.save(current_event);
+        model.addAttribute("event", current_event);
+        model.addAttribute("user", user);
         return "events/sign";
     }
 
-    public List<Event> listAll() {
-        return repo.findAll();
+    public Event getEvent(Long id){
+        return repo.findById(id).get();
+    }
+
+    public void delete(Long id){
+        repo.deleteById(id);
     }
 
 
@@ -101,15 +131,7 @@ public class EventController {
         String currentUserName = auth.getName();
         User user = userRepository.findByEmail(currentUserName);
         event.setFoundation(user);
-
         repo.save(event);
     }
 
-    public Event getEvent(Long id){
-        return repo.findById(id).get();
-    }
-
-    public void delete(Long id){
-        repo.deleteById(id);
-    }
 }

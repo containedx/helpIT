@@ -25,7 +25,7 @@
     <div id="event-content">
 
         <div class="event-content-nav">
-            <a th:href="'/foundation/' + ${event.foundation.getId()} + '/show'">
+            <a th:href="'/charity/' + ${event.foundation.getId()} + '/show'">
                 <i class="im im-arrow-left"></i>
             </a>
             <a href=""></a>
@@ -34,12 +34,12 @@
         </div>
 
         <div class="event-content-title">
-            <h2 class="event-content-title-content">This is the awesome Quokka Event</h2>
+            <h2 class="event-content-title-content" th:utext="${event.name}">This is the awesome Quokka Event</h2>
         </div>
 
 
         <div class="event-content-text">
-            <p>
+            <p th:utext="${event.description}">
                 What is Lorem Ipsum?
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
@@ -54,12 +54,12 @@
 
                 <div class="row">
                     <div class="row-text">When?</div>
-                    <div class="row-data">22/12/2020 12:00</div>
+                    <div class="row-data" th:utext="${event.date}"></div>
                 </div>
 
                 <div class="row">
                     <div class="row-text">Where?</div>
-                    <div class="row-data">Cracow, Poland</div>
+                    <div class="row-data"> -- || --</div>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
                 <i class="im im-check-mark-circle-o"></i>
                 <div class="row">
                     <div class="row-text">Participants</div>
-                    <div class="row-data">126</div>
+                    <div class="row-data">-- || --</div>
                 </div>
 
                 <div class="row-btn">
@@ -90,11 +90,13 @@
 
 <script type="text/javascript" charset="utf-8">
 
+
     function hideShowOption() {
 
         var x  = document.querySelector('#drop_view');
 
         if(x.style.display === 'none' || x.style.display === '') {
+
             x.style.display = "block";
         } else {
             x.style.display = "none";

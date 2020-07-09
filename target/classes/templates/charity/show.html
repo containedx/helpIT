@@ -48,14 +48,14 @@
                 <a th:href="@{'/charity/' + ${foundation.getId()} + '/show'}">Feed
                     <i class="im im-care-up"></i>
                 </a>
-                <a href="#">Events</a>
+                <a th:href="@{'/charity/' + ${foundation.getId()} + '/events'}">Events</a>
                 <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions</a>
             </div>
 
 
             <div class="charity-content-feed">
 
-                <form id="add-article" th:action="'/charity/' + ${foundation.getId()} + '/add_article'" sec:authorize="isAuthenticated()">
+                <form id="add-article" th:action="'/charity/' + ${foundation.getId()} + '/add_article'" sec:authorize="hasRole('ROLE_VOLUNTEER')">
                     <div class="add-article-content">
                         <div class="input-article">
                             <span>Article title</span>

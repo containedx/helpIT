@@ -35,120 +35,27 @@
 
         </a>
         -->
+        <div th:each="event : ${listEvents}">
+            <a href="/events/show" th:href="@{'/event/' + ${event.id} + '/show'}" class="search-result-event-card" >
+                <img alt="event-card-logo" th:src="@{images/event.png}" class="event-card-logo">
 
-        <a href="/events/show" class="search-result-event-card" >
-            <img alt="event-card-logo" th:src="@{images/event.png}" class="event-card-logo">
-
-            <div class="search-result-event-card-content">
-                <h3 class="event-card-title">Title</h3>
-                <p class="event-card-date">22/12/12</p>
-                <p class="event-card-foundation">Foundation Name</p>
-                <div  sec:authorize="hasRole('ROLE_VOLUNTEER')" class="event-card-join">
-                    <span>Wanna join? </span>
-                    <div class="event-card-btn">
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span></span>
-                        </label>
+                <div class="search-result-event-card-content">
+                    <h3 class="event-card-title" th:text="${event.name}">Title</h3>
+                    <p class="event-card-date" th:text="${event.date}">22/12/12</p>
+                    <p class="event-card-foundation" th:text="${event.foundation.foundation.name}">Foundation Name</p>
+                    <div  sec:authorize="hasRole('ROLE_VOLUNTEER')" class="event-card-join">
+                        <span>Wanna join? </span>
+                        <div class="event-card-btn">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
-        <a href="/events/show" class="search-result-event-card" >
-            <img alt="event-card-logo" th:src="@{images/event.png}" class="event-card-logo">
-
-            <div class="search-result-event-card-content">
-                <h3 class="event-card-title">Title</h3>
-                <p class="event-card-date">22/12/12</p>
-                <p class="event-card-foundation">Foundation Name</p>
-                <div  sec:authorize="hasRole('ROLE_VOLUNTEER')" class="event-card-join">
-                    <span>Wanna join? </span>
-                    <div class="event-card-btn">
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        <a href="/events/show" class="search-result-event-card" >
-            <img alt="event-card-logo" th:src="@{images/event.png}" class="event-card-logo">
-
-            <div class="search-result-event-card-content">
-                <h3 class="event-card-title">Title</h3>
-                <p class="event-card-date">22/12/12</p>
-                <p class="event-card-foundation">Foundation Name</p>
-                <div  sec:authorize="hasRole('ROLE_VOLUNTEER')" class="event-card-join">
-                    <span>Wanna join? </span>
-                    <div class="event-card-btn">
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        <a href="/events/show" class="search-result-event-card" >
-            <img alt="event-card-logo" th:src="@{images/event.png}" class="event-card-logo">
-
-            <div class="search-result-event-card-content">
-                <h3 class="event-card-title">Title</h3>
-                <p class="event-card-date">22/12/12</p>
-                <p class="event-card-foundation">Foundation Name</p>
-                <div  sec:authorize="hasRole('ROLE_VOLUNTEER')" class="event-card-join">
-                    <span>Wanna join? </span>
-                    <div class="event-card-btn">
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        <a href="/events/show" class="search-result-event-card" >
-            <img alt="event-card-logo" th:src="@{images/event.png}" class="event-card-logo">
-
-            <div class="search-result-event-card-content">
-                <h3 class="event-card-title">Title</h3>
-                <p class="event-card-date">22/12/12</p>
-                <p class="event-card-foundation">Foundation Name</p>
-                <div  sec:authorize="hasRole('ROLE_VOLUNTEER')" class="event-card-join">
-                    <span>Wanna join? </span>
-                    <div class="event-card-btn">
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        <a href="/events/show" class="search-result-event-card" >
-            <img alt="event-card-logo" th:src="@{images/event.png}" class="event-card-logo">
-
-            <div class="search-result-event-card-content">
-                <h3 class="event-card-title">Title</h3>
-                <p class="event-card-date">22/12/12</p>
-                <p class="event-card-foundation">Foundation Name</p>
-                <div  sec:authorize="hasRole('ROLE_VOLUNTEER')" class="event-card-join">
-                    <span>Wanna join? </span>
-                    <div class="event-card-btn">
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </a>
+        </div>
 
     </section>
 
