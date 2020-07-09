@@ -35,7 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/panel").hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")*/
                 .antMatchers("/*").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
-
+                .antMatchers("/vol").authenticated()
+                .antMatchers("/add").hasAuthority("ROLE_FOUNDATION")
+                .antMatchers("/SendRequest").hasAuthority("ROLE_VOLUNTEER")
+                .antMatchers("/checkRequests").hasAuthority("ROLE_FOUNDATION")
                 .and().formLogin().loginPage("/login").failureUrl("/login")
 
                 .and().logout().logoutSuccessUrl("/")

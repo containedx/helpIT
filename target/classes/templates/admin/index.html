@@ -17,9 +17,9 @@
 
 </head>
 
-<body>
+<body  sec:authorize="isAuthenticated()">>
 <div th:replace="fragments/menu::menu"></div>
-<div class="container"><!--sec:authorize="hasRole('ROLE_ADMIN')"-->
+<div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
 
     <div class="table">
         <div class="table-header">
