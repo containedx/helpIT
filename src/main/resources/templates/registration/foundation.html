@@ -163,8 +163,186 @@
 
 <script type="text/javascript " charset="utf-8">
 
-    function hideShowOption() {
 
+    let email = document.body.querySelector("#email");
+    let password = document.body.querySelector("#password");
+    let confirmPassword = document.body.querySelector("#password_confirmation");
+    let postcode = document.body.querySelector("#postcode");
+    let numberOfHome = document.body.querySelector("#number_of_home");
+    let numberOfFlat = document.body.querySelector("#number_of_flat");
+    let button = document.body.querySelector("#login-submit");
+    let flagEmail=0,flagPassword=0,flagConfirmPassword=0,flagPostcode=0,flagNumberOfHome=0,flagNumberOfFlat=0;
+
+    email.addEventListener("change",e => {
+        let regex=/^(([^()\[\]\\.,;:\s@"]+(\.[^()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g
+        let content = e.target.value;
+        if(!content.match(regex)){
+            email.classList.add("error")
+            if(!document.body.querySelector("#errorEmail")) {
+                let node = document.createElement("p");
+                node.innerHTML="Niepoprawny e-mail";
+                node.id="errorEmail";
+                node.setAttribute("style","color:red;");
+                email.parentNode.insertBefore(node,email.nextSibling);
+            }
+            flagEmail=0;
+        }
+        else {
+            flagEmail=1;
+
+            email.classList.remove("error");
+            let element = document.body.querySelector("#errorEmail");
+            element.parentNode.removeChild(element);
+        }
+    })
+
+    password.addEventListener("change",e => {
+        let regex=/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,32}$/g
+        let content = e.target.value;
+        if(!content.match(regex)){
+            password.classList.add("error")
+            if(!document.body.querySelector("#errorPassword")) {
+                let node = document.createElement("p");
+                node.innerHTML="Hasło powinno zawierać przynajmniej wielką literę, cyfrę i znak specjalny, od 8 do 32 liter";
+                node.id="errorPassword";
+                node.setAttribute("style","color:red;");
+                password.parentNode.insertBefore(node,password.nextSibling);
+            }
+            flagPassword=0;
+        }
+        else {
+            flagPassword=1;
+
+            password.classList.remove("error");
+            let element = document.body.querySelector("#errorPassword");
+            element.parentNode.removeChild(element);
+        }
+        if(confirmPassword.value!=password.value){
+            confirmPassword.classList.add("error");
+            if(!document.body.querySelector("#errorConfirmPassword")) {
+                let node = document.createElement("p");
+                node.innerHTML="Hasła różnią się";
+                node.id="errorConfirmPassword";
+                node.setAttribute("style","color:red;");
+                confirmPassword.parentNode.insertBefore(node,confirmPassword.nextSibling);
+            }
+            flagConfirmPassword=0;
+        }
+        else {
+            flagConfirmPassword=1;
+
+            confirmPassword.classList.remove("error");
+            let element = document.body.querySelector("#errorConfirmPassword");
+            element.parentNode.removeChild(element);
+
+        }
+    })
+
+    confirmPassword.addEventListener("change",e => {
+        if(confirmPassword.value!=password.value) {
+            confirmPassword.classList.add("error");
+            if(!document.body.querySelector("#errorConfirmPassword")) {
+                let node = document.createElement("p");
+                node.innerHTML="Hasła różnią się";
+                node.id="errorConfirmPassword";
+                node.setAttribute("style","color:red;");
+                confirmPassword.parentNode.insertBefore(node,confirmPassword.nextSibling);
+                flagConfirmPassword=0;
+            }
+        }
+        else {
+            flagConfirmPassword=1;
+
+            confirmPassword.classList.remove("error");
+            let element = document.body.querySelector("#errorConfirmPassword");
+            element.parentNode.removeChild(element);
+
+        }
+    })
+
+    postcode.addEventListener("change",e => {
+        let regex=/^[0-9][0-9][-][0-9][0-9][0-9]$/;
+        let content = e.target.value;
+        if(!content.match(regex)){
+            postcode.classList.add("error")
+            if(!document.body.querySelector("#errorPostCode")) {
+                let node = document.createElement("p");
+                node.innerHTML="Niepoprawny format kodu pocztowego [przykład 12-345]";
+                node.id="errorPostCode";
+                node.setAttribute("style","color:red;");
+                postcode.parentNode.insertBefore(node,postcode.nextSibling);
+                flagPostcode=0;
+            }
+        }
+        else {
+            flagPostcode=1;
+
+            postcode.classList.remove("error");
+            let element = document.body.querySelector("#errorPostCode");
+            element.parentNode.removeChild(element);
+        }
+    })
+
+    numberOfHome.addEventListener("change",e => {
+        let regex=/^[0-9]+[A-Za-z]{0,1}$/;
+        let content = e.target.value;
+        if(!content.match(regex)){
+            numberOfHome.classList.add("error")
+            if(!document.body.querySelector("#errorPostCode")) {
+                let node = document.createElement("p");
+                node.innerHTML="Niepoprawny format numeru domu [przykłady: 25, 3A]";
+                node.id="errorNumberOfHome";
+                node.setAttribute("style","color:red;");
+                numberOfHome.parentNode.insertBefore(node,numberOfHome.nextSibling);
+            }
+            flagNumberOfHome=0;
+        }
+        else {
+            flagNumberOfHome=1;
+
+            numberOfHome.classList.remove("error");
+            let element = document.body.querySelector("#errorNumberOfHome");
+            element.parentNode.removeChild(element);
+
+        }
+    })
+
+    numberOfFlat.addEventListener("change",e => {
+        let regex=/^[0-9]+/;
+        let content = e.target.value;
+        if(!content.match(regex)){
+            numberOfFlat.classList.add("error")
+            if(!document.body.querySelector("#errorNumberOfFlat")) {
+                let node = document.createElement("p");
+                node.innerHTML="Niepoprawny format numeru mieszkania - jeśli brak pozostaw 0";
+                node.id="errorNumberOfFlat";
+                node.setAttribute("style","color:red;");
+                numberOfFlat.parentNode.insertBefore(node,numberOfFlat.nextSibling);
+            }
+            flagNumberOfFlat=0;
+        }
+        else {
+            flagNumberOfFlat=1;
+
+            numberOfFlat.classList.remove("error");
+            let element = document.body.querySelector("#errorNumberOfFlat");
+            element.parentNode.removeChild(element);
+        }
+    })
+
+    button.addEventListener("click",e=>{
+        if(!(flagEmail && flagPassword && flagConfirmPassword&&flagPostcode && flagNumberOfHome && flagNumberOfFlat)) {
+            e.preventDefault();
+            let node = document.createElement("p");
+            node.innerHTML="Niepoprawnie wypełniony formularz";
+            node.id="errorSubmitButton";
+            node.setAttribute("style","color:red;");
+            if(!document.body.querySelector("#errorSubmitButton"))
+                button.parentNode.insertBefore(node,button.nextSibling);
+        }
+
+    })
+    function hideShowOption() {
         var x  = document.querySelector('#drop_view');
 
         if(x.style.display === 'none' || x.style.display === '') {
@@ -174,8 +352,7 @@
             x.style.display = "none";
         }
     }
-
 </script>
 
 </body>
-
+</html>
