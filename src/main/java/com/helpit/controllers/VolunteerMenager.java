@@ -14,6 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
@@ -73,18 +75,8 @@ public class VolunteerMenager {
 
         return "VolunteerMenagment/vol";
     }
-    @GetMapping("/add")
-    public String addVolunteer(WebRequest request, Model model) {
-        FoundationVol vol = new FoundationVol();
-        model.addAttribute("vol", vol);
-        return "VolunteerMenagment/add";
-    }
 
-    @RequestMapping(value="/create_vol", method = RequestMethod.POST)
-    public String showVolAfterCreate(@Valid @ModelAttribute("vol") FoundationVol vol) {
-        saveVolunteer(vol);
-        return "VolunteerMenagment/vol";
-    }
+
 
     @GetMapping("/SendRequest")
     public String SendRequest(WebRequest request, Model model) {
@@ -94,8 +86,9 @@ public class VolunteerMenager {
     }
 
     @RequestMapping(value="/create_request", method = RequestMethod.POST)
-    public String CreateRequest(@Valid @ModelAttribute("vol_request") Vol_Requests vol_request) {
-        saveRequest(vol_request);
+    public String CreateRequest(@Valid @ModelAttribute("vol_request") Vol_Requests vol_request, BindingResult result) {
+
+        saveRequest(vol_request,result);
         return "VolunteerMenagment/vol";
     }
 
@@ -123,6 +116,15 @@ public class VolunteerMenager {
 
     }
 
+    @RequestMapping("vol/delete/{id}")
+    public String deleteVol(@Valid @ModelAttribute("vol") FoundationVol foundationVol) {
+        repo.deleteById(foundationVol.getId());
+        return "VolunteerMenagment/vol";
+
+    }
+
+
+
     @RequestMapping("request/accept/{id}")
     public String acceptRequest(@PathVariable Integer id, Model model, @Valid @ModelAttribute("Vol_Requests") Vol_Requests vol_requests) {
         vol_requests = RequestRepo.getOne(id);
@@ -148,15 +150,23 @@ public class VolunteerMenager {
         return volRequests;
     }
 
-    private void saveRequest(Vol_Requests vol_request) {
+    private void saveRequest(Vol_Requests vol_request, Errors errors) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = auth.getName();
         User userExist = userService.findUserByEmail(currentUserName);
         vol_request.setVol_id(userExist.getVolunteer().getId());
         User userExist2 = userService.findUserByEmail(vol_request.getFoundation_email());
         vol_request.setFoundation_id(userExist2.getFoundation().getId());
-
-        RequestRepo.save(vol_request);
+        List <FoundationVol> list = repo.findAll();
+        list.removeIf(p->p.getFoundation_id()!= vol_request.getFoundation_id());
+        list.removeIf(p->p.getVol_id()!= vol_request.getVol_id());
+        if (list.isEmpty()) {
+            RequestRepo.save(vol_request);
+        }
+        else
+        {
+            errors.rejectValue("vol_email", "error.userEmail.exists");
+        }
     }
 
 

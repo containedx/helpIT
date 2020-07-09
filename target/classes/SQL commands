@@ -52,11 +52,11 @@ truncate volunteers;
 #kamil
 CREATE TABLE IF NOT EXISTS foundation_vol (id BIGINT AUTO_INCREMENT , foundation_id Bigint ,foundation_name VARCHAR(255) , vol_id bigint, vol_name VARCHAR(255) , vol_surname VARCHAR(255), vol_email VARCHAR(255) , PRIMARY KEY(id,foundation_id,vol_id)) ;
 CREATE TABLE IF NOT EXISTS users_foundation_vol (user_id BIGINT REFERENCES users(user_id),volunteer_id BIGINT REFERENCES foundation_vol(vol_id), CONSTRAINT PRIMARY KEY (volunteer_id, user_id));
-CREATE TABLE IF NOT EXISTS foundation_foundation_vol (foundation_id BIGINT REFERENCES foundations(foundation_id), fun_id BIGINT REFERENCES foundation_vol(foundation_id), CONSTRAINT PRIMARY KEY(foundation_id,fun_id))
+CREATE TABLE IF NOT EXISTS foundation_foundation_vol (foundation_id BIGINT REFERENCES foundations(foundation_id), fun_id BIGINT REFERENCES foundation_vol(foundation_id), CONSTRAINT PRIMARY KEY(foundation_id,fun_id));
 CREATE TABLE IF NOT EXISTS vol_requests (id BIGINT PRIMARY KEY auto_increment, vol_description text, vol_volunteer_id INT
 references volunteers(volunteer_id), volunteer_volunteer_email VARCHAR(255),
-fun_foundation_id BIGINT references foundations(foundation_id));
-=======
+fun_foundation_id BIGINT references foundations(foundation_id), foundation_foundation_email VARCHAR(255));
+
 drop table addresses;
 drop table events;
 drop table foundation_event;

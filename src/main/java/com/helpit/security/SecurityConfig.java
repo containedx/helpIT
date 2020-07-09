@@ -29,17 +29,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("events/add").authenticated()
 
-               /* .antMatchers("events/add").authenticated()
+                .antMatchers("events/add").authenticated()
 
                 .antMatchers("events/sign/*").hasAuthority("ROLE_VOLUNTEER")
-<<<<<<< HEAD
+
                 .antMatchers("/panel").hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")
                 .antMatchers("/vol").authenticated()
                 .antMatchers("/add").hasAuthority("ROLE_FOUNDATION")
                 .antMatchers("/SendRequest").hasAuthority("ROLE_VOLUNTEER")
                 .antMatchers("/checkRequests").hasAuthority("ROLE_FOUNDATION")
-=======
-                .antMatchers("/panel").hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")*/
+
+                .antMatchers("/panel").hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")
                 .antMatchers("/*").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
 

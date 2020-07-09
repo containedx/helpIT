@@ -31,7 +31,7 @@ public class Vol_Requests
     private String vol_email;
 
 
-    @Column(name = "foundation_foundation_name")
+    @Column(name = "foundation_foundation_email")
     private String foundation_email;
 
 }
