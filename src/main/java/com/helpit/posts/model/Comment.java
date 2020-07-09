@@ -6,8 +6,12 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 
 @Data
 @Entity
@@ -36,6 +40,7 @@ public class Comment
     @Column(name = "update_timestamp")
     private LocalDateTime updateTime;
 
+
     public Comment()
     {
     }
@@ -62,4 +67,17 @@ public class Comment
         return id != null ? id.hashCode() : 0;
     }
 
+
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", volunteer=" + volunteer +
+                ", foundation=" + foundation +
+                ", content='" + content + '\'' +
+                '}';
+    }
+
 }
+

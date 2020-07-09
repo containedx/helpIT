@@ -1,5 +1,6 @@
 package com.helpit.posts.controllers;
 
+import com.helpit.events.Event;
 import com.helpit.model.Foundation;
 import com.helpit.model.Types;
 import com.helpit.model.User;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
+import java.util.Optional;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,6 +34,46 @@ public class PostController {
         this.userRepository = userRepository;
     }
 
+    @RequestMapping({"/add_post/add"})
+    public String getAddComment()
+    {
+        return "/add_post/add";
+    }
+
+    @RequestMapping({"/add_post/{id}/add_2_foundation"})
+    public String AddPost2Foundation(@PathVariable String id, Model model)
+    {
+        Optional<Foundation> foundation = foundationRepository.findById(Integer.valueOf(id));
+        if (foundation.isPresent()) {
+            model.addAttribute("foundation", foundation.get());
+        }
+        else {
+            throw new RuntimeException("Sth went wrong");
+        }
+        return "/add_post/add_2_foundation";
+    }
+
+    @RequestMapping({"/add_post/list"})
+    public String getListComment(Model model)
+    {
+        model.addAttribute("posts", postRepository.findAll());
+        return "/add_post/list";
+    }
+
+    @RequestMapping({"/add_post/{id}/display_post"})
+    public String getListComment(@PathVariable String id, Model model)
+    {
+
+        Optional<Post> post = postRepository.findById(Integer.valueOf(id));
+        if (post.isPresent()) {
+            model.addAttribute("post", post.get());
+        }
+        else {
+            throw new RuntimeException("Sth went wrong");
+        }
+
+        return "/add_post/display_post";
+    }
 
     @RequestMapping({"/article/show"})
     public String getPostShow()
@@ -42,6 +85,7 @@ public class PostController {
     public String getPostShowById(@PathVariable String id, Model model)
     {
         Optional<Post> post = postRepository.findById(Integer.valueOf(id));
+
         if (post.isPresent()) {
             model.addAttribute("article", post.get());
         }
@@ -50,6 +94,12 @@ public class PostController {
         }
         return "/article/show";
     }
+
+//    @RequestMapping("article/delete/{id}")
+//    public String deletePost(@Valid @ModelAttribute("post") Post post) {
+//        delete(post.getId());
+//        return "redirect:/";
+//    }
 
     @RequestMapping({"/article/edit"})
     public String getPostEdit()
@@ -64,16 +114,30 @@ public class PostController {
         return "/article/add";
     }
 
+    public void delete(Integer id){
+        postRepository.deleteById(id);
+    }
+
     @RequestMapping({"/article/{id}/delete"})
     public String deletePost(@PathVariable String id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User user = userRepository.findByEmail(currentUserName);
+
         try {
             postRepository.deleteById(Integer.valueOf(id));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return "redirect:/volunteer";
+
+        if(user.getFoundation() != null) {
+            return "redirect:/foundation";
+        }
+        else if(user.getVolunteer() != null) {
+            return "redirect:/volunteer";
+        }
+        else return "index";
     }
 
     @RequestMapping({"/article/filter"})
@@ -95,19 +159,48 @@ public class PostController {
             model.addAttribute("articles", listOfArticles);
         }
         else if (!category.equals("all") && foundation.equals("all")) {
-            List<Post> filered = postRepository.findAll().stream().filter(post -> post.getCategory().equals(Types.valueOf(category))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
+            List<Post> filered = user.getVolunteer().getPosts().stream().filter(post -> post.getCategory().equals(Types.valueOf(category))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
             model.addAttribute("articles", filered);
         }
         else if (category.equals("all") && !foundation.equals("all")) {
-            List<Post> filered = postRepository.findAll().stream().filter(post -> post.getFoundation().getId().equals(Integer.valueOf(foundation))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
+            List<Post> filered = user.getVolunteer().getPosts().stream().filter(post -> post.getFoundation().getId().equals(Integer.valueOf(foundation))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
             model.addAttribute("articles", filered);
         }
         else {
-            List<Post> filered = postRepository.findAll().stream().filter(post -> post.getCategory().equals(Types.valueOf(category)) && post.getFoundation().getId().equals(Integer.valueOf(foundation))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
+            List<Post> filered = user.getVolunteer().getPosts().stream().filter(post -> post.getCategory().equals(Types.valueOf(category)) && post.getFoundation().getId().equals(Integer.valueOf(foundation))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
             model.addAttribute("articles", filered);
         }
 
         model.addAttribute("foundations", foundationRepository.findAll());
         return "volunteer/show";
     }
+
+
+
+    @RequestMapping({"/foundation/article/filter"})
+    public String filterArticlesBelongingToFundation(Model model,
+                                 @RequestParam String category) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User user = userRepository.findByEmail(currentUserName);
+
+        model.addAttribute("foundation", user.getFoundation());
+
+        //filtracja
+        if(category.equals("all")) {
+            //wrzucam wszystkie
+            List<Post> listOfArticles = new ArrayList<>(user.getFoundation().getPost());
+            listOfArticles.sort(Comparator.comparing(Post::getCreateTime).reversed());
+            model.addAttribute("articles", listOfArticles);
+        }
+        else {
+            List<Post> filtered = user.getFoundation().getPost().stream().filter(post -> post.getCategory().equals(Types.valueOf(category))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
+            model.addAttribute("articles", filtered);
+        }
+
+        return "foundation/show";
+    }
+
+
 }

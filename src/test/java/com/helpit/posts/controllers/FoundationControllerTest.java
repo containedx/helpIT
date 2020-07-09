@@ -1,22 +1,27 @@
 package com.helpit.posts.controllers;
 
 import com.helpit.model.Foundation;
+import com.helpit.model.User;
+import com.helpit.model.Volunteer;
 import com.helpit.posts.model.Comment;
+import com.helpit.posts.repositories.PostRepository;
 import com.helpit.repositories.FoundationRepository;
+import com.helpit.repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.ui.Model;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -26,12 +31,26 @@ class FoundationControllerTest {
     @Mock
     FoundationRepository foundationRepository;
 
+    @Mock
+    UserRepository userRepository;
+
+    @Mock
+    PostRepository postRepository;
+
     FoundationController controller;
+    User user;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        controller = new FoundationController(foundationRepository);
+        controller = new FoundationController(foundationRepository, userRepository, postRepository);
+
+        user = new User();
+        user.setId(1);
+        user.setEmail("a@bla.pl");
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
     @Test
@@ -102,5 +121,24 @@ class FoundationControllerTest {
                 .andExpect(model().attributeExists("rating", "foundation"));
 
         verify(foundationRepository, times(1)).findById(anyInt());
+    }
+
+    @Test
+    void getFoundation() throws Exception {
+        Foundation foundation = new Foundation();
+        foundation.setId(1);
+        foundation.setPost(new HashSet<>());
+        user.setFoundation(foundation);
+
+        when(userRepository.findByEmail(anyString())).thenReturn(user);
+
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/foundation"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/foundation/show"))
+                .andExpect(model().attributeExists("foundation", "articles"));
+
+        verify(userRepository,times(1)).findByEmail(anyString());
     }
 }

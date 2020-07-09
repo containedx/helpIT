@@ -16,7 +16,7 @@
 
 <body>
 
-<div th:replace="partials/nav::nav"></div>
+<div th:replace="fragments/menu::menu"></div>
 
 <section id="charity">
 
@@ -108,13 +108,8 @@
     function hideShowOption() {
 
         var x  = document.querySelector('#drop_view');
-        var y = document.getElementById("dropdown-signup");
 
         if(x.style.display === 'none' || x.style.display === '') {
-
-            if(y.style.display === 'block') {
-                y.style.display = "none";
-            }
 
             x.style.display = "block";
         } else {

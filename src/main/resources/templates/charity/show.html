@@ -16,130 +16,138 @@
 
 <body>
 
-<div th:replace="fragments/menu::menu"></div>
+    <div th:replace="fragments/menu::menu"></div>
 
-<section id="charity">
+    <section id="charity">
 
-    <div id="charity-content">
+        <div id="charity-content">
 
-        <div class="charity-content-nav">
-            <a href="/">
-                <i class="im im-arrow-left"></i>
-            </a>
+            <div class="charity-content-nav">
+                <a href="/">
+                    <i class="im im-arrow-left"></i>
+                </a>
 
-            <a href="/charity/edit" role="button">Edit Profile</a>
-        </div>
+                <a href="/charity/edit" sec:authorize="hasRole('ROLE_VOLUNTEER')" role="button">Join Foundation</a>
 
-        <div class="charity-content-user">
-            <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
+                <a href="/charity/edit" sec:authorize="hasRole('ROLE_FOUNDATION')" role="button">Edit Profile</a>
 
-            <!-- <h5 th:text="${foundation.name}"></h5> -->
-            <h5 th:text="${foundation.name}"></h5>
-        </div>
-
-        <div class="charity-content-links">
-            <a th:href="@{'/charity/' + ${foundation.getId()} + '/show'}">Feed
-                <i class="im im-care-up"></i>
-            </a>
-            <a href="#">Events</a>
-            <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions</a>
-        </div>
-
-        <div class="charity-content-feed">
-
-            <form id="add-article" th:action="'/charity/' + ${foundation.getId()} + '/add_article'" sec:authorize="isAuthenticated()">
-                <div class="add-article-content">
-                    <div class="input-article">
-                        <span>Article title</span>
-                        <label>
-                            <input id="title" name="title" type="text"/>
-                        </label>
-                    </div>
-
-                    <div class="textarea-article">
-                        <span>Article content</span>
-                        <label>
-                            <textarea id="summernote" name="editordata"></textarea>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="input-article">
-                    <label for="category"> Choose category</label> <br>
-                    <select id="category" name="category" >
-                        <option value="" disabled selected hidden>Select category</option>
-                        <option value="family">Family</option>
-                        <option value="peace">Peace</option>
-                        <option value="environment">Environment</option>
-                        <option value="disease">Disease</option>
-                        <option value="education">Education</option>
-                        <option value="culture">Culture</option>
-                        <option value="animals">Animals</option>
-                        <option value="addiction">Addiction</option>
-                    </select>
-                </div>
-
-                <div class="add-article-controllers">
-                    <input type="submit" value="Create Article"/>
-                </div>
-            </form>
-
-            <div id="articles">
-                <div class="article" th:each="article : ${articles}">
-                    <img th:src="@{/images/article.png}" alt="">
-                    <div class="article-details">
-                        <div class="article-title" th:utext="${article.getTitle()}">Author</div>
-                        <div class="article-title" th:utext="${article.getCategory()}">Category</div>
-                        <div class="article-content" th:utext="${article.getContent()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                        <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
-                    </div>
-                </div>
+                <a href=""></a>
 
             </div>
 
+
+            <div class="charity-content-user">
+                <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
+
+                <!-- <h5 th:text="${foundation.name}"></h5> -->
+                <h5 th:text="${foundation.name}"></h5>
+            </div>
+
+
+            <div class="charity-content-links">
+                <a th:href="@{'/charity/' + ${foundation.getId()} + '/show'}">Feed
+                    <i class="im im-care-up"></i>
+                </a>
+                <a th:href="@{'/charity/' + ${foundation.getId()} + '/events'}">Events</a>
+                <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions</a>
+            </div>
+
+
+            <div class="charity-content-feed">
+
+                <form id="add-article" th:action="'/charity/' + ${foundation.getId()} + '/add_article'" sec:authorize="hasRole('ROLE_VOLUNTEER')">
+                    <div class="add-article-content">
+                        <div class="input-article">
+                            <span>Article title</span>
+                            <label>
+                                <input id="title" name="title" type="text"/>
+                            </label>
+                        </div>
+
+                        <div class="textarea-article">
+                            <span>Article content</span>
+                            <label>
+                                <textarea id="summernote" name="editordata"></textarea>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="input-article">
+                        <label for="category"> Choose category</label> <br>
+                        <select id="category" name="category" >
+                            <option value="" disabled selected hidden>Select category</option>
+                            <option value="family">Family</option>
+                            <option value="peace">Peace</option>
+                            <option value="environment">Environment</option>
+                            <option value="disease">Disease</option>
+                            <option value="education">Education</option>
+                            <option value="culture">Culture</option>
+                            <option value="animals">Animals</option>
+                            <option value="addiction">Addiction</option>
+                        </select>
+                    </div>
+
+                    <div class="add-article-controllers">
+                        <input type="submit" value="Create Article"/>
+                    </div>
+                </form>
+
+                <div id="articles">
+                    <div class="article" th:each="article : ${articles}">
+                        <img th:src="@{/images/article.png}" alt="">
+                        <div class="article-details">
+                            <div class="article-title" th:utext="${article.getTitle()}">Author</div>
+                            <div class="article-title" th:utext="${article.getCategory()}">Category</div>
+                            <div class="article-content" th:utext="${article.getContent()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                            <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-    </div>
 
-</section>
+    </section>
 
-<footer id="foot"></footer>
+    <footer id="foot"></footer>
 
-<script type="text/javascript" charset="utf-8">
+    <script type="text/javascript" charset="utf-8">
 
-    function hideShowOption() {
+        function hideShowOption() {
 
-        var x  = document.querySelector('#drop_view');
+            var x  = document.querySelector('#drop_view');
 
-        if(x.style.display === 'none' || x.style.display === '') {
+            if(x.style.display === 'none' || x.style.display === '') {
 
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
         }
-    }
-</script>
+    </script>
 
-<!-- summernote -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <!-- summernote -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-<script>
-    $('#summernote').summernote({
-        height: 70,
-        toolbar: [
-            ['font', ['bold', 'underline']],
-            ['para', ['ul', 'ol']],
-            ['view', ['fullscreen', 'codeview']],
-            ['insert', ['link', 'picture', 'video']]
-        ],
-        disableResizeEditor: true,
-    });
+    <script>
+        $('#summernote').summernote({
+            height: 70,
+            toolbar: [
+                ['font', ['bold', 'underline']],
+                ['para', ['ul', 'ol']],
+                ['view', ['fullscreen', 'codeview']],
+                ['insert', ['link', 'picture', 'video']]
+            ],
+            disableResizeEditor: true,
+        });
 
-    $('#summernote').summernote('code', '<p></p>');
+        $('#summernote').summernote('code', '<p></p>');
 
 
-</script>
+    </script>
 
 </body>
 

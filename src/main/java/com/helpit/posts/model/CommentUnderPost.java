@@ -5,8 +5,12 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 
 @Data
 @Entity
@@ -46,4 +50,6 @@ public class CommentUnderPost {
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
+
 }
+

@@ -1,12 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-
-</head>
-<body>
 <nav th:fragment="menu" id="nav">
 
     <a id="navbar-logo" href="/">
@@ -33,10 +25,6 @@
             <span>Sign in</span>
         </a>
 
-        <a href="/signup" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">
-            <span>Sign up</span>
-        </a>
-
         <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
             <form th:action="logout" method='POST'>
                 <button type="submit">Sign out</button>
@@ -58,7 +46,9 @@
         <ul class='dropdown-menu' id="drop_view">
 
             <li class='option' id='option1'>
+
                 <a href="/article/adding" sec:authorize="hasRole('ROLE_VOLUNTEER')">Add new Article</a>
+
             </li>
 
             <li class='option' id='option2'>
@@ -70,11 +60,11 @@
             </li>
 
             <li class='option' id='option4'>
-                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Volunteers List</a>
+                <a href="/user/manager" sec:authorize="hasRole('ROLE_FOUNDATION')">Volunteers List</a>
             </li>
 
             <li class='option' id='option5'>
-                <a href="/charities" sec:authorize="hasRole('ROLE_VOLUNTEER')">Foundations List</a>
+                <a href="/user/manager" sec:authorize="hasRole('ROLE_VOLUNTEER')">Foundations List</a>
             </li>
 
             <li class='option' id='option6'>
@@ -90,6 +80,14 @@
             </li>
 
             <li class='option' id='option9'>
+                <a href="/volunteer" sec:authorize="hasRole('ROLE_VOLUNTEER')">Your Profile</a>
+            </li>
+
+            <li class='option' id='option10'>
+                <a href="/foundation" sec:authorize="hasRole('ROLE_FOUNDATION')">Your Profile</a>
+            </li>
+
+            <li class='option' id='option11'>
                 <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
                     <form th:action="logout" method="POST">
                         <button type="submit" th:text="#{menu.logout}"></button>
@@ -100,5 +98,5 @@
     </div>
 
 </nav>
-</body>
-</html>
+
+

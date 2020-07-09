@@ -21,5 +21,4 @@ public enum Types {
         return typeName;
     }
 
-
 }

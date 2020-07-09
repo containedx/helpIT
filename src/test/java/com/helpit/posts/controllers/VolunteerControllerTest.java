@@ -58,7 +58,6 @@ class VolunteerControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/volunteer"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("/volunteer/show"))
-                .andExpect(MockMvcResultMatchers.model().attributeExists("foundations"))
                 .andExpect(model().attributeExists("foundations", "articles", "volunteer"));
         
         verify(userRepository,times(1)).findByEmail(anyString());

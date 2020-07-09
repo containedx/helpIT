@@ -19,76 +19,81 @@
 <div th:replace="fragments/menu::menu"></div>
 
 <section id="charity">
-        <div id="charity-content">
 
-            <div class="charity-content-nav">
-                <a href="/">
-                    <i class="im im-arrow-left"></i>
-                </a>
 
-                <a href="/charity/edit" role="button">Edit</a>
-            </div>
+    <div id="charity-content">
 
-            <div class="charity-content-user">
-                <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
+        <div class="charity-content-nav">
+            <a th:href="'/charity/' + ${foundation.getId() + '/show'}">
+                <i class="im im-arrow-left"></i>
+            </a>
 
-                <h5>CHARITY NAME</h5>
-            </div>
+            <a href="/charity/edit" role="button">Edit</a>
+        </div>
 
-            <div class="charity-content-links">
-                <a href="/charity/show" th:href="'/charity/' + ${foundation.getId() + '/show'}">Feed</a>
-                <a href="/charity/events">Events</a>
-                <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions<i class="im im-care-up"></i></a>
-            </div>
+        <div class="charity-content-user">
+            <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
+
+            <h5>CHARITY NAME</h5>
+        </div>
+
+        <div class="charity-content-links">
+            <a th:href="'/charity/' + ${foundation.getId() + '/show'}">Feed</a>
+            <a th:href="@{'/charity/' + ${foundation.getId()} + '/events'}">Events</a>
+            <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions<i class="im im-care-up"></i></a>
         </div>
 
         <div class="charity-content-feed">
-            <form th:action="'/charity/' + ${foundation.getId()} + '/submitopinion'">
-                <div id="add-opinion">
 
-                    <div class="add-opinion-col add-opinion-col--left">
-                        <span>Leave Opinion</span>
-                        <textarea id="add-opinion-text" name="editordata"></textarea>
+            <div class="charity-content-feed">
+                <form th:action="'/charity/' + ${foundation.getId()} + '/submitopinion'">
+                    <div id="add-opinion">
+
+                        <div class="add-opinion-col add-opinion-col--left">
+                            <span>Leave Opinion</span>
+                            <textarea id="add-opinion-text" name="editordata"></textarea>
+
+                        </div>
+
+                        <div class="add-opinion-col add-opinion-col--right">
+                            <span>Rate it </span>
+
+                            <select id="add-opinion-rating" name="rating">
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+
+                            <input type="submit">
+                        </div>
 
                     </div>
+                </form>
+            </div>
 
-                    <div class="add-opinion-col add-opinion-col--right">
-                        <span>Rate it </span>
-
-                        <select id="add-opinion-rating" name="rating">
-                            <option value="5">5</option>
-                            <option value="4">4</option>
-                            <option value="3">3</option>
-                            <option value="2">2</option>
-                            <option value="1">1</option>
-                        </select>
-
-                        <input type="submit">
+            <section id="opinion-cards">
+                <div class="opinion-card" th:each="opinion : ${foundation.getComment()}">
+                    <img src="" alt="" class="opinion-card-img">
+                    <div class="opinion-card-content">
+                        <div class="opinion-card-content-rating" th:text="${opinion.getRate()}">2</div>
+                        <div class="opinion-card-content-text" th:utext="${opinion.getContent()}">Irresponsible administration...</div>
                     </div>
-
                 </div>
-            </form>
-        </div>
 
+                <div class="opinion-card" th:remove="all">
+                    <img src="" alt="" class="opinion-card-img">
+                    <div class="opinion-card-content">
+                        <div class="opinion-card-content-title">Awesome!</div>
+                        <div class="opinion-card-content-rating">5</div>
+                        <div class="opinion-card-content-text">Just what I was looking for!</div>
+                    </div>
+                </div>
+            </section>
 
-    <section id="opinion-cards">
-        <div class="opinion-card" th:each="opinion : ${opinions}">
-            <img src="" alt="" class="opinion-card-img">
-            <div class="opinion-card-content">
-                <div class="opinion-card-content-rating" th:text="${opinion.getRate()}">2</div>
-                <div class="opinion-card-content-text" th:utext="${opinion.getContent()}">Irresponsible administration...</div>
-            </div>
         </div>
-
-        <div class="opinion-card" th:remove="all">
-            <img src="" alt="" class="opinion-card-img">
-            <div class="opinion-card-content">
-                <div class="opinion-card-content-title">Awesome!</div>
-                <div class="opinion-card-content-rating">5</div>
-                <div class="opinion-card-content-text">Just what I was looking for!</div>
-            </div>
-        </div>
-    </section>
+    </div>
 
 </section>
 
@@ -148,7 +153,6 @@
     });
 
     $('#add-opinion-text').summernote('code', '');
-
 
 </script>
 

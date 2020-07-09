@@ -63,4 +63,6 @@ public class SubmitCommentController
 
         return "redirect:/charity/" + id + "/opinion";
     }
+
 }
+

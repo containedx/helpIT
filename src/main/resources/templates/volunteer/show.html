@@ -34,7 +34,7 @@
             <img alt="charity_logo" th:src="@{/images/user.png}">
 
             <!-- <h5 th:text="${foundation.name}"></h5> -->
-            <h5> User Name</h5>
+            <h5 th:text="${volunteer.getName()} + ' ' + ${volunteer.getSurname()}"> User Name</h5>
         </div>
 
         <div class="volunteer-content-links">
@@ -69,7 +69,7 @@
                             <option th:each="foundation : ${foundations}" th:value="${foundation.getId()}" th:text="${foundation.getName()}">Foundation</option>
                         </select>
                     </div>
-            </div>
+                </div>
             </div>
 
             <div class="add-article-controllers">

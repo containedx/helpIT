@@ -1,5 +1,8 @@
 package com.helpit.model;
 
+
+import com.helpit.posts.model.Comment;
+
 import com.helpit.posts.model.Post;
 import lombok.Data;
 

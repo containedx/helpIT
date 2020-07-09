@@ -1,5 +1,6 @@
 package com.helpit.posts.controllers;
 
+import com.helpit.model.Foundation;
 import com.helpit.model.User;
 import com.helpit.model.Volunteer;
 import com.helpit.posts.model.Post;
@@ -18,6 +19,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.HashSet;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -95,6 +97,11 @@ class PostControllerTest {
     void deletePost() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
+        Volunteer volunteer = new Volunteer();
+        user.setVolunteer(volunteer);
+
+        when(userRepository.findByEmail(anyString())).thenReturn(user);
+
         mockMvc.perform(MockMvcRequestBuilders.get("/article/1/delete"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/volunteer"));
@@ -106,6 +113,7 @@ class PostControllerTest {
     void filterArticles() throws Exception {
         Volunteer volunteer = new Volunteer();
         volunteer.setId(1);
+        volunteer.setPosts(new HashSet<>());
         user.setVolunteer(volunteer);
 
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
@@ -119,8 +127,27 @@ class PostControllerTest {
                 .andExpect(view().name("volunteer/show"))
                 .andExpect(model().attributeExists("foundations", "articles", "volunteer"));
 
-        verify(postRepository,times(1)).findAll();
         verify(userRepository,times(1)).findByEmail(anyString());
         verify(foundationRepository,times(1)).findAll();
+    }
+
+    @Test
+    void filterArticlesBelongingToFundation() throws Exception {
+        Foundation foundation = new Foundation();
+        foundation.setId(1);
+        foundation.setPost(new HashSet<>());
+        user.setFoundation(foundation);
+
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+
+        when(userRepository.findByEmail(anyString())).thenReturn(user);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/foundation/article/filter")
+                .param("category", "disease"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("foundation/show"))
+                .andExpect(model().attributeExists("foundation", "articles"));
+
+        verify(userRepository,times(1)).findByEmail(anyString());
     }
 }
