@@ -38,9 +38,11 @@
 
         <div class="charity-content-links">
 
-            <a href="">Feed</a>
-            <a href="">Events<i class="im im-care-up"></i></a>
-            <a href="">Opinions</a>
+            <a th:href="@{'/charity/' + ${foundation.getId()} + '/show'}">Feed</a>
+            <a th:href="@{'/charity/' + ${foundation.getId()} + '/events'}">Events
+                <i class="im im-care-up"></i>
+            </a>
+            <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions</a>
 
         </div>
 
@@ -50,7 +52,7 @@
             <form id="add-event"  action="#" th:action="@{create_event}" th:object="${event}" th:method="POST">
             -->
 
-            <form id="add-event" action="">
+            <form id="add-event" th:action="@{create_event}" th:object="${event}" th:method="POST" sec:authorize="hasRole('ROLE_FOUNDATION')">
 
                 <div class="event-inputs-left">
                     <div class="input-event">
@@ -61,7 +63,7 @@
                             <input type="text" th:field="*{name}"/>
                             -->
 
-                            <input type="text"/>
+                            <input type="text" th:field="*{name}"/>
 
                         </label>
                     </div>
@@ -72,7 +74,7 @@
                             <input type="datetime-local" th:field="*{date}"/>
                             -->
 
-                            <input type="datetime-local"/>
+                            <input type="datetime-local" th:field="*{date}"/>
                         </label>
                     </div>
                 </div>
@@ -87,7 +89,7 @@
                             <textarea id="summernote" name="editordata" th:field="*{description}"></textarea>
                             -->
 
-                            <textarea id="summernote" name="editordata"></textarea>
+                            <textarea id="summernote" name="editordata" th:field="*{description}"></textarea>
 
                         </label>
                     </div>
@@ -97,14 +99,14 @@
 
             <div id="events">
 
-                <div class="event">
+                <div class="event"  th:each="event : ${listEvents}">
                     <img th:src="@{/images/event.png}">
 
                     <div class="event-details">
-                        <div class="event-title">Title</div>
-                        <div class="event-date">22/12/2020</div>
-                        <div class="event-content">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                        <a href="/event/show">read more</a>
+                        <div class="event-title" th:utext="${event.name}" >Title</div>
+                        <div class="event-date" th:utext="${event.date}">22/12/2020</div>
+                        <div class="event-content" th:utext="${event.description}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
+                        <a th:href="@{'/event/' + ${event.id} + '/show'}">read more</a>
                     </div>
                 </div>
 
