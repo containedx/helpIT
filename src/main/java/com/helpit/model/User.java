@@ -124,4 +124,9 @@ public class User {
     public void setNumberOfFlat(int numberOfFlat){
         address.setNumberOfFlat(numberOfFlat );
     }
+
 }
+
+
+
+

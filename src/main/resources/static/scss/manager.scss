@@ -1,0 +1,66 @@
+
+
+.manager {
+  height: auto;
+  max-width: 800px;
+  width: 100%;
+  margin: 115px auto 40px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 35px auto;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 150 20px -15px rgb(183, 174, 188);
+  -moz-box-shadow: 0px 0px 20px -15px  rgb(183, 174, 188);
+  box-shadow: 0px 0px 20px -15px rgb(183, 174, 188);
+
+  &:nth-of-type(2){
+    margin: 0px auto 40px auto;
+  }
+
+  h4{
+    color: #fff;
+    font-size: 13px;
+    background: #fa5b53;
+    padding: 0 0 0 15px;
+    margin: 0 0 0 0;
+    height: 35px;
+    line-height: 35px;
+  }
+
+  .manager-rows{
+    grid-auto-rows: 50px;
+
+    .manager-row{
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      grid-template-rows: 1fr;
+
+
+
+      &:nth-child(even) {
+        background: #e7e7e7;
+      }
+
+      &:nth-child(odd) {
+        background: #fff;
+      }
+
+      .manager-row-name{
+        line-height: 50px;
+        padding: 0 0 0 15px;
+        font-size: 13px;
+      }
+
+      .manager-row-link{
+        text-decoration: none;
+        line-height: 50px;
+        font-size: 13px;
+        padding: 0 20px;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -17,20 +17,22 @@
 
 <body>
 
-<div th:replace="partials/nav::nav"></div>
+<div th:replace="fragments/menu::menu"></div>
 
 <section id="article">
 
     <div id="article-content">
 
         <div class="article-content-nav">
-            <a href="/charity/show">
+
+            <a th:href="'/foundation/' + ${article.foundation.getId()} + '/show'">
                 <i class="im im-arrow-left"></i>
             </a>
 
-            <a href="/article/edit" role="button">Edit Article</a>
+            <a sec:authorize="isAuthenticated()" href="/article/edit" role="button">Edit Article</a>
 
-            <a href="/article/delete" role="button">Delete</a>
+            <a sec:authorize="isAuthenticated()" th:href="'/article/delete/' + ${article.getId()}" role="button">Delete</a>
+
 
         </div>
 
@@ -53,7 +55,8 @@
             </p>
         </div>
 
-        <form class="article-content-add-comment" th:action="'/article/' + ${article.getId()} + '/add_comment'">
+        <form class="article-content-add-comment" th:action="'/article/' + ${article.getId()} + '/add_comment'"  sec:authorize="isAuthenticated()">
+
             <span>Add Comment</span>
             <textarea id="summernote" name="editordata"></textarea>
             <div class="input-comment">
@@ -92,42 +95,12 @@
 
 <script type="text/javascript" charset="utf-8">
 
-    function hideShowSignIn() {
-
-        var y  = document.querySelector('#drop_view');
-        var x = document.getElementById("dropdown-signup");
-        var btn = document.getElementById("signup-btn")
-
-        if(x.style.display === 'none' || x.style.display === '') {
-
-            if(y.style.display === 'block') {
-                y.style.display = "none";
-            }
-
-            x.style.display = "block";
-            btn.style.left = "200px";
-        } else {
-            x.style.display = "none";
-            btn.style.left = "10px";
-        }
-    }
-
     function hideShowOption() {
 
         var x  = document.querySelector('#drop_view');
-        var y = document.getElementById("dropdown-signup");
 
         if(x.style.display === 'none' || x.style.display === '') {
 
-            if(y.style.display === 'block') {
-                y.style.display = "none";
-            }
-
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
 
 </script>
 
@@ -145,10 +118,12 @@
             ['insert', ['link', 'picture']],
             ['view', ['fullscreen', 'codeview']]
         ],
-        disableResizeEditor: true
+
+        disableResizeEditor: true,
     });
 
-    $('#summernote').summernote('code', '<p></p>');
+    $('#summernote').summernote('code', '');
+
 </script>
 
 </body>

@@ -17,4 +17,11 @@ public interface UserService {
     public void saveFoundation(User user);
 
 
+
+
+    void updateUser (String id, User user);
+    void banUser (String id);
+    void unbanUser (String id);
+    void deleteUser (String id);
+
 }

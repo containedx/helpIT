@@ -7,7 +7,7 @@
     max-width: 330px;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 80px 60px 60px 60px 60px;
+    grid-template-rows: 80px 60px 60px 60px 60px 60px;
     row-gap: 20px;
     border: 1px solid #d6cdca;
     border-top: none;

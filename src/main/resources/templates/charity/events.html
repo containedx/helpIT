@@ -16,7 +16,7 @@
 
 <body>
 
-<div th:replace="partials/nav::nav"></div>
+<div th:replace="fragments/menu::menu"></div>
 
 <section id="charity">
 
@@ -37,34 +37,58 @@
         </div>
 
         <div class="charity-content-links">
-            <a href="/charity/show">Feed</a>
-            <a href="/charity/events">Events<i class="im im-care-up"></i></a>
-            <a href="/charity/sponsors">Sponsors</a>
+
+            <a href="">Feed</a>
+            <a href="">Events<i class="im im-care-up"></i></a>
+            <a href="">Opinions</a>
+
         </div>
 
         <div class="charity-content-feed">
 
+            <!--
+            <form id="add-event"  action="#" th:action="@{create_event}" th:object="${event}" th:method="POST">
+            -->
+
             <form id="add-event" action="">
+
                 <div class="event-inputs-left">
                     <div class="input-event">
                         <span>Event Name</span>
                         <label>
+
+                            <!--
+                            <input type="text" th:field="*{name}"/>
+                            -->
+
                             <input type="text"/>
+
                         </label>
                     </div>
                     <div class="input-event">
                         <span>Date and time</span>
                         <label>
+                            <!--
+                            <input type="datetime-local" th:field="*{date}"/>
+                            -->
+
                             <input type="datetime-local"/>
                         </label>
                     </div>
                 </div>
+
                 <div class="event-inputs-right">
 
                     <div class="textarea-event">
                         <span>Event Description</span>
                         <label>
+
+                            <!--
+                            <textarea id="summernote" name="editordata" th:field="*{description}"></textarea>
+                            -->
+
                             <textarea id="summernote" name="editordata"></textarea>
+
                         </label>
                     </div>
                     <input id="add-event-btn" type="submit" value="Create Event" />
@@ -72,6 +96,7 @@
             </form>
 
             <div id="events">
+
                 <div class="event">
                     <img th:src="@{/images/event.png}">
 

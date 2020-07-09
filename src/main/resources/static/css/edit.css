@@ -1,0 +1,62 @@
+#edit {
+  min-height: 550px;
+  width: 100%;
+  margin: 119px 0 0 0; }
+  #edit #edit-form {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    border: 1px solid #d6cdca;
+    border-top: none;
+    border-radius: 3px;
+    padding: 0 0 10px 0;
+    height: 480px;
+    -webkit-box-shadow: 0px 7px 12px -11px #d0d0d0;
+    -moz-box-shadow: 0px 7px 12px -11px #d0d0d0;
+    box-shadow: 0px 7px 12px -11px #d0d0d0; }
+    #edit #edit-form .form-title {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      padding: 0 20px;
+      background: linear-gradient(to bottom right, #f06560, #e65047);
+      border-bottom: 2px solid #d6d6d6;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px; }
+      #edit #edit-form .form-title span {
+        text-align: center;
+        font-size: 22px;
+        line-height: 80px;
+        color: #fff; }
+    #edit #edit-form #edit-form-content {
+      overflow-y: scroll;
+      max-height: 410px;
+      height: 410px; }
+      #edit #edit-form #edit-form-content #edit-form-content-scroll {
+        display: grid;
+        grid-auto-rows: 80px;
+        padding: 15px 0 0 0; }
+        #edit #edit-form #edit-form-content #edit-form-content-scroll .form-group {
+          display: grid;
+          grid-template-rows: 20px 40px;
+          padding: 0 20px; }
+          #edit #edit-form #edit-form-content #edit-form-content-scroll .form-group label {
+            font-size: 12px;
+            line-height: 15px; }
+          #edit #edit-form #edit-form-content #edit-form-content-scroll .form-group input {
+            background-color: #fff;
+            border: 1px solid #999;
+            padding: 0 0 0 10px; }
+        #edit #edit-form #edit-form-content #edit-form-content-scroll .form-btn {
+          padding: 0 20px; }
+          #edit #edit-form #edit-form-content #edit-form-content-scroll .form-btn input {
+            background-color: #fff;
+            border: 1px solid #999;
+            width: 100%;
+            margin: 0px auto 0 auto;
+            height: 45px;
+            cursor: pointer; }
+            #edit #edit-form #edit-form-content #edit-form-content-scroll .form-btn input:hover {
+              border: 1px solid #707070; }

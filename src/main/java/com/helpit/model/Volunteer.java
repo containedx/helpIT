@@ -41,7 +41,7 @@ public class Volunteer{
   private Set<Post> posts = new HashSet<>();
 
   @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "volunteer_volunteer_id")
+  @JoinColumn(name = "volunteer_id")
   private Set<CommentUnderPost> commentsUnderPost = new HashSet<>();
 
   @Lob

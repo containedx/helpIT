@@ -1,23 +1,26 @@
 package com.helpit.web;
 
 import com.helpit.model.User;
+import com.helpit.repositories.FoundationRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
+
+import java.util.HashSet;
+import java.util.Set;
+import org.springframework.web.context.request.WebRequest;
+
+
 
 @Configuration
 @Controller
 public class WebConfig {
-
-
-    @GetMapping("/")
-    public String showHomePage(){
-        return "index";
-    }
 
     @GetMapping("/signup")
     public String showRegistrationPage(){
@@ -49,15 +52,17 @@ public class WebConfig {
     }
 
 
-
+    @RequestMapping({"/user/manager"})
+    public String getUserManager()
+    {
+        return "manager";
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
-
-
 
 
 }

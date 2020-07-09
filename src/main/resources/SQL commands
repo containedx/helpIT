@@ -23,21 +23,19 @@ CREATE TABLE IF NOT EXISTS foundation_event( foundation_id BIGINT REFERENCES
 INSERT INTO roles(role) VALUES("ROLE_VOLUNTEER"),("ROLE_FOUNDATION"), ("ROLE_ADMIN");
 INSERT INTO types(type_name) values ("TYPE_FAMILY"), ("TYPE_PEACE"), ("TYPE_ENVIRONMENT"), ("TYPE_DISEASE"), ("TYPE_EDUCATION"), ("TYPE_CULTURE"), ("TYPE_ANIMALS"), ("TYPE_ADDICTION");
 
+CREATE TABLE IF NOT EXISTS comments (id BIGINT PRIMARY KEY auto_increment, rate INT,content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id), create_timestamp timestamp, update_timestamp timestamp);
+CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, title text, content text, category text,volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id), create_timestamp timestamp, update_timestamp timestamp);
+CREATE TABLE IF NOT EXISTS comments_under_posts (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), post_id BIGINT references posts(id), create_timestamp timestamp, update_timestamp timestamp);
 
-call util.trunctables('helpIT');
-#Adrian
 
-
-CREATE TABLE IF NOT EXISTS comments (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id));
-CREATE TABLE IF NOT EXISTS posts (id BIGINT PRIMARY KEY auto_increment, title text, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), foundation_foundation_id BIGINT references foundations(foundation_id));
-CREATE TABLE IF NOT EXISTS comments_under_posts (id BIGINT PRIMARY KEY auto_increment, content text, volunteer_volunteer_id INT references volunteers(volunteer_id), post_id BIGINT references posts(id));
 drop database helpIT;
 
+
+call util.trunctables('helpIT');
 truncate addresses;
 truncate events;
 truncate foundation_event;
 truncate foundation_types;
-truncate foundations;
 truncate foundations;
 truncate roles;
 truncate types;
@@ -50,6 +48,7 @@ truncate users_events;
 truncate volunteers;
 
 
+
 #kamil
 CREATE TABLE IF NOT EXISTS foundation_vol (id BIGINT AUTO_INCREMENT , foundation_id Bigint ,foundation_name VARCHAR(255) , vol_id bigint, vol_name VARCHAR(255) , vol_surname VARCHAR(255), vol_email VARCHAR(255) , PRIMARY KEY(id,foundation_id,vol_id)) ;
 CREATE TABLE IF NOT EXISTS users_foundation_vol (user_id BIGINT REFERENCES users(user_id),volunteer_id BIGINT REFERENCES foundation_vol(vol_id), CONSTRAINT PRIMARY KEY (volunteer_id, user_id));
@@ -57,3 +56,26 @@ CREATE TABLE IF NOT EXISTS foundation_foundation_vol (foundation_id BIGINT REFER
 CREATE TABLE IF NOT EXISTS vol_requests (id BIGINT PRIMARY KEY auto_increment, vol_description text, vol_volunteer_id INT
 references volunteers(volunteer_id), volunteer_volunteer_email VARCHAR(255),
 fun_foundation_id BIGINT references foundations(foundation_id));
+=======
+drop table addresses;
+drop table events;
+drop table foundation_event;
+drop table foundation_types;
+drop table foundations;
+drop table roles;
+drop table types;
+drop table user_address;
+drop table user_foundation;
+drop table user_role;
+drop table user_volunteer;
+drop table users;
+drop table users_events;
+drop table volunteers;
+drop table comments;
+drop table posts;
+drop table comments_under_posts;
+
+
+
+
+

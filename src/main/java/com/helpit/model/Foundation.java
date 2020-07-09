@@ -1,9 +1,12 @@
 package com.helpit.model;
 
+
 import com.helpit.posts.model.Comment;
+
 import com.helpit.posts.model.Post;
 import lombok.Data;
 
+import com.helpit.posts.model.Comment;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

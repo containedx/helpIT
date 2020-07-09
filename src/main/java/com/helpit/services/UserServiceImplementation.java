@@ -77,6 +77,48 @@ public class UserServiceImplementation implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public void updateUser (String id, User user) {
+        User u = userRepository.findById(Integer.parseInt(id)).get();
+        if(user.getPassword()!=null)
+            u.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        if(user.getEmail()!=null)
+            u.setEmail(user.getEmail());
+        if(user.getAddress().getCity()!=null)
+            u.getAddress().setCity(user.getAddress().getCity());
+        if(user.getAddress().getPostcode()!=null)
+            u.getAddress().setPostcode(user.getAddress().getPostcode());
+        if(user.getAddress().getStreet()!=null)
+            u.getAddress().setStreet(user.getAddress().getStreet());
+        if(user.getAddress().getNumberOfHome()!=null)
+            u.getAddress().setNumberOfHome(user.getAddress().getNumberOfHome());
+        if(user.getAddress().getNumberOfFlat()!=0)
+            u.getAddress().setNumberOfFlat(user.getAddress().getNumberOfFlat());
+
+        userRepository.save(u);
+    }
+
+    @Override
+    public void banUser (String id) {
+        User u = userRepository.findById(Integer.parseInt(id)).get();
+        u.setActive(0);
+        userRepository.save(u);
+    }
+
+    @Override
+    public void unbanUser(String id){
+        User u = userRepository.findById(Integer.parseInt(id)).get();
+        u.setActive(1);
+        userRepository.save(u);
+
+    }
+
+    @Override
+
+    public void deleteUser (String id) {
+        userRepository.delete(userRepository.findById(Integer.parseInt(id)).get());
+    }
+
 
 
 

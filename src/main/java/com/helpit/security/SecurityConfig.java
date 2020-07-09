@@ -25,13 +25,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure (HttpSecurity http) throws Exception {
         http.authorizeRequests()
+
+
                 .antMatchers("events/add").authenticated()
+
+               /* .antMatchers("events/add").authenticated()
+
                 .antMatchers("events/sign/*").hasAuthority("ROLE_VOLUNTEER")
+<<<<<<< HEAD
                 .antMatchers("/panel").hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")
                 .antMatchers("/vol").authenticated()
                 .antMatchers("/add").hasAuthority("ROLE_FOUNDATION")
                 .antMatchers("/SendRequest").hasAuthority("ROLE_VOLUNTEER")
                 .antMatchers("/checkRequests").hasAuthority("ROLE_FOUNDATION")
+=======
+                .antMatchers("/panel").hasAnyRole("FOUNDATION", "VOLUNTEER", "ADMIN")*/
+                .antMatchers("/*").permitAll()
+                .antMatchers("/admin").hasRole("ADMIN")
+
+
                 .and().formLogin().loginPage("/login").failureUrl("/login")
 
                 .and().logout().logoutSuccessUrl("/")
@@ -40,10 +52,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and().headers().frameOptions().sameOrigin();
     }
-
-
-
-
-
 
 }

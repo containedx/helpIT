@@ -2,6 +2,7 @@ package com.helpit.posts.controllers;
 
 
 import com.helpit.model.Foundation;
+import com.helpit.model.Types;
 import com.helpit.model.User;
 import com.helpit.posts.model.Post;
 import com.helpit.model.Volunteer;
@@ -32,6 +33,7 @@ public class SubmitPostController {
         this.foundationRepository = foundationRepository;
         this.userRepository = userRepository;
     }
+
 
     @RequestMapping("/add_post/submit")
     public String getComments(Model model,
@@ -103,11 +105,13 @@ public class SubmitPostController {
     @RequestMapping({"/charity/{id}/add_article"})
     public String addArticleToFoundation(@PathVariable String id,
                                          @RequestParam String title,
-                                         @RequestParam String editordata)
+                                         @RequestParam String editordata,
+                                         @RequestParam String category)
     {
         Post c = new Post();
         c.setContent(editordata);
         c.setTitle(title);
+        c.setCategory(Types.valueOf(category));
         postRepository.save(c);
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -125,6 +129,39 @@ public class SubmitPostController {
         }
 
         return "redirect:/charity/" + id + "/show";
+
+    }
+
+    @RequestMapping("/article/submit")
+    public String addArticleToSelectedFoundation( @RequestParam String title,
+                                                  @RequestParam String selected,
+                                                  @RequestParam String editordata,
+                                                  @RequestParam String category) {
+        Post post = new Post();
+        post.setContent(editordata);
+        post.setTitle(title);
+        post.setCategory(Types.valueOf(category));
+        postRepository.save(post);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User user = userRepository.findByEmail(currentUserName);
+        user.getVolunteer().getPosts().add(post);
+        userRepository.save(user);
+
+        Optional<Foundation> f = foundationRepository.findById(Integer.valueOf(selected));
+        if (f.isPresent()) {
+            post.setVolunteer(user.getVolunteer());
+            post.setFoundation(f.get());
+            f.get().getPost().add(post);
+            foundationRepository.save(f.get());
+        }
+        else
+        {
+            throw new RuntimeException("Selected foundation not found");
+        }
+
+        return "redirect:/charity/" + selected + "/show";
     }
 }
 
