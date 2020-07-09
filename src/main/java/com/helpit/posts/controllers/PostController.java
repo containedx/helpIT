@@ -95,11 +95,11 @@ public class PostController {
         return "/article/show";
     }
 
-    @RequestMapping("article/delete/{id}")
-    public String deletePost(@Valid @ModelAttribute("post") Post post) {
-        delete(post.getId());
-        return "redirect:/";
-    }
+//    @RequestMapping("article/delete/{id}")
+//    public String deletePost(@Valid @ModelAttribute("post") Post post) {
+//        delete(post.getId());
+//        return "redirect:/";
+//    }
 
     @RequestMapping({"/article/edit"})
     public String getPostEdit()
@@ -120,14 +120,24 @@ public class PostController {
 
     @RequestMapping({"/article/{id}/delete"})
     public String deletePost(@PathVariable String id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User user = userRepository.findByEmail(currentUserName);
+
         try {
             postRepository.deleteById(Integer.valueOf(id));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return "redirect:/volunteer";
+
+        if(user.getFoundation() != null) {
+            return "redirect:/foundation";
+        }
+        else if(user.getVolunteer() != null) {
+            return "redirect:/volunteer";
+        }
+        else return "index";
     }
 
     @RequestMapping({"/article/filter"})
@@ -149,19 +159,48 @@ public class PostController {
             model.addAttribute("articles", listOfArticles);
         }
         else if (!category.equals("all") && foundation.equals("all")) {
-            List<Post> filered = postRepository.findAll().stream().filter(post -> post.getCategory().equals(Types.valueOf(category))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
+            List<Post> filered = user.getVolunteer().getPosts().stream().filter(post -> post.getCategory().equals(Types.valueOf(category))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
             model.addAttribute("articles", filered);
         }
         else if (category.equals("all") && !foundation.equals("all")) {
-            List<Post> filered = postRepository.findAll().stream().filter(post -> post.getFoundation().getId().equals(Integer.valueOf(foundation))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
+            List<Post> filered = user.getVolunteer().getPosts().stream().filter(post -> post.getFoundation().getId().equals(Integer.valueOf(foundation))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
             model.addAttribute("articles", filered);
         }
         else {
-            List<Post> filered = postRepository.findAll().stream().filter(post -> post.getCategory().equals(Types.valueOf(category)) && post.getFoundation().getId().equals(Integer.valueOf(foundation))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
+            List<Post> filered = user.getVolunteer().getPosts().stream().filter(post -> post.getCategory().equals(Types.valueOf(category)) && post.getFoundation().getId().equals(Integer.valueOf(foundation))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
             model.addAttribute("articles", filered);
         }
 
         model.addAttribute("foundations", foundationRepository.findAll());
         return "volunteer/show";
     }
+
+
+
+    @RequestMapping({"/foundation/article/filter"})
+    public String filterArticlesBelongingToFundation(Model model,
+                                 @RequestParam String category) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User user = userRepository.findByEmail(currentUserName);
+
+        model.addAttribute("foundation", user.getFoundation());
+
+        //filtracja
+        if(category.equals("all")) {
+            //wrzucam wszystkie
+            List<Post> listOfArticles = new ArrayList<>(user.getFoundation().getPost());
+            listOfArticles.sort(Comparator.comparing(Post::getCreateTime).reversed());
+            model.addAttribute("articles", listOfArticles);
+        }
+        else {
+            List<Post> filtered = user.getFoundation().getPost().stream().filter(post -> post.getCategory().equals(Types.valueOf(category))).sorted(Comparator.comparing(Post::getCreateTime).reversed()).collect(Collectors.toList());
+            model.addAttribute("articles", filtered);
+        }
+
+        return "foundation/show";
+    }
+
+
 }

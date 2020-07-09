@@ -34,7 +34,7 @@
             <img alt="charity_logo" th:src="@{/images/user.png}">
 
             <!-- <h5 th:text="${foundation.name}"></h5> -->
-            <h5> User Name</h5>
+            <h5 th:text="${volunteer.getName()} + ' ' + ${volunteer.getSurname()}"> User Name</h5>
         </div>
 
         <div class="volunteer-content-links">

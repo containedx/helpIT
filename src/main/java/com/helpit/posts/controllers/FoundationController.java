@@ -1,9 +1,14 @@
 package com.helpit.posts.controllers;
 
 import com.helpit.model.Foundation;
+import com.helpit.model.User;
 import com.helpit.posts.model.Comment;
 import com.helpit.posts.model.Post;
+import com.helpit.posts.repositories.PostRepository;
 import com.helpit.repositories.FoundationRepository;
+import com.helpit.repositories.UserRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +23,13 @@ import java.util.Optional;
 @Controller
 public class FoundationController {
     private final FoundationRepository foundationRepository;
+    private final UserRepository userRepository;
+    private final PostRepository postRepository;
 
-    public FoundationController(FoundationRepository foundationRepository) {
+    public FoundationController(FoundationRepository foundationRepository, UserRepository userRepository, PostRepository postRepository) {
         this.foundationRepository = foundationRepository;
-
+        this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
 
 
@@ -114,6 +122,21 @@ public class FoundationController {
     {
         model.addAttribute("foundations", foundationRepository.findAll());
         return "/charity/list";
+    }
+
+    @RequestMapping({"/foundation"})
+    public String getFoundation(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User user = userRepository.findByEmail(currentUserName);
+
+        model.addAttribute("foundation", user.getFoundation());
+
+        List<Post> listOfArticles = new ArrayList<>(user.getFoundation().getPost());
+        listOfArticles.sort(Comparator.comparing(Post::getCreateTime).reversed());
+        model.addAttribute("articles", listOfArticles);
+
+        return "/foundation/show";
     }
 
 }

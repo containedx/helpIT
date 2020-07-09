@@ -80,6 +80,14 @@
             </li>
 
             <li class='option' id='option9'>
+                <a href="/volunteer" sec:authorize="hasRole('ROLE_VOLUNTEER')">Your Profile</a>
+            </li>
+
+            <li class='option' id='option10'>
+                <a href="/foundation" sec:authorize="hasRole('ROLE_FOUNDATION')">Your Profile</a>
+            </li>
+
+            <li class='option' id='option11'>
                 <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
                     <form th:action="logout" method="POST">
                         <button type="submit" th:text="#{menu.logout}"></button>

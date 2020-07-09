@@ -18,80 +18,70 @@
 
 <div th:replace="fragments/menu::menu"></div>
 
-<section id="charity">
+<section id="volunteer">
 
-    <div id="charity-content">
+    <div id="volunteer-content">
 
-        <div class="charity-content-nav">
+        <div class="volunteer-content-nav">
             <a href="/">
                 <i class="im im-arrow-left"></i>
             </a>
 
-            <a href="/charity/edit" role="button">Edit Profile</a>
+            <a href="/volunteer/edit" role="button">Edit Profile</a>
         </div>
 
-        <div class="charity-content-user">
-            <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
+        <div class="volunteer-content-user">
+            <img alt="charity_logo" th:src="@{/images/user.png}">
 
             <!-- <h5 th:text="${foundation.name}"></h5> -->
-            <h5 th:text="${foundation.name}"></h5>
+            <h5 th:text="${foundation.getName()}">Foundation Name</h5>
         </div>
 
-        <div class="charity-content-links">
-            <a th:href="@{'/charity/' + ${foundation.getId()} + '/show'}">Feed
+        <div class="volunteer-content-links">
+            <a  href="" >Feed
                 <i class="im im-care-up"></i>
             </a>
-            <a href="#">Events</a>
-            <a th:href="@{'/charity/' + ${foundation.getId()} + '/opinion'}">Opinions</a>
         </div>
 
-        <div class="charity-content-feed">
+        <form id="filter-article" class="add-article--new" action="/foundation/article/filter">
+            <div class="add-article-content">
 
-            <form id="add-article" th:action="'/charity/' + ${foundation.getId()} + '/add_article'" sec:authorize="isAuthenticated()">
-                <div class="add-article-content">
+                <div class="input-col">
                     <div class="input-article">
-                        <span>Article title</span>
-                        <label>
-                            <input id="title" name="title" type="text"/>
-                        </label>
+                        <label for="category"> Choose category</label> <br>
+                        <select id="category" name="category" >
+                            <option value="all" selected hidden>Select category</option>
+                            <option value="family">Family</option>
+                            <option value="peace">Peace</option>
+                            <option value="environment">Environment</option>
+                            <option value="disease">Disease</option>
+                            <option value="education">Education</option>
+                            <option value="culture">Culture</option>
+                            <option value="animals">Animals</option>
+                            <option value="addiction">Addiction</option>
+                        </select>
                     </div>
-
-                    <div class="textarea-article">
-                        <span>Article content</span>
-                        <label>
-                            <textarea id="summernote" name="editordata"></textarea>
-                        </label>
-                    </div>
                 </div>
+            </div>
 
-                <div class="input-article">
-                    <label for="category"> Choose category</label> <br>
-                    <select id="category" name="category" >
-                        <option value="" disabled selected hidden>Select category</option>
-                        <option value="family">Family</option>
-                        <option value="peace">Peace</option>
-                        <option value="environment">Environment</option>
-                        <option value="disease">Disease</option>
-                        <option value="education">Education</option>
-                        <option value="culture">Culture</option>
-                        <option value="animals">Animals</option>
-                        <option value="addiction">Addiction</option>
-                    </select>
-                </div>
+            <div class="add-article-controllers">
+                <input type="submit" value="Filter"/>
+            </div>
+        </form>
 
-                <div class="add-article-controllers">
-                    <input type="submit" value="Create Article"/>
-                </div>
-            </form>
+        <div class="volunteer-content-feed">
 
             <div id="articles">
                 <div class="article" th:each="article : ${articles}">
                     <img th:src="@{/images/article.png}" alt="">
                     <div class="article-details">
-                        <div class="article-title" th:utext="${article.getTitle()}">Author</div>
-                        <div class="article-title" th:utext="${article.getCategory()}">Category</div>
+                        <div class="article-title" th:text="${article.getTitle()}">Title</div>
                         <div class="article-content" th:utext="${article.getContent()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
-                        <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
+                        <div class="article-links">
+                            <span></span>
+                            <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
+                            <a th:href="'/article/' + ${article.getId()} + '/delete'">delete</a>
+                        </div>
                     </div>
                 </div>
 
