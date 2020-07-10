@@ -128,4 +128,11 @@ public class ImageController {
         imageService.saveImageFileToVolunteer(file);
         return "redirect:/volunteer";
     }
+
+    @RequestMapping("/foundation/image")
+    public String submitImageToFoundation(@RequestParam("avatar") MultipartFile file,
+                                         Model model) {
+        imageService.saveImageFileToFoundation(file);
+        return "redirect:/foundation";
+    }
 }

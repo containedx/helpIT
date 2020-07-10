@@ -42,6 +42,7 @@ public class ImageServiceImpl implements ImageService {
 
             p.setImage(byteObject);
             foundationRepository.save(p);
+            userRepository.save(loggedUser);
         }
         catch (Exception e) {
             System.out.println("Error while persisting file");

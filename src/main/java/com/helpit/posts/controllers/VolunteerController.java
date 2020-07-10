@@ -96,15 +96,8 @@ public class VolunteerController {
         userRepository.save(loggedUser);
         volunteerRepository.save(loggedUser.getVolunteer());
 
-        model.addAttribute("volunteer", loggedUser.getVolunteer());
-
-        List<Post> listOfArticles = new ArrayList<>(loggedUser.getVolunteer().getPosts());
-        listOfArticles.sort(Comparator.comparing(Post::getCreateTime).reversed());
-        model.addAttribute("articles", listOfArticles);
-
-        model.addAttribute("foundations", foundationRepository.findAll());
         //przydaloby sie miec widok gdzie wypisywalibyśmy te ustawienia
 
-        return "volunteer/show";
+        return "redirect:/volunteer";
     }
 }

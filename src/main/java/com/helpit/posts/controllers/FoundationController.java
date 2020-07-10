@@ -1,19 +1,21 @@
 package com.helpit.posts.controllers;
 
+import com.helpit.model.Address;
 import com.helpit.model.Foundation;
 import com.helpit.model.User;
+import com.helpit.model.Volunteer;
 import com.helpit.posts.model.Comment;
 import com.helpit.posts.model.Post;
 import com.helpit.posts.repositories.PostRepository;
 import com.helpit.repositories.FoundationRepository;
 import com.helpit.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -25,6 +27,9 @@ public class FoundationController {
     private final FoundationRepository foundationRepository;
     private final UserRepository userRepository;
     private final PostRepository postRepository;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public FoundationController(FoundationRepository foundationRepository, UserRepository userRepository, PostRepository postRepository) {
         this.foundationRepository = foundationRepository;
@@ -111,12 +116,6 @@ public class FoundationController {
     }
 
 
-    @RequestMapping({"/charity/edit"})
-    public String getCharityEdit()
-    {
-        return "/registrations/edit_charity";
-    }
-
     @RequestMapping({"/charities"})
     public String getFoundList(Model model)
     {
@@ -139,5 +138,42 @@ public class FoundationController {
         return "/foundation/show";
     }
 
+    @RequestMapping({"/foundation/edit"})
+    public String getCharityEdit(Model model)
+    {
+        User user = new User();
+        user.setVolunteer(new Volunteer());
+        user.setAddress(new Address());
+        model.addAttribute("user", user);
+        return "/foundation/edit";
+    }
+
+    @RequestMapping({"/foundation/edit/submit"})
+    public String submitFoundationEdition(Model model,
+                                         @ModelAttribute User user,
+                                         @RequestParam String oldpassword) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = auth.getName();
+        User loggedUser = userRepository.findByEmail(currentUserName);
+
+        if( bCryptPasswordEncoder.matches(oldpassword,user.getPassword()) )
+        {
+            model.addAttribute("error", "Wrong old password!!");
+            return "oops";
+        }
+
+        loggedUser.setEmail(user.getEmail());
+        loggedUser.setUsername(user.getUsername());
+        loggedUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        loggedUser.getVolunteer().setName(user.getVolunteer().getName());
+        loggedUser.getVolunteer().setSurname(user.getVolunteer().getSurname());
+        loggedUser.setAddress(user.getAddress());
+
+        userRepository.save(loggedUser);
+        foundationRepository.save(loggedUser.getFoundation());
+        //przydaloby sie miec widok gdzie wypisywalibyśmy te ustawienia
+
+        return "redirect:/foundation";
+    }
 }
 

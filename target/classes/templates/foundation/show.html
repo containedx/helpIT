@@ -27,11 +27,11 @@
                 <i class="im im-arrow-left"></i>
             </a>
 
-            <a href="/volunteer/edit" role="button">Edit Profile</a>
+            <a href="/foundation/edit" role="button">Edit Profile</a>
         </div>
 
         <div class="volunteer-content-user">
-            <img alt="charity_logo" th:src="@{/images/user.png}">
+            <img alt="charity_logo" th:src="@{'/foundation/' + ${foundation.getId()} + '/renderimage'}">
 
             <!-- <h5 th:text="${foundation.name}"></h5> -->
             <h5 th:text="${foundation.getName()}">Foundation Name</h5>
