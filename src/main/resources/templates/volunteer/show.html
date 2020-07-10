@@ -31,7 +31,8 @@
         </div>
 
         <div class="volunteer-content-user">
-            <img alt="charity_logo" th:src="@{/images/user.png}">
+<!--            <img alt="charity_logo" th:src="${(volunteer.getImage() == null)}? '/images/user.png' : @{'/volunteer/' + ${volunteer.getId()} + '/renderimage'}" >-->
+            <img alt="charity_logo" th:src="@{'/volunteer/' + ${volunteer.getId()} + '/renderimage'}" >
 
             <!-- <h5 th:text="${foundation.name}"></h5> -->
             <h5 th:text="${volunteer.getName()} + ' ' + ${volunteer.getSurname()}"> User Name</h5>

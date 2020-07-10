@@ -108,7 +108,11 @@
         </div>
     </form>
 
-    <form  id="image-form" th:action="@{/volunteer/edit/submitimage}">
+
+</section>
+
+<section id="image">
+    <form  id="image-form" th:action="'/volunteer/image'" enctype="multipart/form-data" method="post">
         <div class="form-group">
             <label for="avatar">Profile Image</label>
 
@@ -120,7 +124,6 @@
             <input type="submit" id="image-submit" class="form-control btn btn-info" value="Submit avatar">
         </div>
     </form>
-
 </section>
 
 <footer id="foot"></footer>
