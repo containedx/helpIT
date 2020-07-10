@@ -142,7 +142,7 @@ public class FoundationController {
     public String getCharityEdit(Model model)
     {
         User user = new User();
-        user.setVolunteer(new Volunteer());
+        user.setFoundation(new Foundation());
         user.setAddress(new Address());
         model.addAttribute("user", user);
         return "/foundation/edit";
@@ -165,12 +165,15 @@ public class FoundationController {
         loggedUser.setEmail(user.getEmail());
         loggedUser.setUsername(user.getUsername());
         loggedUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        loggedUser.getVolunteer().setName(user.getVolunteer().getName());
-        loggedUser.getVolunteer().setSurname(user.getVolunteer().getSurname());
+        loggedUser.getFoundation().setName(user.getFoundation().getName());
+        loggedUser.getFoundation().setOwnerName(user.getFoundation().getOwnerName());
+        loggedUser.getFoundation().setOwnerSurname(user.getFoundation().getOwnerSurname());
         loggedUser.setAddress(user.getAddress());
+        loggedUser.getFoundation().setType(user.getFoundation().getType());
 
-        userRepository.save(loggedUser);
         foundationRepository.save(loggedUser.getFoundation());
+        userRepository.save(loggedUser);
+
         //przydaloby sie miec widok gdzie wypisywalibyśmy te ustawienia
 
         return "redirect:/foundation";

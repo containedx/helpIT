@@ -39,34 +39,6 @@ public class ImageController {
         this.userRepository = userRepository;
     }
 
-//    @RequestMapping("/foundation/{id}/addImage")
-//    public String getImageForm(@PathVariable String id, Model model)
-//    {
-//        Optional<Foundation> p = foundationRepository.findById(Integer.valueOf(id));
-//        if(p.isPresent()){
-//            model.addAttribute("foundation", p.get());
-//        }
-//        else {
-//            throw new RuntimeException("Cannot add image to foundation, because it is not present in the database");
-//        }
-//
-//        return "add_post/image_form"; //zmien to !!!
-//    }
-
-//    @RequestMapping("/foundation/{id}/image")
-//    public String persistImage(@PathVariable String id, @RequestParam("imagefile")MultipartFile file, Model model) {
-//
-//        imageService.saveImageFileToFoundation(Integer.valueOf(id), file);
-//        Optional<Foundation> p = foundationRepository.findById(Integer.valueOf(id));
-//        if(p.isPresent()){
-//            model.addAttribute("foundation", p.get());
-//        }
-//        else {
-//            throw new RuntimeException("Sth went wrong in imageController");
-//        }
-//
-//        return "add_post/display_post"; //zmien to !!
-//    }
 
     @GetMapping("/foundation/{id}/renderimage")
     public void renderImageFromDBforFoundation(@PathVariable String id, HttpServletResponse response) {
