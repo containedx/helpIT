@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
     <link rel="stylesheet" href="/css/root.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        .error{
+            background-color:indianred !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -179,7 +184,7 @@
         if(!content.match(regex)){
             email.classList.add("error")
             if(!document.body.querySelector("#errorEmail")) {
-                let node = document.createElement("p");
+                let node = document.createElement("div");
                 node.innerHTML="Niepoprawny e-mail";
                 node.id="errorEmail";
                 node.setAttribute("style","color:red;");
@@ -202,7 +207,7 @@
         if(!content.match(regex)){
             password.classList.add("error")
             if(!document.body.querySelector("#errorPassword")) {
-                let node = document.createElement("p");
+                let node = document.createElement("div");
                 node.innerHTML="Hasło powinno zawierać przynajmniej wielką literę, cyfrę i znak specjalny, od 8 do 32 liter";
                 node.id="errorPassword";
                 node.setAttribute("style","color:red;");
@@ -220,7 +225,7 @@
         if(confirmPassword.value!=password.value){
             confirmPassword.classList.add("error");
             if(!document.body.querySelector("#errorConfirmPassword")) {
-                let node = document.createElement("p");
+                let node = document.createElement("div");
                 node.innerHTML="Hasła różnią się";
                 node.id="errorConfirmPassword";
                 node.setAttribute("style","color:red;");
@@ -242,7 +247,7 @@
         if(confirmPassword.value!=password.value) {
             confirmPassword.classList.add("error");
             if(!document.body.querySelector("#errorConfirmPassword")) {
-                let node = document.createElement("p");
+                let node = document.createElement("div");
                 node.innerHTML="Hasła różnią się";
                 node.id="errorConfirmPassword";
                 node.setAttribute("style","color:red;");
@@ -266,7 +271,7 @@
         if(!content.match(regex)){
             postcode.classList.add("error")
             if(!document.body.querySelector("#errorPostCode")) {
-                let node = document.createElement("p");
+                let node = document.createElement("div");
                 node.innerHTML="Niepoprawny format kodu pocztowego [przykład 12-345]";
                 node.id="errorPostCode";
                 node.setAttribute("style","color:red;");
@@ -289,7 +294,7 @@
         if(!content.match(regex)){
             numberOfHome.classList.add("error")
             if(!document.body.querySelector("#errorPostCode")) {
-                let node = document.createElement("p");
+                let node = document.createElement("div");
                 node.innerHTML="Niepoprawny format numeru domu [przykłady: 25, 3A]";
                 node.id="errorNumberOfHome";
                 node.setAttribute("style","color:red;");
@@ -313,7 +318,7 @@
         if(!content.match(regex)){
             numberOfFlat.classList.add("error")
             if(!document.body.querySelector("#errorNumberOfFlat")) {
-                let node = document.createElement("p");
+                let node = document.createElement("div");
                 node.innerHTML="Niepoprawny format numeru mieszkania - jeśli brak pozostaw 0";
                 node.id="errorNumberOfFlat";
                 node.setAttribute("style","color:red;");
@@ -333,7 +338,7 @@
     button.addEventListener("click",e=>{
         if(!(flagEmail && flagPassword && flagConfirmPassword&&flagPostcode && flagNumberOfHome && flagNumberOfFlat)) {
             e.preventDefault();
-            let node = document.createElement("p");
+            let node = document.createElement("div");
             node.innerHTML="Niepoprawnie wypełniony formularz";
             node.id="errorSubmitButton";
             node.setAttribute("style","color:red;");
