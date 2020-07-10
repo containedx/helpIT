@@ -27,8 +27,9 @@
                 <i class="im im-arrow-left"></i>
             </a>
 
-            <a href="/charity/edit" role="button">Edit Profile</a>
-        </div>
+            <a href="/SendRequest" sec:authorize="hasRole('ROLE_VOLUNTEER')" role="button">Join Foundation</a>
+
+            <a href="/charity/edit" sec:authorize="hasRole('ROLE_FOUNDATION')" role="button">Edit Profile</a>        </div>
 
         <div class="charity-content-user">
             <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
