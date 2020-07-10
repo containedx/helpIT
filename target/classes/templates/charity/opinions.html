@@ -35,7 +35,7 @@
         <div class="charity-content-user">
             <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
 
-            <h5>CHARITY NAME</h5>
+            <h5 th:text="${foundation.name}"></h5>
         </div>
 
         <div class="charity-content-links">
@@ -95,7 +95,7 @@
 
 </section>
 
-<footer id="foot"><a href="https://icons8.com/icon/7856/star">Star icon by Icons8</a></footer>
+<footer id="foot"></footer>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">

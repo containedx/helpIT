@@ -34,7 +34,7 @@
         <div class="charity-content-user">
             <img alt="charity_logo" th:src="@{/images/ch_logo.jpg}">
 
-            <h5>CHARITY LIFE</h5>
+            <h5 th:text="${foundation.getFoundationName()}"></h5>
         </div>
 
         <div class="charity-content-links">
