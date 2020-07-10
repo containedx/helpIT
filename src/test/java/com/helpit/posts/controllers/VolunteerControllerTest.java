@@ -4,6 +4,7 @@ import com.helpit.model.User;
 import com.helpit.model.Volunteer;
 import com.helpit.repositories.FoundationRepository;
 import com.helpit.repositories.UserRepository;
+import com.helpit.repositories.VolunteerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -29,13 +30,16 @@ class VolunteerControllerTest {
     @Mock
     FoundationRepository foundationRepository;
 
+    @Mock
+    VolunteerRepository volunteerRepository;
+
     VolunteerController controller;
     User user;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        controller = new VolunteerController(userRepository, foundationRepository);
+        controller = new VolunteerController(userRepository, foundationRepository, volunteerRepository);
 
         user = new User();
         user.setId(1);
