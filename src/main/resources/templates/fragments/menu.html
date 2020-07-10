@@ -51,26 +51,16 @@
 
             </li>
 
-            <li class='option' id='option2'>
-                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Add new Event</a>
-            </li>
-
-            <li class='option' id='option3'>
-                <a href="/events/add" sec:authorize="hasRole('ROLE_FOUNDATION')">Add Volunteer</a>
-            </li>
-
-            <li class='option' id='option4'>
-                <a href="/user/manager" sec:authorize="hasRole('ROLE_FOUNDATION')">Volunteers List</a>
-            </li>
-
-            <li class='option' id='option5'>
-                <a href="/user/manager" sec:authorize="hasRole('ROLE_VOLUNTEER')">Foundations List</a>
-            </li>
-            <li class='option' id='option12'>
-                <a href="/vol" sec:authorize="hasRole('ROLE_VOLUNTEER')">Fundation Menager</a>
-            </li>
             <li class='option' id='option13'>
-                <a href="/vol" sec:authorize="hasRole('ROLE_FOUNDATION')">Volunteer Menager</a>
+                <a href="/vol" sec:authorize="hasRole('ROLE_VOLUNTEER')">List of Foundations</a>
+            </li>
+
+            <li class='option' id='option14'>
+                <a href="/vol" sec:authorize="hasRole('ROLE_FOUNDATION')">List of Volunteers</a>
+            </li>
+
+            <li class='option' id='option15'>
+                <a href="/checkRequests" sec:authorize="hasRole('ROLE_FOUNDATION')">Volunteer Requests</a>
             </li>
 
             <li class='option' id='option6'>
@@ -79,10 +69,6 @@
 
             <li class='option' id='option7'>
                 <a href="/events">Search Events</a>
-            </li>
-
-            <li class='option' id='option8'>
-                <a href="/login" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">Sign in / Register</a>
             </li>
 
             <li class='option' id='option9'>
@@ -94,6 +80,14 @@
             </li>
 
             <li class='option' id='option11'>
+                <a href="/SendRequest" sec:authorize="hasRole('ROLE_VOLUNTEER')">Join Foundation</a>
+            </li>
+
+            <li class='option' id='option8'>
+                <a href="/login" class="navbar-signup" sec:authorize="isAnonymous()" id="signup-btn">Sign in / Register</a>
+            </li>
+
+            <li class='option' id='option12'>
                 <a  class="navbar-signup" sec:authorize="isAuthenticated()" id="signup-btn" role="button" onclick="hideShowSignIn()">
                     <form th:action="logout" method="POST">
                         <button type="submit" th:text="#{menu.logout}"></button>

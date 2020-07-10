@@ -69,9 +69,9 @@
       border-radius: 60px;
       text-decoration: none;
       color: #fff;
-      background: linear-gradient(to bottom right, #f06560, #e64339);
       transition: ease-in-out 0.15s;
-      cursor: pointer; }
+      cursor: pointer;
+      background: linear-gradient(to bottom right, #fa625b, #f55145); }
       #nav #navbar-registers #signup-btn:hover {
         background: linear-gradient(to bottom right, #e2645f, #d64238); }
       #nav #navbar-registers #signup-btn:first-child :not(form) {
@@ -178,6 +178,20 @@
           text-decoration: none; }
           #nav #navbar-user .dropdown-menu .option a:hover {
             background-color: #f9f9f9; }
+        #nav #navbar-user .dropdown-menu .option #signup-btn {
+          color: #fff;
+          background: linear-gradient(to bottom right, #fa625b, #f55145); }
+          #nav #navbar-user .dropdown-menu .option #signup-btn:hover {
+            background: linear-gradient(to bottom right, #e2645f, #d64238); }
+          #nav #navbar-user .dropdown-menu .option #signup-btn form button {
+            width: 100%;
+            height: 30px;
+            cursor: pointer;
+            border: none;
+            color: #fff;
+            background: linear-gradient(to bottom right, #fa625b, #f55145); }
+            #nav #navbar-user .dropdown-menu .option #signup-btn form button:hover {
+              background: linear-gradient(to bottom right, #e2645f, #d64238); }
 
 #search-bar {
   height: 55px;
@@ -203,12 +217,12 @@
     #search-bar #search-options button {
       height: 36px;
       margin: 10px 0 0 0;
-      background-color: #fd6c67;
       color: #fff;
       cursor: pointer;
-      border: none; }
+      border: none;
+      background: linear-gradient(to bottom right, rgba(250, 98, 91, 0.95), rgba(245, 81, 69, 0.95)); }
       #search-bar #search-options button:hover {
-        background-color: #ef6b66; }
+        background: linear-gradient(to bottom right, rgba(226, 100, 95, 0.98), rgba(214, 66, 56, 0.97)); }
     #search-bar #search-options #search-name {
       display: grid;
       grid-template-columns: 50px 150px;

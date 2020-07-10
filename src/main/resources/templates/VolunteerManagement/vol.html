@@ -1,3 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+    <link rel="stylesheet" href="/css/root.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="fragments/menu::menu"></div>
+
+<section class="manager" sec:authorize="hasRole('ROLE_FOUNDATION')" >
+
+    <h4>List of Volunteers</h4>
+
+    <div class="manager-rows manager-rows--vol">
+
+        <div class="manager-row" th:each="vol : ${ListVol}">
+            <span class="manager-row-name" th:text="${vol.vol_name}">Name</span>
+            <span class="manager-row-surname" th:text="${vol.vol_surname}">Surname</span>
+            <span class="manager-row-email" th:text="${vol.vol_email}">Email</span>
+            <span></span>
+            <a th:href="@{'vol/delete/' + ${vol.id}}" class="err">Delete</a>
+        </div>
+
+    </div>
+
+
+</section>
+
+<section class="manager" sec:authorize="hasRole('ROLE_VOLUNTEER')">
+
+    <h4>List of Foundations</h4>
+
+    <div class="manager-rows manager-rows--fun">
+        <div class="manager-row" th:each="fun : ${FunList}">
+            <span class="manager-row-name" th:text="${fun.foundation_name}">Name</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+</section>
+
+
+<script type="text/javascript " charset="utf-8">
+
+    function hideShowOption() {
+
+        var x  = document.querySelector('#drop_view');
+
+        if(x.style.display === 'none' || x.style.display === '') {
+
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>
+
+</body>
+
+
+<!--
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
@@ -44,3 +119,5 @@
 </div>
 </body>
 </html>
+
+-->

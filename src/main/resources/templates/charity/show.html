@@ -27,7 +27,7 @@
                     <i class="im im-arrow-left"></i>
                 </a>
 
-                <a href="/charity/edit" sec:authorize="hasRole('ROLE_VOLUNTEER')" role="button">Join Foundation</a>
+                <a href="/SendRequest" sec:authorize="hasRole('ROLE_VOLUNTEER')" role="button">Join Foundation</a>
 
                 <a href="/charity/edit" sec:authorize="hasRole('ROLE_FOUNDATION')" role="button">Edit Profile</a>
 
@@ -72,24 +72,29 @@
                         </div>
                     </div>
 
-                    <div class="input-article">
-                        <label for="category"> Choose category</label> <br>
-                        <select id="category" name="category" >
-                            <option value="" disabled selected hidden>Select category</option>
-                            <option value="family">Family</option>
-                            <option value="peace">Peace</option>
-                            <option value="environment">Environment</option>
-                            <option value="disease">Disease</option>
-                            <option value="education">Education</option>
-                            <option value="culture">Culture</option>
-                            <option value="animals">Animals</option>
-                            <option value="addiction">Addiction</option>
-                        </select>
+                    <div class="add-article-content-inputs">
+                        <div class="input-article">
+                            <span>Choose category</span>
+                            <label>
+                                <select id="category" name="category" >
+                                    <option value="" disabled selected hidden>Select category</option>
+                                    <option value="family">Family</option>
+                                    <option value="peace">Peace</option>
+                                    <option value="environment">Environment</option>
+                                    <option value="disease">Disease</option>
+                                    <option value="education">Education</option>
+                                    <option value="culture">Culture</option>
+                                    <option value="animals">Animals</option>
+                                    <option value="addiction">Addiction</option>
+                                </select>
+                            </label>
+                        </div>
+
+
+                        <input class="add-article-content-inputs-sub" type="submit" value="Create Article"/>
+
                     </div>
 
-                    <div class="add-article-controllers">
-                        <input type="submit" value="Create Article"/>
-                    </div>
                 </form>
 
                 <div id="articles">
@@ -97,7 +102,7 @@
                         <img th:src="@{/images/article.png}" alt="">
                         <div class="article-details">
                             <div class="article-title" th:utext="${article.getTitle()}">Author</div>
-                            <div class="article-title" th:utext="${article.getCategory()}">Category</div>
+                            <div class="article-category" th:utext="${article.getCategory()}">Category</div>
                             <div class="article-content" th:utext="${article.getContent()}">Quokka says quokk quokk quokk quokk quokk quokk XD</div>
                             <a th:href="'/article/' + ${article.getId()} + '/show'">read more</a>
                         </div>
@@ -139,7 +144,7 @@
                 ['font', ['bold', 'underline']],
                 ['para', ['ul', 'ol']],
                 ['view', ['fullscreen', 'codeview']],
-                ['insert', ['link', 'picture', 'video']]
+                ['insert', ['link', 'picture']]
             ],
             disableResizeEditor: true,
         });

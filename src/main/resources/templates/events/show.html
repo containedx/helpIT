@@ -70,10 +70,10 @@
                     <div class="row-data">-- || --</div>
                 </div>
 
-                <div class="row-btn">
-                    <span>Do you want to participte?</span>
+                <div class="row-btn" >
+                    <span sec:authorize="hasRole('ROLE_VOLUNTEER')">Do you want to participte?</span>
 
-                    <label class="switch">
+                    <label class="switch" sec:authorize="hasRole('ROLE_VOLUNTEER')">
                         <input type="checkbox">
                         <span></span>
                     </label>

@@ -136,6 +136,31 @@
             border: 1px dashed #b6b6b6; }
             #charity #charity-content .charity-content-feed #add-article.add-article--new .add-article-controllers .upload:hover {
               border: 1px dashed #7d7d7d; }
+        #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs {
+          display: grid;
+          grid-template-rows: 100px 1fr; }
+          #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs .input-article {
+            position: relative;
+            display: block;
+            margin: 10px 0 0 0; }
+            #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs .input-article span {
+              position: absolute;
+              top: -11px;
+              left: 0;
+              font-size: 13px;
+              padding: 8px 0 0 0; }
+            #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs .input-article select {
+              display: block;
+              border: 1px solid #b2b2b2;
+              padding: 0 0 0 5px;
+              width: 100%;
+              height: 40px;
+              margin: 20px 20px 0 0;
+              border-radius: 2px; }
+          #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs .add-article-content-inputs-sub {
+            background-color: #fff;
+            border: 1px solid #b2b2b2;
+            height: 40px; }
         #charity #charity-content .charity-content-feed #add-article .add-article-content {
           margin: 10px 0 0 0;
           display: grid;
@@ -178,7 +203,10 @@
               width: calc( 100% - 20px);
               height: 40px;
               margin: 20px 20px 0 0;
-              border-radius: 2px; }
+              border-radius: 2px;
+              cursor: pointer; }
+              #charity #charity-content .charity-content-feed #add-article .add-article-content .input-article input:hover {
+                border: 1px solid #a7a7a7; }
           #charity #charity-content .charity-content-feed #add-article .add-article-content .textarea-article {
             position: relative;
             margin: 5px 12px 0 0; }
@@ -245,16 +273,21 @@
         #charity #charity-content .charity-content-feed #articles .article {
           display: grid;
           grid-template-columns: 140px 1fr;
-          overflow: hidden; }
+          overflow: hidden;
+          position: relative; }
           #charity #charity-content .charity-content-feed #articles .article img {
-            border: 1px solid #999;
+            border: 1px solid #d7d7d7;
             border-left: 3px solid #f95d59;
             border-radius: 2px;
             width: 136px;
             height: 98px;
             background-color: #eeeeee;
-            object-fit: cover;
-            margin: -1px 0 0 0; }
+            object-fit: cover; }
+          #charity #charity-content .charity-content-feed #articles .article .article-category {
+            position: absolute;
+            top: 65px;
+            left: 160px;
+            font-size: 10px; }
           #charity #charity-content .charity-content-feed #articles .article .article-details {
             display: grid;
             grid-template-rows: 25px 50px 25px;
@@ -264,8 +297,8 @@
               line-height: 25px; }
             #charity #charity-content .charity-content-feed #articles .article .article-details .article-content {
               height: 50px;
-              line-height: 50px;
-              font-size: 13px;
+              line-height: 40px;
+              font-size: 14px;
               max-width: 80%;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -359,7 +392,7 @@
           grid-template-columns: 140px 1fr; }
           #charity #charity-content .charity-content-feed #events .event img {
             border: 1px solid #999;
-            border-left: 3px solid #f91319;
+            border-left: 3px solid #f95d59;
             border-radius: 2px;
             width: 130px;
             height: 100px;
@@ -399,19 +432,77 @@
         display: grid;
         grid-template-columns: 1fr 150px;
         column-gap: 10px; }
+        #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col span {
+          font-size: 13px; }
         #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--left {
           display: grid;
           grid-template-rows: 30px 1fr; }
         #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--right {
           display: grid;
           grid-template-rows: 30px 40px 1fr; }
+          #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--right #add-opinion-rating {
+            border: 1px solid #b2b2b2; }
           #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--right input {
-            margin: 30px 0 0 0; }
+            margin: 34px 0 0 0;
+            background-color: #fff;
+            border: 1px solid #b2b2b2;
+            height: 60px;
+            cursor: pointer; }
+            #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--right input:hover {
+              border: 1px solid #a7a7a7; }
       #charity #charity-content .charity-content-feed #opinion-cards {
         display: grid;
         grid-auto-rows: auto;
         row-gap: 5px;
-        margin: 10px 0 0 0; }
+        margin: 30px 0; }
         #charity #charity-content .charity-content-feed #opinion-cards .opinion-card {
           min-height: 50px;
-          background-color: #f2dede; }
+          display: grid;
+          column-gap: 20px;
+          grid-template-columns: 50px auto;
+          padding: 0 0 0 20px;
+          border-left: 3px solid #ff7970;
+          position: relative; }
+          #charity #charity-content .charity-content-feed #opinion-cards .opinion-card img {
+            position: absolute;
+            z-index: 999;
+            width: 41px;
+            height: 41px;
+            border-radius: 100px;
+            margin: 4px 0 0 4px;
+            border: 1px solid #b2b2b2;
+            left: 27px; }
+          #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content {
+            position: relative;
+            margin: 0 0 0 75px; }
+            #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content i {
+              position: absolute;
+              left: -10px;
+              top: 24px;
+              font-size: 14px;
+              color: #e9eef8; }
+            #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content .opinion-card-text {
+              display: inline-block;
+              margin: 7px 0 0 0;
+              width: auto;
+              padding: 7px 10px;
+              line-height: 22px;
+              background-color: #e9eef8;
+              border-radius: 5px;
+              font-size: 13px; }
+            #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content .opinion-card-content-rating {
+              position: absolute;
+              left: -60px;
+              top: 31px;
+              font-size: 12px;
+              font-weight: 600;
+              color: #464646;
+              z-index: 99999; }
+            #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content img {
+              position: absolute;
+              width: 33px;
+              height: 33px;
+              left: -77px;
+              top: 16px;
+              z-index: 9999;
+              border: none; }
