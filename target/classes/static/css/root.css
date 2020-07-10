@@ -3,6 +3,9 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif; }
+  html input:focus, body input:focus {
+    outline: 1px solid #3a79cb !important;
+    border-radius: 3px; }
 
 #nav {
   height: 60px;
@@ -75,9 +78,9 @@ html, body {
       border-radius: 60px;
       text-decoration: none;
       color: #fff;
-      background: linear-gradient(to bottom right, #f06560, #e64339);
       transition: ease-in-out 0.15s;
-      cursor: pointer; }
+      cursor: pointer;
+      background: linear-gradient(to bottom right, #fa625b, #f55145); }
       #nav #navbar-registers #signup-btn:hover {
         background: linear-gradient(to bottom right, #e2645f, #d64238); }
       #nav #navbar-registers #signup-btn:first-child :not(form) {
@@ -184,6 +187,20 @@ html, body {
           text-decoration: none; }
           #nav #navbar-user .dropdown-menu .option a:hover {
             background-color: #f9f9f9; }
+        #nav #navbar-user .dropdown-menu .option #signup-btn {
+          color: #fff;
+          background: linear-gradient(to bottom right, #fa625b, #f55145); }
+          #nav #navbar-user .dropdown-menu .option #signup-btn:hover {
+            background: linear-gradient(to bottom right, #e2645f, #d64238); }
+          #nav #navbar-user .dropdown-menu .option #signup-btn form button {
+            width: 100%;
+            height: 30px;
+            cursor: pointer;
+            border: none;
+            color: #fff;
+            background: linear-gradient(to bottom right, #fa625b, #f55145); }
+            #nav #navbar-user .dropdown-menu .option #signup-btn form button:hover {
+              background: linear-gradient(to bottom right, #e2645f, #d64238); }
 
 #search-bar {
   height: 55px;
@@ -209,12 +226,12 @@ html, body {
     #search-bar #search-options button {
       height: 36px;
       margin: 10px 0 0 0;
-      background-color: #fd6c67;
       color: #fff;
       cursor: pointer;
-      border: none; }
+      border: none;
+      background: linear-gradient(to bottom right, rgba(250, 98, 91, 0.95), rgba(245, 81, 69, 0.95)); }
       #search-bar #search-options button:hover {
-        background-color: #ef6b66; }
+        background: linear-gradient(to bottom right, rgba(226, 100, 95, 0.98), rgba(214, 66, 56, 0.97)); }
     #search-bar #search-options #search-name {
       display: grid;
       grid-template-columns: 50px 150px;
@@ -815,6 +832,31 @@ html, body {
             border: 1px dashed #b6b6b6; }
             #charity #charity-content .charity-content-feed #add-article.add-article--new .add-article-controllers .upload:hover {
               border: 1px dashed #7d7d7d; }
+        #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs {
+          display: grid;
+          grid-template-rows: 100px 1fr; }
+          #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs .input-article {
+            position: relative;
+            display: block;
+            margin: 10px 0 0 0; }
+            #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs .input-article span {
+              position: absolute;
+              top: -11px;
+              left: 0;
+              font-size: 13px;
+              padding: 8px 0 0 0; }
+            #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs .input-article select {
+              display: block;
+              border: 1px solid #b2b2b2;
+              padding: 0 0 0 5px;
+              width: 100%;
+              height: 40px;
+              margin: 20px 20px 0 0;
+              border-radius: 2px; }
+          #charity #charity-content .charity-content-feed #add-article .add-article-content-inputs .add-article-content-inputs-sub {
+            background-color: #fff;
+            border: 1px solid #b2b2b2;
+            height: 40px; }
         #charity #charity-content .charity-content-feed #add-article .add-article-content {
           margin: 10px 0 0 0;
           display: grid;
@@ -857,7 +899,10 @@ html, body {
               width: calc( 100% - 20px);
               height: 40px;
               margin: 20px 20px 0 0;
-              border-radius: 2px; }
+              border-radius: 2px;
+              cursor: pointer; }
+              #charity #charity-content .charity-content-feed #add-article .add-article-content .input-article input:hover {
+                border: 1px solid #a7a7a7; }
           #charity #charity-content .charity-content-feed #add-article .add-article-content .textarea-article {
             position: relative;
             margin: 5px 12px 0 0; }
@@ -924,16 +969,21 @@ html, body {
         #charity #charity-content .charity-content-feed #articles .article {
           display: grid;
           grid-template-columns: 140px 1fr;
-          overflow: hidden; }
+          overflow: hidden;
+          position: relative; }
           #charity #charity-content .charity-content-feed #articles .article img {
-            border: 1px solid #999;
+            border: 1px solid #d7d7d7;
             border-left: 3px solid #f95d59;
             border-radius: 2px;
             width: 136px;
             height: 98px;
             background-color: #eeeeee;
-            object-fit: cover;
-            margin: -1px 0 0 0; }
+            object-fit: cover; }
+          #charity #charity-content .charity-content-feed #articles .article .article-category {
+            position: absolute;
+            top: 65px;
+            left: 160px;
+            font-size: 10px; }
           #charity #charity-content .charity-content-feed #articles .article .article-details {
             display: grid;
             grid-template-rows: 25px 50px 25px;
@@ -943,8 +993,8 @@ html, body {
               line-height: 25px; }
             #charity #charity-content .charity-content-feed #articles .article .article-details .article-content {
               height: 50px;
-              line-height: 50px;
-              font-size: 13px;
+              line-height: 40px;
+              font-size: 14px;
               max-width: 80%;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1038,7 +1088,7 @@ html, body {
           grid-template-columns: 140px 1fr; }
           #charity #charity-content .charity-content-feed #events .event img {
             border: 1px solid #999;
-            border-left: 3px solid #f91319;
+            border-left: 3px solid #f95d59;
             border-radius: 2px;
             width: 130px;
             height: 100px;
@@ -1078,22 +1128,80 @@ html, body {
         display: grid;
         grid-template-columns: 1fr 150px;
         column-gap: 10px; }
+        #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col span {
+          font-size: 13px; }
         #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--left {
           display: grid;
           grid-template-rows: 30px 1fr; }
         #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--right {
           display: grid;
           grid-template-rows: 30px 40px 1fr; }
+          #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--right #add-opinion-rating {
+            border: 1px solid #b2b2b2; }
           #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--right input {
-            margin: 30px 0 0 0; }
+            margin: 34px 0 0 0;
+            background-color: #fff;
+            border: 1px solid #b2b2b2;
+            height: 60px;
+            cursor: pointer; }
+            #charity #charity-content .charity-content-feed #add-opinion .add-opinion-col.add-opinion-col--right input:hover {
+              border: 1px solid #a7a7a7; }
       #charity #charity-content .charity-content-feed #opinion-cards {
         display: grid;
         grid-auto-rows: auto;
         row-gap: 5px;
-        margin: 10px 0 0 0; }
+        margin: 30px 0; }
         #charity #charity-content .charity-content-feed #opinion-cards .opinion-card {
           min-height: 50px;
-          background-color: #f2dede; }
+          display: grid;
+          column-gap: 20px;
+          grid-template-columns: 50px auto;
+          padding: 0 0 0 20px;
+          border-left: 3px solid #ff7970;
+          position: relative; }
+          #charity #charity-content .charity-content-feed #opinion-cards .opinion-card img {
+            position: absolute;
+            z-index: 999;
+            width: 41px;
+            height: 41px;
+            border-radius: 100px;
+            margin: 4px 0 0 4px;
+            border: 1px solid #b2b2b2;
+            left: 27px; }
+          #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content {
+            position: relative;
+            margin: 0 0 0 75px; }
+            #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content i {
+              position: absolute;
+              left: -10px;
+              top: 24px;
+              font-size: 14px;
+              color: #e9eef8; }
+            #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content .opinion-card-text {
+              display: inline-block;
+              margin: 7px 0 0 0;
+              width: auto;
+              padding: 7px 10px;
+              line-height: 22px;
+              background-color: #e9eef8;
+              border-radius: 5px;
+              font-size: 13px; }
+            #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content .opinion-card-content-rating {
+              position: absolute;
+              left: -60px;
+              top: 31px;
+              font-size: 12px;
+              font-weight: 600;
+              color: #464646;
+              z-index: 99999; }
+            #charity #charity-content .charity-content-feed #opinion-cards .opinion-card .opinion-card-content img {
+              position: absolute;
+              width: 33px;
+              height: 33px;
+              left: -77px;
+              top: 16px;
+              z-index: 9999;
+              border: none; }
 
 #article {
   min-height: 550px;
@@ -1689,16 +1797,21 @@ html, body {
         margin: 30px 0 0 0; }
         #volunteer #volunteer-content .volunteer-content-feed #articles .article {
           display: grid;
-          grid-template-columns: 140px 1fr; }
+          grid-template-columns: 140px 1fr;
+          position: relative; }
           #volunteer #volunteer-content .volunteer-content-feed #articles .article img {
-            border: 1px solid #999;
+            border: 1px solid #d7d7d7;
             border-left: 3px solid #f95d59;
             border-radius: 2px;
             width: 136px;
             height: 98px;
             background-color: #eeeeee;
-            object-fit: cover;
-            margin: -1px 0 0 0; }
+            object-fit: cover; }
+          #volunteer #volunteer-content .volunteer-content-feed #articles .article .article-category {
+            position: absolute;
+            top: 65px;
+            left: 160px;
+            font-size: 10px; }
           #volunteer #volunteer-content .volunteer-content-feed #articles .article .article-details {
             display: grid;
             grid-template-rows: 25px 50px 25px;
@@ -1708,7 +1821,7 @@ html, body {
               line-height: 25px; }
             #volunteer #volunteer-content .volunteer-content-feed #articles .article .article-details .article-content {
               height: 50px;
-              line-height: 50px;
+              line-height: 40px;
               font-size: 13px;
               max-width: 80%;
               overflow: hidden;
@@ -1739,7 +1852,8 @@ html, body {
   border-radius: 4px;
   -webkit-box-shadow: 0px 150 20px -15px #b7aebc;
   -moz-box-shadow: 0px 0px 20px -15px #b7aebc;
-  box-shadow: 0px 0px 20px -15px #b7aebc; }
+  box-shadow: 0px 0px 20px -15px #b7aebc;
+  padding: 0 20px; }
   .manager:nth-of-type(2) {
     margin: 0px auto 40px auto; }
   .manager h4 {
@@ -1751,25 +1865,36 @@ html, body {
     height: 35px;
     line-height: 35px; }
   .manager .manager-rows {
-    grid-auto-rows: 50px; }
+    grid-auto-rows: 50px;
+    display: block;
+    height: 550px; }
     .manager .manager-rows .manager-row {
       display: grid;
-      grid-template-columns: 1fr auto auto;
-      grid-template-rows: 1fr; }
+      grid-template-rows: 1fr;
+      grid-template-columns: auto auto 1fr 1fr  auto auto;
+      column-gap: 20px;
+      border-bottom: 1px solid #e8e8e8; }
       .manager .manager-rows .manager-row:nth-child(even) {
-        background: #e7e7e7; }
+        background: #fafafa; }
       .manager .manager-rows .manager-row:nth-child(odd) {
         background: #fff; }
-      .manager .manager-rows .manager-row .manager-row-name {
+      .manager .manager-rows .manager-row span {
         line-height: 50px;
-        padding: 0 0 0 15px;
-        font-size: 13px; }
-      .manager .manager-rows .manager-row .manager-row-link {
+        text-align: center; }
+        .manager .manager-rows .manager-row span:first-of-type {
+          padding: 0 0 0 20px; }
+      .manager .manager-rows .manager-row a {
         text-decoration: none;
+        color: #4f5bd0;
         line-height: 50px;
-        font-size: 13px;
-        padding: 0 20px; }
-        .manager .manager-rows .manager-row .manager-row-link:hover {
+        font-size: 12px; }
+        .manager .manager-rows .manager-row a.ok {
+          color: #54b442; }
+        .manager .manager-rows .manager-row a.err {
+          color: #df3d36; }
+        .manager .manager-rows .manager-row a:last-of-type {
+          padding: 0 20px 0 0; }
+        .manager .manager-rows .manager-row a:hover {
           text-decoration: underline; }
 
 #edit {

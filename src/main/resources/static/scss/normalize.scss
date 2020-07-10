@@ -4,4 +4,12 @@ html, body{
   padding: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
+
+  input{
+
+    &:focus{
+      outline:1px solid #3a79cb !important;
+      border-radius: 3px;
+    }
+  }
 }

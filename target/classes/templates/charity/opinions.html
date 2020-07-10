@@ -74,22 +74,19 @@
             </div>
 
             <section id="opinion-cards">
+
                 <div class="opinion-card" th:each="opinion : ${foundation.getComment()}">
-                    <img src="" alt="" class="opinion-card-img">
+                    <img th:src="@{/images/user.png}">
                     <div class="opinion-card-content">
-                        <div class="opinion-card-content-rating" th:text="${opinion.getRate()}">2</div>
-                        <div class="opinion-card-content-text" th:utext="${opinion.getContent()}">Irresponsible administration...</div>
+                        <i class="im im-care-left"></i>
+                        <div class="opinion-card-text" th:utext="${opinion.getContent()}">
+                            Right? I think so too!
+                        </div>
+                        <div class="opinion-card-content-rating" th:text="${opinion.getRate()}"></div>
+                        <img src="https://img.icons8.com/office/80/000000/filled-star.png"/>
                     </div>
                 </div>
 
-                <div class="opinion-card" th:remove="all">
-                    <img src="" alt="" class="opinion-card-img">
-                    <div class="opinion-card-content">
-                        <div class="opinion-card-content-title">Awesome!</div>
-                        <div class="opinion-card-content-rating">5</div>
-                        <div class="opinion-card-content-text">Just what I was looking for!</div>
-                    </div>
-                </div>
             </section>
 
         </div>
@@ -97,7 +94,7 @@
 
 </section>
 
-<footer id="foot"></footer>
+<footer id="foot"><a href="https://icons8.com/icon/7856/star">Star icon by Icons8</a></footer>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -105,36 +102,11 @@
 
 <script type="text/javascript" charset="utf-8">
 
-    function hideShowSignIn() {
-
-        var y  = document.querySelector('#drop_view');
-        var x = document.getElementById("dropdown-signup");
-        var btn = document.getElementById("signup-btn")
-
-        if(x.style.display === 'none' || x.style.display === '') {
-
-            if(y.style.display === 'block') {
-                y.style.display = "none";
-            }
-
-            x.style.display = "block";
-            btn.style.left = "200px";
-        } else {
-            x.style.display = "none";
-            btn.style.left = "10px";
-        }
-    }
-
     function hideShowOption() {
 
         var x  = document.querySelector('#drop_view');
-        var y = document.getElementById("dropdown-signup");
 
         if(x.style.display === 'none' || x.style.display === '') {
-
-            if(y.style.display === 'block') {
-                y.style.display = "none";
-            }
 
             x.style.display = "block";
         } else {
@@ -143,7 +115,7 @@
     }
 
     $('#add-opinion-text').summernote({
-        height: 75,
+        height: 79,
         toolbar: [
             ['font', ['bold', 'underline']],
             ['para', ['ul', 'ol']],
