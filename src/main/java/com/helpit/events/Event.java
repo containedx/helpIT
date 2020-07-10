@@ -31,7 +31,7 @@ public class Event {
     @JoinTable(name="users_events", joinColumns = @JoinColumn(name="event_id"), inverseJoinColumns = @JoinColumn(name="user_id"))
     private Set<User> users = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinTable(name="foundation_event", joinColumns = @JoinColumn(name="event_id"), inverseJoinColumns = @JoinColumn(name="foundation_id"))
 
     private User foundation;

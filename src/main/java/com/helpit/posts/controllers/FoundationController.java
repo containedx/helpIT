@@ -176,7 +176,9 @@ public class FoundationController {
 
         //przydaloby sie miec widok gdzie wypisywalibyśmy te ustawienia
 
-        return "redirect:/foundation";
+        SecurityContextHolder.clearContext();
+
+        return "redirect:/";
     }
 }
 

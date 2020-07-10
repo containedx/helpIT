@@ -96,8 +96,10 @@ public class VolunteerController {
         userRepository.save(loggedUser);
         volunteerRepository.save(loggedUser.getVolunteer());
 
+        SecurityContextHolder.clearContext();
+
         //przydaloby sie miec widok gdzie wypisywalibyśmy te ustawienia
 
-        return "redirect:/volunteer";
+        return "redirect:/";
     }
 }
